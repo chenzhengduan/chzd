@@ -21,6 +21,7 @@ theme:
 extra_css:
   - assets/styles/mobile.css
   - assets/styles/resume.css
+  - assets/styles/shooting.css
 
 plugins:
   - awesome-pages:

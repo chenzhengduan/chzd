@@ -1,5 +1,5 @@
 site_name: 实用知识库
-site_description: 短视频拍摄、行业实操、跨境电商、阿里巴巴电商与运营学习笔记
+site_description: 短视频拍摄、社交平台账号运营、跨境电商、阿里巴巴电商与运营学习笔记
 site_url: https://chenzhengduan.github.io/chzd/
 docs_dir: docs
 site_dir: .site
@@ -22,6 +22,7 @@ extra_css:
   - assets/styles/mobile.css
   - assets/styles/resume.css
   - assets/styles/shooting.css
+  - assets/styles/platforms.css
 
 plugins:
   - awesome-pages:

@@ -9,8 +9,8 @@
 | --- | --- | --- |
 | 创建账号 | 原则上至少 13 岁；部分地区为 14 岁 | 美国另有 Under-13 受限体验；邮箱/手机号需有效 |
 | 发布视频 | 普通发布没有公开粉丝数或“养号天数”门槛 | 未成年人隐私和推荐功能受额外限制 |
-| TikTok LIVE | 18+；通常至少 1,000 粉丝 | 粉丝要求可因地区而变，LIVE/Gifts 并非所有地区开放 |
-| Creator Rewards | 18+、个人账号、状态良好、1 万粉、申请前 30 天 10 万真实播放 | 仅开放地区；合格视频需高质量原创且至少 1 分钟 |
+| TikTok LIVE | 18+；满足所在地最低粉丝门槛 | 门槛与功能开放地区不同，以账号内 LIVE 资格页为准 |
+| Creator Rewards | 18+、个人账号、状态良好、1 万粉、申请前 30 天 10 万真实播放 | 依据 2024 年官方说明；仅开放地区，申请前须在账号内复核当前资格 |
 | Video Gifts | 18+（韩国 19+）、1 万粉、账号至少 30 天、近 30 天有公开视频、个人账号 | 仅开放地区，还需状态良好 |
 | Series | 18+（韩国 19+）、账号至少 30 天、近 30 天至少 3 个公开帖、1 万粉、近 30 天至少 1,000 播放等 | 少于 1 万粉可凭站外付费内容经历申请，但不保证通过 |
 
@@ -77,7 +77,7 @@ TikTok 社区准则明确区分“允许存在”和“有资格进入 FYF”。
 - [Creating an account](https://support.tiktok.com/en/getting-started/creating-an-account/download-tiktok%26)
 - [Privacy and safety for users under 18](https://support.tiktok.com/en/account-and-privacy/account-privacy-settings/privacy-and-safety-settings-for-users-under-age-18/)
 - [What is TikTok LIVE?](https://support.tiktok.com/en/live-gifts-wallet/tiktok-live/what-is-tiktok-live)
-- [Creator Rewards Program 官方说明](https://newsroom.tiktok.com/introducing-the-new-creator-rewards-program?lang=en)
+- [Creator Rewards Program 官方说明（2024 年，B 级来源）](https://newsroom.tiktok.com/introducing-the-new-creator-rewards-program?lang=en)
 - [Video Gifts on TikTok](https://support.tiktok.com/en/business-and-creator/video-gifts-on-tiktok/video-gifts-on-tiktok)
 - [About TikTok Series](https://support.tiktok.com/en/business-and-creator/tiktok-series/about-tiktok-series)
 - [How TikTok recommends content](https://support.tiktok.com/en/using-tiktok/exploring-videos/how-tiktok-recommends-content)

@@ -24,6 +24,7 @@ extra_css:
   - assets/styles/shooting.css
   - assets/styles/platforms.css
   - assets/styles/sales.css
+  - assets/styles/growth.css
 
 plugins:
   - awesome-pages:

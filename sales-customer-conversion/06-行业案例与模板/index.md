@@ -7,6 +7,7 @@
 ## 首批案例
 
 <div class="sales-grid sales-grid--compact">
+  <a class="sales-card sales-card--accent" href="45天线索推进看板/"><em>45-DAY PIPELINE</em><strong>当天响应到 45 天线索推进看板</strong><span>把内容、评论和私信推进到需求、样品、有效报价、会议或明确暂缓。</span></a>
   <a class="sales-card" href="美妆包装销售注意事项/"><em>BEAUTY PACKAGING</em><strong>美妆包装销售注意事项</strong><span>从瓶胚、成型、表面加工到泵头配套，梳理需求、报价、跟单和责任边界。</span></a>
   <a class="sales-card" href="制造业外贸销售注意事项/"><em>EXPORT B2B</em><strong>制造业外贸销售注意事项</strong><span>从信任、小单验证、渠道、质量成本和经营投入，形成待验证的销售基准。</span></a>
 </div>

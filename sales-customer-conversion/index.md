@@ -11,6 +11,14 @@ standalone_title: 销售流程与客户转化 - 实用知识库
   <div class="sales-badges"><span>渠道无关</span><span>制造业 B2B</span><span>现场访谈转化</span></div>
 </section>
 
+<div class="growth-banner">
+  <strong>先把 45 天流程跑通</strong>
+  <span>当天归档并回应；15 天内争取形成需求、样品、有效报价或会议证据；30～45 天得到可诊断的内容获客与销售漏斗。</span>
+</div>
+
+[打开 45 天线索推进看板](06-行业案例与模板/45天线索推进看板/){ .md-button .md-button--primary }
+[从销售问题建立内容样本](../short-video-shooting/03-脚本剪辑与发布/05-从销售问题到内容样本/){ .md-button }
+
 !!! note "这个栏目解决什么"
     拍摄栏目负责“怎样把能力拍明白”，账号栏目负责“怎样合规发布和测试内容”，平台栏目负责相应渠道规则。本栏目从客户产生兴趣之后开始，负责线索判断、需求确认、报价成交、订单跟进、交付售后和复购。
 
@@ -31,7 +39,7 @@ standalone_title: 销售流程与客户转化 - 实用知识库
   <a class="sales-card" href="03-报价样品与成交条件/"><em>DEAL</em><strong>报价、样品与成交条件</strong><span>让价格、样品、模具、付款和有效期都有明确前提。</span></a>
   <a class="sales-card" href="04-订单跟进与交付协同/"><em>DELIVER</em><strong>跟单与交付协同</strong><span>把多环节、多供应商订单变成可追踪的节点和异常处理机制。</span></a>
   <a class="sales-card" href="05-售后复购与客户资产/"><em>RETAIN</em><strong>售后、复购与转介绍</strong><span>保存客诉证据、复盘成本，并把有效经验沉淀到客户档案。</span></a>
-  <a class="sales-card sales-card--accent" href="06-行业案例与模板/"><em>FIELD NOTES</em><strong>行业案例与工具模板</strong><span>将工厂拜访和经营访谈转成匿名注意事项、检查表与可执行模板。</span></a>
+  <a class="sales-card sales-card--accent" href="06-行业案例与模板/"><em>FIELD NOTES</em><strong>行业案例与工具模板</strong><span>使用 45 天线索看板，并将工厂拜访和经营访谈转成匿名注意事项与模板。</span></a>
 </div>
 
 ## 资料可信度怎么标

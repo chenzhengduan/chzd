@@ -4,8 +4,15 @@
   <p class="platform-kicker">Account launch & platform rules</p>
   <h1>社交平台账号运营</h1>
   <p>把所谓“养号”拆成可以核验的账号门槛、内容规则、安全动作和冷启动实验。每项硬规则尽量回到平台官方文件，不把培训圈传言伪装成平台政策。</p>
-  <div class="platform-badges"><span>官方来源优先</span><span>门槛标注地区</span><span>规则核验于 2026-07-13</span></div>
+  <div class="platform-badges"><span>官方来源优先</span><span>门槛标注地区</span><span>本轮重点复核于 2026-07-15</span></div>
 </section>
+
+<div class="growth-route">
+  <div class="growth-stage"><b>当天</b><strong>发布验证</strong><span>账号安全、原创素材和发布链路。</span></div>
+  <div class="growth-stage"><b>1～15 天</b><strong>内容样本</strong><span>观察真实受众与买家问题。</span></div>
+  <div class="growth-stage"><b>16～30 天</b><strong>单变量迭代</strong><span>只放大出现信号的题型。</span></div>
+  <div class="growth-stage"><b>31～45 天</b><strong>业务判断</strong><span>结合线索质量与制作成本决策。</span></div>
+</div>
 
 <div class="platform-trust-strip">
   <div><strong>硬门槛</strong><span>年龄、实名、粉丝、观看量、地区和账号类型等公开条件。</span></div>
@@ -21,7 +28,8 @@
 </div>
 
 [先辨别养号传言](01-基础规则/01-账号运营不是玄学养号/){ .md-button .md-button--primary }
-[执行 30 天健康启动](01-基础规则/03-30天健康启动SOP/){ .md-button }
+[执行 30～45 天健康启动](01-基础规则/03-30天健康启动SOP/){ .md-button }
+[一份母素材多平台复用](04-工具与更新/03-一份母素材多平台复用/){ .md-button }
 
 ## 门槛总览
 
@@ -37,6 +45,7 @@
 | Facebook | 原则上 13+；可创建 Page/开启专业模式 | Content Monetization 当前邀请制 | 后台资格优先，不沿用旧变现门槛 |
 | YouTube | 创建频道后上传；部分功能需验证 | YPP：500 档与 1,000 档两级门槛 | 香港/台湾在名单；核验时大陆不在 |
 | X | 13+ 可使用 | 收益分享：Premium、500 万自然曝光、500 已验证粉丝等 | 支付名单含香港/台湾；核验时大陆不在 |
+| LinkedIn | 真实个人 Profile 可发布；可免费创建 Company Page | 无普通视频发布粉丝门槛；B2B 重点看身份、Page 权限和内容政策 | 功能与界面按账号、地区和角色变化 |
 
 ## 中国大陆平台
 
@@ -56,7 +65,14 @@
   <a class="platform-card" href="03-国际平台/03-Facebook/"><span class="platform-card__mark">FB</span><strong>Facebook</strong><small>主页与专业模式、Reels、社区标准与变现资格。</small><em>查看门槛与启动方法 →</em></a>
   <a class="platform-card" href="03-国际平台/04-YouTube/"><span class="platform-card__mark">YT</span><strong>YouTube</strong><small>频道验证、Shorts、YPP 硬门槛与重复内容风险。</small><em>查看门槛与启动方法 →</em></a>
   <a class="platform-card" href="03-国际平台/05-X/"><span class="platform-card__mark">X</span><strong>X</strong><small>平台操纵、账号真实性、视频发布与创作者收益。</small><em>查看门槛与启动方法 →</em></a>
+  <a class="platform-card" href="03-国际平台/06-LinkedIn/"><span class="platform-card__mark">IN</span><strong>LinkedIn</strong><small>公司 Page、个人身份、原生视频与制造业 B2B 获客。</small><em>查看 45 天实操路线 →</em></a>
 </div>
+
+## 内容最终要进入业务流程
+
+播放和关注只能说明部分问题。制造业 B2B 还要记录专业评论、目标职位访问、私信、RFQ、样品、有效报价和会议，并保留内容编号完成归因。
+
+[打开当天响应到 45 天线索看板](../sales-customer-conversion/06-行业案例与模板/45天线索推进看板/){ .md-button .md-button--primary }
 
 ## 怎么判断一条规则靠不靠谱
 

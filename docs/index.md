@@ -31,8 +31,9 @@
   <a class="kb-quick-link" href="sales-customer-conversion/01-线索进入与客户分级/">线索进入与客户分级</a>
   <a class="kb-quick-link" href="sales-customer-conversion/06-行业案例与模板/美妆包装销售注意事项/">美妆包装销售注意事项</a>
   <a class="kb-quick-link" href="social-platform-operations/01-基础规则/01-账号运营不是玄学养号/">先看：养号规则还是运营传言</a>
-  <a class="kb-quick-link" href="social-platform-operations/01-基础规则/03-30天健康启动SOP/">30 天健康启动 SOP</a>
-  <a class="kb-quick-link" href="short-video-shooting/01-入门与准备/01-先拍出第一条/">先拍出第一条 15 秒视频</a>
+  <a class="kb-quick-link" href="short-video-shooting/01-入门与准备/00-当天开拍到45天稳定/">当天开拍到 45 天稳定</a>
+  <a class="kb-quick-link" href="social-platform-operations/01-基础规则/03-30天健康启动SOP/">30～45 天账号启动 SOP</a>
+  <a class="kb-quick-link" href="sales-customer-conversion/06-行业案例与模板/45天线索推进看板/">45 天线索推进看板</a>
   <a class="kb-quick-link" href="short-video-shooting/04-行业实战/美妆包装/">美妆包装拍摄实战</a>
   <a class="kb-quick-link" href="alibaba-ecommerce/01-平台基础/阿里巴巴电商体系总览/">阿里巴巴电商体系总览</a>
   <a class="kb-quick-link" href="alibaba-ecommerce/02-1688/1688采购与供应链基础/">1688 采购与供应链基础</a>

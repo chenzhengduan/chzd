@@ -7,6 +7,14 @@
   <div class="shooting-pills"><span>零基础可开始</span><span>一课一个成片</span><span>行业实拍优先</span></div>
 </section>
 
+<div class="growth-banner">
+  <strong>现在的实操周期</strong>
+  <span>当天完成第一条；15 天形成内容样本和初步反馈；30～45 天沉淀稳定题型，并把有效询盘接进销售流程。</span>
+</div>
+
+[从当天开拍到 45 天稳定](01-入门与准备/00-当天开拍到45天稳定/){ .md-button .md-button--primary }
+[打开批量拍摄与实验台账](05-工具与模板/批量拍摄与实验台账/){ .md-button }
+
 <p class="shooting-intro">不先堆设备，不先背流量话术。按下面的路线完成小练习：每一步只增加一个能力，最后再把它们组合成稳定的拍摄方法。</p>
 
 ## 5 个阶段，拍出第一条可用视频
@@ -45,6 +53,12 @@
     <h3>美妆包装行业实战</h3>
     <p>拍透明瓶、瓶胚、吹瓶、生产线、质检与询盘型视频，让普通观众和采购方都看得懂。</p>
     <a href="04-行业实战/美妆包装/">进入行业子栏目 →</a>
+  </article>
+  <article class="shooting-card">
+    <span class="shooting-card__icon">15</span>
+    <h3>把销售问题变成内容</h3>
+    <p>从采购真实问题出发，找到能拍的证据、边界和下一步，并进入 45 天线索看板。</p>
+    <a href="03-脚本剪辑与发布/05-从销售问题到内容样本/">建立内容与销售闭环 →</a>
   </article>
 </div>
 

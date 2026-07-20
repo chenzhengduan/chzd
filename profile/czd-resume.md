@@ -60,7 +60,7 @@ hide:
           <strong>校管家教育科技有限公司</strong>
           <span>前端开发 / 前端组长｜2023.06 至今</span>
         </div>
-        <p>负责核心业务系统的前端与跨端功能开发，参与 PC、H5、小程序、Flutter App 多端项目建设；推动 Micro-app 微前端方案落地，参与 AI 家校圈、师生信小程序、新版排课、上传稳定性治理和 Sentry 前端监控。</p>
+        <p>负责核心业务系统的前端与跨端研发，参与 PC、H5、小程序、Flutter App 多端项目建设；推动 Micro-app 微前端方案落地，并承担 AI 智能出卷与录题平台核心前端及部分 Java 后端开发，覆盖流式生成、复杂试题渲染、多模态录题和异步任务交互。</p>
       </article>
       <article>
         <div>
@@ -93,6 +93,10 @@ hide:
     </div>
     <div class="resume-grid resume-grid--two">
       <article class="resume-project">
+        <h3>AI 智能出卷与测评平台</h3>
+        <p>负责核心前端及部分 Java 后端研发，交付配置式/对话式 AI 出卷、试卷管理、在线答题与批改、单题及整卷变式、图片/PDF/Word 智能录题等业务链路；封装基于 Fetch + ReadableStream 的 SSE 流式交互，支持生成进度、超时、中断、重试与结果回填，完成公式、题组、多空填空和题内图等复杂试题渲染；打通 OSS 直传、异步识别任务、跨页题内图裁剪、答案重生成及批量入库流程，并参与 Spring Boot WebFlux 接口、OpenAPI 契约和代码审查规范建设。</p>
+      </article>
+      <article class="resume-project">
         <h3>AI 家校圈</h3>
         <p>负责 PC/H5 前端开发与项目搭建，设计多入口共享代码结构，实现素材管理、AI 生成、文件上传、懒加载、粘贴上传和多端环境适配。</p>
       </article>
@@ -113,10 +117,6 @@ hide:
         <p>参与招生获客与营销活动小程序开发，覆盖活动创建、奖品/优惠券/红包配置、商品选择、机构绑定等场景，沉淀日期选择、图片选择、分页和活动配置等业务组件，并配合 PC 端、后端及校管家教务系统完成数据联动。</p>
       </article>
       <article class="resume-project">
-        <h3>Sentry 前端日志接入</h3>
-        <p>建立前端异常监控机制，对文件上传、作业打卡等关键流程增加日志埋点和异常捕获，缩短线上问题定位链路。</p>
-      </article>
-      <article class="resume-project">
         <h3>智慧工地视频监控系统</h3>
         <p>基于 Spring Boot + Vue 独立完成视频监控核心功能，支持播放、回放、抓拍、离线预警和定时巡检。</p>
       </article>
@@ -132,6 +132,7 @@ hide:
       <span>Vue2 / Vue3</span>
       <span>React</span>
       <span>TypeScript</span>
+      <span>Pinia</span>
       <span>Vite / Webpack</span>
       <span>Element Plus</span>
       <span>Vant</span>
@@ -140,6 +141,9 @@ hide:
       <span>Flutter / Dart</span>
       <span>Java</span>
       <span>Spring Boot</span>
+      <span>Spring WebFlux</span>
+      <span>SSE / ReadableStream</span>
+      <span>AgentScope</span>
       <span>MySQL</span>
       <span>PostgreSQL</span>
       <span>Sentry</span>

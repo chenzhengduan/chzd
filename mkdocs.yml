@@ -8,15 +8,30 @@ theme:
   name: material
   language: zh
   features:
+    - navigation.tabs
+    - navigation.tabs.sticky
+    - navigation.sections
     - navigation.indexes
     - navigation.top
+    - toc.follow
     - search.highlight
     - search.suggest
     - content.code.copy
   palette:
-    - scheme: default
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
       primary: teal
       accent: deep orange
+      toggle:
+        icon: material/weather-night
+        name: 切换到深色模式
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: teal
+      accent: amber
+      toggle:
+        icon: material/weather-sunny
+        name: 切换到浅色模式
 
 extra_css:
   - assets/styles/mobile.css
@@ -25,6 +40,22 @@ extra_css:
   - assets/styles/platforms.css
   - assets/styles/sales.css
   - assets/styles/growth.css
+  - assets/styles/knowledge.css
+
+exclude_docs: |
+  /cross-border-ecommerce/overview.md
+  /cross-border-ecommerce/progress.md
+  /cross-border-ecommerce/temp_line.txt
+  /cross-border-ecommerce/git/
+  /cross-border-ecommerce/00-知识刷新/inventory/
+  /cross-border-ecommerce/00-知识刷新/reports/
+  /cross-border-ecommerce/daily/*
+  !/cross-border-ecommerce/daily/index.md
+  !/cross-border-ecommerce/daily/2026-05-11.md
+  !/cross-border-ecommerce/daily/2026-05-07.md
+  !/cross-border-ecommerce/daily/2026-05-06-2304-learning-summary.md
+  !/cross-border-ecommerce/daily/2026-05-06-2258.md
+  !/cross-border-ecommerce/daily/2026-05-06-2248.md
 
 plugins:
   - awesome-pages:

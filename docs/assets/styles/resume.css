@@ -200,6 +200,16 @@ body:has(.resume-shell) .md-content__inner::before {
   margin: 0;
 }
 
+.resume-project__details {
+  display: grid;
+  gap: 9px;
+}
+
+.resume-project__details strong {
+  color: #1f2937;
+  font-weight: 700;
+}
+
 .resume-timeline {
   display: grid;
   gap: 14px;

@@ -94,7 +94,12 @@ hide:
     <div class="resume-grid resume-grid--two">
       <article class="resume-project">
         <h3>AI 智能出卷与测评平台</h3>
-        <p>负责核心前端及部分 Java 后端研发，交付配置式/对话式 AI 出卷、试卷管理、在线答题与批改、单题及整卷变式、图片/PDF/Word 智能录题等业务链路；封装基于 Fetch + ReadableStream 的 SSE 流式交互，支持生成进度、超时、中断、重试与结果回填，完成公式、题组、多空填空和题内图等复杂试题渲染；打通 OSS 直传、异步识别任务、跨页题内图裁剪、答案重生成及批量入库流程，并参与 Spring Boot WebFlux 接口、OpenAPI 契约和代码审查规范建设。</p>
+        <div class="resume-project__details">
+          <p><strong>角色：</strong>负责核心前端及部分 Java 后端研发，参与需求拆解、方案设计、接口联调与功能交付。</p>
+          <p><strong>业务：</strong>覆盖配置式/对话式 AI 出卷、试卷管理、在线答题与批改、单题及整卷变式，以及图片/PDF/Word 智能录题。</p>
+          <p><strong>难点：</strong>封装基于 Fetch + ReadableStream 的 SSE 流式交互，处理生成进度、超时检测、主动中断、重复请求控制、异常提示与结果回填；统一渲染公式、题组、多空填空、子题和题内图等复杂试题结构。</p>
+          <p><strong>工程链路：</strong>打通 OSS 直传、异步识别、任务查询与轮询恢复、跨页题内图裁剪、结果复核、答案重生成及批量入库，并参与 Spring Boot WebFlux 接口、录题 OpenAPI 契约完善与代码审查整改。</p>
+        </div>
       </article>
       <article class="resume-project">
         <h3>AI 家校圈</h3>

@@ -41,6 +41,7 @@ extra_css:
   - assets/styles/sales.css
   - assets/styles/growth.css
   - assets/styles/knowledge.css
+  - assets/styles/mobile-nav.css
 
 exclude_docs: |
   /cross-border-ecommerce/overview.md

@@ -22,9 +22,15 @@ hide:
 <section class="poems-section">
   <div class="poems-section-heading">
     <div><p class="poems-eyebrow">POEMS</p><h2>本年级篇目</h2></div>
-    <p>篇目整理中，可先从顶部搜索框按诗人、朝代、类型查找其它年级内容。</p>
+    <p>从顶部搜索框可按诗人、朝代、类型快速筛选。</p>
   </div>
-  <p class="poems-empty">暂无篇目，待整理上传。</p>
+  <div class="poems-list">
+    <a class="poems-list-item" href="山行/"><strong>山行</strong><span>唐 · 杜牧 · 七言绝句 · 秋天</span></a>
+    <a class="poems-list-item" href="望天门山/"><strong>望天门山</strong><span>唐 · 李白 · 七言绝句 · 写景</span></a>
+    <a class="poems-list-item" href="饮湖上初晴后雨/"><strong>饮湖上初晴后雨</strong><span>宋 · 苏轼 · 七言绝句 · 写景</span></a>
+    <a class="poems-list-item" href="夜书所见/"><strong>夜书所见</strong><span>宋 · 叶绍翁 · 七言绝句 · 秋夜</span></a>
+    <a class="poems-list-item" href="回乡偶书/"><strong>回乡偶书</strong><span>唐 · 贺知章 · 七言绝句 · 思乡</span></a>
+  </div>
 </section>
 
 </div>

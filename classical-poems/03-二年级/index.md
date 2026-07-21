@@ -26,6 +26,9 @@ hide:
   </div>
   <div class="poems-list">
     <a class="poems-list-item" href="静夜思/"><strong>静夜思</strong><span>唐 · 李白 · 五言绝句 · 思乡</span></a>
+    <a class="poems-list-item" href="草/"><strong>草</strong><span>唐 · 白居易 · 五言律诗 · 咏物</span></a>
+    <a class="poems-list-item" href="赠汪伦/"><strong>赠汪伦</strong><span>唐 · 李白 · 七言绝句 · 送别</span></a>
+    <a class="poems-list-item" href="登鹳雀楼/"><strong>登鹳雀楼</strong><span>唐 · 王之涣 · 五言绝句 · 登高</span></a>
   </div>
 </section>
 

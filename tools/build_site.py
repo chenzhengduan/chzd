@@ -50,6 +50,7 @@ def write_local_config() -> None:
             f'site_dir: "{(ROOT / ".site").as_posix()}"',
             "hooks:",
             f'  - "{(ROOT / "hooks" / "standalone_title.py").as_posix()}"',
+            f'  - "{(ROOT / "hooks" / "poems_pager.py").as_posix()}"',
             "",
         ]
     )

@@ -26,6 +26,10 @@ hide:
   </div>
   <div class="poems-list">
     <a class="poems-list-item" href="咏鹅/"><strong>咏鹅</strong><span>唐 · 骆宾王 · 五言古诗 · 咏物</span></a>
+    <a class="poems-list-item" href="悯农其二/"><strong>悯农（其二）</strong><span>唐 · 李绅 · 五言绝句 · 惜农</span></a>
+    <a class="poems-list-item" href="一去二三里/"><strong>一去二三里</strong><span>宋 · 邵雍 · 五言绝句 · 写景</span></a>
+    <a class="poems-list-item" href="画/"><strong>画</strong><span>唐 · 王维 · 五言绝句 · 咏物</span></a>
+    <a class="poems-list-item" href="古朗月行/"><strong>古朗月行（节选）</strong><span>唐 · 李白 · 五言古诗 · 咏物</span></a>
   </div>
 </section>
 

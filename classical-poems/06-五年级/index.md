@@ -22,9 +22,14 @@ hide:
 <section class="poems-section">
   <div class="poems-section-heading">
     <div><p class="poems-eyebrow">POEMS</p><h2>本年级篇目</h2></div>
-    <p>篇目整理中，可先从顶部搜索框按诗人、朝代、类型查找其它年级内容。</p>
+    <p>从顶部搜索框可按诗人、朝代、类型快速筛选。</p>
   </div>
-  <p class="poems-empty">暂无篇目，待整理上传。</p>
+  <div class="poems-list">
+    <a class="poems-list-item" href="示儿/"><strong>示儿</strong><span>宋 · 陆游 · 七言绝句 · 爱国</span></a>
+    <a class="poems-list-item" href="枫桥夜泊/"><strong>枫桥夜泊</strong><span>唐 · 张继 · 七言绝句 · 秋夜</span></a>
+    <a class="poems-list-item" href="长相思/"><strong>长相思</strong><span>清 · 纳兰性德 · 词 · 思乡</span></a>
+    <a class="poems-list-item" href="游子吟/"><strong>游子吟</strong><span>唐 · 孟郊 · 五言古诗 · 母爱</span></a>
+  </div>
 </section>
 
 </div>

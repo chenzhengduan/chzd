@@ -22,9 +22,14 @@ hide:
 <section class="poems-section">
   <div class="poems-section-heading">
     <div><p class="poems-eyebrow">POEMS</p><h2>本年级篇目</h2></div>
-    <p>篇目整理中，可先从顶部搜索框按诗人、朝代、类型查找其它年级内容。</p>
+    <p>从顶部搜索框可按诗人、朝代、类型快速筛选。</p>
   </div>
-  <p class="poems-empty">暂无篇目，待整理上传。</p>
+  <div class="poems-list">
+    <a class="poems-list-item" href="题西林壁/"><strong>题西林壁</strong><span>宋 · 苏轼 · 七言绝句 · 哲理</span></a>
+    <a class="poems-list-item" href="暮江吟/"><strong>暮江吟</strong><span>唐 · 白居易 · 七言绝句 · 写景</span></a>
+    <a class="poems-list-item" href="雪梅/"><strong>雪梅</strong><span>宋 · 卢梅坡 · 七言绝句 · 咏物</span></a>
+    <a class="poems-list-item" href="出塞/"><strong>出塞</strong><span>唐 · 王昌龄 · 七言绝句 · 边塞</span></a>
+  </div>
 </section>
 
 </div>

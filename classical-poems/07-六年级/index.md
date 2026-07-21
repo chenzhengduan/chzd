@@ -22,9 +22,15 @@ hide:
 <section class="poems-section">
   <div class="poems-section-heading">
     <div><p class="poems-eyebrow">POEMS</p><h2>本年级篇目</h2></div>
-    <p>篇目整理中，可先从顶部搜索框按诗人、朝代、类型查找其它年级内容。</p>
+    <p>从顶部搜索框可按诗人、朝代、类型快速筛选。</p>
   </div>
-  <p class="poems-empty">暂无篇目，待整理上传。</p>
+  <div class="poems-list">
+    <a class="poems-list-item" href="泊船瓜洲/"><strong>泊船瓜洲</strong><span>宋 · 王安石 · 七言绝句 · 思乡</span></a>
+    <a class="poems-list-item" href="春夜喜雨/"><strong>春夜喜雨</strong><span>唐 · 杜甫 · 五言律诗 · 春雨</span></a>
+    <a class="poems-list-item" href="江雪/"><strong>江雪</strong><span>唐 · 柳宗元 · 五言绝句 · 冬雪</span></a>
+    <a class="poems-list-item" href="芙蓉楼送辛渐/"><strong>芙蓉楼送辛渐</strong><span>唐 · 王昌龄 · 七言绝句 · 送别</span></a>
+    <a class="poems-list-item" href="晓出净慈寺送林子方/"><strong>晓出净慈寺送林子方</strong><span>宋 · 杨万里 · 七言绝句 · 夏天</span></a>
+  </div>
 </section>
 
 </div>

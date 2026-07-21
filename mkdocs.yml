@@ -87,3 +87,4 @@ markdown_extensions:
 
 hooks:
   - hooks/standalone_title.py
+  - hooks/poems_pager.py

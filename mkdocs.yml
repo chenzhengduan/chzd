@@ -42,10 +42,6 @@ extra_css:
   - assets/styles/growth.css
   - assets/styles/knowledge.css
   - assets/styles/mobile-nav.css
-  - assets/styles/poems.css
-
-extra_javascript:
-  - assets/scripts/poems-search.js
 
 exclude_docs: |
   /cross-border-ecommerce/overview.md
@@ -87,4 +83,3 @@ markdown_extensions:
 
 hooks:
   - hooks/standalone_title.py
-  - hooks/poems_pager.py

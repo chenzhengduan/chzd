@@ -14,6 +14,7 @@ BUILD_DOCS = CACHE_DIR / "mkdocs-docs"
 LOCAL_CONFIG = CACHE_DIR / "mkdocs.local.yml"
 
 CONTENT_TREES = (
+    "classical-poems",
     "sales-customer-conversion",
     "short-video-shooting",
     "social-platform-operations",

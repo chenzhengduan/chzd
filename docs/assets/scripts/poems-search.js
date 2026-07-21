@@ -133,6 +133,19 @@
       el.style.cursor = "pointer";
       el.addEventListener("click", open);
     });
+
+    // pinyin toggle for poem pages
+    document.querySelectorAll(".poem-pinyin-toggle").forEach(function (btn) {
+      btn.addEventListener("click", function () {
+        var body = btn.closest(".poem-body");
+        if (!body) return;
+        var on = body.classList.toggle("is-pinyin");
+        btn.setAttribute("aria-pressed", on ? "true" : "false");
+        btn.innerHTML = on
+          ? '<span class="poem-pinyin-toggle__icon"> 拼</span>隐藏拼音'
+          : '<span class="poem-pinyin-toggle__icon"> 拼</span>显示拼音';
+      });
+    });
   }
 
   if (document.readyState === "loading") {

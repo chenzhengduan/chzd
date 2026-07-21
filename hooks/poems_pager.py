@@ -68,14 +68,15 @@ def on_page_markdown(markdown: str, *, page=None, config=None, files=None) -> st
         if page_obj:
             title = getattr(page_obj, "title", "") or ""
         if not title:
-            # fallback: derive from filename
             name = PurePosixPath((getattr(f, "src_path", "") or "").replace("\\", "/")).stem
             title = name
-        # url relative to current page
-        f_url = (getattr(f, "url", "") or "").replace("\\", "/")
-        cur_url = (getattr(src, "url", "") or "").replace("\\", "/")
-        cur_dir = str(PurePosixPath(cur_url).parent)
-        rel = _relative_link(cur_dir, f_url)
+        # build relative link using src_path (md file path relative to docs_dir)
+        # both src and sibling are like "classical-poems/04-三年级/夜书所见.md"
+        f_src = (getattr(f, "src_path", "") or "").replace("\\", "/")
+        # sibling poem page URL = its directory (mkdocs makes /name/index.html)
+        # relative from current page (which is at classical-poems/grade/thispoem/) to sibling: ../siblingname/
+        f_stem = PurePosixPath(f_src).stem
+        rel = f"../{f_stem}/"
         return f'<a class="poem-pager__link" href="{rel}">{title}</a>'
 
     def _relative_link(from_dir: str, to_url: str) -> str:

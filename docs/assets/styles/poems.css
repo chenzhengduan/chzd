@@ -391,6 +391,47 @@ body:has(.poem-page) .md-typeset h2 {
   text-align: center;
 }
 
+.poem-body ruby rt {
+  color: var(--poems-muted);
+  font-size: 0.5em;
+  font-weight: 400;
+  letter-spacing: 0.02em;
+  line-height: 1;
+  opacity: 0;
+  transform: translateY(0.2em);
+  transition: opacity 200ms ease, transform 200ms ease;
+}
+
+.poem-body.is-pinyin ruby rt {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.poem-pinyin-toggle {
+  align-items: center;
+  background: var(--poems-panel-strong);
+  border: 1px solid var(--poems-line);
+  border-radius: 999px;
+  color: var(--poems-gold);
+  cursor: pointer;
+  display: inline-flex;
+  font-size: 0.72rem;
+  font-weight: 700;
+  gap: 0.3rem;
+  margin: 0 auto 1rem;
+  padding: 0.32rem 0.85rem;
+  user-select: none;
+}
+
+.poem-pinyin-toggle:hover {
+  background: var(--poems-panel);
+  border-color: var(--poems-gold);
+}
+
+.poem-pinyin-toggle__icon {
+  font-size: 0.85rem;
+}
+
 .poem-line {
   color: var(--poems-ink);
   font-size: clamp(1.15rem, 4.5vw, 1.6rem);

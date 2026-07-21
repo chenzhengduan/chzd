@@ -1,0 +1,362 @@
+:root {
+  --poems-ink: #1f2a36;
+  --poems-muted: #6b7a89;
+  --poems-accent: #c0392b;
+  --poems-gold: #b88a44;
+  --poems-panel: #f7f3ec;
+  --poems-panel-strong: #efe7d8;
+  --poems-line: rgba(31, 42, 54, 0.12);
+  --poems-card: #ffffff;
+  --poems-radius-lg: 1.2rem;
+  --poems-radius-md: 0.85rem;
+}
+
+[data-md-color-scheme="slate"] {
+  --poems-ink: #f1ebe0;
+  --poems-muted: #c2b8a8;
+  --poems-accent: #e57373;
+  --poems-gold: #d4a857;
+  --poems-panel: rgba(40, 33, 26, 0.72);
+  --poems-panel-strong: rgba(56, 46, 34, 0.72);
+  --poems-line: rgba(245, 235, 224, 0.14);
+  --poems-card: #1c2630;
+}
+
+body:has(.poems-hub) .md-content__inner,
+body:has(.md-nav__link--active[href*="classical-poems"]) .md-content__inner {
+  max-width: 48rem;
+}
+
+body:has(.poems-hub) .md-typeset,
+body:has(.md-nav__link--active[href*="classical-poems"]) .md-typeset {
+  font-size: 0.92rem;
+}
+
+body:has(.poems-hub) .md-typeset h1,
+body:has(.md-nav__link--active[href*="classical-poems"]) .md-typeset h1 {
+  color: var(--poems-ink);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+}
+
+body:has(.md-nav__link--active[href*="classical-poems"]) .md-typeset h2 {
+  border-left: 4px solid var(--poems-gold);
+  color: var(--poems-ink);
+  margin-top: 2.4rem;
+  padding-left: 0.75rem;
+}
+
+/* ====================  首页  ==================== */
+
+.poems-hub {
+  color: var(--poems-ink);
+}
+
+.poems-hero {
+  background:
+    radial-gradient(circle at 88% 14%, rgba(184, 138, 68, 0.28), transparent 26%),
+    radial-gradient(circle at 14% 96%, rgba(192, 57, 43, 0.22), transparent 32%),
+    linear-gradient(135deg, #2a1f1a 0%, #5a3b2a 52%, #8a5a3a 100%);
+  border-radius: var(--poems-radius-lg);
+  box-shadow: 0 18px 44px rgba(58, 40, 28, 0.28);
+  color: #fff;
+  margin: 0.4rem 0 2rem;
+  overflow: hidden;
+  padding: clamp(1.5rem, 5vw, 3.2rem);
+  position: relative;
+}
+
+.poems-hero::after {
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 50%;
+  content: "";
+  height: 16rem;
+  position: absolute;
+  right: -6rem;
+  top: -8rem;
+  width: 16rem;
+}
+
+.poems-kicker {
+  color: #e8c98f;
+  font-size: 0.72rem;
+  font-weight: 850;
+  letter-spacing: 0.16em;
+  margin: 0 0 0.5rem;
+  text-transform: uppercase;
+}
+
+.poems-hero h1 {
+  color: #fff !important;
+  font-size: clamp(2rem, 6vw, 3.4rem);
+  letter-spacing: -0.04em;
+  line-height: 1.06;
+  margin: 0 0 0.9rem !important;
+  position: relative;
+  z-index: 1;
+}
+
+.poems-hero > p:not(.poems-kicker) {
+  color: rgba(255, 255, 255, 0.86);
+  font-size: 1rem;
+  line-height: 1.75;
+  margin: 0;
+  max-width: 32rem;
+  position: relative;
+  z-index: 1;
+}
+
+.poems-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 1.3rem;
+  position: relative;
+  z-index: 1;
+}
+
+.poems-badges span {
+  background: rgba(255, 255, 255, 0.13);
+  border: 1px solid rgba(255, 255, 255, 0.24);
+  border-radius: 999px;
+  color: #fff;
+  font-size: 0.72rem;
+  font-weight: 700;
+  padding: 0.34rem 0.68rem;
+}
+
+.poems-section {
+  margin: 2.6rem 0;
+}
+
+.poems-section-heading {
+  align-items: end;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem 1rem;
+  justify-content: space-between;
+  margin-bottom: 1.2rem;
+}
+
+.poems-section-heading h2 {
+  color: var(--poems-ink);
+  font-size: 1.4rem;
+  letter-spacing: -0.02em;
+  margin: 0;
+}
+
+.poems-section-heading > p {
+  color: var(--poems-muted);
+  font-size: 0.74rem;
+  margin: 0;
+  max-width: 20rem;
+  text-align: right;
+}
+
+.poems-eyebrow {
+  color: var(--poems-gold);
+  font-size: 0.65rem;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  margin: 0 0 0.3rem;
+  text-transform: uppercase;
+}
+
+.poems-grade-grid {
+  display: grid;
+  gap: 0.85rem;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.poems-grade-card {
+  align-items: flex-start;
+  background: var(--poems-card);
+  border: 1px solid var(--poems-line);
+  border-radius: var(--poems-radius-md);
+  box-shadow: 0 0.6rem 1.6rem rgba(58, 40, 28, 0.06);
+  color: var(--poems-ink) !important;
+  display: flex;
+  flex-direction: column;
+  min-height: 8.5rem;
+  padding: 1.05rem;
+  transition: transform 160ms ease, box-shadow 160ms ease, border-color 160ms ease;
+}
+
+.poems-grade-card:hover {
+  border-color: var(--poems-gold);
+  box-shadow: 0 14px 30px rgba(184, 138, 68, 0.16);
+  text-decoration: none;
+  transform: translateY(-3px);
+}
+
+.poems-grade-card__num {
+  align-items: center;
+  background: var(--poems-panel-strong);
+  border-radius: 0.55rem;
+  color: var(--poems-gold);
+  display: inline-flex;
+  font-size: 0.95rem;
+  font-weight: 850;
+  height: 2.2rem;
+  justify-content: center;
+  margin-bottom: 0.8rem;
+  width: 2.2rem;
+}
+
+.poems-grade-card strong {
+  color: var(--poems-ink);
+  font-size: 0.95rem;
+}
+
+.poems-grade-card small {
+  color: var(--poems-muted);
+  font-size: 0.7rem;
+  line-height: 1.5;
+  margin-top: 0.35rem;
+}
+
+.poems-tips {
+  display: grid;
+  gap: 0.8rem;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.poems-tip {
+  background: var(--poems-panel);
+  border: 1px solid var(--poems-line);
+  border-radius: var(--poems-radius-md);
+  padding: 1rem 1.1rem;
+}
+
+.poems-tip strong {
+  color: var(--poems-accent);
+  display: block;
+  font-size: 0.88rem;
+  margin-bottom: 0.35rem;
+}
+
+.poems-tip span {
+  color: var(--poems-muted);
+  font-size: 0.74rem;
+  line-height: 1.6;
+}
+
+/* ====================  单首诗页  ==================== */
+
+.poem-page {
+  color: var(--poems-ink);
+}
+
+.poem-card {
+  background: var(--poems-panel);
+  border: 1px solid var(--poems-line);
+  border-radius: var(--poems-radius-lg);
+  margin: 0.4rem 0 1.6rem;
+  padding: clamp(1.2rem, 4vw, 2rem);
+  position: relative;
+}
+
+.poem-card::before {
+  background: linear-gradient(180deg, var(--poems-gold), transparent);
+  border-radius: var(--poems-radius-lg) 0 0 var(--poems-radius-lg);
+  content: "";
+  inset: 0 auto 0 0;
+  position: absolute;
+  width: 0.3rem;
+}
+
+.poem-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin: 0 0 1.2rem;
+}
+
+.poem-tag {
+  background: var(--poems-card);
+  border: 1px solid var(--poems-line);
+  border-radius: 999px;
+  color: var(--poems-muted);
+  font-size: 0.7rem;
+  font-weight: 700;
+  padding: 0.3rem 0.62rem;
+}
+
+.poem-tag--poet { color: var(--poems-accent); border-color: color-mix(in srgb, var(--poems-accent) 30%, transparent); }
+.poem-tag--dynasty { color: var(--poems-gold); border-color: color-mix(in srgb, var(--poems-gold) 30%, transparent); }
+
+.poem-body {
+  text-align: center;
+}
+
+.poem-line {
+  color: var(--poems-ink);
+  font-size: clamp(1.15rem, 4.5vw, 1.6rem);
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  line-height: 2;
+  margin: 0;
+}
+
+/* ====================  响应式  ==================== */
+
+@media screen and (max-width: 59.9844em) {
+  .poems-grade-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .poems-tips { grid-template-columns: 1fr; }
+}
+
+@media screen and (max-width: 44.9375em) {
+  .poems-hero {
+    border-radius: 0.9rem;
+    margin: 0 0 1.6rem;
+    padding: 1.35rem;
+  }
+
+  .poems-hero h1 {
+    font-size: 1.7rem;
+    line-height: 1.2;
+  }
+
+  .poems-section { margin: 2rem 0; }
+
+  .poems-section-heading {
+    align-items: start;
+    flex-direction: column;
+    gap: 0.35rem;
+  }
+
+  .poems-section-heading > p { text-align: left; }
+
+  .poems-grade-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.6rem;
+  }
+
+  .poems-grade-card {
+    min-height: 7.2rem;
+    padding: 0.85rem;
+  }
+
+  .poems-grade-card__num {
+    height: 1.9rem;
+    width: 1.9rem;
+    font-size: 0.85rem;
+  }
+
+  .poem-card {
+    margin: 0 0 1.2rem;
+    padding: 1.15rem 1rem;
+  }
+
+  .poem-line {
+    font-size: 1.1rem;
+    line-height: 1.95;
+  }
+
+  .poem-meta { gap: 0.4rem; }
+  .poem-tag { font-size: 0.66rem; padding: 0.24rem 0.55rem; }
+}
+
+@media screen and (max-width: 22rem) {
+  .poems-grade-grid { grid-template-columns: 1fr; }
+}

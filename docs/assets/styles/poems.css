@@ -463,6 +463,67 @@ body:has(.poem-page) .md-typeset h2 {
   .poems-grade-grid { grid-template-columns: 1fr; }
 }
 
+/* ====================  年级 hub 与诗列表  ==================== */
+
+.poems-grade-hub .poems-hero--grade {
+  margin: 0 0 1.6rem;
+  padding: clamp(1.3rem, 4.5vw, 2.4rem);
+}
+
+.poems-grade-hub .poems-hero--grade h1 {
+  font-size: clamp(1.6rem, 5vw, 2.4rem);
+}
+
+.poems-list {
+  display: grid;
+  gap: 0.7rem;
+}
+
+.poems-list-item {
+  align-items: center;
+  background: var(--poems-card);
+  border: 1px solid var(--poems-line);
+  border-left: 0.25rem solid var(--poems-gold);
+  border-radius: var(--poems-radius-md);
+  box-shadow: 0 0.5rem 1.4rem rgba(58, 40, 28, 0.05);
+  color: var(--poems-ink) !important;
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  padding: 0.85rem 1rem;
+  transition: transform 160ms ease, box-shadow 160ms ease, border-color 160ms ease;
+}
+
+.poems-list-item:hover {
+  border-color: var(--poems-accent);
+  box-shadow: 0 12px 26px rgba(192, 57, 43, 0.12);
+  text-decoration: none;
+  transform: translateY(-2px);
+}
+
+.poems-list-item strong {
+  color: var(--poems-ink);
+  font-size: 1rem;
+  font-weight: 750;
+}
+
+.poems-list-item span {
+  color: var(--poems-muted);
+  font-size: 0.76rem;
+  line-height: 1.45;
+}
+
+.poems-empty {
+  background: var(--poems-panel);
+  border: 1px dashed var(--poems-line);
+  border-radius: var(--poems-radius-md);
+  color: var(--poems-muted);
+  font-size: 0.82rem;
+  margin: 0;
+  padding: 1.3rem;
+  text-align: center;
+}
+
 /* ====================  搜索弹窗  ==================== */
 
 .poems-search-overlay {

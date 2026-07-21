@@ -22,24 +22,126 @@
   --poems-card: #1c2630;
 }
 
+body:has(.poems-hub) .md-typeset,
+body:has(.poem-page) .md-typeset {
+  font-size: 0.92rem;
+}
+body:has(.poems-hub),
+body:has(.poem-page) {
+  background: var(--poems-panel);
+}
+
+body:has(.poems-hub) .md-header,
+body:has(.poems-hub) .md-tabs,
+body:has(.poems-hub) .md-sidebar,
+body:has(.poems-hub) .md-footer,
+body:has(.poems-hub) .md-content__button,
+body:has(.poem-page) .md-header,
+body:has(.poem-page) .md-tabs,
+body:has(.poem-page) .md-sidebar,
+body:has(.poem-page) .md-footer,
+body:has(.poem-page) .md-content__button {
+  display: none !important;
+}
+
+body:has(.poems-hub) .md-main,
+body:has(.poem-page) .md-main {
+  background: transparent;
+}
+
+body:has(.poems-hub) .md-main__inner,
+body:has(.poem-page) .md-main__inner {
+  margin: 0;
+  max-width: none;
+}
+
+body:has(.poems-hub) .md-content,
+body:has(.poem-page) .md-content {
+  margin: 0;
+}
+
 body:has(.poems-hub) .md-content__inner,
-body:has(.md-nav__link--active[href*="classical-poems"]) .md-content__inner {
+body:has(.poem-page) .md-content__inner {
+  margin: 0 auto;
+  padding: 0;
+  padding-top: 0;
   max-width: 48rem;
 }
 
+body:has(.poems-hub) .md-content__inner::before,
+body:has(.poem-page) .md-content__inner::before {
+  display: none;
+}
+
+/* 古诗栏目自带顶部�?*/
+.poems-topbar {
+  align-items: center;
+  background: linear-gradient(135deg, #2a1f1a 0%, #4a3328 100%);
+  box-shadow: 0 0.3rem 0.9rem rgba(58, 40, 28, 0.22);
+  color: #fff;
+  display: flex;
+  gap: 0.6rem;
+  padding: 0.7rem 1rem;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.poems-topbar a {
+  color: #fff;
+  font-size: 0.78rem;
+  font-weight: 700;
+  padding: 0.34rem 0.62rem;
+  border-radius: 999px;
+}
+
+.poems-topbar a:hover {
+  background: rgba(255, 255, 255, 0.14);
+  text-decoration: none;
+}
+
+.poems-topbar__title {
+  align-items: center;
+  display: flex;
+  font-size: 0.95rem;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+  margin-right: auto;
+}
+
+.poems-topbar__title a {
+  background: transparent;
+  font-size: inherit;
+  padding: 0;
+}
+
+.poems-topbar__title a:hover {
+  background: transparent;
+}
+
+.poems-topbar__search {
+  align-items: center;
+  background: rgba(255, 255, 255, 0.14);
+  border-radius: 999px;
+  color: rgba(255, 255, 255, 0.9);
+  display: inline-flex;
+  font-size: 0.74rem;
+  padding: 0.34rem 0.7rem;
+}
+
 body:has(.poems-hub) .md-typeset,
-body:has(.md-nav__link--active[href*="classical-poems"]) .md-typeset {
+body:has(.poem-page) .md-typeset {
   font-size: 0.92rem;
 }
 
 body:has(.poems-hub) .md-typeset h1,
-body:has(.md-nav__link--active[href*="classical-poems"]) .md-typeset h1 {
+body:has(.poem-page) .md-typeset h1 {
   color: var(--poems-ink);
   font-weight: 800;
   letter-spacing: -0.03em;
 }
 
-body:has(.md-nav__link--active[href*="classical-poems"]) .md-typeset h2 {
+body:has(.poem-page) .md-typeset h2 {
   border-left: 4px solid var(--poems-gold);
   color: var(--poems-ink);
   margin-top: 2.4rem;
@@ -298,7 +400,7 @@ body:has(.md-nav__link--active[href*="classical-poems"]) .md-typeset h2 {
   margin: 0;
 }
 
-/* ====================  响应式  ==================== */
+/* ====================  响应�? ==================== */
 
 @media screen and (max-width: 59.9844em) {
   .poems-grade-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
@@ -359,4 +461,126 @@ body:has(.md-nav__link--active[href*="classical-poems"]) .md-typeset h2 {
 
 @media screen and (max-width: 22rem) {
   .poems-grade-grid { grid-template-columns: 1fr; }
+}
+
+/* ====================  搜索弹窗  ==================== */
+
+.poems-search-overlay {
+  align-items: flex-start;
+  background: rgba(31, 25, 20, 0.5);
+  display: none;
+  inset: 0;
+  justify-content: center;
+  padding: 6vh 1rem;
+  position: fixed;
+  z-index: 1000;
+}
+
+.poems-search-overlay.is-open {
+  display: flex;
+}
+
+.poems-search-modal {
+  background: var(--poems-card);
+  border: 1px solid var(--poems-line);
+  border-radius: var(--poems-radius-md);
+  box-shadow: 0 22px 60px rgba(0, 0, 0, 0.32);
+  display: flex;
+  flex-direction: column;
+  max-height: 88vh;
+  max-width: 32rem;
+  overflow: hidden;
+  width: 100%;
+}
+
+.poems-search-bar {
+  align-items: center;
+  display: flex;
+  gap: 0.5rem;
+  padding: 0.7rem 0.9rem;
+}
+
+.poems-search-bar input {
+  background: var(--poems-panel);
+  border: 1px solid var(--poems-line);
+  border-radius: 999px;
+  color: var(--poems-ink);
+  flex: 1;
+  font-size: 1rem;
+  padding: 0.55rem 0.9rem;
+}
+
+.poems-search-bar input:focus {
+  border-color: var(--poems-gold);
+  outline: none;
+}
+
+.poems-search-close {
+  align-items: center;
+  background: var(--poems-panel);
+  border: 0;
+  border-radius: 999px;
+  color: var(--poems-muted);
+  cursor: pointer;
+  display: inline-flex;
+  font-size: 0.85rem;
+  height: 2.1rem;
+  justify-content: center;
+  width: 2.1rem;
+}
+
+.poems-search-close:hover {
+  background: var(--poems-panel-strong);
+  color: var(--poems-ink);
+}
+
+.poems-search-results {
+  list-style: none;
+  margin: 0;
+  max-height: 70vh;
+  overflow-y: auto;
+  padding: 0 0.4rem 0.4rem;
+}
+
+.poems-search-results li {
+  margin: 0;
+}
+
+.poems-search-results a {
+  border-radius: 0.55rem;
+  color: var(--poems-ink);
+  display: block;
+  padding: 0.62rem 0.75rem;
+}
+
+.poems-search-results a:hover {
+  background: var(--poems-panel);
+  text-decoration: none;
+}
+
+.poems-search-results strong {
+  color: var(--poems-accent);
+  display: block;
+  font-size: 0.92rem;
+  font-weight: 700;
+  margin-bottom: 0.2rem;
+}
+
+.poems-search-results span {
+  color: var(--poems-muted);
+  display: block;
+  font-size: 0.74rem;
+  line-height: 1.5;
+}
+
+.poems-search-results mark {
+  background: rgba(184, 138, 68, 0.28);
+  color: inherit;
+  padding: 0 0.1em;
+}
+
+.poems-search-empty {
+  color: var(--poems-muted);
+  padding: 1.4rem 0.9rem;
+  text-align: center;
 }

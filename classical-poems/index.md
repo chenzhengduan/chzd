@@ -7,6 +7,12 @@ hide:
 
 <div class="poems-hub">
 
+<nav class="poems-topbar">
+  <span class="poems-topbar__title"><a href="./">古诗诵读</a></span>
+  <a href="../../">实用知识库</a>
+  <span class="poems-topbar__search">🔍 搜诗人/朝代/诗名</span>
+</nav>
+
 <section class="poems-hero">
   <p class="poems-kicker">CLASSICAL POEMS</p>
   <h1>古诗诵读</h1>

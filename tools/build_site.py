@@ -20,6 +20,7 @@ CONTENT_TREES = (
     "cross-border-ecommerce",
     "alibaba-ecommerce",
     "profile",
+    "ai-agent-book",
 )
 
 

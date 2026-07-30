@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>第 27 章：Deep Research | AI Agent 开发实战 | chad</title>
+<meta name="author" content="chad"/>
+<meta name="description" content="AI Agent 架构模式与实战 - chad"/>
+<script>(function(){try{var m=window.matchMedia('(prefers-color-scheme:dark)');var apply=function(){var t=localStorage.getItem('theme');document.documentElement.classList.toggle('dark',t==='dark'||(!t&&m.matches))};apply();m.addEventListener('change',apply)}catch(e){}})()</script>
+<script src="https://cdn.tailwindcss.com?plugins=typography"></script>
+<script>tailwind.config={darkMode:"class",theme:{extend:{typography:{DEFAULT:{css:{maxWidth:"none"}}}}}}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css"/>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📖</text></svg>"/>
+</head>
+<body>
+<div class="book-layout">
+  <header class="book-header">
+    <div class="header-content">
+      <div class="header-left">
+        <button class="mobile-menu-toggle" id="menuToggle" aria-label="Open menu">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20"><path stroke-linecap="round" stroke-linejoin="round" d="M3 12h18M3 6h18M3 18h18"></path></svg>
+        </button>
+        <nav class="header-nav">
+          <a class="nav-item" href="index.html">Home</a>
+          <a class="nav-item" href="#">Blog</a>
+          <span class="nav-item">Books</span>
+          <a class="nav-item active hide-mobile" href="index.html">AI Agent 架构模式与实战</a>
+        </nav>
+      </div>
+      <div class="right-controls">
+        <span><a class="lang-link active" href="#">中文</a></span>
+        <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+          <svg class="w-[18px] h-[18px] hidden dark:block" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="4"></circle><path stroke-linecap="round" d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"></path></svg>
+          <svg class="w-[18px] h-[18px] block dark:hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+  <div class="sidebar-overlay" id="sidebarOverlay"></div>
+  <div class="book-body">
+    <nav class="book-sidebar" id="bookSidebar">
+      <button class="sidebar-close" id="sidebarClose" aria-label="Close menu">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20"><path stroke-linecap="round" d="M18 6L6 18M6 6l12 12"></path></svg>
+      </button>
+      <div class="sidebar-header">
+        <a class="book-title" href="index.html">AI Agent 架构：从单体到企业级多智能体</a>
+      </div>
+      <div class="sidebar-content">
+<div class="sidebar-section"><div class="section-title">前言</div><ul class="chapter-list"><li><a class="chapter-link" href="前言.html">前言</a></li></ul></div><div class="sidebar-section"><div class="section-title">Part 1 - Agent 基础</div><ul class="chapter-list"><li><a class="chapter-link" href="Part1概述.html">Part 1 概述</a></li><li><a class="chapter-link" href="第01章-Agent的本质.html">第 1 章：Agent 的本质</a></li><li><a class="chapter-link" href="第02章-ReAct循环.html">第 2 章：ReAct 循环</a></li></ul></div><div class="sidebar-section"><div class="section-title">Part 2 - 工具与扩展</div><ul class="chapter-list"><li><a class="chapter-link" href="Part2概述.html">Part 2 概述</a></li><li><a class="chapter-link" href="第03章-工具调用基础.html">第 3 章：工具调用基础</a></li><li><a class="chapter-link" href="第04章-MCP协议详解.html">第 4 章：MCP 协议详解</a></li><li><a class="chapter-link" href="第05章-Skills技能系统.html">第 5 章：Skills 技能系统</a></li><li><a class="chapter-link" href="第06章-Hooks与事件系统.html">第 6 章：Hooks 与事件系统</a></li></ul></div><div class="sidebar-section"><div class="section-title">Part 3 - 上下文与记忆</div><ul class="chapter-list"><li><a class="chapter-link" href="Part3概述.html">Part 3 概述</a></li><li><a class="chapter-link" href="第07章-上下文工程.html">第 7 章：上下文工程</a></li><li><a class="chapter-link" href="第08章-记忆架构.html">第 8 章：记忆架构</a></li><li><a class="chapter-link" href="第09章-多轮对话设计.html">第 9 章：多轮对话设计</a></li></ul></div><div class="sidebar-section"><div class="section-title">Part 4 - 单 Agent 模式</div><ul class="chapter-list"><li><a class="chapter-link" href="Part4概述.html">Part 4 概述</a></li><li><a class="chapter-link" href="第10章-Planning模式.html">第 10 章：Planning 模式</a></li><li><a class="chapter-link" href="第11章-Reflection模式.html">第 11 章：Reflection 模式</a></li><li><a class="chapter-link" href="第12章-Chain-of-Thought.html">第 12 章：Chain-of-Thought</a></li></ul></div><div class="sidebar-section"><div class="section-title">Part 5 - 多 Agent 编排</div><ul class="chapter-list"><li><a class="chapter-link" href="Part5概述.html">Part 5 概述</a></li><li><a class="chapter-link" href="第13章-编排基础.html">第 13 章：编排基础</a></li><li><a class="chapter-link" href="第14章-DAG工作流.html">第 14 章：DAG 工作流</a></li><li><a class="chapter-link" href="第15章-Swarm模式.html">第 15 章：Swarm 模式</a></li><li><a class="chapter-link" href="第16章-Handoff机制.html">第 16 章：Handoff 机制</a></li></ul></div><div class="sidebar-section"><div class="section-title">Part 6 - 高级推理</div><ul class="chapter-list"><li><a class="chapter-link" href="Part6概述.html">Part 6 概述</a></li><li><a class="chapter-link" href="第17章-Tree-of-Thoughts.html">第 17 章：Tree-of-Thoughts</a></li><li><a class="chapter-link" href="第18章-Debate模式.html">第 18 章：Debate 模式</a></li><li><a class="chapter-link" href="第19章-Research-Synthesis.html">第 19 章：Research-Synthesis</a></li></ul></div><div class="sidebar-section"><div class="section-title">Part 7 - 生产架构</div><ul class="chapter-list"><li><a class="chapter-link" href="Part7概述.html">Part 7 概述</a></li><li><a class="chapter-link" href="第20章-三层架构设计.html">第 20 章：三层架构设计</a></li><li><a class="chapter-link" href="第21章-Temporal工作流.html">第 21 章：Temporal 工作流</a></li><li><a class="chapter-link" href="第22章-可观测性.html">第 22 章：可观测性</a></li></ul></div><div class="sidebar-section"><div class="section-title">Part 8 - 企业级特性</div><ul class="chapter-list"><li><a class="chapter-link" href="Part8概述.html">Part 8 概述</a></li><li><a class="chapter-link" href="第23章-Token预算控制.html">第 23 章：Token 预算控制</a></li><li><a class="chapter-link" href="第24章-策略治理.html">第 24 章：策略治理</a></li><li><a class="chapter-link" href="第25章-安全执行.html">第 25 章：安全执行</a></li><li><a class="chapter-link" href="第26章-多租户设计.html">第 26 章：多租户设计</a></li></ul></div><div class="sidebar-section"><div class="section-title">Part 9 - 前沿实践</div><ul class="chapter-list"><li><a class="chapter-link" href="Part9概述.html">Part 9 概述</a></li><li><a class="chapter-link active" href="第27章-Deep-Research.html">第 27 章：Deep Research</a></li><li><a class="chapter-link" href="第28章-Computer-Use.html">第 28 章：Computer Use</a></li><li><a class="chapter-link" href="第29章-Agentic-Coding.html">第 29 章：Agentic Coding</a></li><li><a class="chapter-link" href="第30章-Background-Agents.html">第 30 章：Background Agents</a></li><li><a class="chapter-link" href="第31章-分层模型策略.html">第 31 章：分层模型策略</a></li><li><a class="chapter-link" href="第32章-OpenClaw时代.html">第 32 章：OpenClaw 时代</a></li><li><a class="chapter-link" href="第33章-Building-on-the-Harness-ShanClaw.html">第 33 章：Building on the Harness - Kocoro</a></li></ul></div><div class="sidebar-section"><div class="section-title">Part 10 - Agent Loop 工程</div><ul class="chapter-list"><li><a class="chapter-link" href="Part10-Agent-Loop工程.html">Part 10 概述</a></li><li><a class="chapter-link" href="第34章-从DAG到Agent-Loop.html">第 34 章：从 DAG 到 Agent Loop</a></li><li><a class="chapter-link" href="第35章-上下文压缩.html">第 35 章：上下文压缩</a></li><li><a class="chapter-link" href="第36章-Tool-Result预算与外溢.html">第 36 章：Tool Result 预算与外溢</a></li><li><a class="chapter-link" href="第37章-分层压缩.html">第 37 章：分层压缩</a></li><li><a class="chapter-link" href="第38章-Deferred-Tool-Loading与Tool-Search.html">第 38 章：Deferred Tool Loading 与 Tool Search</a></li><li><a class="chapter-link" href="第39章-Prompt-Cache稳定性.html">第 39 章：Prompt Cache 稳定性</a></li><li><a class="chapter-link" href="第40章-持久化Agent-Loop.html">第 40 章：持久化 Agent Loop</a></li><li><a class="chapter-link" href="第41章-运行中操控Agent.html">第 41 章：运行中操控 Agent</a></li><li><a class="chapter-link" href="第42章-Agent超时与Watchdog.html">第 42 章：Agent 超时与 Watchdog</a></li><li><a class="chapter-link" href="第43章-卡循环检测.html">第 43 章：卡循环检测</a></li><li><a class="chapter-link" href="第44章-并行工具执行.html">第 44 章：并行工具执行</a></li><li><a class="chapter-link" href="第45章-Computer-Use上下文管理.html">第 45 章：Computer Use 上下文管理</a></li></ul></div><div class="sidebar-section"><div class="section-title">附录</div><ul class="chapter-list"><li><a class="chapter-link" href="Part10概述.html">附录概述</a></li><li><a class="chapter-link" href="附录A-术语表.html">附录 A：术语表</a></li><li><a class="chapter-link" href="附录B-模式选择指南.html">附录 B：模式选择指南</a></li><li><a class="chapter-link" href="附录C-常见问题FAQ.html">附录 C：常见问题 FAQ</a></li></ul></div>
+      </div>
+    </nav>
+    <main class="book-main">
+      <div class="book-content">
+<article class="prose dark:prose-invert fade-in"><h1 id="第-27-章deep-research"><a href="#第-27-章deep-research" class="anchor"></a>第 27 章：Deep Research</h1>
+<blockquote>
+<p><strong>Deep Research 把&quot;搜一下&quot;升级成&quot;研究一下&quot;——不是搜得更多，而是像专业研究员一样思考、规划、验证、整合。</strong></p>
+</blockquote>
+<hr/>
+<h2 id="271-搜一下和研究一下的区别"><a href="#271-搜一下和研究一下的区别" class="anchor"></a>27.1 &quot;搜一下&quot;和&quot;研究一下&quot;的区别</h2>
+<p>你让 AI 帮忙：</p>
+<blockquote>
+<p>&quot;帮我了解一下 AI Agent 在企业的落地情况。&quot;</p>
+</blockquote>
+<p><strong>传统 AI 搜索的反应</strong>：
+搜索 → 取前 5 条 → 拼摘要 → 返回。</p>
+<p><strong>Deep Research 的反应</strong>：
+&quot;这个问题有点大，让我想想怎么拆...&quot;
+→ 技术挑战？组织挑战？成功案例？失败教训？
+→ 先广泛搜一圈，看看大家在讨论什么
+→ 发现&quot;安全性&quot;被频繁提及，深挖一下
+→ 找到几个案例，但数据有冲突，交叉验证
+→ 整理成结构化报告，标注每个结论的来源</p>
+<p>本质区别在哪里？</p>
+<table><thead><tr><th></th><th>传统 AI 搜索</th><th>Deep Research</th></tr></thead><tbody><tr><td>检索</td><td>一次性</td><td>多轮迭代</td></tr><tr><td>推理</td><td>几乎没有</td><td>规划、适应、判断</td></tr><tr><td>验证</td><td>不验证</td><td>交叉验证、源质量评估</td></tr><tr><td>输出</td><td>片段拼接</td><td>结构化报告 + 引用</td></tr></tbody></table>
+<p><strong>一句话总结</strong>：不是&quot;搜得更多&quot;，而是&quot;会思考&quot;。</p>
+<p><img src="https://waylandz.com/book-images/ai-search-vs-deep-research.svg" alt="传统 AI 搜索 vs Deep Research"/></p>
+<hr/>
+<h2 id="272-行业发展简史"><a href="#272-行业发展简史" class="anchor"></a>27.2 行业发展简史</h2>
+<p>从&quot;搜索引擎&quot;到&quot;Deep Research&quot;，不是一步跨越，而是三年演进。</p>
+<h3 id="2022-年末answer-engine-的诞生"><a href="#2022-年末answer-engine-的诞生" class="anchor"></a>2022 年末：Answer Engine 的诞生</h3>
+<p>2022 年 8 月，<a target="_blank" rel="noopener noreferrer" href="https://en.wikipedia.org/wiki/Perplexity_AI">Perplexity AI</a> 成立。12 月，他们推出了 Perplexity Ask——一个&quot;对话式答案引擎&quot;。</p>
+<p>创始人的洞察很简单：传统搜索引擎给你一堆链接，你得自己点进去找答案。为什么不直接给答案？</p>
+<p>关键创新是<strong>引用</strong>。CEO Aravind Srinivas 说：&quot;引用是连接搜索和 LLM 的最好方式。&quot; Perplexity 用 RAG（检索增强生成）实时搜索网页，然后让 LLM 综合答案并标注来源。</p>
+<p>就在一周前（11 月 30 日），ChatGPT 刚刚发布，但它没有联网能力——只能用训练数据回答，无法获取实时信息。Perplexity 从一开始就选择了不同的路线：搜索 + LLM。</p>
+<h3 id="2023-年ai-搜索混战"><a href="#2023-年ai-搜索混战" class="anchor"></a>2023 年：AI 搜索混战</h3>
+<p>2023 年初，竞争加剧：</p>
+<ul>
+<li><strong>1 月</strong>：微软宣布向 OpenAI 追加投资 100 亿美元（累计达 130 亿），把 GPT-4 集成到 Bing</li>
+<li><strong>3 月</strong>：Google 紧急推出 Bard（后来的 Gemini）</li>
+<li><strong>年中</strong>：Google 推出 SGE（Search Generative Experience），在搜索结果顶部加 AI 摘要</li>
+</ul>
+<p>Perplexity 快速增长——2 月 200 万用户，年底日查询量从 2000 增长到 400 万，增长 1000 倍。</p>
+<p>但这个阶段的 AI 搜索本质还是<strong>问答</strong>：用户问一句，AI 答一句。复杂问题需要用户自己拆解、多次提问、手动整合。</p>
+<h3 id="2024-年从问答到搜索产品"><a href="#2024-年从问答到搜索产品" class="anchor"></a>2024 年：从问答到搜索产品</h3>
+<p>2024 年是 AI 搜索产品化的一年：</p>
+<ul>
+<li><strong>7 月</strong>：OpenAI 推出 <a target="_blank" rel="noopener noreferrer" href="https://openai.com/index/searchgpt-prototype/">SearchGPT</a> 原型，首次让 ChatGPT 能搜索网页</li>
+<li><strong>10 月</strong>：OpenAI 正式发布 ChatGPT Search，对标 Perplexity</li>
+<li><strong>12 月</strong>：Google 向 Gemini Advanced 用户推出 Deep Research</li>
+</ul>
+<p>Google Deep Research 带来一个关键变化：用户提问后，AI 先展示&quot;研究计划&quot;，用户确认后再执行。输出是&quot;报告&quot;而不是&quot;回答&quot;。</p>
+<p>这意味着思路变了：</p>
+<ul>
+<li>之前：AI 是&quot;答题机器&quot;——问什么答什么</li>
+<li>之后：AI 是&quot;研究助手&quot;——帮你规划、执行、整合</li>
+</ul>
+<p>Perplexity 2024 年增长 524%，估值突破 90 亿美元。</p>
+<h3 id="2025-年deep-research-元年"><a href="#2025-年deep-research-元年" class="anchor"></a>2025 年：Deep Research 元年</h3>
+<p>2025 年 2 月是产品转折点：</p>
+<ul>
+<li><strong>2 月 2 日</strong>：OpenAI 发布基于 o3 的 <a target="_blank" rel="noopener noreferrer" href="https://openai.com/index/introducing-deep-research/">Deep Research</a>，能自主规划研究、跨领域分析、生成专业报告</li>
+<li><strong>2 月 14 日</strong>：Perplexity 推出免费的 <a target="_blank" rel="noopener noreferrer" href="https://www.perplexity.ai/hub/blog/introducing-perplexity-deep-research">Deep Research</a>，强调快速和可访问性</li>
+<li><strong>4 月</strong>：OpenAI 发布 o3 和 o4-mini，Deep Research 能力进一步提升</li>
+<li><strong>6 月</strong>：Anthropic 公开了<a target="_blank" rel="noopener noreferrer" href="https://www.anthropic.com/engineering/multi-agent-research-system">多 Agent 研究系统的完整技术细节</a></li>
+</ul>
+<p>到 2025 年中：</p>
+<ul>
+<li>AI 搜索流量占比从 2024 年的 0.02% 增长到 0.15%（7 倍）</li>
+<li>ChatGPT 日均超 10 亿次查询，周活突破 5 亿用户</li>
+<li>Perplexity 月查询 7.8 亿次，估值超过 140 亿美元</li>
+</ul>
+<p>Deep Research 成了标配，但各家技术路线不同——这就是下一节要讲的。</p>
+<hr/>
+<h2 id="273-两种架构路线"><a href="#273-两种架构路线" class="anchor"></a>27.3 两种架构路线</h2>
+<blockquote>
+<p>以下信息基于 2025 年中期的公开资料，各家产品持续迭代中。</p>
+</blockquote>
+<p><strong>路线一：单 Agent + 强推理（OpenAI）</strong></p>
+<p>用一个强大的推理模型完成整个研究流程。模型本身学会规划、搜索、回退、综合。</p>
+<p>OpenAI 的 Deep Research 基于 o3 模型的特化版本。核心思路是<strong>端到端强化学习</strong>——在模拟的研究环境中训练模型，让它学会完整的研究流程：怎么规划多步搜索、走不通时怎么回退、根据实时信息怎么调整策略。这些能力不是写在代码里的，而是模型通过训练&quot;学会&quot;的。</p>
+<p>为了支撑长时间的研究任务（可能跑 30 分钟），o3 扩展了注意力跨度，能在长推理链中保持上下文。同时支持跨模态分析——不只读文字，还能理解图片、提取 PDF 数据。虽然对外呈现为&quot;单 Agent&quot;，内部其实有分层调度：便宜的小模型做预处理和分流，贵的大模型做核心推理，兼顾成本和效果。</p>
+<p>2025 年 4 月推出 o4-mini 轻量版，让免费用户也能使用轻量版 Deep Research。</p>
+<p><strong>路线二：多 Agent 协作（Anthropic）</strong></p>
+<p>多个专门化的 Agent 分工合作。一个 Lead Agent 负责规划和综合，多个 Sub-agent 并行探索不同维度。</p>
+<p>Anthropic 公开了完整的技术细节（下一节详细看），核心优势是<strong>并行加压缩</strong>。每个 Sub-agent 有独立的上下文窗口，可以专注探索一个维度，互不干扰。探索完成后，Sub-agent 不是把所有原始信息都传回来，而是压缩成关键发现——这避免了上下文爆炸。代价是 Token 消耗大约是单 Agent 的 15 倍，但换来的是 90% 以上的性能提升。</p>
+<p><strong>对比</strong></p>
+<table><thead><tr><th>维度</th><th>单 Agent（OpenAI）</th><th>多 Agent（Anthropic）</th></tr></thead><tbody><tr><td>核心能力来源</td><td>模型推理能力</td><td>架构设计</td></tr><tr><td>上下文管理</td><td>靠模型长注意力</td><td>靠压缩和隔离</td></tr><tr><td>并行能力</td><td>有限（内部调度）</td><td>原生支持</td></tr><tr><td>可解释性</td><td>较低（端到端）</td><td>较高（步骤清晰）</td></tr><tr><td>工程复杂度</td><td>低（单模型）</td><td>高（多 Agent 协调）</td></tr></tbody></table>
+<p>两种路线没有绝对优劣。OpenAI 路线依赖模型能力，Anthropic 路线依赖架构设计。实际产品中，两者往往会融合——OpenAI 内部也有多模型调度，Anthropic 的 Sub-agent 内部也跑推理循环。</p>
+<hr/>
+<h2 id="274-anthropic-的多-agent-方案"><a href="#274-anthropic-的多-agent-方案" class="anchor"></a>27.4 Anthropic 的多 Agent 方案</h2>
+<blockquote>
+<p>来源：<a target="_blank" rel="noopener noreferrer" href="https://www.anthropic.com/engineering/multi-agent-research-system">How we built our multi-agent research system</a>（2025 年）</p>
+</blockquote>
+<p>我们重点看他们的设计。</p>
+<h3 id="架构"><a href="#架构" class="anchor"></a>架构</h3>
+<p><img src="https://waylandz.com/book-images/anthropic-multi-agent-architecture.webp" alt="Multi-Agent Research System 架构"/></p>
+<p><em>图片来源：<a target="_blank" rel="noopener noreferrer" href="https://www.anthropic.com/engineering/multi-agent-research-system">How we built our multi-agent research system</a></em></p>
+<h3 id="为什么选多-agent"><a href="#为什么选多-agent" class="anchor"></a>为什么选多 Agent？</h3>
+<p>核心洞察是<strong>压缩</strong>。</p>
+<p>每个 Sub-agent 有自己的上下文窗口，可以独立探索某个维度——比如一个负责搜技术挑战，一个负责搜成功案例，一个负责搜失败教训。</p>
+<p>探索完后，Sub-agent 不是把所有原始信息都传给 Lead Agent，而是&quot;压缩&quot;——提取关键发现，丢弃细节。Lead Agent 只需要整合精华，不需要处理海量原始信息。</p>
+<p>这样做的好处是突破了单个上下文窗口的限制。</p>
+<h3 id="agent-数量怎么定"><a href="#agent-数量怎么定" class="anchor"></a>Agent 数量怎么定？</h3>
+<p>不是越多越好。Anthropic 的经验：</p>
+<table><thead><tr><th>任务复杂度</th><th>建议 Agent 数</th></tr></thead><tbody><tr><td>简单事实查询</td><td>1 个够了</td></tr><tr><td>对比分析</td><td>2-4 个</td></tr><tr><td>综合调研</td><td>10 个以上</td></tr></tbody></table>
+<h3 id="协调机制"><a href="#协调机制" class="anchor"></a>协调机制</h3>
+<p>多 Agent 最大的挑战是协调。想象一下：你派了 10 个研究员去调研同一个话题，如果没有明确分工，他们可能都去搜同样的内容，或者搜回来的信息格式各异，最后整合的人根本没法用。</p>
+<p>Anthropic 在这里下了很大功夫。</p>
+<p><strong>任务分配的&quot;契约&quot;设计</strong></p>
+<p>Lead Agent 给每个 Sub-agent 的不是模糊的&quot;去搜搜这个&quot;，而是一份清晰的&quot;任务契约&quot;：目标是什么（不是&quot;调研竞争对手&quot;，而是&quot;找出 3-5 个主要竞争对手的产品定价策略&quot;）、输出格式是什么（必须是结构化的，比如&quot;公司名 | 产品 | 价格区间&quot;）、可以用哪些工具、边界在哪里（什么不该做）。</p>
+<p>这种契约设计让每个 Agent 的输出可预测、可组合。Lead Agent 收到的不是一堆格式各异的文本，而是可以直接整合的结构化数据。</p>
+<p><strong>信息传递的&quot;压缩&quot;问题</strong></p>
+<p>Sub-agent 探索一个维度可能生成几千 Token 的内容——搜索结果、访问的网页、中间推理过程。如果全部传给 Lead Agent，上下文窗口很快就爆了。</p>
+<p>Anthropic 的做法是：Sub-agent 把完整输出存到文件系统，只传一个&quot;摘要 + 引用&quot;给 Lead Agent。摘要是压缩后的关键发现，引用是指向完整内容的指针。这就是&quot;压缩&quot;的含义——不是物理压缩，而是<strong>语义压缩</strong>：保留结论，丢弃过程。</p>
+<p><strong>长时间任务的错误恢复</strong></p>
+<p>研究任务不是秒级完成的。一个完整的 Deep Research 可能跑 10-30 分钟，期间网络可能抖动、API 可能超时、某个 Sub-agent 可能卡住。</p>
+<p>传统做法是&quot;出错就重来&quot;，但重跑一个 30 分钟的任务太贵了。Anthropic 的做法是<strong>检查点恢复</strong>：每完成一个关键步骤就保存状态，出错时从最近的检查点恢复。结合 AI 的适应能力——如果某个搜索路径走不通，换一个路径继续，而不是死磕。</p>
+<h3 id="性能数据"><a href="#性能数据" class="anchor"></a>性能数据</h3>
+<table><thead><tr><th>指标</th><th>数据</th></tr></thead><tbody><tr><td>多 Agent vs 单 Agent 提升</td><td>90.2%</td></tr><tr><td>Token 消耗倍数</td><td>约 15×</td></tr><tr><td>Token 解释性能差异</td><td>80%</td></tr></tbody></table>
+<p>最后一条很有意思：<strong>Token 使用解释了 80% 的性能差异</strong>。</p>
+<p>换句话说，多 Agent 效果好，很大程度是因为花了更多 Token 来思考和探索。如果预算有限，可能单 Agent + 更长的推理链也能达到类似效果。</p>
+<hr/>
+<h2 id="275-核心设计决策"><a href="#275-核心设计决策" class="anchor"></a>27.5 核心设计决策</h2>
+<p>不管你用什么框架实现 Deep Research，有几个设计决策避不开。</p>
+<h3 id="决策一架构-能力来源"><a href="#决策一架构-能力来源" class="anchor"></a>决策一：架构 × 能力来源</h3>
+<p>Deep Research 的设计空间可以用两个维度理解：</p>
+<p><strong>维度一：架构选择</strong></p>
+<ul>
+<li><strong>单 Agent</strong>：一个模型完成全部流程，靠长程推理能力</li>
+<li><strong>多 Agent</strong>：多个专门化 Agent 分工，靠架构设计协调</li>
+</ul>
+<p><strong>维度二：能力来源</strong></p>
+<ul>
+<li><strong>模型训练</strong>：通过 RL 让模型&quot;学会&quot;研究</li>
+<li><strong>上下文工程</strong>：通过 Prompt 设计&quot;引导&quot;模型研究</li>
+</ul>
+<p>这两个维度组合出四种主要方案：</p>
+<table><thead><tr><th>方案</th><th>架构</th><th>能力来源</th><th>代表</th></tr></thead><tbody><tr><td>A</td><td>单 Agent</td><td>端到端 RL</td><td>OpenAI Deep Research</td></tr><tr><td>B</td><td>单 Agent</td><td>上下文工程</td><td>早期 Perplexity</td></tr><tr><td>C</td><td>多 Agent</td><td>RL + 上下文</td><td>Anthropic 方案</td></tr><tr><td>D</td><td>多 Agent</td><td>上下文工程</td><td>Shannon、开源方案</td></tr></tbody></table>
+<p><strong>OpenAI（方案 A）</strong>：用端到端强化学习训练 o3 模型，让它在模拟研究环境中学会规划、搜索、回退、综合。模型本身具备研究能力，架构相对简单。</p>
+<p><strong>Anthropic（方案 C）</strong>：多 Agent 架构 + 上下文工程的组合。Lead Agent 和 Sub-agent 的行为主要靠 Prompt 引导，但也可能结合了模型微调。</p>
+<p><strong>Shannon（方案 D）</strong>：多 Agent 架构 + 纯上下文工程。不训练模型，完全靠架构设计和 Prompt 工程实现研究能力。这是创业公司和开源项目的主流选择——成本低、迭代快。</p>
+<p><strong>训练方法深入</strong></p>
+<p>如果你选择训练路线，2025 年主流有三种方法：</p>
+<ol>
+<li>
+<p><strong>端到端 RL</strong>：把模型放在模拟研究环境里，给它浏览器和工具，让它完成真实任务。OpenAI 的做法。代价是需要大量模拟环境和算力。</p>
+</li>
+<li>
+<p><strong>RLVR（可验证奖励的 RL）</strong>：用可验证的信号作为奖励——比如用代码执行验证答案对不对。好处是奖励客观、可扩展。</p>
+</li>
+<li>
+<p><strong>SFT + 多阶段 RL</strong>：先用监督学习教基础能力，再用 RL 逐步增加难度。微软 rStar2-Agent 的做法。好处是训练更稳定。</p>
+</li>
+</ol>
+<p><strong>上下文工程深入</strong></p>
+<p>如果你选择不训练（或没资源训练），上下文工程是核心：</p>
+<ul>
+<li><strong>研究策略编码</strong>：把时间感知、源质量判断、引用追踪等策略写入 Prompt</li>
+<li><strong>任务契约</strong>：明确每个子任务的输入输出格式、可用工具、边界约束</li>
+<li><strong>动态上下文注入</strong>：根据任务类型注入不同的搜索策略</li>
+<li><strong>ReAct 循环</strong>：Reasoning → Action → Observation 的迭代模式</li>
+</ul>
+<p>多 Agent 架构天然需要上下文工程——你得告诉每个 Agent 它的角色是什么、怎么和其他 Agent 协作。</p>
+<h3 id="决策二什么时候停"><a href="#决策二什么时候停" class="anchor"></a>决策二：什么时候停？</h3>
+<p>搜太少，答案不全；搜太多，浪费钱。这个平衡点怎么找？</p>
+<p>最简单的做法是<strong>固定轮数</strong>——比如规定搜 3 轮就停。好处是可控，坏处是一刀切：简单问题浪费资源，复杂问题又不够。</p>
+<p>更智能的做法是<strong>覆盖率评估</strong>——把问题拆成多个维度，每轮搜索后评估各维度覆盖了多少，覆盖率达到阈值就停。代价是需要额外的推理调用来做评估，但换来的是&quot;该多搜的多搜，该早停的早停&quot;。</p>
+<p>还有一种是<strong>让模型自己判断</strong>——但这需要专门训练，普通模型很难做好这个判断，要么过早停止，要么无限循环。</p>
+<p>实践中，建议分而治之：简单事实查询用 2-3 轮硬限制，复杂综合调研用覆盖率评估加最多 5 轮的安全上限。</p>
+<h3 id="决策三怎么验证引用"><a href="#决策三怎么验证引用" class="anchor"></a>决策三：怎么验证引用？</h3>
+<p>搜索引擎返回的摘要是个&quot;承诺&quot;——它说这个网页包含你要的信息。但这个承诺经常不靠谱：摘要可能断章取义，URL 可能已经失效，内容可能早就更新了。</p>
+<p>所以，<strong>必须实际访问 URL</strong>，拿到完整内容再决定能不能用。这一步会发现很多问题：404、付费墙、内容与摘要不符。虽然多了网络请求，但避免了&quot;幻觉式引用&quot;——报告里写着来源，用户点进去却发现对不上。</p>
+<p>另一个关键是<strong>区分源质量</strong>。同样一条信息，官方网站说的和某个聚合站说的，可信度完全不同。报告应该优先引用高质量来源，对于只有低质量来源支撑的结论，标注&quot;信息可能不准确&quot;。</p>
+<p>还有一点：当多个来源说法冲突时，不要替用户做选择。把冲突呈现出来，让用户自己判断。研究报告的价值是提供全面信息，不是替用户下结论。</p>
+<h3 id="决策四怎么处理失败"><a href="#决策四怎么处理失败" class="anchor"></a>决策四：怎么处理失败？</h3>
+<p>研究任务不是秒级完成的，可能跑 10-30 分钟。这期间网络可能抖动、API 可能超时、某个搜索可能返回空结果。如果每次出错都从头重来，成本太高了。</p>
+<p>好的做法是<strong>异步任务管理加检查点恢复</strong>。每完成一个关键步骤就保存状态，出错时从最近的检查点继续，而不是重启整个任务。这需要把任务设计成可恢复的——状态要能序列化，步骤之间要解耦。</p>
+<p>另一个原则是<strong>单步失败不影响全局</strong>。某个 URL 访问不了？跳过，继续访问其他的。某个搜索返回空结果？换个关键词再试。AI 本身有适应能力，让它在失败时调整策略，而不是死磕一条路。</p>
+<hr/>
+<h2 id="276-质量保障机制"><a href="#276-质量保障机制" class="anchor"></a>27.6 质量保障机制</h2>
+<p>Deep Research 输出的是&quot;报告&quot;，不是&quot;聊天回复&quot;。报告的质量标准更高——每个结论要有来源，信息要全面，不能有明显遗漏。这一节讲几个关键的质量保障机制。</p>
+<h3 id="引用追踪每个结论必须可追溯"><a href="#引用追踪每个结论必须可追溯" class="anchor"></a>引用追踪：每个结论必须可追溯</h3>
+<p>传统 AI 搜索的一个大问题是&quot;幻觉式引用&quot;——AI 说&quot;根据某某报告&quot;，你点进去发现根本没有这个内容，甚至链接都是假的。</p>
+<p>Deep Research 的做法是<strong>全程追踪</strong>：</p>
+<p>研究过程中，每次调用搜索工具、每次访问网页，都记录下来。生成报告时，不是让 LLM 随便编一个引用，而是从记录中匹配——这个结论来自哪次搜索的哪个结果？那次搜索的原始 URL 是什么？</p>
+<p>最终输出的报告里，每个关键结论后面都有 [1] [2] [3] 这样的引用标记，底部有完整的来源列表。用户可以点进去验证。</p>
+<p>这看起来是小事，但它彻底改变了 AI 生成内容的可信度。</p>
+<h3 id="覆盖率评估不是搜完就算"><a href="#覆盖率评估不是搜完就算" class="anchor"></a>覆盖率评估：不是&quot;搜完就算&quot;</h3>
+<p>搜索 3 次和搜索 30 次，哪个够了？这个问题没有标准答案，取决于研究问题的复杂度。</p>
+<p>一个简单的事实查询（&quot;OpenAI 什么时候成立的&quot;），搜一次就够了。一个综合调研（&quot;AI Agent 在企业的落地情况&quot;），搜 30 次可能还不够。</p>
+<p>Deep Research 用<strong>覆盖率评估</strong>来解决这个问题。具体做法是：</p>
+<ol>
+<li>在研究开始时，把问题拆成多个维度（比如&quot;技术挑战&quot;、&quot;组织挑战&quot;、&quot;成功案例&quot;、&quot;失败教训&quot;）</li>
+<li>每轮搜索后，评估每个维度覆盖了多少</li>
+<li>如果某个维度还是空白或者信息太少，针对性地补充搜索</li>
+<li>当所有关键维度都有足够信息时，停止</li>
+</ol>
+<p>这比&quot;固定搜 5 次&quot;智能得多——简单问题不浪费资源，复杂问题不会遗漏。</p>
+<h3 id="时间感知信息会过时"><a href="#时间感知信息会过时" class="anchor"></a>时间感知：信息会过时</h3>
+<p>价格、团队规模、融资轮次、政策法规——这些信息几个月就可能变化。如果报告里写&quot;Anthropic 估值 40 亿美元&quot;，但这是 2023 年的数据，现在早就翻倍了，那这个报告就是误导。</p>
+<p>Deep Research 的时间感知体现在几个地方：</p>
+<p>搜索时，对时间敏感的问题会自动加年份限定（&quot;Anthropic valuation 2025&quot;而不是&quot;Anthropic valuation&quot;）。排序时，优先最新的内容。生成报告时，明确标注时间上下文（&quot;截至 2025 年 Q2，Anthropic 估值约 150 亿美元&quot;）。</p>
+<p>这让用户知道信息的时效性，也提醒他们某些数据可能需要更新。</p>
+<h3 id="多语言搜索打破英语信息茧房"><a href="#多语言搜索打破英语信息茧房" class="anchor"></a>多语言搜索：打破英语信息茧房</h3>
+<p>研究一家中国公司，只用英文搜索会怎样？</p>
+<p>你能搜到的主要是：英文媒体的二手报道、公司官网的英文版（如果有的话）、一些财经数据聚合站。但你搜不到：天眼查上的工商信息、36氪上的行业分析、百度百科上的公司历史、知乎上的员工吐槽。</p>
+<p>这些本地语言的信息往往更一手、更详细、更真实。</p>
+<p>Deep Research 的多语言支持不是简单地&quot;把查询翻译成多种语言&quot;，而是更智能的策略：</p>
+<p>首先识别研究对象的&quot;主场&quot;——一家中国公司，主场是中文；一家日本公司，主场是日文。然后在主场语言中搜索官方信息（工商数据、官网、本地媒体），再用英文搜索全球视角的信息（国际媒体、投资机构报告）。最后整合时，优先官方语言的一手来源。</p>
+<p>这大大提高了非英语实体研究的信息覆盖率。</p>
+<hr/>
+<h2 id="277-shannon-的设计选择"><a href="#277-shannon-的设计选择" class="anchor"></a>27.7 Shannon 的设计选择</h2>
+<p>前面章节介绍过，Shannon 本身就是一个多智能体编排框架。Deep Research 是 Shannon 的核心应用场景之一，天然适合用多 Agent 架构实现 研究任务的规划和综合，多个 Sub-agent 并行探索不同维度。</p>
+<p>Shannon 的 Deep Research 完全用上下文工程实现——不训练模型，靠架构设计和 Prompt 工程。这一节深入介绍几个核心设计，你会看到&quot;不训练也能做好 Deep Research&quot;是怎么实现的。</p>
+<p><img src="https://waylandz.com/book-images/shannon-deep-research-flow.svg" alt="Shannon Deep Research 工作流"/></p>
+<h3 id="为什么搜索策略是核心"><a href="#为什么搜索策略是核心" class="anchor"></a>为什么搜索策略是核心？</h3>
+<p>Deep Research 的质量上限，很大程度取决于<strong>搜索策略的设计</strong>，而不是 LLM 本身有多强。</p>
+<p>这是因为 LLM 有两个根本性的限制：</p>
+<p><strong>第一，幻觉问题。</strong> 即使是最强的模型，在没有外部信息支撑的情况下，也会&quot;自信地编造&quot;。问它一家公司的融资历史，它可能给你一个看起来很合理但完全错误的答案。Deep Research 的本质是用搜索来&quot;锚定&quot;LLM——让它基于真实信息推理，而不是凭空生成。</p>
+<p><strong>第二，训练数据的时效性。</strong> 模型的知识有截止日期。2025 年初训练的模型，不知道 2025 年中发生的事。对于时效性强的问题（融资、人事变动、政策法规），模型的&quot;记忆&quot;是靠不住的，必须通过搜索获取最新信息。</p>
+<p>所以，<strong>搜索策略决定了 LLM 能看到什么信息，信息质量决定了最终报告质量</strong>。一个精心设计的搜索策略，能让普通模型产出高质量报告；一个粗糙的策略，即使用最强模型也会产出错漏百出的结果。</p>
+<p>这就是为什么 Shannon 把大量工程精力放在搜索策略上——任务分类、域名发现、多语言搜索、引用过滤——这些&quot;看不见&quot;的工作，决定了最终用户看到的报告质量。</p>
+<h3 id="互联网搜索场景"><a href="#互联网搜索场景" class="anchor"></a>互联网搜索场景</h3>
+<p>Deep Research 的信息来源可以有很多种：公开互联网、企业内部知识库、专有数据库、甚至多模态内容（图片、PDF、视频）。</p>
+<p>本文章先介绍Shannon在<strong>公开互联网搜索</strong>这个场景。原因很简单：这是最通用的需求，也是具有技术挑战的场景——你要处理的是全球范围的异构信息源，没有统一的格式、没有稳定的 API、质量参差不齐。</p>
+<p>如果你的需求是搜索企业内部知识库，更适合的方案是 RAG（检索增强生成）系统——信息源可控、格式统一、不需要处理互联网的复杂性。如果你需要多模态分析（从财报 PDF 提取表格、从产品图片识别信息），那需要专门的多模态处理管道。</p>
+<p>这些都是 Deep Research 的延伸方向，但不在本章讨论范围内。</p>
+<h3 id="搜索与验证分离对抗幻觉式引用"><a href="#搜索与验证分离对抗幻觉式引用" class="anchor"></a>搜索与验证分离：对抗&quot;幻觉式引用&quot;</h3>
+<p>Deep Research 最常见的错误是<strong>信任搜索摘要</strong>。</p>
+<p>搜索引擎返回的摘要是怎么来的？它从网页中提取一段看起来相关的文字，但这段文字可能断章取义、可能过时、可能根本不是你想要的内容。如果 AI 直接拿这个摘要写进报告，用户点进去一看——根本不是那么回事。</p>
+<p>Shannon 的做法是把搜索和验证严格分开：</p>
+<p><strong>搜索阶段</strong>只做一件事：拿到 URL 列表。摘要只用来初步筛选（这个链接值不值得访问），绝不直接引用。</p>
+<p><strong>验证阶段</strong>是真正获取信息的地方。对每个值得深入的 URL，实际发起 HTTP 请求，拿到完整的网页内容，提取正文。这一步会发现很多问题：有些 URL 已经失效（404），有些网页是付费墙，有些内容跟摘要完全不一样。</p>
+<p><strong>确认阶段</strong>决定哪些内容能进报告。只有验证过的、内容确实相关的、来源可信的，才能被引用。</p>
+<p>这意味着更多的网络请求和 Token 消耗。但换来的是：报告里的每一个引用，用户点进去都能看到支持结论的原始内容。</p>
+<h3 id="任务类型决定搜索策略不同问题不同打法"><a href="#任务类型决定搜索策略不同问题不同打法" class="anchor"></a>任务类型决定搜索策略：不同问题，不同打法</h3>
+<p>&quot;调研一家上市公司&quot;和&quot;Transformer 的工作原理&quot;，需要的搜索策略完全不同。前者要找工商数据、融资新闻、官网信息；后者要找论文、技术博客、教程。如果用同一套策略，要么效率很低，要么漏掉关键信息。</p>
+<p>Shannon 在查询细化阶段做一件重要的事：识别任务类型，然后注入对应的搜索策略。</p>
+<table><thead><tr><th>类型</th><th>示例</th><th>策略差异</th></tr></thead><tbody><tr><td>公司调研</td><td>&quot;调研字节跳动&quot;</td><td>先发现官方域名，抓取官网关键页面，再搜工商数据源和新闻</td></tr><tr><td>行业分析</td><td>&quot;AI 芯片市场&quot;</td><td>找报告类内容，注重数据和横向对比，搜索多个竞争者</td></tr><tr><td>学术研究</td><td>&quot;Transformer 原理&quot;</td><td>优先论文和技术博客，追引用链，找被大量引用的关键文献</td></tr><tr><td>对比分析</td><td>&quot;React vs Vue&quot;</td><td>刻意搜索多方观点，保持中立，不能只看某一方社区的声音</td></tr></tbody></table>
+<p>这种&quot;任务类型 → 搜索策略&quot;的映射是上下文工程的核心。不是让 LLM 自己想怎么搜，而是根据任务类型直接告诉它应该怎么搜。</p>
+<h3 id="react-循环像人一样边搜边调整"><a href="#react-循环像人一样边搜边调整" class="anchor"></a>ReAct 循环：像人一样边搜边调整</h3>
+<p>你自己做研究的时候，是不是这样的过程？先搜一个大概的词，看看结果。发现结果太泛了，于是加几个限定词再搜。看到一个有意思的结果，顺着它提到的名词继续搜。发现某个维度信息很少，换个角度再找找。</p>
+<p>这就是 ReAct（Reasoning + Action）循环的本质：不是一次性规划好所有搜索，而是<strong>边思考边行动</strong>，根据观察到的结果调整策略。</p>
+<p>Shannon 让每个 Sub-agent 内部运行这样的循环：</p>
+<pre><code><span class="sh__line"><span class="sh__token--class" style="color: var(--sh-class)">思考：当前问题是什么？已经知道什么？还缺什么？</span><span class="sh__token--break" style="color: var(--sh-break)"></span></span>
+<span class="sh__line"><span class="sh__token--space" style="color: var(--sh-space)">  </span><span class="sh__token--class" style="color: var(--sh-class)">↓</span><span class="sh__token--break" style="color: var(--sh-break)"></span></span>
+<span class="sh__line"><span class="sh__token--class" style="color: var(--sh-class)">行动：执行一次搜索或访问一个网页</span><span class="sh__token--break" style="color: var(--sh-break)"></span></span>
+<span class="sh__line"><span class="sh__token--space" style="color: var(--sh-space)">  </span><span class="sh__token--class" style="color: var(--sh-class)">↓</span><span class="sh__token--break" style="color: var(--sh-break)"></span></span>
+<span class="sh__line"><span class="sh__token--class" style="color: var(--sh-class)">观察：搜索返回了什么？有没有回答问题？</span><span class="sh__token--break" style="color: var(--sh-break)"></span></span>
+<span class="sh__line"><span class="sh__token--space" style="color: var(--sh-space)">  </span><span class="sh__token--class" style="color: var(--sh-class)">↓</span><span class="sh__token--break" style="color: var(--sh-break)"></span></span>
+<span class="sh__line"><span class="sh__token--class" style="color: var(--sh-class)">再思考：够了吗？下一步怎么调整？</span><span class="sh__token--break" style="color: var(--sh-break)"></span></span>
+<span class="sh__line"><span class="sh__token--space" style="color: var(--sh-space)">  </span><span class="sh__token--class" style="color: var(--sh-class)">↓</span><span class="sh__token--break" style="color: var(--sh-break)"></span></span>
+<span class="sh__line"><span class="sh__token--class" style="color: var(--sh-class)">继续或停止</span><span class="sh__token--break" style="color: var(--sh-break)"></span></span></code></pre>
+<p>关键的参数控制：</p>
+<ul>
+<li><strong>最大迭代次数</strong>：通常 2-3 轮，防止无限循环。即使问题没完全解决，也要在有限步内停下</li>
+<li><strong>最大访问页面数</strong>：一个 Sub-agent 最多访问多少网页，太少信息不够，太多浪费资源</li>
+<li><strong>子页面探索</strong>：对重要网站（比如公司官网），不只访问主页，还会访问关键子页面（/about、/products、/team）。可以用广度优先遍历，也可以让 LLM 选择最相关的子页面</li>
+</ul>
+<h3 id="覆盖率驱动停止智能判断够了没"><a href="#覆盖率驱动停止智能判断够了没" class="anchor"></a>覆盖率驱动停止：智能判断&quot;够了没&quot;</h3>
+<p>&quot;够了没&quot;是 Deep Research 最难回答的问题。搜太少，报告会有明显漏洞；搜太多，浪费时间和 Token。</p>
+<p>Shannon 用<strong>覆盖率评估</strong>来解决这个问题：</p>
+<ol>
+<li>研究开始时，把问题拆成多个维度（比如&quot;技术挑战&quot;、&quot;成功案例&quot;、&quot;市场规模&quot;）</li>
+<li>每轮搜索后，评估每个维度覆盖了多少——不是简单计数，而是语义评估</li>
+<li>覆盖率达到阈值（比如 85%），停止</li>
+<li>某个维度明显是空白，生成针对性子查询继续填补</li>
+<li>同时有一个硬限制——最多 5 轮迭代，防止极端情况</li>
+</ol>
+<p>这比&quot;固定搜 5 次&quot;聪明得多，也比&quot;让 LLM 自己判断&quot;可控得多。</p>
+<h3 id="引用过滤与质量分级"><a href="#引用过滤与质量分级" class="anchor"></a>引用过滤与质量分级</h3>
+<p>搜索&quot;字节跳动&quot;，可能会搜出很多包含&quot;字节&quot;或&quot;跳动&quot;的无关结果——某个叫&quot;字节&quot;的小公司、某篇提到&quot;跳动&quot;的新闻。Shannon 实现了一个<strong>引用过滤器</strong>，用计分系统判断搜索结果是不是真的相关。</p>
+<p>过滤逻辑是这样的：如果 URL 是官方域名（bytedance.com），直接通过，不需要其他判断。否则，看 URL 和标题中有没有出现公司名称或其变体（ByteDance、字节跳动、抖音母公司），出现就加分。最后只保留分数超过阈值的结果。</p>
+<p>有个重要的安全机制：无论过滤多严格，至少保留一定数量的引用。这是为了防止过度过滤——如果过滤太狠，可能把所有结果都滤掉了，导致研究无法继续。</p>
+<p>通过过滤后，还有<strong>质量分级</strong>：</p>
+<p><strong>一手来源</strong>优先级最高：官方网站、官方文档、SEC 申报文件。这些直接来自信息源，最可信。</p>
+<p><strong>专业媒体</strong>次之：TechCrunch、36氪、日经新闻。有编辑审核，质量有保证。</p>
+<p><strong>聚合站点</strong>最低：各种数据聚合网站、百科类网站。信息可能过时或不准确。</p>
+<p>综合阶段优先使用高质量来源。如果只有低质量来源，会标注&quot;信息可能不准确&quot;。</p>
+<h3 id="多语言搜索的智能策略"><a href="#多语言搜索的智能策略" class="anchor"></a>多语言搜索的智能策略</h3>
+<p>研究非英语实体时，Shannon 不是简单地&quot;把查询翻译成多种语言&quot;，而是更智能的策略：</p>
+<p><strong>识别&quot;主场&quot;</strong>：通过公司总部、主要市场、官网语言判断实体的主场语言。字节跳动的主场是中文，Toyota 的主场是日文。</p>
+<p><strong>差异化搜索</strong>：主场语言搜索官方信息（工商数据、本地新闻、官网），英文搜索全球视角（国际媒体、投资机构报告）。</p>
+<p><strong>来源优先级</strong>：同样的信息，主场语言的官方来源优先于英文的二手报道。字节跳动的员工人数，天眼查比 TechCrunch 更可信。</p>
+<hr/>
+<h2 id="278-发展方向"><a href="#278-发展方向" class="anchor"></a>27.8 发展方向</h2>
+<p>Deep Research 还在快速演进。几个值得关注的方向：</p>
+<p><strong>多模态理解</strong>。当前的 Deep Research 主要处理文本，但很多重要信息藏在图片、PDF、视频里——财报里的表格、产品发布会的演示、专利文档的示意图。下一代 Deep Research 需要能&quot;看懂&quot;这些内容，从中提取结构化数据。OpenAI 的 o3 已经开始支持图片和 PDF 分析，这个能力会逐步成为标配。</p>
+<p><strong>实时协作</strong>。目前的 Deep Research 是&quot;用户提问 → AI 跑完 → 返回报告&quot;的单向流程。但研究往往是探索性的——跑到一半发现某个方向更有价值，想调整重心；或者看到中间结果，想追问某个细节。未来的 Deep Research 应该支持用户在研究过程中介入、引导方向，而不是只能干等结果。</p>
+<p><strong>持续学习</strong>。每次研究都从零开始是浪费。如果你上周调研过&quot;AI 芯片市场&quot;，这周调研&quot;英伟达竞争格局&quot;，后者应该能复用前者的部分成果。更进一步，系统应该学习用户的偏好——你关注哪些信息源、喜欢什么样的报告结构、对哪些领域更熟悉。这需要长期记忆和个性化能力。</p>
+<p><strong>垂直专业化</strong>。通用的 Deep Research 能处理大多数场景，但专业领域有专业需求。学术研究需要追踪引用链、评估期刊影响因子；金融分析需要解读财报、跟踪监管公告；法律调研需要理解判例、关联法条。这些垂直场景需要专门的工具、数据源和评估标准，会催生专业化的研究 Agent。</p>
+<hr/>
+<h2 id="279-常见误区"><a href="#279-常见误区" class="anchor"></a>27.9 常见误区</h2>
+<table><thead><tr><th>误区</th><th>正解</th></tr></thead><tbody><tr><td>多搜几次就是 Deep Research</td><td>重点是规划、适应、验证、整合</td></tr><tr><td>多 Agent 一定比单 Agent 好</td><td>多 Agent 的好处很大程度来自更多 Token</td></tr><tr><td>Token 越多越好</td><td>有边际递减，需要预算控制</td></tr><tr><td>搜到了就能用</td><td>要实际访问验证，标注源质量</td></tr><tr><td>英文搜就够了</td><td>非英语实体要搜本地语言源</td></tr></tbody></table>
+<hr/>
+<h2 id="2710-本章要点"><a href="#2710-本章要点" class="anchor"></a>27.10 本章要点</h2>
+<p>✅ <strong>本质</strong>：会思考的研究，不是搜得更多——Plan → Search → Evaluate → Verify → Synthesize</p>
+<p>✅ <strong>设计空间</strong>：两个维度组合</p>
+<ul>
+<li>架构：单 Agent vs 多 Agent</li>
+<li>能力来源：模型训练 vs 上下文工程</li>
+</ul>
+<p>✅ <strong>Shannon 定位</strong>：多 Agent 架构 + 纯上下文工程，不训练模型，靠架构设计和 Prompt 工程实现</p>
+<p>✅ <strong>Shannon 核心设计</strong>：</p>
+<ul>
+<li>搜索与验证分离，避免&quot;幻觉式引用&quot;</li>
+<li>任务类型决定搜索策略</li>
+<li>ReAct 循环边搜边调整</li>
+<li>覆盖率驱动停止（≥85%）</li>
+<li>引用质量分级</li>
+</ul>
+<hr/>
+<h2 id="2711-延伸阅读"><a href="#2711-延伸阅读" class="anchor"></a>27.11 延伸阅读</h2>
+<ul>
+<li>
+<p><a target="_blank" rel="noopener noreferrer" href="https://www.anthropic.com/engineering/multi-agent-research-system">How we built our multi-agent research system</a>
+Anthropic 工程博客，详细介绍多 Agent 架构的设计考量，理解&quot;压缩&quot;为什么是核心洞察。</p>
+</li>
+<li>
+<p><a target="_blank" rel="noopener noreferrer" href="https://openai.com/index/introducing-deep-research/">Introducing deep research</a>
+OpenAI 官方博客，介绍 Deep Research 的产品设计和用户场景。</p>
+</li>
+<li>
+<p><a target="_blank" rel="noopener noreferrer" href="https://blog.google/products/gemini/google-gemini-deep-research/">Deep Research: A new agentic capability in Gemini</a>
+Google 的 Deep Research 方案，强调&quot;研究计划&quot;的用户确认流程。</p>
+</li>
+</ul>
+<hr/>
+<h2 id="2712-shannon-lab10-分钟上手"><a href="#2712-shannon-lab10-分钟上手" class="anchor"></a>27.12 Shannon Lab（10 分钟上手）</h2>
+<h3 id="必读2-个文件"><a href="#必读2-个文件" class="anchor"></a>必读（2 个文件）</h3>
+<ul>
+<li>
+<p><a target="_blank" rel="noopener noreferrer" href="https://github.com/Kocoro-lab/Shannon/blob/main/go/orchestrator/internal/workflows/strategies/research.go"><code><span class="sh__line"><span class="sh__token--identifier" style="color: var(--sh-identifier)">workflows</span><span class="sh__token--sign" style="color: var(--sh-sign)">/</span><span class="sh__token--identifier" style="color: var(--sh-identifier)">strategies</span><span class="sh__token--sign" style="color: var(--sh-sign)">/</span><span class="sh__token--identifier" style="color: var(--sh-identifier)">research</span><span class="sh__token--sign" style="color: var(--sh-sign)">.</span><span class="sh__token--property" style="color: var(--sh-property)">go</span></span></code></a>
+<strong>完整工作流编排</strong>——Step 0 到 Step 5 的全流程实现，理解 Refine → Research → Synthesize 循环，覆盖率评估和迭代控制逻辑。</p>
+</li>
+<li>
+<p><a target="_blank" rel="noopener noreferrer" href="https://github.com/Kocoro-lab/Shannon/blob/main/python/llm-service/llm_service/roles/deep_research/deep_research_agent.py"><code><span class="sh__line"><span class="sh__token--identifier" style="color: var(--sh-identifier)">roles</span><span class="sh__token--sign" style="color: var(--sh-sign)">/</span><span class="sh__token--identifier" style="color: var(--sh-identifier)">deep_research</span><span class="sh__token--sign" style="color: var(--sh-sign)">/</span><span class="sh__token--identifier" style="color: var(--sh-identifier)">deep_research_agent</span><span class="sh__token--sign" style="color: var(--sh-sign)">.</span><span class="sh__token--property" style="color: var(--sh-property)">py</span></span></code></a>
+<strong>研究员角色定义</strong>——研究策略编码、时间感知、区域源、ReAct 循环的 Prompt 设计。</p>
+</li>
+</ul>
+<h3 id="选读深挖2-个"><a href="#选读深挖2-个" class="anchor"></a>选读深挖（2 个）</h3>
+<ul>
+<li>
+<p><a target="_blank" rel="noopener noreferrer" href="https://github.com/Kocoro-lab/Shannon/blob/main/python/llm-service/llm_service/roles/deep_research/research_refiner.py"><code><span class="sh__line"><span class="sh__token--identifier" style="color: var(--sh-identifier)">roles</span><span class="sh__token--sign" style="color: var(--sh-sign)">/</span><span class="sh__token--identifier" style="color: var(--sh-identifier)">deep_research</span><span class="sh__token--sign" style="color: var(--sh-sign)">/</span><span class="sh__token--identifier" style="color: var(--sh-identifier)">research_refiner</span><span class="sh__token--sign" style="color: var(--sh-sign)">.</span><span class="sh__token--property" style="color: var(--sh-property)">py</span></span></code></a>
+<strong>任务分类与维度拆解</strong>——看 Shannon 如何识别任务类型（公司/行业/学术/对比/探索），以及 Source Guidance 的生成逻辑。</p>
+</li>
+<li>
+<p><a target="_blank" rel="noopener noreferrer" href="https://github.com/Kocoro-lab/Shannon/blob/main/python/llm-service/llm_service/roles/deep_research/domain_discovery.py"><code><span class="sh__line"><span class="sh__token--identifier" style="color: var(--sh-identifier)">roles</span><span class="sh__token--sign" style="color: var(--sh-sign)">/</span><span class="sh__token--identifier" style="color: var(--sh-identifier)">deep_research</span><span class="sh__token--sign" style="color: var(--sh-sign)">/</span><span class="sh__token--identifier" style="color: var(--sh-identifier)">domain_discovery</span><span class="sh__token--sign" style="color: var(--sh-sign)">.</span><span class="sh__token--property" style="color: var(--sh-property)">py</span></span></code></a> + <a target="_blank" rel="noopener noreferrer" href="https://github.com/Kocoro-lab/Shannon/blob/main/python/llm-service/llm_service/roles/deep_research/domain_prefetch.py"><code><span class="sh__line"><span class="sh__token--identifier" style="color: var(--sh-identifier)">domain_prefetch</span><span class="sh__token--sign" style="color: var(--sh-sign)">.</span><span class="sh__token--property" style="color: var(--sh-property)">py</span></span></code></a>
+<strong>官方域名发现与预抓取</strong>——如何找到实体的官方网站、提取结构化信息并注入后续 Agent 上下文，理解为什么一手来源比搜索引擎更可靠。</p>
+</li>
+</ul>
+<h3 id="快速上手路径"><a href="#快速上手路径" class="anchor"></a>快速上手路径</h3>
+<pre><code><span class="sh__line"><span class="sh__token--class" style="color: var(--sh-class)">1</span><span class="sh__token--sign" style="color: var(--sh-sign)">.</span><span class="sh__token--space" style="color: var(--sh-space)"> </span><span class="sh__token--class" style="color: var(--sh-class)">先读</span><span class="sh__token--space" style="color: var(--sh-space)"> </span><span class="sh__token--identifier" style="color: var(--sh-identifier)">research</span><span class="sh__token--sign" style="color: var(--sh-sign)">.</span><span class="sh__token--property" style="color: var(--sh-property)">go</span><span class="sh__token--space" style="color: var(--sh-space)"> </span><span class="sh__token--class" style="color: var(--sh-class)">理解全流程（10</span><span class="sh__token--space" style="color: var(--sh-space)"> </span><span class="sh__token--class" style="color: var(--sh-class)">分钟）</span><span class="sh__token--break" style="color: var(--sh-break)"></span></span>
+<span class="sh__line"><span class="sh__token--space" style="color: var(--sh-space)">   </span><span class="sh__token--class" style="color: var(--sh-class)">↓</span><span class="sh__token--break" style="color: var(--sh-break)"></span></span>
+<span class="sh__line"><span class="sh__token--class" style="color: var(--sh-class)">2</span><span class="sh__token--sign" style="color: var(--sh-sign)">.</span><span class="sh__token--space" style="color: var(--sh-space)"> </span><span class="sh__token--class" style="color: var(--sh-class)">读</span><span class="sh__token--space" style="color: var(--sh-space)"> </span><span class="sh__token--identifier" style="color: var(--sh-identifier)">deep_research_agent</span><span class="sh__token--sign" style="color: var(--sh-sign)">.</span><span class="sh__token--property" style="color: var(--sh-property)">py</span><span class="sh__token--space" style="color: var(--sh-space)"> </span><span class="sh__token--class" style="color: var(--sh-class)">看</span><span class="sh__token--space" style="color: var(--sh-space)"> </span><span class="sh__token--class" style="color: var(--sh-class)">Prompt</span><span class="sh__token--space" style="color: var(--sh-space)"> </span><span class="sh__token--class" style="color: var(--sh-class)">设计（5</span><span class="sh__token--space" style="color: var(--sh-space)"> </span><span class="sh__token--class" style="color: var(--sh-class)">分钟）</span><span class="sh__token--break" style="color: var(--sh-break)"></span></span>
+<span class="sh__line"><span class="sh__token--space" style="color: var(--sh-space)">   </span><span class="sh__token--class" style="color: var(--sh-class)">↓</span><span class="sh__token--break" style="color: var(--sh-break)"></span></span>
+<span class="sh__line"><span class="sh__token--class" style="color: var(--sh-class)">3</span><span class="sh__token--sign" style="color: var(--sh-sign)">.</span><span class="sh__token--space" style="color: var(--sh-space)"> </span><span class="sh__token--class" style="color: var(--sh-class)">挑一个感兴趣的模块深入</span><span class="sh__token--break" style="color: var(--sh-break)"></span></span>
+<span class="sh__line"><span class="sh__token--space" style="color: var(--sh-space)">   </span><span class="sh__token--sign" style="color: var(--sh-sign)">-</span><span class="sh__token--space" style="color: var(--sh-space)"> </span><span class="sh__token--class" style="color: var(--sh-class)">对任务分类感兴趣</span><span class="sh__token--space" style="color: var(--sh-space)"> </span><span class="sh__token--class" style="color: var(--sh-class)">→</span><span class="sh__token--space" style="color: var(--sh-space)"> </span><span class="sh__token--identifier" style="color: var(--sh-identifier)">research_refiner</span><span class="sh__token--sign" style="color: var(--sh-sign)">.</span><span class="sh__token--property" style="color: var(--sh-property)">py</span><span class="sh__token--break" style="color: var(--sh-break)"></span></span>
+<span class="sh__line"><span class="sh__token--space" style="color: var(--sh-space)">   </span><span class="sh__token--sign" style="color: var(--sh-sign)">-</span><span class="sh__token--space" style="color: var(--sh-space)"> </span><span class="sh__token--class" style="color: var(--sh-class)">对信息获取感兴趣</span><span class="sh__token--space" style="color: var(--sh-space)"> </span><span class="sh__token--class" style="color: var(--sh-class)">→</span><span class="sh__token--space" style="color: var(--sh-space)"> </span><span class="sh__token--identifier" style="color: var(--sh-identifier)">domain_discovery</span><span class="sh__token--sign" style="color: var(--sh-sign)">.</span><span class="sh__token--property" style="color: var(--sh-property)">py</span><span class="sh__token--space" style="color: var(--sh-space)"> </span><span class="sh__token--sign" style="color: var(--sh-sign)">+</span><span class="sh__token--space" style="color: var(--sh-space)"> </span><span class="sh__token--identifier" style="color: var(--sh-identifier)">domain_prefetch</span><span class="sh__token--sign" style="color: var(--sh-sign)">.</span><span class="sh__token--property" style="color: var(--sh-property)">py</span><span class="sh__token--break" style="color: var(--sh-break)"></span></span></code></pre>
+<hr/>
+<h2 id="下一章预告"><a href="#下一章预告" class="anchor"></a>下一章预告</h2>
+<p>第 28 章：当 Agent 获得&quot;眼睛&quot;和&quot;手&quot;——Computer Use 让 AI 能操作真实界面，打开全新的能力边界。</p></article>
+        <div class="chapter-nav"><a href="Part9概述.html"><span class="nav-label">上一章</span>Part 9 概述</a><a href="第28章-Computer-Use.html" class="nav-next"><span class="nav-label">下一章</span>第 28 章：Computer Use</a></div>
+      </div>
+    </main>
+  </div>
+</div>
+<script src="script.js"></script>
+</body>
+</html>

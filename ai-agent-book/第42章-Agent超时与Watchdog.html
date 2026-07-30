@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>第 42 章：Agent 超时与 Watchdog | AI Agent 开发实战 | chad</title>
+<meta name="author" content="chad"/>
+<meta name="description" content="AI Agent 架构模式与实战 - chad"/>
+<script>(function(){try{var m=window.matchMedia('(prefers-color-scheme:dark)');var apply=function(){var t=localStorage.getItem('theme');document.documentElement.classList.toggle('dark',t==='dark'||(!t&&m.matches))};apply();m.addEventListener('change',apply)}catch(e){}})()</script>
+<script src="https://cdn.tailwindcss.com?plugins=typography"></script>
+<script>tailwind.config={darkMode:"class",theme:{extend:{typography:{DEFAULT:{css:{maxWidth:"none"}}}}}}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css"/>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📖</text></svg>"/>
+</head>
+<body>
+<div class="book-layout">
+  <header class="book-header">
+    <div class="header-content">
+      <div class="header-left">
+        <button class="mobile-menu-toggle" id="menuToggle" aria-label="Open menu">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20"><path stroke-linecap="round" stroke-linejoin="round" d="M3 12h18M3 6h18M3 18h18"></path></svg>
+        </button>
+        <nav class="header-nav">
+          <a class="nav-item" href="index.html">Home</a>
+          <a class="nav-item" href="#">Blog</a>
+          <span class="nav-item">Books</span>
+          <a class="nav-item active hide-mobile" href="index.html">AI Agent 架构模式与实战</a>
+        </nav>
+      </div>
+      <div class="right-controls">
+        <span><a class="lang-link active" href="#">中文</a></span>
+        <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+          <svg class="w-[18px] h-[18px] hidden dark:block" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="4"></circle><path stroke-linecap="round" d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"></path></svg>
+          <svg class="w-[18px] h-[18px] block dark:hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+  <div class="sidebar-overlay" id="sidebarOverlay"></div>
+  <div class="book-body">
+    <nav class="book-sidebar" id="bookSidebar">
+      <button class="sidebar-close" id="sidebarClose" aria-label="Close menu">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20"><path stroke-linecap="round" d="M18 6L6 18M6 6l12 12"></path></svg>
+      </button>
+      <div class="sidebar-header">
+        <a class="book-title" href="index.html">AI Agent 架构：从单体到企业级多智能体</a>
+      </div>
+      <div class="sidebar-content">
+<div class="sidebar-section"><div class="section-title">前言</div><ul class="chapter-list"><li><a class="chapter-link" href="前言.html">前言</a></li></ul></div><div class="sidebar-section"><div class="section-title">Part 1 - Agent 基础</div><ul class="chapter-list"><li><a class="chapter-link" href="Part1概述.html">Part 1 概述</a></li><li><a class="chapter-link" href="第01章-Agent的本质.html">第 1 章：Agent 的本质</a></li><li><a class="chapter-link" href="第02章-ReAct循环.html">第 2 章：ReAct 循环</a></li></ul></div><div class="sidebar-section"><div class="section-title">Part 2 - 工具与扩展</div><ul class="chapter-list"><li><a class="chapter-link" href="Part2概述.html">Part 2 概述</a></li><li><a class="chapter-link" href="第03章-工具调用基础.html">第 3 章：工具调用基础</a></li><li><a class="chapter-link" href="第04章-MCP协议详解.html">第 4 章：MCP 协议详解</a></li><li><a class="chapter-link" href="第05章-Skills技能系统.html">第 5 章：Skills 技能系统</a></li><li><a class="chapter-link" href="第06章-Hooks与事件系统.html">第 6 章：Hooks 与事件系统</a></li></ul></div><div class="sidebar-section"><div class="section-title">Part 3 - 上下文与记忆</div><ul class="chapter-list"><li><a class="chapter-link" href="Part3概述.html">Part 3 概述</a></li><li><a class="chapter-link" href="第07章-上下文工程.html">第 7 章：上下文工程</a></li><li><a class="chapter-link" href="第08章-记忆架构.html">第 8 章：记忆架构</a></li><li><a class="chapter-link" href="第09章-多轮对话设计.html">第 9 章：多轮对话设计</a></li></ul></div><div class="sidebar-section"><div class="section-title">Part 4 - 单 Agent 模式</div><ul class="chapter-list"><li><a class="chapter-link" href="Part4概述.html">Part 4 概述</a></li><li><a class="chapter-link" href="第10章-Planning模式.html">第 10 章：Planning 模式</a></li><li><a class="chapter-link" href="第11章-Reflection模式.html">第 11 章：Reflection 模式</a></li><li><a class="chapter-link" href="第12章-Chain-of-Thought.html">第 12 章：Chain-of-Thought</a></li></ul></div><div class="sidebar-section"><div class="section-title">Part 5 - 多 Agent 编排</div><ul class="chapter-list"><li><a class="chapter-link" href="Part5概述.html">Part 5 概述</a></li><li><a class="chapter-link" href="第13章-编排基础.html">第 13 章：编排基础</a></li><li><a class="chapter-link" href="第14章-DAG工作流.html">第 14 章：DAG 工作流</a></li><li><a class="chapter-link" href="第15章-Swarm模式.html">第 15 章：Swarm 模式</a></li><li><a class="chapter-link" href="第16章-Handoff机制.html">第 16 章：Handoff 机制</a></li></ul></div><div class="sidebar-section"><div class="section-title">Part 6 - 高级推理</div><ul class="chapter-list"><li><a class="chapter-link" href="Part6概述.html">Part 6 概述</a></li><li><a class="chapter-link" href="第17章-Tree-of-Thoughts.html">第 17 章：Tree-of-Thoughts</a></li><li><a class="chapter-link" href="第18章-Debate模式.html">第 18 章：Debate 模式</a></li><li><a class="chapter-link" href="第19章-Research-Synthesis.html">第 19 章：Research-Synthesis</a></li></ul></div><div class="sidebar-section"><div class="section-title">Part 7 - 生产架构</div><ul class="chapter-list"><li><a class="chapter-link" href="Part7概述.html">Part 7 概述</a></li><li><a class="chapter-link" href="第20章-三层架构设计.html">第 20 章：三层架构设计</a></li><li><a class="chapter-link" href="第21章-Temporal工作流.html">第 21 章：Temporal 工作流</a></li><li><a class="chapter-link" href="第22章-可观测性.html">第 22 章：可观测性</a></li></ul></div><div class="sidebar-section"><div class="section-title">Part 8 - 企业级特性</div><ul class="chapter-list"><li><a class="chapter-link" href="Part8概述.html">Part 8 概述</a></li><li><a class="chapter-link" href="第23章-Token预算控制.html">第 23 章：Token 预算控制</a></li><li><a class="chapter-link" href="第24章-策略治理.html">第 24 章：策略治理</a></li><li><a class="chapter-link" href="第25章-安全执行.html">第 25 章：安全执行</a></li><li><a class="chapter-link" href="第26章-多租户设计.html">第 26 章：多租户设计</a></li></ul></div><div class="sidebar-section"><div class="section-title">Part 9 - 前沿实践</div><ul class="chapter-list"><li><a class="chapter-link" href="Part9概述.html">Part 9 概述</a></li><li><a class="chapter-link" href="第27章-Deep-Research.html">第 27 章：Deep Research</a></li><li><a class="chapter-link" href="第28章-Computer-Use.html">第 28 章：Computer Use</a></li><li><a class="chapter-link" href="第29章-Agentic-Coding.html">第 29 章：Agentic Coding</a></li><li><a class="chapter-link" href="第30章-Background-Agents.html">第 30 章：Background Agents</a></li><li><a class="chapter-link" href="第31章-分层模型策略.html">第 31 章：分层模型策略</a></li><li><a class="chapter-link" href="第32章-OpenClaw时代.html">第 32 章：OpenClaw 时代</a></li><li><a class="chapter-link" href="第33章-Building-on-the-Harness-ShanClaw.html">第 33 章：Building on the Harness - Kocoro</a></li></ul></div><div class="sidebar-section"><div class="section-title">Part 10 - Agent Loop 工程</div><ul class="chapter-list"><li><a class="chapter-link" href="Part10-Agent-Loop工程.html">Part 10 概述</a></li><li><a class="chapter-link" href="第34章-从DAG到Agent-Loop.html">第 34 章：从 DAG 到 Agent Loop</a></li><li><a class="chapter-link" href="第35章-上下文压缩.html">第 35 章：上下文压缩</a></li><li><a class="chapter-link" href="第36章-Tool-Result预算与外溢.html">第 36 章：Tool Result 预算与外溢</a></li><li><a class="chapter-link" href="第37章-分层压缩.html">第 37 章：分层压缩</a></li><li><a class="chapter-link" href="第38章-Deferred-Tool-Loading与Tool-Search.html">第 38 章：Deferred Tool Loading 与 Tool Search</a></li><li><a class="chapter-link" href="第39章-Prompt-Cache稳定性.html">第 39 章：Prompt Cache 稳定性</a></li><li><a class="chapter-link" href="第40章-持久化Agent-Loop.html">第 40 章：持久化 Agent Loop</a></li><li><a class="chapter-link" href="第41章-运行中操控Agent.html">第 41 章：运行中操控 Agent</a></li><li><a class="chapter-link active" href="第42章-Agent超时与Watchdog.html">第 42 章：Agent 超时与 Watchdog</a></li><li><a class="chapter-link" href="第43章-卡循环检测.html">第 43 章：卡循环检测</a></li><li><a class="chapter-link" href="第44章-并行工具执行.html">第 44 章：并行工具执行</a></li><li><a class="chapter-link" href="第45章-Computer-Use上下文管理.html">第 45 章：Computer Use 上下文管理</a></li></ul></div><div class="sidebar-section"><div class="section-title">附录</div><ul class="chapter-list"><li><a class="chapter-link" href="Part10概述.html">附录概述</a></li><li><a class="chapter-link" href="附录A-术语表.html">附录 A：术语表</a></li><li><a class="chapter-link" href="附录B-模式选择指南.html">附录 B：模式选择指南</a></li><li><a class="chapter-link" href="附录C-常见问题FAQ.html">附录 C：常见问题 FAQ</a></li></ul></div>
+      </div>
+    </nav>
+    <main class="book-main">
+      <div class="book-content">
+<article class="prose dark:prose-invert fade-in"><h1 id="第-42-章agent-超时与-watchdog"><a href="#第-42-章agent-超时与-watchdog" class="anchor"></a>第 42 章：Agent 超时与 Watchdog</h1>
+<blockquote>
+<p><strong>“90 秒什么都没发生”还不是故障描述，除非你能说出循环当时究竟在等待什么。</strong></p>
+</blockquote>
+<hr/>
+<blockquote>
+<p><strong>快速通道</strong>（5 分钟掌握核心）</p>
+<ol>
+<li>显式建模阻塞阶段；单看墙上时间无法区分卡死与正当工作</li>
+<li>仅在等待远端 LLM 响应时累计空闲时间，包括最终的强制停止总结</li>
+<li>每个阶段实例只报告一次轻度空闲；硬性空闲用类型化原因取消，并预留清理时间</li>
+<li>流间隙 Watchdog 是另一只时钟——它在传输层内观察数据块间隔</li>
+<li>阶段所有权一旦不可信，就停用计时动作并暴露结构性错误</li>
+</ol>
+<p><strong>10 分钟路径</strong>：42.1-42.4 -&gt; 42.6 -&gt; Kocoro OSS Lab</p>
+</blockquote>
+<hr/>
+<blockquote>
+<p><strong>公开源码快照</strong>：实现细节取自 Kocoro 公开仓库 <code><span class="sh__line"><span class="sh__token--identifier" style="color: var(--sh-identifier)">origin</span><span class="sh__token--sign" style="color: var(--sh-sign)">/</span><span class="sh__token--identifier" style="color: var(--sh-identifier)">main</span></span></code> 的 <code><span class="sh__line"><span class="sh__token--class" style="color: var(--sh-class)">4ec6772</span></span></code> 提交，复核日期为 2026-07-27。章节讲的是不变量；具体常量应以当前源码为准。</p>
+</blockquote>
+<h2 id="421-从一只杀错工作的计时器说起"><a href="#421-从一只杀错工作的计时器说起" class="anchor"></a>42.1 从一只杀错工作的计时器说起</h2>
+<p>一个 Agent 要求图像服务渲染大型素材。八分钟很慢，但合理；工具拥有十分钟超时限制，而且仍在取得进展。</p>
+<p>另一次运行中，LLM 流发出半句话后，TCP 连接陷入沉默。没有终止事件，没有错误，也没有新字节。此时等待八分钟不是耐心，而是卡死。</p>
+<p>给两者套一只“整轮超时”计时器，就必须选择破坏哪次运行。90 秒会杀掉合法工具；十分钟会让死亡数据流长时间占用工作线程。每次出现任何活动就重置，又会让一个交替执行无用工作的循环永远活着。</p>
+<p>问题不在于选出正确时长，而在于：<strong>不同组件拥有不同类型的等待</strong>。</p>
+<h2 id="422-watchdog-需要阶段模型"><a href="#422-watchdog-需要阶段模型" class="anchor"></a>42.2 Watchdog 需要阶段模型</h2>
+<p>循环暴露显式 <code><span class="sh__line"><span class="sh__token--class" style="color: var(--sh-class)">TurnPhase</span></span></code>，而不是根据最近哪只计时器被触碰来猜测状态：</p>
+<table><thead><tr><th>阶段</th><th style="text-align:right">计入 LLM 空闲？</th><th>等待的所有者</th></tr></thead><tbody><tr><td>init</td><td style="text-align:right">否</td><td>循环构建</td></tr><tr><td>setup</td><td style="text-align:right">否</td><td>本地初始化</td></tr><tr><td>awaiting LLM</td><td style="text-align:right">是</td><td>整轮 Watchdog</td></tr><tr><td>retrying LLM</td><td style="text-align:right">否</td><td>重试策略</td></tr><tr><td>compacting</td><td style="text-align:right">否</td><td>压缩协调器</td></tr><tr><td>awaiting approval</td><td style="text-align:right">否</td><td>审批界面与策略</td></tr><tr><td>executing tools</td><td style="text-align:right">否</td><td>工具专属超时</td></tr><tr><td>injecting message</td><td style="text-align:right">否</td><td>追问注入路径</td></tr><tr><td>force stop</td><td style="text-align:right">是</td><td>整轮 Watchdog</td></tr><tr><td>done</td><td style="text-align:right">否</td><td>无</td></tr></tbody></table>
+<p>只有严格等待远端模型响应的阶段才计入空闲。Bash 命令、审批对话框或本地历史重写，从循环视角也可能很安静，但它们有不同所有者和不同的合法时长。</p>
+<p>这样，每只超时计时器都只回答一个问题：</p>
+<pre><code class="language-text"><span class="sh__line"><span class="sh__token--class" style="color: var(--sh-class)">这个阶段由哪个组件承诺推进？什么观测证明它正在推进？</span><span class="sh__token--break" style="color: var(--sh-break)"></span></span></code></pre>
+<p>如果没有所有者，再加一只计时器只是掩盖设计缺口；如果两只计时器同时拥有同一段等待，它们迟早会对用户应看到哪个错误产生分歧。</p>
+<h2 id="423-soft-idle-与-hard-idle-是两个决策"><a href="#423-soft-idle-与-hard-idle-是两个决策" class="anchor"></a>42.3 Soft Idle 与 Hard Idle 是两个决策</h2>
+<p>公开快照的默认值是 Soft Idle 90 秒、Hard Idle 540 秒。这些数字描述一个具体传输栈，不代表普遍耐心。</p>
+<p><strong>Soft Idle</strong> 发出状态：这个阶段已经多久没有 LLM 活动。它不取消。每次阶段迁移都有单调递增的序号，同一阶段实例只触发一次。离开 <code><span class="sh__line"><span class="sh__token--identifier" style="color: var(--sh-identifier)">awaiting_llm</span></span></code>、重试，再重新进入 <code><span class="sh__line"><span class="sh__token--identifier" style="color: var(--sh-identifier)">awaiting_llm</span></span></code>，新的阶段实例可以再次报告。</p>
+<p><strong>Hard Idle</strong> 发出终态状态，并用 <code><span class="sh__line"><span class="sh__token--class" style="color: var(--sh-class)">ErrHardIdleTimeout</span></span></code> 取消运行。540 秒默认值比 600 秒传输上限少 60 秒，让取消信号有时间传播，也让清理能在外层 HTTP 自己放弃前完成。</p>
+<p>这种分离对运维很重要。Soft 负责可见性，Hard 负责策略。可以只修改其中之一，而不必假装另一项也改变了。</p>
+<p>类型化取消原因同样重要。用户取消和 Watchdog 取消都会关闭上下文，但不是同一种结果。调用方必须分别呈现“你停止了它”和“Provider 不再取得进展”；恢复逻辑也必须知道重试会不会违背用户意图。</p>
+<h2 id="424-流空闲是另一只时钟"><a href="#424-流空闲是另一只时钟" class="anchor"></a>42.4 流空闲是另一只时钟</h2>
+<p>整轮 Watchdog 知道循环在 <code><span class="sh__line"><span class="sh__token--identifier" style="color: var(--sh-identifier)">awaiting_llm</span></span></code> 里停留多久，却不拥有阻塞 SSE 响应体的内部机制。</p>
+<p>因此网关在 <code><span class="sh__line"><span class="sh__token--class" style="color: var(--sh-class)">CompleteStream</span></span></code> 内部运行逐数据块计时器。每收到一行就重置；达到配置间隙的一半时记录警告，达到完整间隙时取消扫描器并关闭响应体。快照默认值是 90 秒。</p>
+<p>它捕捉的是外层整轮计时器不擅长处理的故障：连接已经交付一些内容，却不再产生字节，也不返回错误。此时自动改用非流式模式重试同一个上游，可能只是再买一次完整的传输等待。因此循环把流间隙错误当成部分结果：保留已经收到的文本，如果一个字也没有则插入明确的占位文本，记录超出截止时间的状态，然后退出。</p>
+<p>三只时钟回答不同问题：</p>
+<ul>
+<li><strong>整轮空闲：</strong> 这个 LLM 阶段是否存在太久？</li>
+<li><strong>流空闲：</strong> 这条传输最近是否产生过数据块？</li>
+<li><strong>工具超时：</strong> 这个工具是否超出自己的执行契约？</li>
+</ul>
+<p>不要让其中一只由另一只的事件重置。截图工具完成不能宽恕先前卡住的 Provider 数据流；一个 Provider token 也不能延长工具的截止时间。</p>
+<h2 id="425-嵌套调用仍需所有权"><a href="#425-嵌套调用仍需所有权" class="anchor"></a>42.5 嵌套调用仍需所有权</h2>
+<p>压缩是本地阶段，所以 Watchdog 不应计算整理历史的 CPU 工作。但压缩也会调用 LLM 来持久化经验或生成摘要；这段嵌套的远端调用<strong>确实</strong>需要覆盖。</p>
+<p>阶段跟踪器用 <code><span class="sh__line"><span class="sh__token--class" style="color: var(--sh-class)">EnterTransient</span><span class="sh__token--sign" style="color: var(--sh-sign)">(</span><span class="sh__token--class" style="color: var(--sh-class)">PhaseAwaitingLLM</span><span class="sh__token--sign" style="color: var(--sh-sign)">)</span></span></code> 处理它，并返回一个幂等的恢复闭包：</p>
+<pre><code class="language-go"><span class="sh__line"><span class="sh__token--identifier" style="color: var(--sh-identifier)">restore</span><span class="sh__token--space" style="color: var(--sh-space)"> </span><span class="sh__token--sign" style="color: var(--sh-sign)">:</span><span class="sh__token--sign" style="color: var(--sh-sign)">=</span><span class="sh__token--space" style="color: var(--sh-space)"> </span><span class="sh__token--identifier" style="color: var(--sh-identifier)">tracker</span><span class="sh__token--sign" style="color: var(--sh-sign)">.</span><span class="sh__token--class" style="color: var(--sh-class)">EnterTransient</span><span class="sh__token--sign" style="color: var(--sh-sign)">(</span><span class="sh__token--class" style="color: var(--sh-class)">PhaseAwaitingLLM</span><span class="sh__token--sign" style="color: var(--sh-sign)">)</span><span class="sh__token--break" style="color: var(--sh-break)"></span></span>
+<span class="sh__line"><span class="sh__token--identifier" style="color: var(--sh-identifier)">summary</span><span class="sh__token--sign" style="color: var(--sh-sign)">,</span><span class="sh__token--space" style="color: var(--sh-space)"> </span><span class="sh__token--identifier" style="color: var(--sh-identifier)">err</span><span class="sh__token--space" style="color: var(--sh-space)"> </span><span class="sh__token--sign" style="color: var(--sh-sign)">:</span><span class="sh__token--sign" style="color: var(--sh-sign)">=</span><span class="sh__token--space" style="color: var(--sh-space)"> </span><span class="sh__token--identifier" style="color: var(--sh-identifier)">client</span><span class="sh__token--sign" style="color: var(--sh-sign)">.</span><span class="sh__token--class" style="color: var(--sh-class)">Complete</span><span class="sh__token--sign" style="color: var(--sh-sign)">(</span><span class="sh__token--identifier" style="color: var(--sh-identifier)">ctx</span><span class="sh__token--sign" style="color: var(--sh-sign)">,</span><span class="sh__token--space" style="color: var(--sh-space)"> </span><span class="sh__token--identifier" style="color: var(--sh-identifier)">request</span><span class="sh__token--sign" style="color: var(--sh-sign)">)</span><span class="sh__token--break" style="color: var(--sh-break)"></span></span>
+<span class="sh__line"><span class="sh__token--identifier" style="color: var(--sh-identifier)">restore</span><span class="sh__token--sign" style="color: var(--sh-sign)">(</span><span class="sh__token--sign" style="color: var(--sh-sign)">)</span><span class="sh__token--break" style="color: var(--sh-break)"></span></span></code></pre>
+<p>外层阶段仍是 <code><span class="sh__line"><span class="sh__token--identifier" style="color: var(--sh-identifier)">compacting</span></span></code>；只有远端阻塞区间暂时归 LLM Watchdog 所有。忘记恢复，循环会停在错误阶段；完全不进入临时阶段，卡死的摘要器就会隐形。</p>
+<p>这说明，把手工“暂停 Watchdog / 恢复 Watchdog”散落在业务逻辑里很脆弱。阶段拥有计时策略，嵌套工作借用阶段，再归还它。</p>
+<h2 id="426-阶段跟踪器说谎怎么办"><a href="#426-阶段跟踪器说谎怎么办" class="anchor"></a>42.6 阶段跟踪器说谎怎么办</h2>
+<p>这里有一个危险诱惑：把跟踪器称为“失败即关闭”，只要状态不一致就取消。</p>
+<p>但不一致的跟踪器无法告诉你循环正在等待模型，还是合法地执行工具。根据坏状态行动，可能杀掉正当工作。快照选择了相反的生产取舍：任何结构性违规都会把跟踪器标为无效，记录警告，并让 Watchdog 观察器在本次运行剩余时间内停用。在测试或 <code><span class="sh__line"><span class="sh__token--class" style="color: var(--sh-class)">SHANNON_PHASE_STRICT</span><span class="sh__token--sign" style="color: var(--sh-sign)">=</span><span class="sh__token--class" style="color: var(--sh-class)">1</span></span></code> 下，同一违规会触发 panic，避免开发过程把它常态化。</p>
+<p>因此行为是：</p>
+<pre><code class="language-text"><span class="sh__line"><span class="sh__token--identifier" style="color: var(--sh-identifier)">development</span><span class="sh__token--space" style="color: var(--sh-space)"> </span><span class="sh__token--sign" style="color: var(--sh-sign)">/</span><span class="sh__token--space" style="color: var(--sh-space)"> </span><span class="sh__token--identifier" style="color: var(--sh-identifier)">strict</span><span class="sh__token--space" style="color: var(--sh-space)"> </span><span class="sh__token--identifier" style="color: var(--sh-identifier)">run</span><span class="sh__token--sign" style="color: var(--sh-sign)">:</span><span class="sh__token--space" style="color: var(--sh-space)"> </span><span class="sh__token--identifier" style="color: var(--sh-identifier)">structural</span><span class="sh__token--space" style="color: var(--sh-space)"> </span><span class="sh__token--identifier" style="color: var(--sh-identifier)">bug</span><span class="sh__token--space" style="color: var(--sh-space)"> </span><span class="sh__token--class" style="color: var(--sh-class)">→</span><span class="sh__token--space" style="color: var(--sh-space)"> </span><span class="sh__token--identifier" style="color: var(--sh-identifier)">panic</span><span class="sh__token--break" style="color: var(--sh-break)"></span></span>
+<span class="sh__line"><span class="sh__token--identifier" style="color: var(--sh-identifier)">ordinary</span><span class="sh__token--space" style="color: var(--sh-space)"> </span><span class="sh__token--identifier" style="color: var(--sh-identifier)">production</span><span class="sh__token--space" style="color: var(--sh-space)"> </span><span class="sh__token--identifier" style="color: var(--sh-identifier)">run</span><span class="sh__token--sign" style="color: var(--sh-sign)">:</span><span class="sh__token--space" style="color: var(--sh-space)"> </span><span class="sh__token--identifier" style="color: var(--sh-identifier)">structural</span><span class="sh__token--space" style="color: var(--sh-space)"> </span><span class="sh__token--identifier" style="color: var(--sh-identifier)">bug</span><span class="sh__token--space" style="color: var(--sh-space)"> </span><span class="sh__token--class" style="color: var(--sh-class)">→</span><span class="sh__token--space" style="color: var(--sh-space)"> </span><span class="sh__token--identifier" style="color: var(--sh-identifier)">warning</span><span class="sh__token--space" style="color: var(--sh-space)"> </span><span class="sh__token--sign" style="color: var(--sh-sign)">+</span><span class="sh__token--space" style="color: var(--sh-space)"> </span><span class="sh__token--identifier" style="color: var(--sh-identifier)">watchdog</span><span class="sh__token--space" style="color: var(--sh-space)"> </span><span class="sh__token--identifier" style="color: var(--sh-identifier)">disabled</span><span class="sh__token--break" style="color: var(--sh-break)"></span></span></code></pre>
+<p>这可能让真正的卡死继续存活；另一种选择却可能在证据不可信时取消一次合法、破坏性或昂贵的操作。两边都有代价。重要的是明确选择，并让失去的覆盖可见。</p>
+<p>恢复闭包是幂等的，消掉一类所有权错误；退出断言能捕捉忘记结束的临时阶段；一个临时阶段尚未结束时再做顶层 <code><span class="sh__line"><span class="sh__token--class" style="color: var(--sh-class)">Enter</span></span></code>，本身也会构成违规。这些检查把“计时器感觉不对”变成具体的阶段嵌套错误。</p>
+<h2 id="427-超时是一种结果不只是错误"><a href="#427-超时是一种结果不只是错误" class="anchor"></a>42.7 超时是一种结果，不只是错误</h2>
+<p>Hard Idle 触发时，取消信号必须到达四个边界：</p>
+<ol>
+<li>正在进行的 Provider 调用或数据流；</li>
+<li>从流增量启动的任何推测性工具工作；</li>
+<li>检查点与持久层，避免这一轮被错误标成完整；</li>
+<li>调用方，并携带阶段与部分输出状态。</li>
+</ol>
+<p>只返回 <code><span class="sh__line"><span class="sh__token--identifier" style="color: var(--sh-identifier)">context</span><span class="sh__token--space" style="color: var(--sh-space)"> </span><span class="sh__token--identifier" style="color: var(--sh-identifier)">canceled</span></span></code> 不够。没有类型化原因，界面无法区分 Watchdog 与用户意图；没有部分文本，一个九分钟的回答会因为最后十秒卡住而全部消失；没有终态运行状态，<a target="_blank" rel="noopener noreferrer" href="./%E7%AC%AC40%E7%AB%A0-%E6%8C%81%E4%B9%85%E5%8C%96Agent-Loop">第 40 章</a>所述的持久层及其调用方，也无法区分因超时截断的一轮与正常完成。</p>
+<p>同样，Soft 事件应包含活动阶段与实测空闲时长。“Agent slow”对运维人员毫无帮助；“No LLM activity for 90s, phase=force_stop”则明确指出最终总结调用是所有者。</p>
+<p>Watchdog 应当限制沉默，而不是掩盖沉默。</p>
+<h2 id="428-快照证据"><a href="#428-快照证据" class="anchor"></a>42.8 快照证据</h2>
+<table><thead><tr><th>观察</th><th><code><span class="sh__line"><span class="sh__token--class" style="color: var(--sh-class)">4ec6772</span></span></code> 源码</th></tr></thead><tbody><tr><td>单次 Agent 运行的显式阶段清单</td><td><a target="_blank" rel="noopener noreferrer" href="https://github.com/Kocoro-lab/Kocoro/blob/4ec6772/internal/agent/phase.go#L12"><code><span class="sh__line"><span class="sh__token--identifier" style="color: var(--sh-identifier)">phase</span><span class="sh__token--sign" style="color: var(--sh-sign)">.</span><span class="sh__token--property" style="color: var(--sh-property)">go</span></span></code> L12</a></td></tr><tr><td>只有 awaiting LLM 与 force stop 计入空闲</td><td><a target="_blank" rel="noopener noreferrer" href="https://github.com/Kocoro-lab/Kocoro/blob/4ec6772/internal/agent/phase.go#L58"><code><span class="sh__line"><span class="sh__token--identifier" style="color: var(--sh-identifier)">phase</span><span class="sh__token--sign" style="color: var(--sh-sign)">.</span><span class="sh__token--property" style="color: var(--sh-property)">go</span></span></code> L58</a></td></tr><tr><td>嵌套阻塞调用借用临时阶段</td><td><a target="_blank" rel="noopener noreferrer" href="https://github.com/Kocoro-lab/Kocoro/blob/4ec6772/internal/agent/phase.go#L138"><code><span class="sh__line"><span class="sh__token--identifier" style="color: var(--sh-identifier)">phase</span><span class="sh__token--sign" style="color: var(--sh-sign)">.</span><span class="sh__token--property" style="color: var(--sh-property)">go</span></span></code> L138</a></td></tr><tr><td>结构性违规令观察器失效，并警告或 panic</td><td><a target="_blank" rel="noopener noreferrer" href="https://github.com/Kocoro-lab/Kocoro/blob/4ec6772/internal/agent/phase.go#L117"><code><span class="sh__line"><span class="sh__token--identifier" style="color: var(--sh-identifier)">phase</span><span class="sh__token--sign" style="color: var(--sh-sign)">.</span><span class="sh__token--property" style="color: var(--sh-property)">go</span></span></code> L117</a></td></tr><tr><td>Watchdog 的 Soft/Hard 语义与跟踪器失效行为</td><td><a target="_blank" rel="noopener noreferrer" href="https://github.com/Kocoro-lab/Kocoro/blob/4ec6772/internal/agent/watchdog.go#L19"><code><span class="sh__line"><span class="sh__token--identifier" style="color: var(--sh-identifier)">watchdog</span><span class="sh__token--sign" style="color: var(--sh-sign)">.</span><span class="sh__token--property" style="color: var(--sh-property)">go</span></span></code> L19</a></td></tr><tr><td>快照默认值：Soft 90 秒、Hard 540 秒、流间隙 90 秒</td><td><a target="_blank" rel="noopener noreferrer" href="https://github.com/Kocoro-lab/Kocoro/blob/4ec6772/internal/config/config.go#L162"><code><span class="sh__line"><span class="sh__token--identifier" style="color: var(--sh-identifier)">config</span><span class="sh__token--sign" style="color: var(--sh-sign)">.</span><span class="sh__token--property" style="color: var(--sh-property)">go</span></span></code> L162</a></td></tr><tr><td>流响应体拥有自己的逐数据块空闲 Watchdog</td><td><a target="_blank" rel="noopener noreferrer" href="https://github.com/Kocoro-lab/Kocoro/blob/4ec6772/internal/client/gateway.go#L1144"><code><span class="sh__line"><span class="sh__token--identifier" style="color: var(--sh-identifier)">gateway</span><span class="sh__token--sign" style="color: var(--sh-sign)">.</span><span class="sh__token--property" style="color: var(--sh-property)">go</span></span></code> L1144</a></td></tr><tr><td>流间隙退出时保留部分输出</td><td><a target="_blank" rel="noopener noreferrer" href="https://github.com/Kocoro-lab/Kocoro/blob/4ec6772/internal/agent/loop.go#L3679"><code><span class="sh__line"><span class="sh__token--identifier" style="color: var(--sh-identifier)">loop</span><span class="sh__token--sign" style="color: var(--sh-sign)">.</span><span class="sh__token--property" style="color: var(--sh-property)">go</span></span></code> L3679</a></td></tr></tbody></table>
+<p>这些内容描述的是一个有日期的实现与传输栈，不是普遍的超时数值。</p>
+<h2 id="429-常见陷阱"><a href="#429-常见陷阱" class="anchor"></a>42.9 常见陷阱</h2>
+<p><strong>整个轮次只有一只超时计时器。</strong> 它会杀掉合法工具，或对死亡的 Provider 等太久。</p>
+<p><strong>任何活动都重置计时。</strong> 无关进展可以让真正卡死的所有者永远活着。</p>
+<p><strong>把压缩全部排除。</strong> 本地包装层不计入空闲，但里面的摘要调用仍需 LLM 覆盖。</p>
+<p><strong>把审批等待计作 Agent 空闲。</strong> 那段停顿归人类所有；用模型计时器取消它是类别错误。</p>
+<p><strong>只有阶段名称，没有迁移标识。</strong> 再次进入 <code><span class="sh__line"><span class="sh__token--identifier" style="color: var(--sh-identifier)">awaiting_llm</span></span></code> 时永远无法重新触发 Soft 告警。</p>
+<p><strong>流间隙超时后自动回退。</strong> 同一个上游可能再次卡死，让延迟和成本翻倍。</p>
+<p><strong>根据无效的阶段数据取消。</strong> 所有权一旦不可信，计时器就不知道自己正在杀什么。</p>
+<p><strong>只返回通用取消错误。</strong> 调用方失去原因、阶段、部分输出与选择恢复方式的能力。</p>
+<h2 id="kocoro-oss-lab10-分钟"><a href="#kocoro-oss-lab10-分钟" class="anchor"></a>Kocoro OSS Lab（10 分钟）</h2>
+<ol>
+<li>阅读 <a target="_blank" rel="noopener noreferrer" href="https://github.com/Kocoro-lab/Kocoro/blob/4ec6772/internal/agent/phase.go#L58"><code><span class="sh__line"><span class="sh__token--class" style="color: var(--sh-class)">CountsAsIdle</span></span></code></a>。对每个被排除的阶段，说出哪个组件负责限制它；任何空白答案都是超时缺口。</li>
+<li>沿 <a target="_blank" rel="noopener noreferrer" href="https://github.com/Kocoro-lab/Kocoro/blob/4ec6772/internal/agent/phase.go#L138"><code><span class="sh__line"><span class="sh__token--class" style="color: var(--sh-class)">EnterTransient</span></span></code></a>追踪一次压缩调用。省略恢复操作会具体出现什么故障？</li>
+<li>在公开边界上使用一条先发一个数据块、随后卡住的假数据流做测试。验证部分文本、终态状态、取消原因与清理，而不只是计时器确实触发。</li>
+</ol>
+<h2 id="本章要点"><a href="#本章要点" class="anchor"></a>本章要点</h2>
+<ol>
+<li><strong>时间有所有者。</strong> 只有位于已知阻塞阶段内，时长才有意义。</li>
+<li><strong>Soft 是可见性，Hard 是策略。</strong> 两者应独立配置、独立观测。</li>
+<li><strong>流间隙需要传输层时钟。</strong> 整轮经过时间不能替代数据块间隔。</li>
+<li><strong>嵌套远端工作借用远端阶段。</strong> 阶段所有权胜过四处散落的暂停与恢复。</li>
+<li><strong>不可信的计时数据不能触发自信的行动。</strong> 暴露结构性错误，并有意识地选择生产取舍。</li>
+</ol>
+<p>下一章：<a target="_blank" rel="noopener noreferrer" href="./%E7%AC%AC43%E7%AB%A0-%E5%8D%A1%E5%BE%AA%E7%8E%AF%E6%A3%80%E6%B5%8B">第 43 章</a>处理另一种没有进展的状态：循环仍在活动、仍在产生事件，却始终原地踏步。</p></article>
+        <div class="chapter-nav"><a href="第41章-运行中操控Agent.html"><span class="nav-label">上一章</span>第 41 章：运行中操控 Agent</a><a href="第43章-卡循环检测.html" class="nav-next"><span class="nav-label">下一章</span>第 43 章：卡循环检测</a></div>
+      </div>
+    </main>
+  </div>
+</div>
+<script src="script.js"></script>
+</body>
+</html>

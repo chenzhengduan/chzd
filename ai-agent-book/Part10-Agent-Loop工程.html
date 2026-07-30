@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Part 10：Agent Loop 工程 | AI Agent 开发实战 | chad</title>
+<meta name="author" content="chad"/>
+<meta name="description" content="AI Agent 架构模式与实战 - chad"/>
+<script>(function(){try{var m=window.matchMedia('(prefers-color-scheme:dark)');var apply=function(){var t=localStorage.getItem('theme');document.documentElement.classList.toggle('dark',t==='dark'||(!t&&m.matches))};apply();m.addEventListener('change',apply)}catch(e){}})()</script>
+<script src="https://cdn.tailwindcss.com?plugins=typography"></script>
+<script>tailwind.config={darkMode:"class",theme:{extend:{typography:{DEFAULT:{css:{maxWidth:"none"}}}}}}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css"/>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📖</text></svg>"/>
+</head>
+<body>
+<div class="book-layout">
+  <header class="book-header">
+    <div class="header-content">
+      <div class="header-left">
+        <button class="mobile-menu-toggle" id="menuToggle" aria-label="Open menu">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20"><path stroke-linecap="round" stroke-linejoin="round" d="M3 12h18M3 6h18M3 18h18"></path></svg>
+        </button>
+        <nav class="header-nav">
+          <a class="nav-item" href="index.html">Home</a>
+          <a class="nav-item" href="#">Blog</a>
+          <span class="nav-item">Books</span>
+          <a class="nav-item active hide-mobile" href="index.html">AI Agent 架构模式与实战</a>
+        </nav>
+      </div>
+      <div class="right-controls">
+        <span><a class="lang-link active" href="#">中文</a></span>
+        <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+          <svg class="w-[18px] h-[18px] hidden dark:block" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="4"></circle><path stroke-linecap="round" d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"></path></svg>
+          <svg class="w-[18px] h-[18px] block dark:hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+  <div class="sidebar-overlay" id="sidebarOverlay"></div>
+  <div class="book-body">
+    <nav class="book-sidebar" id="bookSidebar">
+      <button class="sidebar-close" id="sidebarClose" aria-label="Close menu">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20"><path stroke-linecap="round" d="M18 6L6 18M6 6l12 12"></path></svg>
+      </button>
+      <div class="sidebar-header">
+        <a class="book-title" href="index.html">AI Agent 架构：从单体到企业级多智能体</a>
+      </div>
+      <div class="sidebar-content">
+<div class="sidebar-section"><div class="section-title">前言</div><ul class="chapter-list"><li><a class="chapter-link" href="前言.html">前言</a></li></ul></div><div class="sidebar-section"><div class="section-title">Part 1 - Agent 基础</div><ul class="chapter-list"><li><a class="chapter-link" href="Part1概述.html">Part 1 概述</a></li><li><a class="chapter-link" href="第01章-Agent的本质.html">第 1 章：Agent 的本质</a></li><li><a class="chapter-link" href="第02章-ReAct循环.html">第 2 章：ReAct 循环</a></li></ul></div><div class="sidebar-section"><div class="section-title">Part 2 - 工具与扩展</div><ul class="chapter-list"><li><a class="chapter-link" href="Part2概述.html">Part 2 概述</a></li><li><a class="chapter-link" href="第03章-工具调用基础.html">第 3 章：工具调用基础</a></li><li><a class="chapter-link" href="第04章-MCP协议详解.html">第 4 章：MCP 协议详解</a></li><li><a class="chapter-link" href="第05章-Skills技能系统.html">第 5 章：Skills 技能系统</a></li><li><a class="chapter-link" href="第06章-Hooks与事件系统.html">第 6 章：Hooks 与事件系统</a></li></ul></div><div class="sidebar-section"><div class="section-title">Part 3 - 上下文与记忆</div><ul class="chapter-list"><li><a class="chapter-link" href="Part3概述.html">Part 3 概述</a></li><li><a class="chapter-link" href="第07章-上下文工程.html">第 7 章：上下文工程</a></li><li><a class="chapter-link" href="第08章-记忆架构.html">第 8 章：记忆架构</a></li><li><a class="chapter-link" href="第09章-多轮对话设计.html">第 9 章：多轮对话设计</a></li></ul></div><div class="sidebar-section"><div class="section-title">Part 4 - 单 Agent 模式</div><ul class="chapter-list"><li><a class="chapter-link" href="Part4概述.html">Part 4 概述</a></li><li><a class="chapter-link" href="第10章-Planning模式.html">第 10 章：Planning 模式</a></li><li><a class="chapter-link" href="第11章-Reflection模式.html">第 11 章：Reflection 模式</a></li><li><a class="chapter-link" href="第12章-Chain-of-Thought.html">第 12 章：Chain-of-Thought</a></li></ul></div><div class="sidebar-section"><div class="section-title">Part 5 - 多 Agent 编排</div><ul class="chapter-list"><li><a class="chapter-link" href="Part5概述.html">Part 5 概述</a></li><li><a class="chapter-link" href="第13章-编排基础.html">第 13 章：编排基础</a></li><li><a class="chapter-link" href="第14章-DAG工作流.html">第 14 章：DAG 工作流</a></li><li><a class="chapter-link" href="第15章-Swarm模式.html">第 15 章：Swarm 模式</a></li><li><a class="chapter-link" href="第16章-Handoff机制.html">第 16 章：Handoff 机制</a></li></ul></div><div class="sidebar-section"><div class="section-title">Part 6 - 高级推理</div><ul class="chapter-list"><li><a class="chapter-link" href="Part6概述.html">Part 6 概述</a></li><li><a class="chapter-link" href="第17章-Tree-of-Thoughts.html">第 17 章：Tree-of-Thoughts</a></li><li><a class="chapter-link" href="第18章-Debate模式.html">第 18 章：Debate 模式</a></li><li><a class="chapter-link" href="第19章-Research-Synthesis.html">第 19 章：Research-Synthesis</a></li></ul></div><div class="sidebar-section"><div class="section-title">Part 7 - 生产架构</div><ul class="chapter-list"><li><a class="chapter-link" href="Part7概述.html">Part 7 概述</a></li><li><a class="chapter-link" href="第20章-三层架构设计.html">第 20 章：三层架构设计</a></li><li><a class="chapter-link" href="第21章-Temporal工作流.html">第 21 章：Temporal 工作流</a></li><li><a class="chapter-link" href="第22章-可观测性.html">第 22 章：可观测性</a></li></ul></div><div class="sidebar-section"><div class="section-title">Part 8 - 企业级特性</div><ul class="chapter-list"><li><a class="chapter-link" href="Part8概述.html">Part 8 概述</a></li><li><a class="chapter-link" href="第23章-Token预算控制.html">第 23 章：Token 预算控制</a></li><li><a class="chapter-link" href="第24章-策略治理.html">第 24 章：策略治理</a></li><li><a class="chapter-link" href="第25章-安全执行.html">第 25 章：安全执行</a></li><li><a class="chapter-link" href="第26章-多租户设计.html">第 26 章：多租户设计</a></li></ul></div><div class="sidebar-section"><div class="section-title">Part 9 - 前沿实践</div><ul class="chapter-list"><li><a class="chapter-link" href="Part9概述.html">Part 9 概述</a></li><li><a class="chapter-link" href="第27章-Deep-Research.html">第 27 章：Deep Research</a></li><li><a class="chapter-link" href="第28章-Computer-Use.html">第 28 章：Computer Use</a></li><li><a class="chapter-link" href="第29章-Agentic-Coding.html">第 29 章：Agentic Coding</a></li><li><a class="chapter-link" href="第30章-Background-Agents.html">第 30 章：Background Agents</a></li><li><a class="chapter-link" href="第31章-分层模型策略.html">第 31 章：分层模型策略</a></li><li><a class="chapter-link" href="第32章-OpenClaw时代.html">第 32 章：OpenClaw 时代</a></li><li><a class="chapter-link" href="第33章-Building-on-the-Harness-ShanClaw.html">第 33 章：Building on the Harness - Kocoro</a></li></ul></div><div class="sidebar-section"><div class="section-title">Part 10 - Agent Loop 工程</div><ul class="chapter-list"><li><a class="chapter-link active" href="Part10-Agent-Loop工程.html">Part 10 概述</a></li><li><a class="chapter-link" href="第34章-从DAG到Agent-Loop.html">第 34 章：从 DAG 到 Agent Loop</a></li><li><a class="chapter-link" href="第35章-上下文压缩.html">第 35 章：上下文压缩</a></li><li><a class="chapter-link" href="第36章-Tool-Result预算与外溢.html">第 36 章：Tool Result 预算与外溢</a></li><li><a class="chapter-link" href="第37章-分层压缩.html">第 37 章：分层压缩</a></li><li><a class="chapter-link" href="第38章-Deferred-Tool-Loading与Tool-Search.html">第 38 章：Deferred Tool Loading 与 Tool Search</a></li><li><a class="chapter-link" href="第39章-Prompt-Cache稳定性.html">第 39 章：Prompt Cache 稳定性</a></li><li><a class="chapter-link" href="第40章-持久化Agent-Loop.html">第 40 章：持久化 Agent Loop</a></li><li><a class="chapter-link" href="第41章-运行中操控Agent.html">第 41 章：运行中操控 Agent</a></li><li><a class="chapter-link" href="第42章-Agent超时与Watchdog.html">第 42 章：Agent 超时与 Watchdog</a></li><li><a class="chapter-link" href="第43章-卡循环检测.html">第 43 章：卡循环检测</a></li><li><a class="chapter-link" href="第44章-并行工具执行.html">第 44 章：并行工具执行</a></li><li><a class="chapter-link" href="第45章-Computer-Use上下文管理.html">第 45 章：Computer Use 上下文管理</a></li></ul></div><div class="sidebar-section"><div class="section-title">附录</div><ul class="chapter-list"><li><a class="chapter-link" href="Part10概述.html">附录概述</a></li><li><a class="chapter-link" href="附录A-术语表.html">附录 A：术语表</a></li><li><a class="chapter-link" href="附录B-模式选择指南.html">附录 B：模式选择指南</a></li><li><a class="chapter-link" href="附录C-常见问题FAQ.html">附录 C：常见问题 FAQ</a></li></ul></div>
+      </div>
+    </nav>
+    <main class="book-main">
+      <div class="book-content">
+<article class="prose dark:prose-invert fade-in"><h1 id="part-10agent-loop-工程"><a href="#part-10agent-loop-工程" class="anchor"></a>Part 10：Agent Loop 工程</h1>
+<blockquote>
+<p>Part 9 解释了 Agent 为什么需要 Harness。Part 10 继续深入 Runtime：面对长上下文、庞大工具面、进程重启、运行中追问、Provider 卡死、重复动作和并行调用时，怎样让循环仍然可靠。</p>
+</blockquote>
+<blockquote>
+<p><strong>公开源码快照</strong>：实现细节取自 Kocoro 公开仓库 <code><span class="sh__line"><span class="sh__token--identifier" style="color: var(--sh-identifier)">origin</span><span class="sh__token--sign" style="color: var(--sh-sign)">/</span><span class="sh__token--identifier" style="color: var(--sh-identifier)">main</span></span></code> 的 <code><span class="sh__line"><span class="sh__token--class" style="color: var(--sh-class)">4ec6772</span></span></code> 提交，复核日期为 2026-07-27。章节讲的是不变量；具体常量应以当前源码为准。</p>
+</blockquote>
+<h2 id="章节地图"><a href="#章节地图" class="anchor"></a>章节地图</h2>
+<table><thead><tr><th>章节</th><th>主题</th><th>回答的问题</th></tr></thead><tbody><tr><td>34</td><td><a target="_blank" rel="noopener noreferrer" href="./%E7%AC%AC34%E7%AB%A0-%E4%BB%8EDAG%E5%88%B0Agent-Loop">从 DAG 到 Agent Loop</a></td><td>解释确定性 DAG 何时应切换到自适应 Agent Loop，以及长驻 Daemon 每个 Turn 必须重建哪些状态。</td></tr><tr><td>35</td><td><a target="_blank" rel="noopener noreferrer" href="./%E7%AC%AC35%E7%AB%A0-%E4%B8%8A%E4%B8%8B%E6%96%87%E5%8E%8B%E7%BC%A9">上下文压缩</a></td><td>设计分阶段的上下文压缩阶梯：溢出前主动处理、验证摘要，并保留紧急恢复路径。</td></tr><tr><td>36</td><td><a target="_blank" rel="noopener noreferrer" href="./%E7%AC%AC36%E7%AB%A0-Tool-Result%E9%A2%84%E7%AE%97%E4%B8%8E%E5%A4%96%E6%BA%A2">Tool Result 预算与外溢</a></td><td>说明如何把大型 Tool Result 移出 Prompt，同时保留可用预览和持久指针。</td></tr><tr><td>37</td><td><a target="_blank" rel="noopener noreferrer" href="./%E7%AC%AC37%E7%AB%A0-%E5%88%86%E5%B1%82%E5%8E%8B%E7%BC%A9">分层压缩</a></td><td>解释旧工具证据的首次分层、正文型工具下限与字节稳定重写。</td></tr><tr><td>38</td><td><a target="_blank" rel="noopener noreferrer" href="./%E7%AC%AC38%E7%AB%A0-Deferred-Tool-Loading%E4%B8%8ETool-Search">Deferred Tool Loading 与 Tool Search</a></td><td>通过 Token 预算、类别延迟、Warm Set 与 Tool Search 控制 MCP Tool Schema 膨胀。</td></tr><tr><td>39</td><td><a target="_blank" rel="noopener noreferrer" href="./%E7%AC%AC39%E7%AB%A0-Prompt-Cache%E7%A8%B3%E5%AE%9A%E6%80%A7">Prompt Cache 稳定性</a></td><td>说明稳定 Prompt 前缀、字节一致的 Fork Request 与执行期权限检查如何提高 Prompt Cache 命中。</td></tr><tr><td>40</td><td><a target="_blank" rel="noopener noreferrer" href="./%E7%AC%AC40%E7%AB%A0-%E6%8C%81%E4%B9%85%E5%8C%96Agent-Loop">持久化 Agent Loop</a></td><td>用阶段边界 Checkpoint、中断标记、有界无人恢复与幂等持久化设计可恢复 Agent Turn。</td></tr><tr><td>41</td><td><a target="_blank" rel="noopener noreferrer" href="./%E7%AC%AC41%E7%AB%A0-%E8%BF%90%E8%A1%8C%E4%B8%AD%E6%93%8D%E6%8E%A7Agent">运行中操控 Agent</a></td><td>解释运行中 Agent 如何吸收追问、保持消息寻址、区分 Delivery Ack 与重放，并安全响应中断。</td></tr><tr><td>42</td><td><a target="_blank" rel="noopener noreferrer" href="./%E7%AC%AC42%E7%AB%A0-Agent%E8%B6%85%E6%97%B6%E4%B8%8EWatchdog">Agent 超时与 Watchdog</a></td><td>区分 Soft Idle 告警、Hard Cancel、Stream Gap 检测与阶段感知策略，处理 Agent 卡死。</td></tr><tr><td>43</td><td><a target="_blank" rel="noopener noreferrer" href="./%E7%AC%AC43%E7%AB%A0-%E5%8D%A1%E5%BE%AA%E7%8E%AF%E6%A3%80%E6%B5%8B">卡循环检测</a></td><td>用互补进展信号、有界 Nudge、ForceStop 与公开的零字节写入事故构建卡循环检测。</td></tr><tr><td>44</td><td><a target="_blank" rel="noopener noreferrer" href="./%E7%AC%AC44%E7%AB%A0-%E5%B9%B6%E8%A1%8C%E5%B7%A5%E5%85%B7%E6%89%A7%E8%A1%8C">并行工具执行</a></td><td>解释如何用按调用判定的并发 Trait、有序结果配对和保守 Bash 分类安全执行并行工具。</td></tr><tr><td>45</td><td><a target="_blank" rel="noopener noreferrer" href="./%E7%AC%AC45%E7%AB%A0-Computer-Use%E4%B8%8A%E4%B8%8B%E6%96%87%E7%AE%A1%E7%90%86">Computer Use 上下文管理</a></td><td>分离文本观察、浏览器截图与全局图像预算，让 GUI Loop 保留可行动状态而不让 Prompt 无限增长。</td></tr></tbody></table>
+<h2 id="推荐阅读路径"><a href="#推荐阅读路径" class="anchor"></a>推荐阅读路径</h2>
+<ul>
+<li><strong>上下文与成本</strong>：35 → 36 → 37 → 38 → 39</li>
+<li><strong>持久性与控制</strong>：40 → 41 → 42</li>
+<li><strong>可靠性、速度与 GUI 上下文</strong>：43 → 44 → 45</li>
+<li><strong>从 DAG 工作流进入</strong>：34 → 40 → 43 → 44</li>
+</ul>
+<h2 id="源码边界"><a href="#源码边界" class="anchor"></a>源码边界</h2>
+<p>只使用 Kocoro 公开 <code><span class="sh__line"><span class="sh__token--identifier" style="color: var(--sh-identifier)">origin</span><span class="sh__token--sign" style="color: var(--sh-sign)">/</span><span class="sh__token--identifier" style="color: var(--sh-identifier)">main</span></span></code> 中被 Git 跟踪的文件。排除本地架构笔记、未推送分支、私有事故复盘、托管服务拓扑、内部 Token 与私有仓库路径。</p>
+<p>第 45 章已经纳入，因为 Observation Window 与图像预算实现现已进入公开 <code><span class="sh__line"><span class="sh__token--identifier" style="color: var(--sh-identifier)">origin</span><span class="sh__token--sign" style="color: var(--sh-sign)">/</span><span class="sh__token--identifier" style="color: var(--sh-identifier)">main</span></span></code>。</p></article>
+        <div class="chapter-nav"><a href="第33章-Building-on-the-Harness-ShanClaw.html"><span class="nav-label">上一章</span>第 33 章：Building on the Harness - Kocoro</a><a href="第34章-从DAG到Agent-Loop.html" class="nav-next"><span class="nav-label">下一章</span>第 34 章：从 DAG 到 Agent Loop</a></div>
+      </div>
+    </main>
+  </div>
+</div>
+<script src="script.js"></script>
+</body>
+</html>

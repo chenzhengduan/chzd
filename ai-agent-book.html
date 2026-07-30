@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>AI Agent 架构：从单体到企业级多智能体 | chad</title>
+<meta name="description" content="从概念到生产：框架无关的 AI Agent 架构模式与实战。涵盖 Agent 基础、工具扩展、上下文记忆、单/多 Agent 模式、高级推理、生产架构、企业特性等内容。"/>
+<meta name="author" content="chad"/>
+<meta property="og:title" content="AI Agent 架构：从单体到企业级多智能体"/>
+<meta property="og:description" content="从概念到生产：框架无关的 AI Agent 架构模式与实战指南"/>
+<meta property="og:type" content="book"/>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📖</text></svg>"/>
+<script>(function(){try{var m=window.matchMedia('(prefers-color-scheme:dark)');var apply=function(){var t=localStorage.getItem('theme');document.documentElement.classList.toggle('dark',t==='dark'||(!t&&m.matches))};apply();m.addEventListener('change',apply)}catch(e){}})()</script>
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+tailwind.config = {
+  darkMode: 'class',
+  theme: { extend: {} }
+}
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#fff; --fg:#0a0a0a; --muted:#737373; --border:#e5e5e5;
+  --code-bg:#f5f5f5; --card-bg:#fafafa; --accent:#2563eb;
+  --sh-class:#2d5; --sh-sign:#999; --sh-space:inherit;
+}
+.dark{
+  --bg:#000; --fg:#fafafa; --muted:#a3a3a3; --border:#262626;
+  --code-bg:#0a0a0a; --card-bg:#171717; --accent:#60a5fa;
+  --sh-class:#7ee787; --sh-sign:#6e7681; --space:#6e7681;
+}
+*{ -webkit-font-smoothing:antialiased; }
+html{ scroll-behavior:smooth; }
+body{
+  font-family:'Noto Sans SC', system-ui, sans-serif;
+  background:var(--bg); color:var(--fg);
+  transition: background .2s ease, color .2s ease;
+}
+.mono{ font-family:'JetBrains Mono', ui-monospace, monospace; }
+
+.book-layout{ display:flex; flex-direction:column; min-height:100vh; }
+.book-header{
+  position:sticky; top:0; z-index:50;
+  background:color-mix(in srgb, var(--bg) 80%, transparent);
+  backdrop-filter:blur(12px);
+  border-bottom:1px solid color-mix(in srgb, var(--border) 60%, transparent);
+}
+.header-content{
+  display:flex; align-items:center; justify-content:space-between;
+  padding:0 1rem; height:3.5rem;
+}
+.header-nav{ display:flex; align-items:center; gap:.25rem; }
+.nav-item{
+  padding:.375rem .75rem; font-size:.875rem; border-radius:.5rem;
+  color:var(--muted); transition:all .15s ease; white-space:nowrap;
+  cursor:pointer; display:flex; align-items:center; gap:.25rem;
+}
+.nav-item:hover{ color:var(--fg); background:color-mix(in srgb,var(--fg) 6%,transparent); }
+.nav-item.active{ color:var(--fg); }
+.lang-link{
+  font-size:.8rem; padding:.25rem .5rem; border-radius:.375rem;
+  color:var(--muted); transition:all .15s ease;
+}
+.lang-link.active{ color:var(--fg); background:color-mix(in srgb,var(--fg) 8%,transparent); }
+.lang-link:hover{ color:var(--fg); }
+
+.book-body{ display:flex; max-width:80rem; margin:0 auto; width:100%; }
+.book-sidebar{
+  width:16rem; flex-shrink:0; position:sticky; top:3.5rem;
+  height:calc(100vh - 3.5rem); overflow-y:auto;
+  padding:1.5rem 1rem; border-right:1px solid color-mix(in srgb,var(--border) 60%,transparent);
+  transition: transform .2s ease;
+}
+.sidebar-header{ margin-bottom:1rem; }
+.book-title{
+  font-size:.875rem; font-weight:600; color:var(--fg);
+  line-height:1.4; text-decoration:none; display:block;
+}
+.sidebar-section{ margin-bottom:1.25rem; }
+.section-title{
+  font-size:.7rem; font-weight:700; text-transform:uppercase;
+  letter-spacing:.05em; color:var(--muted); margin-bottom:.5rem;
+  padding-left:.25rem;
+}
+.chapter-list{ list-style:none; padding:0; margin:0; }
+.chapter-link{
+  display:block; padding:.3rem .5rem; font-size:.8rem;
+  color:var(--muted); text-decoration:none; border-radius:.375rem;
+  transition:all .12s ease; line-height:1.4;
+}
+.chapter-link:hover{ color:var(--fg); background:color-mix(in srgb,var(--fg) 6%,transparent); }
+
+.book-main{ flex:1; min-width:0; }
+.book-content{
+  max-width:44rem; margin:0 auto; padding:2.5rem 1.25rem 6rem;
+}
+
+.prose{ max-width:none; }
+.prose h1{ font-size:2rem; font-weight:700; letter-spacing:-.02em; margin:0 0 1rem; }
+.prose h2{
+  font-size:1.4rem; font-weight:600; letter-spacing:-.01em;
+  margin:2.5rem 0 1rem; padding-top:.5rem;
+  border-top:1px solid color-mix(in srgb,var(--border) 80%,transparent);
+}
+.prose h3{ font-size:1.1rem; font-weight:600; margin:1.75rem 0 .75rem; }
+.prose p{ margin:.75rem 0; line-height:1.75; }
+.prose ul{ margin:.75rem 0; padding-left:1.5rem; }
+.prose ul li{ margin:.35rem 0; line-height:1.7; }
+.prose ol{ margin:.75rem 0; padding-left:1.5rem; }
+.prose ol li{ margin:.5rem 0; line-height:1.7; }
+.prose strong{ font-weight:600; color:var(--fg); }
+.prose a{ color:var(--accent); text-decoration:none; }
+.prose a:hover{ text-decoration:underline; }
+.prose hr{
+  border:none; border-top:1px solid color-mix(in srgb,var(--border) 70%,transparent);
+  margin:2rem 0;
+}
+.prose blockquote{
+  border-left:3px solid var(--accent);
+  padding:.5rem 0 .5rem 1rem; margin:1rem 0;
+  color:var(--muted); font-style:italic;
+}
+.prose blockquote p{ margin:.3rem 0; }
+.prose table{
+  width:100%; border-collapse:collapse; margin:1rem 0;
+  font-size:.875rem;
+}
+.prose th{
+  text-align:left; font-weight:600; padding:.5rem .75rem;
+  border-bottom:2px solid color-mix(in srgb,var(--border) 90%,transparent);
+}
+.prose td{
+  padding:.5rem .75rem;
+  border-bottom:1px solid color-mix(in srgb,var(--border) 60%,transparent);
+}
+.prose code:not(pre code){
+  background:var(--code-bg); padding:.15rem .35rem; border-radius:.25rem;
+  font-size:.85em; font-family:'JetBrains Mono',monospace;
+}
+.prose pre{
+  background:var(--code-bg); border:1px solid color-mix(in srgb,var(--border) 60%,transparent);
+  border-radius:.5rem; padding:1rem 1.25rem; overflow-x:auto; margin:1rem 0;
+}
+.prose pre code{ font-family:'JetBrains Mono',monospace; font-size:.8rem; line-height:1.7; }
+.sh-class{ color:var(--sh-class); }
+.sh-sign{ color:var(--sh-sign); }
+.sh-space{ color:var(--sh-space); }
+
+.anchor{ color:var(--muted); text-decoration:none; margin-left:.5rem; opacity:0; transition:opacity .15s; }
+h1:hover .anchor, h2:hover .anchor, h3:hover .anchor{ opacity:1; }
+.anchor:hover{ color:var(--accent); opacity:1; }
+
+.repo-card{
+  display:block; text-decoration:none; color:inherit;
+  margin:1.5rem 0; border-radius:.5rem;
+  border:1px solid color-mix(in srgb,var(--border) 80%,transparent);
+  background:var(--card-bg); padding:1.5rem;
+  transition:all .2s ease;
+}
+.repo-card:hover{
+  border-color:var(--accent);
+  box-shadow:0 4px 12px color-mix(in srgb,var(--accent) 15%,transparent);
+}
+.repo-card .repo-name{ font-weight:600; font-size:.875rem; color:var(--accent); }
+.repo-card .repo-desc{ margin:.5rem 0 0; font-size:.875rem; line-height:1.6; color:var(--muted); }
+.repo-card .repo-meta{ margin-top:.75rem; font-size:.75rem; color:var(--muted); display:flex; align-items:center; gap:.5rem; }
+.badges{ display:flex; flex-wrap:wrap; gap:.5rem; margin:.75rem 0; }
+.badge{
+  display:inline-block; padding:.2rem .5rem; border-radius:.25rem;
+  font-size:.7rem; font-weight:500; color:#fff;
+}
+.badge-blue{ background:#2563eb; }
+.badge-green{ background:#16a34a; }
+.badge-grey{ background:#6b7280; }
+
+.theme-toggle{
+  width:2rem; height:2rem; border-radius:.5rem; display:flex;
+  align-items:center; justify-content:center; cursor:pointer;
+  color:var(--muted); transition:all .15s; background:none; border:none;
+}
+.theme-toggle:hover{ color:var(--fg); background:color-mix(in srgb,var(--fg) 8%,transparent); }
+.mobile-menu-toggle{
+  display:none; width:2rem; height:2rem; align-items:center; justify-content:center;
+  background:none; border:none; color:var(--fg); cursor:pointer;
+}
+.sidebar-overlay{
+  display:none; position:fixed; inset:0; background:rgba(0,0,0,.4);
+  z-index:40; opacity:0; transition:opacity .2s;
+}
+.sidebar-overlay.open{ display:block; opacity:1; }
+.sidebar-close{
+  display:none; position:absolute; top:.75rem; right:.75rem;
+  width:2rem; height:2rem; background:none; border:none; color:var(--fg); cursor:pointer;
+}
+
+@media (max-width:767px){
+  .book-sidebar{
+    position:fixed; left:0; top:3.5rem; z-index:50;
+    background:var(--bg); transform:translateX(-100%);
+    width:18rem; box-shadow:0 0 40px rgba(0,0,0,.15);
+  }
+  .book-sidebar.open{ transform:translateX(0); }
+  .sidebar-close{ display:flex; align-items:center; justify-content:center; }
+  .mobile-menu-toggle{ display:flex; }
+  .hide-mobile{ display:none !important; }
+}
+@media (max-width:639px){
+  .book-content{ padding:1.5rem 1rem 4rem; }
+  .prose h1{ font-size:1.5rem; }
+  .prose h2{ font-size:1.2rem; }
+}
+
+::-webkit-scrollbar{ width:8px; height:8px; }
+::-webkit-scrollbar-track{ background:transparent; }
+::-webkit-scrollbar-thumb{ background:color-mix(in srgb,var(--muted) 40%,transparent); border-radius:4px; }
+::-webkit-scrollbar-thumb:hover{ background:color-mix(in srgb,var(--muted) 60%,transparent); }
+
+.fade-in{ animation:fadeIn .4s ease both; }
+@keyframes fadeIn{ from{opacity:0; transform:translateY(8px);} to{opacity:1; transform:translateY(0);} }
+</style>
+</head>
+<body>
+<div class="book-layout">
+  <header class="book-header">
+    <div class="header-content">
+      <div class="header-left flex items-center gap-2">
+        <button class="mobile-menu-toggle" id="menuToggle" aria-label="Open menu">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20"><path stroke-linecap="round" stroke-linejoin="round" d="M3 12h18M3 6h18M3 18h18"></path></svg>
+        </button>
+        <nav class="header-nav">
+          <a class="nav-item" href="#">Home</a>
+          <a class="nav-item" href="#">Blog</a>
+          <span class="nav-item" style="cursor:default">Books
+            <svg class="w-3 h-3" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z" clip-rule="evenodd"></path></svg>
+          </span>
+          <a class="nav-item active hide-mobile" href="#">AI Agent 架构模式与实战</a>
+        </nav>
+      </div>
+      <div class="flex items-center gap-1">
+        <span><a class="lang-link" href="#">English</a></span>
+        <span><a class="lang-link active" href="#">中文</a></span>
+        <span><a class="lang-link" href="#">日本語</a></span>
+        <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+          <svg id="iconSun" class="w-[18px] h-[18px] hidden dark:block" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="4"></circle><path stroke-linecap="round" d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"></path></svg>
+          <svg id="iconMoon" class="w-[18px] h-[18px] block dark:hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+  <div class="book-body">
+    <nav class="book-sidebar" id="bookSidebar">
+      <button class="sidebar-close" id="sidebarClose" aria-label="Close menu">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20"><path stroke-linecap="round" d="M18 6L6 18M6 6l12 12"></path></svg>
+      </button>
+      <div class="sidebar-header">
+        <a class="book-title" href="#">AI Agent 架构：从单体到企业级多智能体</a>
+      </div>
+      <div class="sidebar-content">
+        <div class="sidebar-section"><div class="section-title">前言</div><ul class="chapter-list"><li><a class="chapter-link" href="#top">前言</a></li></ul></div>
+        <div class="sidebar-section"><div class="section-title">Part 1 - Agent 基础</div><ul class="chapter-list"><li><a class="chapter-link" href="#">Part 1 概述</a></li><li><a class="chapter-link" href="#">第 1 章：Agent 的本质</a></li><li><a class="chapter-link" href="#">第 2 章：ReAct 循环</a></li></ul></div>
+        <div class="sidebar-section"><div class="section-title">Part 2 - 工具与扩展</div><ul class="chapter-list"><li><a class="chapter-link" href="#">Part 2 概述</a></li><li><a class="chapter-link" href="#">第 3 章：工具调用基础</a></li><li><a class="chapter-link" href="#">第 4 章：MCP 协议详解</a></li><li><a class="chapter-link" href="#">第 5 章：Skills 技能系统</a></li><li><a class="chapter-link" href="#">第 6 章：Hooks 与事件系统</a></li></ul></div>
+        <div class="sidebar-section"><div class="section-title">Part 3 - 上下文与记忆</div><ul class="chapter-list"><li><a class="chapter-link" href="#">Part 3 概述</a></li><li><a class="chapter-link" href="#">第 7 章：上下文工程</a></li><li><a class="chapter-link" href="#">第 8 章：记忆架构</a></li><li><a class="chapter-link" href="#">第 9 章：多轮对话设计</a></li></ul></div>
+        <div class="sidebar-section"><div class="section-title">Part 4 - 单 Agent 模式</div><ul class="chapter-list"><li><a class="chapter-link" href="#">Part 4 概述</a></li><li><a class="chapter-link" href="#">第 10 章：Planning 模式</a></li><li><a class="chapter-link" href="#">第 11 章：Reflection 模式</a></li><li><a class="chapter-link" href="#">第 12 章：Chain-of-Thought</a></li></ul></div>
+        <div class="sidebar-section"><div class="section-title">Part 5 - 多 Agent 编排</div><ul class="chapter-list"><li><a class="chapter-link" href="#">Part 5 概述</a></li><li><a class="chapter-link" href="#">第 13 章：编排基础</a></li><li><a class="chapter-link" href="#">第 14 章：DAG 工作流</a></li><li><a class="chapter-link" href="#">第 15 章：Swarm 模式</a></li><li><a class="chapter-link" href="#">第 16 章：Handoff 机制</a></li></ul></div>
+        <div class="sidebar-section"><div class="section-title">Part 6 - 高级推理</div><ul class="chapter-list"><li><a class="chapter-link" href="#">Part 6 概述</a></li><li><a class="chapter-link" href="#">第 17 章：Tree-of-Thoughts</a></li><li><a class="chapter-link" href="#">第 18 章：Debate 模式</a></li><li><a class="chapter-link" href="#">第 19 章：Research-Synthesis</a></li></ul></div>
+        <div class="sidebar-section"><div class="section-title">Part 7 - 生产架构</div><ul class="chapter-list"><li><a class="chapter-link" href="#">Part 7 概述</a></li><li><a class="chapter-link" href="#">第 20 章：三层架构设计</a></li><li><a class="chapter-link" href="#">第 21 章：Temporal 工作流</a></li><li><a class="chapter-link" href="#">第 22 章：可观测性</a></li></ul></div>
+        <div class="sidebar-section"><div class="section-title">Part 8 - 企业级特性</div><ul class="chapter-list"><li><a class="chapter-link" href="#">Part 8 概述</a></li><li><a class="chapter-link" href="#">第 23 章：Token 预算控制</a></li><li><a class="chapter-link" href="#">第 24 章：策略治理</a></li><li><a class="chapter-link" href="#">第 25 章：安全执行</a></li><li><a class="chapter-link" href="#">第 26 章：多租户设计</a></li></ul></div>
+        <div class="sidebar-section"><div class="section-title">Part 9 - 前沿实践</div><ul class="chapter-list"><li><a class="chapter-link" href="#">Part 9 概述</a></li><li><a class="chapter-link" href="#">第 27 章：Deep Research</a></li><li><a class="chapter-link" href="#">第 28 章：Computer Use</a></li><li><a class="chapter-link" href="#">第 29 章：Agentic Coding</a></li><li><a class="chapter-link" href="#">第 30 章：Background Agents</a></li><li><a class="chapter-link" href="#">第 31 章：分层模型策略</a></li><li><a class="chapter-link" href="#">第 32 章：OpenClaw 时代</a></li><li><a class="chapter-link" href="#">第 33 章：Building on the Harness - Kocoro</a></li></ul></div>
+        <div class="sidebar-section"><div class="section-title">Part 10 - Agent Loop 工程</div><ul class="chapter-list"><li><a class="chapter-link" href="#">Part 10 概述</a></li><li><a class="chapter-link" href="#">第 34 章：从 DAG 到 Agent Loop</a></li><li><a class="chapter-link" href="#">第 35 章：上下文压缩</a></li><li><a class="chapter-link" href="#">第 36 章：Tool Result 预算与外溢</a></li><li><a class="chapter-link" href="#">第 37 章：分层压缩</a></li><li><a class="chapter-link" href="#">第 38 章：Deferred Tool Loading 与 Tool Search</a></li><li><a class="chapter-link" href="#">第 39 章：Prompt Cache 稳定性</a></li><li><a class="chapter-link" href="#">第 40 章：持久化 Agent Loop</a></li><li><a class="chapter-link" href="#">第 41 章：运行中操控 Agent</a></li><li><a class="chapter-link" href="#">第 42 章：Agent 超时与 Watchdog</a></li><li><a class="chapter-link" href="#">第 43 章：卡循环检测</a></li><li><a class="chapter-link" href="#">第 44 章：并行工具执行</a></li><li><a class="chapter-link" href="#">第 45 章：Computer Use 上下文管理</a></li></ul></div>
+        <div class="sidebar-section"><div class="section-title">附录</div><ul class="chapter-list"><li><a class="chapter-link" href="#">附录概述</a></li><li><a class="chapter-link" href="#">附录 A：术语表</a></li><li><a class="chapter-link" href="#">附录 B：模式选择指南</a></li><li><a class="chapter-link" href="#">附录 C：常见问题 FAQ</a></li></ul></div>
+      </div>
+    </nav>
+
+    <main class="book-main">
+      <div class="book-content" id="top">
+        <article class="prose fade-in">
+          <h1 id="ai-agent-架构模式与实战">AI Agent 架构模式与实战<a href="#ai-agent-架构模式与实战" class="anchor">#</a></h1>
+          <blockquote>
+            <p><strong>从概念到生产：框架无关的 AI Agent 架构模式与实战</strong></p>
+          </blockquote>
+          <div class="badges">
+            <span class="badge badge-blue">Reference Implementation · Shannon OSS</span>
+            <span class="badge badge-green">Local Runtime · Kocoro</span>
+            <span class="badge badge-grey">License: CC BY-NC-SA 4.0</span>
+          </div>
+          <p><strong>作者</strong>: <a href="#">chad</a> · <strong>项目主页</strong>: <a href="#">shannon.run</a> · <a href="#">kocoro.ai</a> · <strong>GitHub</strong>: <a href="#">ai-agent-book</a></p>
+          <hr/>
+
+          <h2 id="这本书讲什么">这本书讲什么？<a href="#这本书讲什么" class="anchor">#</a></h2>
+          <svg viewBox="0 0 600 200" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:600px;margin:1rem 0;border-radius:.5rem;">
+            <defs>
+              <linearGradient id="g1" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0%" stop-color="#2563eb" stop-opacity=".15"/>
+                <stop offset="100%" stop-color="#16a34a" stop-opacity=".15"/>
+              </linearGradient>
+            </defs>
+            <rect width="600" height="200" fill="url(#g1)" rx="8"/>
+            <circle cx="80" cy="100" r="28" fill="none" stroke="#2563eb" stroke-width="2"/>
+            <circle cx="80" cy="100" r="14" fill="#2563eb" opacity=".2"/>
+            <text x="80" y="105" text-anchor="middle" font-size="11" fill="#2563eb" font-family="sans-serif" font-weight="600">Agent</text>
+            <line x1="108" y1="100" x2="192" y2="100" stroke="#737373" stroke-width="1.5" stroke-dasharray="4 3"/>
+            <circle cx="220" cy="100" r="22" fill="none" stroke="#16a34a" stroke-width="2"/>
+            <circle cx="220" cy="100" r="10" fill="#16a34a" opacity=".2"/>
+            <text x="220" y="104" text-anchor="middle" font-size="9" fill="#16a34a" font-family="sans-serif" font-weight="600">Tool</text>
+            <line x1="242" y1="100" x2="318" y2="100" stroke="#737373" stroke-width="1.5" stroke-dasharray="4 3"/>
+            <circle cx="340" cy="60" r="18" fill="none" stroke="#737373" stroke-width="1.5"/>
+            <circle cx="340" cy="140" r="18" fill="none" stroke="#737373" stroke-width="1.5"/>
+            <line x1="340" y1="78" x2="340" y2="122" stroke="#737373" stroke-width="1.5" stroke-dasharray="4 3"/>
+            <line x1="358" y1="60" x2="432" y2="60" stroke="#737373" stroke-width="1.5" stroke-dasharray="4 3"/>
+            <line x1="358" y1="140" x2="432" y2="140" stroke="#737373" stroke-width="1.5" stroke-dasharray="4 3"/>
+            <circle cx="450" cy="60" r="16" fill="none" stroke="#2563eb" stroke-width="1.5"/>
+            <circle cx="450" cy="140" r="16" fill="none" stroke="#2563eb" stroke-width="1.5"/>
+            <text x="340" y="103" text-anchor="middle" font-size="8" fill="#737373" font-family="sans-serif">Orch</text>
+            <text x="220" y="145" text-anchor="middle" font-size="9" fill="#737373" font-family="sans-serif">扩展</text>
+            <text x="540" y="105" text-anchor="middle" font-size="9" fill="#737373" font-family="sans-serif" font-weight="600">→ 企业级多智能体</text>
+            <text x="300" y="180" text-anchor="middle" font-size="11" fill="#737373" font-family="sans-serif">从单 Agent 到企业级多智能体系统</text>
+          </svg>
+          <p><strong>不是框架文档，而是让你理解 Agent 系统设计模式的实战指南。</strong></p>
+          <p>市面上的 Agent 教程大多停留在：</p>
+          <ul>
+            <li>调用 API 实现一个 chatbot Demo</li>
+            <li>某个框架的配置说明和 API 翻译</li>
+            <li>Prompt 技巧的堆砌</li>
+          </ul>
+          <p>这些只能让你"用"Agent，不能让你"构建"生产级 Agent 系统。</p>
+          <p>真正的生产系统需要回答：</p>
+          <ul>
+            <li><strong>多 Agent 如何协作？</strong> DAG、Supervisor、还是 Handoff？</li>
+            <li><strong>Token 预算如何控制？</strong> 单次调用还是整个 workflow？</li>
+            <li><strong>工具执行失败怎么办？</strong> 重试、降级、还是人工介入？</li>
+            <li><strong>如何保证安全？</strong> 沙箱隔离、权限控制、审计日志</li>
+          </ul>
+          <p>这本书回答这些问题，配合开源项目 <a href="#">Shannon</a> 提供完整的代码参考。</p>
+          <hr/>
+
+          <h2 id="目标读者">目标读者<a href="#目标读者" class="anchor">#</a></h2>
+          <table>
+            <thead><tr><th>读者类型</th><th>你会获得什么</th></tr></thead>
+            <tbody>
+              <tr><td><strong>后端开发者</strong></td><td>从零构建 Agent 系统的完整路径</td></tr>
+              <tr><td><strong>架构师</strong></td><td>多 Agent 编排、企业级治理的设计模式</td></tr>
+              <tr><td><strong>技术负责人</strong></td><td>评估和落地 Agent 方案的决策框架</td></tr>
+            </tbody>
+          </table>
+          <h3 id="前置要求">前置要求<a href="#前置要求" class="anchor">#</a></h3>
+          <ul>
+            <li><strong>必需</strong>：基本编程能力 (Go/Python/Rust 任一)</li>
+            <li><strong>必需</strong>：LLM 基础概念 (Token, Prompt, Temperature)</li>
+            <li><strong>有帮助</strong>：了解 REST/gRPC API</li>
+            <li><strong>不需要</strong>：不需要了解任何特定 Agent 框架</li>
+          </ul>
+          <h3 id="可能不适合你如果">可能不适合你，如果：<a href="#可能不适合你如果" class="anchor">#</a></h3>
+          <ul>
+            <li>你只想快速调用 ChatGPT API（直接看官方文档）</li>
+            <li>你需要 Prompt Engineering 技巧集锦（有更专门的资料）</li>
+            <li>你从未接触过 LLM 相关概念（建议先了解基础）</li>
+          </ul>
+          <hr/>
+
+          <h2 id="内容结构">内容结构<a href="#内容结构" class="anchor">#</a></h2>
+          <p>全书分为 <strong>9 个部分、33 章</strong>：</p>
+          <table>
+            <thead><tr><th>部分</th><th>主题</th><th>核心内容</th></tr></thead>
+            <tbody>
+              <tr><td><strong>Part 1</strong></td><td>Agent 基础</td><td>Agent 本质、ReAct 循环</td></tr>
+              <tr><td><strong>Part 2</strong></td><td>工具与扩展</td><td>Function Calling、MCP、Skills、Hooks</td></tr>
+              <tr><td><strong>Part 3</strong></td><td>上下文与记忆</td><td>Context 管理、Memory 架构、会话设计</td></tr>
+              <tr><td><strong>Part 4</strong></td><td>单 Agent 模式</td><td>Planning、Reflection、Chain-of-Thought</td></tr>
+              <tr><td><strong>Part 5</strong></td><td>多 Agent 编排</td><td>DAG、Supervisor、Handoff</td></tr>
+              <tr><td><strong>Part 6</strong></td><td>高级推理</td><td>Tree-of-Thoughts、Debate、Research</td></tr>
+              <tr><td><strong>Part 7</strong></td><td>生产架构</td><td>三层设计、Temporal、可观测性</td></tr>
+              <tr><td><strong>Part 8</strong></td><td>企业级特性</td><td>Token 预算、OPA 策略、WASI 沙箱、多租户</td></tr>
+              <tr><td><strong>Part 9</strong></td><td>前沿实践</td><td>Deep Research、Computer Use、Agentic Coding、Background Agents、模型路由、Agent Harness、Kocoro</td></tr>
+            </tbody>
+          </table>
+          <pre><code><span class="sh-class">Part1</span><span class="sh-sign">-</span><span class="sh-class">Agent基础</span><span class="sh-sign">/</span>        <span class="sh-class">Agent概念、ReAct循环</span>
+<span class="sh-class">Part2</span><span class="sh-sign">-</span><span class="sh-class">工具与扩展</span><span class="sh-sign">/</span>       <span class="sh-class">Tools、MCP、Skills、Hooks</span>
+<span class="sh-class">Part3</span><span class="sh-sign">-</span><span class="sh-class">上下文与记忆</span><span class="sh-sign">/</span>     <span class="sh-class">Context管理、Memory架构</span>
+<span class="sh-class">Part4</span><span class="sh-sign">-</span><span class="sh-class">单Agent模式</span><span class="sh-sign">/</span>      <span class="sh-class">Planning、Reflection、CoT</span>
+<span class="sh-class">Part5</span><span class="sh-sign">-</span><span class="sh-class">多Agent编排</span><span class="sh-sign">/</span>      <span class="sh-class">DAG、Supervisor、Handoff</span>
+<span class="sh-class">Part6</span><span class="sh-sign">-</span><span class="sh-class">高级推理</span><span class="sh-sign">/</span>         <span class="sh-class">ToT、Debate、Research</span>
+<span class="sh-class">Part7</span><span class="sh-sign">-</span><span class="sh-class">生产架构</span><span class="sh-sign">/</span>         <span class="sh-class">三层架构、Temporal、可观测性</span>
+<span class="sh-class">Part8</span><span class="sh-sign">-</span><span class="sh-class">企业级特性</span><span class="sh-sign">/</span>       <span class="sh-class">预算控制、OPA、WASI沙箱</span>
+<span class="sh-class">Part9</span><span class="sh-sign">-</span><span class="sh-class">前沿实践</span><span class="sh-sign">/</span>         <span class="sh-class">Research、Computer Use、Coding、Background Agents、Harness</span>
+<span class="sh-class">附录</span><span class="sh-sign">/</span>                   <span class="sh-class">案例、模板、框架对比</span></code></pre>
+          <hr/>
+
+          <h2 id="参考实现shannon-kocoro">参考实现：Shannon × Kocoro<a href="#参考实现shannon-kocoro" class="anchor">#</a></h2>
+          <p>本书以 <a href="#">Shannon</a> 作为<strong>企业级编排平台</strong>的参考实现。Shannon 是一个三层架构的多 Agent 系统：</p>
+          <a href="#" class="repo-card">
+            <div style="display:flex;align-items:center;gap:.5rem;margin-bottom:.5rem">
+              <svg height="16" viewBox="0 0 16 16" width="16" fill="currentColor" style="opacity:.6"><path d="M2 2.5A2.5 2.5 0 0 1 4.5 0h8.75a.75.75 0 0 1 .75.75v12.5a.75.75 0 0 1-.75.75h-2.5a.75.75 0 0 1 0-1.5h1.75v-2h-8a1 1 0 0 0-.714 1.7.75.75 0 1 1-1.072 1.05A2.495 2.495 0 0 1 2 11.5Zm10.5-1h-8a1 1 0 0 0-1 1v6.708A2.486 2.486 0 0 1 4.5 9h8ZM5 12.25a.25.25 0 0 1 .25-.25h3.5a.25.25 0 0 1 .25.25v3.25a.25.25 0 0 1-.4.2l-1.45-1.087a.249.249 0 0 0-.3 0L5.4 15.7a.25.25 0 0 1-.4-.2Z"></path></svg>
+              <span class="repo-name">Kocoro-lab / Shannon</span>
+            </div>
+            <p class="repo-desc">Production-Grade Multi-Agent Orchestration with Temporal - Built with Rust, Go, and Python for deterministic execution and enterprise-grade observability.</p>
+            <div class="repo-meta">
+              <svg height="12" viewBox="0 0 16 16" width="12" fill="currentColor"><path d="M8 .25a.75.75 0 0 1 .673.418l1.882 3.815 4.21.612a.75.75 0 0 1 .416 1.279l-3.046 2.97.719 4.192a.751.751 0 0 1-1.088.791L8 12.347l-3.766 1.98a.75.75 0 0 1-1.088-.79l.72-4.194L.818 6.374a.75.75 0 0 1 .416-1.28l4.21-.611L7.327.668A.75.75 0 0 1 8 .25Z"></path></svg>
+              <span>View on GitHub</span>
+            </div>
+          </a>
+          <pre><code><span class="sh-class">Orchestrator</span> <span class="sh-sign">(</span><span class="sh-class">Go</span><span class="sh-sign">)</span>    <span class="sh-sign">-</span> <span class="sh-class">编排、预算、策略</span>
+<span class="sh-class">Agent Core</span> <span class="sh-sign">(</span><span class="sh-class">Rust</span><span class="sh-sign">)</span>    <span class="sh-sign">-</span> <span class="sh-class">执行、沙箱、限流</span>
+<span class="sh-class">LLM Service</span> <span class="sh-sign">(</span><span class="sh-class">Python</span><span class="sh-sign">)</span> <span class="sh-sign">-</span> <span class="sh-class">推理、工具、向量</span></code></pre>
+          <p><a href="#">Kocoro</a> 是配套的<strong>本地 Agent 运行时</strong>，把 Shannon 的能力跑到你的本机。<a href="#">Kocoro 公开仓库</a>包含开源引擎、CLI 与 Daemon；原生 Kocoro Desktop GUI 是构建在该 Daemon 之上的独立闭源产品：</p>
+          <a href="#" class="repo-card">
+            <div style="display:flex;align-items:center;gap:.5rem;margin-bottom:.5rem">
+              <svg height="16" viewBox="0 0 16 16" width="16" fill="currentColor" style="opacity:.6"><path d="M2 2.5A2.5 2.5 0 0 1 4.5 0h8.75a.75.75 0 0 1 .75.75v12.5a.75.75 0 0 1-.75.75h-2.5a.75.75 0 0 1 0-1.5h1.75v-2h-8a1 1 0 0 0-.714 1.7.75.75 0 1 1-1.072 1.05A2.495 2.495 0 0 1 2 11.5Zm10.5-1h-8a1 1 0 0 0-1 1v6.708A2.486 2.486 0 0 1 4.5 9h8ZM5 12.25a.25.25 0 0 1 .25-.25h3.5a.25.25 0 0 1 .25.25v3.25a.25.25 0 0 1-.4.2l-1.45-1.087a.249.249 0 0 0-.3 0L5.4 15.7a.25.25 0 0 1-.4-.2Z"></path></svg>
+              <span class="repo-name">Kocoro-lab / Kocoro</span>
+            </div>
+            <p class="repo-desc">AI agent runtime powered by Shannon - Mac file ops, shell, GUI automation - with complex task delegation via Shannon Cloud workflows. Local-first, single binary.</p>
+            <div class="repo-meta">
+              <svg height="12" viewBox="0 0 16 16" width="12" fill="currentColor"><path d="M8 .25a.75.75 0 0 1 .673.418l1.882 3.815 4.21.612a.75.75 0 0 1 .416 1.279l-3.046 2.97.719 4.192a.751.751 0 0 1-1.088.791L8 12.347l-3.766 1.98a.75.75 0 0 1-1.088-.79l.72-4.194L.818 6.374a.75.75 0 0 1 .416-1.28l4.21-.611L7.327.668A.75.75 0 0 1 8 .25Z"></path></svg>
+              <span>View on GitHub</span>
+            </div>
+          </a>
+          <p>两者关系：<strong>Shannon 是编排平台，Kocoro 是把 Agent 跑起来的运行时</strong>。Shannon 负责"企业级生产"那一面（多租户、预算、审计），Kocoro 负责"本地一行命令跑通"那一面。第 32-33 章详细讲 Kocoro 的设计。</p>
+          <p>Shannon × Kocoro 不是唯一选择。LangGraph、CrewAI、AutoGen 都能做类似的事。本书的目标是教你<strong>设计模式</strong>，不是教你用某一个框架。</p>
+          <hr/>
+
+          <h2 id="写作理念">写作理念<a href="#写作理念" class="anchor">#</a></h2>
+          <p><strong>模式优先，框架其次。</strong></p>
+          <p>框架会过时，但模式不会。每一章都遵循这样的结构：</p>
+          <ol>
+            <li><strong>先讲问题</strong> - 什么场景需要这个能力？</li>
+            <li><strong>再讲模式</strong> - 通用的设计模式是什么？（框架无关）</li>
+            <li><strong>然后看实现</strong> - 以 Shannon 为例展示一种实现方式</li>
+            <li><strong>最后对比</strong> - 其他框架如何解决同样的问题</li>
+          </ol>
+          <p>如果你读完一章，能在任何框架中实现同样的模式——那这一章就成功了。</p>
+          <hr/>
+
+          <h2 id="阅读路径">阅读路径<a href="#阅读路径" class="anchor">#</a></h2>
+          <h3 id="快速入门2-3-天">快速入门（2-3 天）<a href="#快速入门2-3-天" class="anchor">#</a></h3>
+          <pre><code><span class="sh-class">Part1</span> <span class="sh-class">全部</span> <span class="sh-class">-&gt;</span> <span class="sh-class">第03章</span> <span class="sh-class">-&gt;</span> <span class="sh-class">第13章</span> <span class="sh-class">-&gt;</span> <span class="sh-class">第20章</span></code></pre>
+          <p>目标：Agent 基础 -&gt; 工具调用 -&gt; 多 Agent 编排 -&gt; 生产架构</p>
+          <h3 id="系统学习2-3-周">系统学习（2-3 周）<a href="#系统学习2-3-周" class="anchor">#</a></h3>
+          <pre><code><span class="sh-class">Part1-8</span> <span class="sh-class">顺序阅读，配合</span> <span class="sh-class">Shannon</span> <span class="sh-class">代码实践</span></code></pre>
+          <p>目标：完整掌握从单 Agent 到企业级多 Agent 的全部内容</p>
+          <h3 id="前沿热点1-2-天">前沿热点（1-2 天）<a href="#前沿热点1-2-天" class="anchor">#</a></h3>
+          <pre><code><span class="sh-class">第04章</span><span class="sh-sign">(</span><span class="sh-class">MCP</span><span class="sh-sign">)</span> <span class="sh-class">-&gt;</span> <span class="sh-class">第27章</span><span class="sh-sign">(</span><span class="sh-class">Deep Research</span><span class="sh-sign">)</span> <span class="sh-class">-&gt;</span> <span class="sh-class">第28章</span><span class="sh-sign">(</span><span class="sh-class">Computer Use</span><span class="sh-sign">)</span> <span class="sh-class">-&gt;</span> <span class="sh-class">第29章</span><span class="sh-sign">(</span><span class="sh-class">Agentic Coding</span><span class="sh-sign">)</span></code></pre>
+          <p>目标：了解 2025-2026 年最热门的 Agent 话题</p>
+          <hr/>
+
+          <h2 id="贯穿全书的实战项目">贯穿全书的实战项目<a href="#贯穿全书的实战项目" class="anchor">#</a></h2>
+          <blockquote>
+            <p><strong>项目：智能研究助手 (Research Agent)</strong></p>
+          </blockquote>
+          <p>从 Part1 到 Part9，我们将逐步构建一个完整的研究助手 Agent：</p>
+          <table>
+            <thead><tr><th>Part</th><th>项目演进</th><th>能力提升</th></tr></thead>
+            <tbody>
+              <tr><td>Part 1</td><td>简单问答 Agent</td><td>基础 ReAct 循环</td></tr>
+              <tr><td>Part 2</td><td>+ 工具调用</td><td>搜索、文件读取</td></tr>
+              <tr><td>Part 3</td><td>+ 记忆系统</td><td>多轮对话、历史召回</td></tr>
+              <tr><td>Part 4</td><td>+ 自主规划</td><td>任务分解、反思改进</td></tr>
+              <tr><td>Part 5</td><td>+ 多 Agent 协作</td><td>搜索 + 分析 + 写作 Agent</td></tr>
+              <tr><td>Part 6</td><td>+ 高级推理</td><td>多源对比、辩论综合</td></tr>
+              <tr><td>Part 7</td><td>+ 生产架构</td><td>Temporal 持久化、可观测性</td></tr>
+              <tr><td>Part 8</td><td>+ 企业治理</td><td>Token 预算、权限控制</td></tr>
+              <tr><td>Part 9</td><td>+ 前沿能力</td><td>浏览器操作、代码生成</td></tr>
+            </tbody>
+          </table>
+          <hr/>
+
+          <h2 id="关于时效性">关于时效性<a href="#关于时效性" class="anchor">#</a></h2>
+          <p>AI Agent 领域发展极快。本书对高变动性内容会明确标注：</p>
+          <blockquote>
+            <p><strong>时效性提示</strong> (2026-01): 本节内容基于 MCP 规范 v1.0。</p>
+          </blockquote>
+          <p>核心的架构模式相对稳定，但具体的 API 和工具可能会变化。遇到疑问时，请以官方文档为准。</p>
+          <hr/>
+
+          <h2 id="快速导航">快速导航<a href="#快速导航" class="anchor">#</a></h2>
+          <table>
+            <thead><tr><th>链接</th><th>说明</th></tr></thead>
+            <tbody>
+              <tr><td><a href="#">前言</a></td><td>为什么写这本书、写作理念、适合谁读</td></tr>
+              <tr><td><a href="#">第 1 章：Agent 的本质</a></td><td>开始阅读</td></tr>
+              <tr><td><a href="#">Shannon OSS</a></td><td>编排平台参考实现</td></tr>
+              <tr><td><a href="#">Kocoro</a></td><td>本地 Agent 运行时（GitHub）</td></tr>
+            </tbody>
+          </table>
+          <hr/>
+
+          <h2 id="license">License<a href="#license" class="anchor">#</a></h2>
+          <p>本书内容采用 <a href="#">CC BY-NC-SA 4.0</a> 协议。</p>
+          <p>配套代码 Shannon OSS 采用 <a href="#">Apache 2.0</a> 协议。</p>
+          <hr/>
+          <blockquote>
+            <p><em>"The best way to learn is to build."</em></p>
+          </blockquote>
+        </article>
+      </div>
+    </main>
+  </div>
+</div>
+
+<script>
+(function(){
+  var themeToggle = document.getElementById('themeToggle');
+  themeToggle.addEventListener('click', function(){
+    var isDark = document.documentElement.classList.toggle('dark');
+    localStorage.setItem('theme', isDark ? 'dark' : 'light');
+  });
+
+  var sidebar = document.getElementById('bookSidebar');
+  var overlay = document.getElementById('sidebarOverlay');
+  var menuToggle = document.getElementById('menuToggle');
+  var sidebarClose = document.getElementById('sidebarClose');
+  function openSidebar(){ sidebar.classList.add('open'); overlay.classList.add('open'); }
+  function closeSidebar(){ sidebar.classList.remove('open'); overlay.classList.remove('open'); }
+  if(menuToggle) menuToggle.addEventListener('click', openSidebar);
+  if(sidebarClose) sidebarClose.addEventListener('click', closeSidebar);
+  if(overlay) overlay.addEventListener('click', closeSidebar);
+})();
+</script>
+</body>
+</html>

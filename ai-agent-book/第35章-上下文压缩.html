@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>第 35 章：上下文压缩 | AI Agent 开发实战 | chad</title>
+<meta name="author" content="chad"/>
+<meta name="description" content="AI Agent 架构模式与实战 - chad"/>
+<script>(function(){try{var m=window.matchMedia('(prefers-color-scheme:dark)');var apply=function(){var t=localStorage.getItem('theme');document.documentElement.classList.toggle('dark',t==='dark'||(!t&&m.matches))};apply();m.addEventListener('change',apply)}catch(e){}})()</script>
+<script src="https://cdn.tailwindcss.com?plugins=typography"></script>
+<script>tailwind.config={darkMode:"class",theme:{extend:{typography:{DEFAULT:{css:{maxWidth:"none"}}}}}}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css"/>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📖</text></svg>"/>
+</head>
+<body>
+<div class="book-layout">
+  <header class="book-header">
+    <div class="header-content">
+      <div class="header-left">
+        <button class="mobile-menu-toggle" id="menuToggle" aria-label="Open menu">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20"><path stroke-linecap="round" stroke-linejoin="round" d="M3 12h18M3 6h18M3 18h18"></path></svg>
+        </button>
+        <nav class="header-nav">
+          <a class="nav-item" href="index.html">Home</a>
+          <a class="nav-item" href="#">Blog</a>
+          <span class="nav-item">Books</span>
+          <a class="nav-item active hide-mobile" href="index.html">AI Agent 架构模式与实战</a>
+        </nav>
+      </div>
+      <div class="right-controls">
+        <span><a class="lang-link active" href="#">中文</a></span>
+        <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+          <svg class="w-[18px] h-[18px] hidden dark:block" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="4"></circle><path stroke-linecap="round" d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"></path></svg>
+          <svg class="w-[18px] h-[18px] block dark:hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+  <div class="sidebar-overlay" id="sidebarOverlay"></div>
+  <div class="book-body">
+    <nav class="book-sidebar" id="bookSidebar">
+      <button class="sidebar-close" id="sidebarClose" aria-label="Close menu">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20"><path stroke-linecap="round" d="M18 6L6 18M6 6l12 12"></path></svg>
+      </button>
+      <div class="sidebar-header">
+        <a class="book-title" href="index.html">AI Agent 架构：从单体到企业级多智能体</a>
+      </div>
+      <div class="sidebar-content">
+<div class="sidebar-section"><div class="section-title">前言</div><ul class="chapter-list"><li><a class="chapter-link" href="前言.html">前言</a></li></ul></div><div class="sidebar-section"><div class="section-title">Part 1 - Agent 基础</div><ul class="chapter-list"><li><a class="chapter-link" href="Part1概述.html">Part 1 概述</a></li><li><a class="chapter-link" href="第01章-Agent的本质.html">第 1 章：Agent 的本质</a></li><li><a class="chapter-link" href="第02章-ReAct循环.html">第 2 章：ReAct 循环</a></li></ul></div><div class="sidebar-section"><div class="section-title">Part 2 - 工具与扩展</div><ul class="chapter-list"><li><a class="chapter-link" href="Part2概述.html">Part 2 概述</a></li><li><a class="chapter-link" href="第03章-工具调用基础.html">第 3 章：工具调用基础</a></li><li><a class="chapter-link" href="第04章-MCP协议详解.html">第 4 章：MCP 协议详解</a></li><li><a class="chapter-link" href="第05章-Skills技能系统.html">第 5 章：Skills 技能系统</a></li><li><a class="chapter-link" href="第06章-Hooks与事件系统.html">第 6 章：Hooks 与事件系统</a></li></ul></div><div class="sidebar-section"><div class="section-title">Part 3 - 上下文与记忆</div><ul class="chapter-list"><li><a class="chapter-link" href="Part3概述.html">Part 3 概述</a></li><li><a class="chapter-link" href="第07章-上下文工程.html">第 7 章：上下文工程</a></li><li><a class="chapter-link" href="第08章-记忆架构.html">第 8 章：记忆架构</a></li><li><a class="chapter-link" href="第09章-多轮对话设计.html">第 9 章：多轮对话设计</a></li></ul></div><div class="sidebar-section"><div class="section-title">Part 4 - 单 Agent 模式</div><ul class="chapter-list"><li><a class="chapter-link" href="Part4概述.html">Part 4 概述</a></li><li><a class="chapter-link" href="第10章-Planning模式.html">第 10 章：Planning 模式</a></li><li><a class="chapter-link" href="第11章-Reflection模式.html">第 11 章：Reflection 模式</a></li><li><a class="chapter-link" href="第12章-Chain-of-Thought.html">第 12 章：Chain-of-Thought</a></li></ul></div><div class="sidebar-section"><div class="section-title">Part 5 - 多 Agent 编排</div><ul class="chapter-list"><li><a class="chapter-link" href="Part5概述.html">Part 5 概述</a></li><li><a class="chapter-link" href="第13章-编排基础.html">第 13 章：编排基础</a></li><li><a class="chapter-link" href="第14章-DAG工作流.html">第 14 章：DAG 工作流</a></li><li><a class="chapter-link" href="第15章-Swarm模式.html">第 15 章：Swarm 模式</a></li><li><a class="chapter-link" href="第16章-Handoff机制.html">第 16 章：Handoff 机制</a></li></ul></div><div class="sidebar-section"><div class="section-title">Part 6 - 高级推理</div><ul class="chapter-list"><li><a class="chapter-link" href="Part6概述.html">Part 6 概述</a></li><li><a class="chapter-link" href="第17章-Tree-of-Thoughts.html">第 17 章：Tree-of-Thoughts</a></li><li><a class="chapter-link" href="第18章-Debate模式.html">第 18 章：Debate 模式</a></li><li><a class="chapter-link" href="第19章-Research-Synthesis.html">第 19 章：Research-Synthesis</a></li></ul></div><div class="sidebar-section"><div class="section-title">Part 7 - 生产架构</div><ul class="chapter-list"><li><a class="chapter-link" href="Part7概述.html">Part 7 概述</a></li><li><a class="chapter-link" href="第20章-三层架构设计.html">第 20 章：三层架构设计</a></li><li><a class="chapter-link" href="第21章-Temporal工作流.html">第 21 章：Temporal 工作流</a></li><li><a class="chapter-link" href="第22章-可观测性.html">第 22 章：可观测性</a></li></ul></div><div class="sidebar-section"><div class="section-title">Part 8 - 企业级特性</div><ul class="chapter-list"><li><a class="chapter-link" href="Part8概述.html">Part 8 概述</a></li><li><a class="chapter-link" href="第23章-Token预算控制.html">第 23 章：Token 预算控制</a></li><li><a class="chapter-link" href="第24章-策略治理.html">第 24 章：策略治理</a></li><li><a class="chapter-link" href="第25章-安全执行.html">第 25 章：安全执行</a></li><li><a class="chapter-link" href="第26章-多租户设计.html">第 26 章：多租户设计</a></li></ul></div><div class="sidebar-section"><div class="section-title">Part 9 - 前沿实践</div><ul class="chapter-list"><li><a class="chapter-link" href="Part9概述.html">Part 9 概述</a></li><li><a class="chapter-link" href="第27章-Deep-Research.html">第 27 章：Deep Research</a></li><li><a class="chapter-link" href="第28章-Computer-Use.html">第 28 章：Computer Use</a></li><li><a class="chapter-link" href="第29章-Agentic-Coding.html">第 29 章：Agentic Coding</a></li><li><a class="chapter-link" href="第30章-Background-Agents.html">第 30 章：Background Agents</a></li><li><a class="chapter-link" href="第31章-分层模型策略.html">第 31 章：分层模型策略</a></li><li><a class="chapter-link" href="第32章-OpenClaw时代.html">第 32 章：OpenClaw 时代</a></li><li><a class="chapter-link" href="第33章-Building-on-the-Harness-ShanClaw.html">第 33 章：Building on the Harness - Kocoro</a></li></ul></div><div class="sidebar-section"><div class="section-title">Part 10 - Agent Loop 工程</div><ul class="chapter-list"><li><a class="chapter-link" href="Part10-Agent-Loop工程.html">Part 10 概述</a></li><li><a class="chapter-link" href="第34章-从DAG到Agent-Loop.html">第 34 章：从 DAG 到 Agent Loop</a></li><li><a class="chapter-link active" href="第35章-上下文压缩.html">第 35 章：上下文压缩</a></li><li><a class="chapter-link" href="第36章-Tool-Result预算与外溢.html">第 36 章：Tool Result 预算与外溢</a></li><li><a class="chapter-link" href="第37章-分层压缩.html">第 37 章：分层压缩</a></li><li><a class="chapter-link" href="第38章-Deferred-Tool-Loading与Tool-Search.html">第 38 章：Deferred Tool Loading 与 Tool Search</a></li><li><a class="chapter-link" href="第39章-Prompt-Cache稳定性.html">第 39 章：Prompt Cache 稳定性</a></li><li><a class="chapter-link" href="第40章-持久化Agent-Loop.html">第 40 章：持久化 Agent Loop</a></li><li><a class="chapter-link" href="第41章-运行中操控Agent.html">第 41 章：运行中操控 Agent</a></li><li><a class="chapter-link" href="第42章-Agent超时与Watchdog.html">第 42 章：Agent 超时与 Watchdog</a></li><li><a class="chapter-link" href="第43章-卡循环检测.html">第 43 章：卡循环检测</a></li><li><a class="chapter-link" href="第44章-并行工具执行.html">第 44 章：并行工具执行</a></li><li><a class="chapter-link" href="第45章-Computer-Use上下文管理.html">第 45 章：Computer Use 上下文管理</a></li></ul></div><div class="sidebar-section"><div class="section-title">附录</div><ul class="chapter-list"><li><a class="chapter-link" href="Part10概述.html">附录概述</a></li><li><a class="chapter-link" href="附录A-术语表.html">附录 A：术语表</a></li><li><a class="chapter-link" href="附录B-模式选择指南.html">附录 B：模式选择指南</a></li><li><a class="chapter-link" href="附录C-常见问题FAQ.html">附录 C：常见问题 FAQ</a></li></ul></div>
+      </div>
+    </nav>
+    <main class="book-main">
+      <div class="book-content">
+<article class="prose dark:prose-invert fade-in"><h1 id="第-35-章上下文压缩"><a href="#第-35-章上下文压缩" class="anchor"></a>第 35 章：上下文压缩</h1>
+<blockquote>
+<p><strong>&quot;满了就摘要一下&quot;——可摘要本身也是一次模型调用，它得塞进你刚刚撑爆的那个窗口。</strong></p>
+</blockquote>
+<hr/>
+<blockquote>
+<p><strong>⏱️ 快速通道</strong>（5 分钟掌握核心）</p>
+<ol>
+<li>三道闸门，不是一道：主动 0.90、Preflight 0.95、Provider 报错后 Reactive</li>
+<li>阈值从 token 余量倒推，不要取整数百分比</li>
+<li>保留开场 + 摘要 + 有硬下限的近期尾部；切尾部要修复工具配对边界</li>
+<li>给摘要器自己的输入设上限；Reactive 只准重试一次，标志永不复位</li>
+<li>每次重写都让该点之后的缓存失效——边界必须由稳定输入推导</li>
+</ol>
+<p><strong>10 分钟路径</strong>：35.1-35.3 → 35.6 → Kocoro OSS Lab</p>
+</blockquote>
+<hr/>
+<blockquote>
+<p><strong>公开源码快照</strong>：实现细节取自 Kocoro 公开仓库 <code><span class="sh__line"><span class="sh__token--identifier" style="color: var(--sh-identifier)">origin</span><span class="sh__token--sign" style="color: var(--sh-sign)">/</span><span class="sh__token--identifier" style="color: var(--sh-identifier)">main</span></span></code> 的 <code><span class="sh__line"><span class="sh__token--class" style="color: var(--sh-class)">4ec6772</span></span></code> 提交，复核日期为 2026-07-27。章节讲的是不变量；具体常量应以当前源码为准。</p>
+</blockquote>
+<h2 id="351-从第-91-分钟死掉的那一轮说起"><a href="#351-从第-91-分钟死掉的那一轮说起" class="anchor"></a>35.1 从第 91 分钟死掉的那一轮说起</h2>
+<p>你的 Agent 已经重构了 90 分钟。读了 30 个文件，跑了四轮测试，整个 diff 计划都在上下文里。第 34 轮，它又读了一个文件：</p>
+<pre><code><span class="sh__line"><span class="sh__token--sign" style="color: var(--sh-sign)">[</span><span class="sh__token--identifier" style="color: var(--sh-identifier)">iter</span><span class="sh__token--space" style="color: var(--sh-space)"> </span><span class="sh__token--class" style="color: var(--sh-class)">34</span><span class="sh__token--sign" style="color: var(--sh-sign)">]</span><span class="sh__token--space" style="color: var(--sh-space)"> </span><span class="sh__token--identifier" style="color: var(--sh-identifier)">file_read</span><span class="sh__token--space" style="color: var(--sh-space)"> </span><span class="sh__token--space" style="color: var(--sh-space)"> </span><span class="sh__token--identifier" style="color: var(--sh-identifier)">path</span><span class="sh__token--sign" style="color: var(--sh-sign)">=</span><span class="sh__token--identifier" style="color: var(--sh-identifier)">build</span><span class="sh__token--sign" style="color: var(--sh-sign)">/</span><span class="sh__token--identifier" style="color: var(--sh-identifier)">generated</span><span class="sh__token--sign" style="color: var(--sh-sign)">/</span><span class="sh__token--identifier" style="color: var(--sh-identifier)">schema</span><span class="sh__token--sign" style="color: var(--sh-sign)">.</span><span class="sh__token--property" style="color: var(--sh-property)">pb</span><span class="sh__token--sign" style="color: var(--sh-sign)">.</span><span class="sh__token--property" style="color: var(--sh-property)">go</span><span class="sh__token--break" style="color: var(--sh-break)"></span></span>
+<span class="sh__line"><span class="sh__token--space" style="color: var(--sh-space)">          </span><span class="sh__token--identifier" style="color: var(--sh-identifier)">result</span><span class="sh__token--sign" style="color: var(--sh-sign)">:</span><span class="sh__token--space" style="color: var(--sh-space)"> </span><span class="sh__token--class" style="color: var(--sh-class)">412</span><span class="sh__token--space" style="color: var(--sh-space)"> </span><span class="sh__token--class" style="color: var(--sh-class)">KB</span><span class="sh__token--break" style="color: var(--sh-break)"></span></span>
+<span class="sh__line"><span class="sh__token--sign" style="color: var(--sh-sign)">[</span><span class="sh__token--identifier" style="color: var(--sh-identifier)">iter</span><span class="sh__token--space" style="color: var(--sh-space)"> </span><span class="sh__token--class" style="color: var(--sh-class)">34</span><span class="sh__token--sign" style="color: var(--sh-sign)">]</span><span class="sh__token--space" style="color: var(--sh-space)"> </span><span class="sh__token--class" style="color: var(--sh-class)">→</span><span class="sh__token--space" style="color: var(--sh-space)"> </span><span class="sh__token--class" style="color: var(--sh-class)">组装请求</span><span class="sh__token--sign" style="color: var(--sh-sign)">.</span><span class="sh__token--sign" style="color: var(--sh-sign)">.</span><span class="sh__token--sign" style="color: var(--sh-sign)">.</span><span class="sh__token--space" style="color: var(--sh-space)"> </span><span class="sh__token--class" style="color: var(--sh-class)">203</span><span class="sh__token--sign" style="color: var(--sh-sign)">,</span><span class="sh__token--class" style="color: var(--sh-class)">417</span><span class="sh__token--space" style="color: var(--sh-space)"> </span><span class="sh__token--identifier" style="color: var(--sh-identifier)">tokens</span><span class="sh__token--break" style="color: var(--sh-break)"></span></span>
+<span class="sh__line"><span class="sh__token--sign" style="color: var(--sh-sign)">[</span><span class="sh__token--identifier" style="color: var(--sh-identifier)">iter</span><span class="sh__token--space" style="color: var(--sh-space)"> </span><span class="sh__token--class" style="color: var(--sh-class)">34</span><span class="sh__token--sign" style="color: var(--sh-sign)">]</span><span class="sh__token--space" style="color: var(--sh-space)"> </span><span class="sh__token--class" style="color: var(--sh-class)">✗</span><span class="sh__token--space" style="color: var(--sh-space)"> </span><span class="sh__token--identifier" style="color: var(--sh-identifier)">provider</span><span class="sh__token--sign" style="color: var(--sh-sign)">:</span><span class="sh__token--space" style="color: var(--sh-space)"> </span><span class="sh__token--identifier" style="color: var(--sh-identifier)">context_length_exceeded</span><span class="sh__token--break" style="color: var(--sh-break)"></span></span></code></pre>
+<p>那就压缩一下重试呗。很自然。</p>
+<p>但看清楚你现在站在哪儿。你是在<strong>已经超限的状态下</strong>做压缩，而压缩本身是一次模型调用——它同样得塞进你刚刚撑爆的那个窗口。如果摘要这次也失败，就没有下一招了：丢掉这一轮，连同积累了 90 分钟的状态。</p>
+<p>杀死这次运行的不是那个 412 KB 的文件，是你只有一道防线。</p>
+<h2 id="352-三道闸门坏的方式各不相同"><a href="#352-三道闸门坏的方式各不相同" class="anchor"></a>35.2 三道闸门，坏的方式各不相同</h2>
+<p>解法不是把阈值调得更准，是不止一道闸门——而它们之所以有用，恰恰因为<strong>失效原因彼此独立</strong>。</p>
+<p><strong>主动压缩</strong>在窗口的 0.90，走的是正常路径：保存持久知识、摘要、重塑历史、继续。它跑在 token <strong>估算</strong>上，而估算是近似的。一个 412 KB 的结果完全可以在两次检查之间一头冲过去。</p>
+<p><strong>Preflight</strong> 在 0.95，接的就是这一手。它紧贴请求发出之前再查一次——这是压缩还算便宜、而不是狼狈的最后一刻。</p>
+<p><strong>Reactive</strong> 在 Provider 返回上下文超限时触发。它存在，是因为你的估算可能朝着最要命的方向出错，也因为「到底装不装得下」这件事，只有 Provider 说了算。</p>
+<p>只做第一道，你会拿到第 91 分钟。只做第三道，每个长会话都要白付一次报错往返。这三道不是冗余——每一道都在接住上一道骗你的那种具体方式。</p>
+<h2 id="353-为什么是-090而不是-085"><a href="#353-为什么是-090而不是-085" class="anchor"></a>35.3 为什么是 0.90，而不是 0.85</h2>
+<p>阈值这种数字，写成百分比时看着都差不多，换成 token 才看得出差别。</p>
+<p>200K 的窗口，0.85 意味着悬崖在 170K，0.90 意味着悬崖在 180K。中间那 10K 里住着谁？是那批峰值刚好落在 170K–180K 的会话——大约 5%——它们现在一次都不用压。省下的不只是一次摘要调用，还有一次不可逆的信息损失。</p>
+<p>那为什么不干脆推到 0.95，省得更多？因为压缩要留的不是「装得下这一轮请求」的空间，是「装得下这一轮请求<strong>加上它的响应</strong>」的空间。定得太高，你压完了还是塞不进去——摘要的钱花了，什么也没换到。</p>
+<p>让 0.90 敢用的，是它上面还有一道 0.95 的闸门。<strong>把兜底那道门拿掉，0.90 就不是激进，是鲁莽。</strong> 于是得到一条可以带到任何系统里的规则：阈值从你真正需要的 token 余量倒推，然后说出剩下那截由谁接住。说不出接住的人，就说明阈值定高了。</p>
+<p>这也解释了第 32 章里那个更早的单闸门 Harness。更低的触发点加一道闸门并不算错——它是同一条曲线上的另一个点，选在第二道闸门还不存在、因而更高的触发点还不安全的时候。</p>
+<h2 id="354-你选择丢掉什么"><a href="#354-你选择丢掉什么" class="anchor"></a>35.4 你选择丢掉什么</h2>
+<p>压缩天然有损，所以真正的设计问题只有一个：你挑哪些损失。</p>
+<p>活下来的是三段。<strong>开场</strong>——最前面那几条消息，装着用户最初的诉求和系统设定。丢了它，Agent 会非常自信地去解一个别的问题。<strong>摘要</strong>——被压缩的中段，由一次模型调用产出。<strong>近期</strong>——尾部原样保留，这样「刚才那个方案」才有东西可指。</p>
+<p>公开 Runtime 默认保留 20 组近期对话对，即使在预算压力下也留 3 组的下限。下限比默认值重要得多。压力一大，本能是继续削尾巴；但少于几轮之后，Agent 会彻底丢失线索，开始重新推导二十分钟前就做完的事——这比你省下的那点 token 贵多了。</p>
+<p>还有一个上了生产才会咬人的细节：近期切片是从尾部<strong>按位置</strong>取的。切得不小心，就会切在 <code><span class="sh__line"><span class="sh__token--identifier" style="color: var(--sh-identifier)">tool_use</span></span></code> 和它配对的 <code><span class="sh__line"><span class="sh__token--identifier" style="color: var(--sh-identifier)">tool_result</span></span></code> 中间，留下一个孤立的半对，Provider 直接拒收。任何保留尾部的实现都得做边界修复，而这种 bug 只在长会话里现形。</p>
+<h2 id="355-摘要器也会失败"><a href="#355-摘要器也会失败" class="anchor"></a>35.5 摘要器也会失败</h2>
+<p>这是大多数设计跳过的部分，也正是第 91 分钟真正变得不可挽回的地方。<code><span class="sh__line"><span class="sh__token--class" style="color: var(--sh-class)">GenerateSummary</span></span></code> 和别的模型调用没有区别：它会失败，会返回空，会超时，在小模型档上还会因为自己的输入而溢出。</p>
+<p>所以先给它的输入设上限。在这份快照里，交给摘要器的转录被限制在 540,000 <strong>字节</strong>，头尾保留、中间省略并留下明确标记。切点会退让到完整的 UTF-8 字符边界，但预算本身仍由 Go 的 <code><span class="sh__line"><span class="sh__token--identifier" style="color: var(--sh-identifier)">len</span><span class="sh__token--sign" style="color: var(--sh-sign)">(</span><span class="sh__token--identifier" style="color: var(--sh-identifier)">s</span><span class="sh__token--sign" style="color: var(--sh-sign)">)</span></span></code> 按字节计算——它并不等于 540,000 个 Unicode 字符。跳过这一步，超大会话的紧急压缩就会把一个小档模型处理不了的输入丢过去——你的恢复路径会因为和原请求完全一样的原因死掉。</p>
+<p>再给重试划界。Reactive 路径会置一个在整个 Run 生命周期内<strong>永不复位</strong>的标志：</p>
+<pre><code class="language-go"><span class="sh__line"><span class="sh__token--identifier" style="color: var(--sh-identifier)">reactiveCompacted</span><span class="sh__token--space" style="color: var(--sh-space)"> </span><span class="sh__token--sign" style="color: var(--sh-sign)">=</span><span class="sh__token--space" style="color: var(--sh-space)"> </span><span class="sh__token--keyword" style="color: var(--sh-keyword)">true</span><span class="sh__token--space" style="color: var(--sh-space)"> </span><span class="sh__token--comment" style="color: var(--sh-comment)">// never reset — prevents infinite reactive loops</span></span>
+<span class="sh__line"><span class="sh__token--comment" style="color: var(--sh-comment)"></span></span></code></pre>
+<p>紧急重试只有一次。再失败就干干净净地失败。一个压缩、重试、溢出、再压缩的 Agent，是在花真钱回到原地。</p>
+<p>最后，记下断的是<strong>哪一道</strong>。Runtime 为主动、Preflight、Reactive、Emergency、ForceStop 各条路径发出不同的 Phase Tag，并把摘要失败和持久知识写入失败分开——这个快照上一共 10 个。凌晨三点，<code><span class="sh__line"><span class="sh__token--identifier" style="color: var(--sh-identifier)">compaction_failed</span></span></code> 不能让你做任何决定；<code><span class="sh__line"><span class="sh__token--identifier" style="color: var(--sh-identifier)">reactive_summary_no_prior</span></span></code> 直接告诉你断在哪一级、当时有没有前一份摘要可以退守。</p>
+<h2 id="356-压缩和缓存是对着拉的"><a href="#356-压缩和缓存是对着拉的" class="anchor"></a>35.6 压缩和缓存是对着拉的</h2>
+<p>Prompt Cache 奖励字节稳定的前缀，而压缩要重写历史。每一次重写都会让该点之后的缓存失效——这两个系统正面冲突，而冲突会直接体现在账单上。</p>
+<p>公开源码里记着做错的代价。一条超大用户消息，按<strong>当前</strong>消息切片推导出的预算做截断。随着历史增长，截断点每一轮都在动。于是每一轮都在被截断的那条消息处打断缓存前缀，把整条消息当作全新的 cache creation 重新计费：<strong>每个追问轮大约 0.67 美元</strong>，就为了一条消息，而且什么好处也没换到。</p>
+<p>修法是别再让边界依赖会变的东西。取每会话稳定目标的一个固定比例——0.80——而不是取一个由「此刻恰好有多少历史」算出来的值。同样的截断，稳定的边界，缓存前缀完好。</p>
+<p>这可以推广成一条值得贴墙上的话：<strong>任何边界依赖当前历史长度的截断，都会把缓存打散。</strong> 边界要从不动的输入推导。第 39 章讲的就是这套完整纪律。</p>
+<p>也留意这里的缩放选择：比例作用在上下文窗口上，而不是一个固定字符上限——这样 200K 时代的尺寸设定，就不会在你换到 1M 上下文模型族的那一刻悄悄开始过度截断。</p>
+<h2 id="357-快照证据"><a href="#357-快照证据" class="anchor"></a>35.7 快照证据</h2>
+<table><thead><tr><th>观察</th><th><code><span class="sh__line"><span class="sh__token--class" style="color: var(--sh-class)">4ec6772</span></span></code> 源码位置</th></tr></thead><tbody><tr><td>主动触发 0.90，附带 cliff 换算</td><td><a target="_blank" rel="noopener noreferrer" href="https://github.com/Kocoro-lab/Kocoro/blob/4ec6772/internal/context/window.go#L23"><code><span class="sh__line"><span class="sh__token--identifier" style="color: var(--sh-identifier)">window</span><span class="sh__token--sign" style="color: var(--sh-sign)">.</span><span class="sh__token--property" style="color: var(--sh-property)">go</span></span></code> L23</a></td></tr><tr><td>Preflight 闸门 0.95</td><td><a target="_blank" rel="noopener noreferrer" href="https://github.com/Kocoro-lab/Kocoro/blob/4ec6772/internal/agent/loop.go#L38"><code><span class="sh__line"><span class="sh__token--identifier" style="color: var(--sh-identifier)">loop</span><span class="sh__token--sign" style="color: var(--sh-sign)">.</span><span class="sh__token--property" style="color: var(--sh-property)">go</span></span></code> L38</a></td></tr><tr><td><code><span class="sh__line"><span class="sh__token--class" style="color: var(--sh-class)">ShouldCompact</span></span></code> 估算检查</td><td><a target="_blank" rel="noopener noreferrer" href="https://github.com/Kocoro-lab/Kocoro/blob/4ec6772/internal/context/window.go#L76"><code><span class="sh__line"><span class="sh__token--identifier" style="color: var(--sh-identifier)">window</span><span class="sh__token--sign" style="color: var(--sh-sign)">.</span><span class="sh__token--property" style="color: var(--sh-property)">go</span></span></code> L76</a></td></tr><tr><td><code><span class="sh__line"><span class="sh__token--class" style="color: var(--sh-class)">ShapeHistory</span></span></code> 开场/摘要/近期整形</td><td><a target="_blank" rel="noopener noreferrer" href="https://github.com/Kocoro-lab/Kocoro/blob/4ec6772/internal/context/window.go#L91"><code><span class="sh__line"><span class="sh__token--identifier" style="color: var(--sh-identifier)">window</span><span class="sh__token--sign" style="color: var(--sh-sign)">.</span><span class="sh__token--property" style="color: var(--sh-property)">go</span></span></code> L91</a></td></tr><tr><td>保留 20 组近期对话对，下限 3</td><td><a target="_blank" rel="noopener noreferrer" href="https://github.com/Kocoro-lab/Kocoro/blob/4ec6772/internal/context/window.go#L50"><code><span class="sh__line"><span class="sh__token--identifier" style="color: var(--sh-identifier)">window</span><span class="sh__token--sign" style="color: var(--sh-sign)">.</span><span class="sh__token--property" style="color: var(--sh-property)">go</span></span></code> L50</a></td></tr><tr><td>摘要器输入上限 540,000 字节，切点保持 UTF-8 完整</td><td><a target="_blank" rel="noopener noreferrer" href="https://github.com/Kocoro-lab/Kocoro/blob/4ec6772/internal/context/summarize.go#L25"><code><span class="sh__line"><span class="sh__token--identifier" style="color: var(--sh-identifier)">summarize</span><span class="sh__token--sign" style="color: var(--sh-sign)">.</span><span class="sh__token--property" style="color: var(--sh-property)">go</span></span></code> L25</a></td></tr><tr><td>Reactive 压缩不重复</td><td><a target="_blank" rel="noopener noreferrer" href="https://github.com/Kocoro-lab/Kocoro/blob/4ec6772/internal/agent/loop.go#L3847"><code><span class="sh__line"><span class="sh__token--identifier" style="color: var(--sh-identifier)">loop</span><span class="sh__token--sign" style="color: var(--sh-sign)">.</span><span class="sh__token--property" style="color: var(--sh-property)">go</span></span></code> L3847</a></td></tr><tr><td>分级失败遥测</td><td><a target="_blank" rel="noopener noreferrer" href="https://github.com/Kocoro-lab/Kocoro/blob/4ec6772/internal/agent/loop.go#L185"><code><span class="sh__line"><span class="sh__token--identifier" style="color: var(--sh-identifier)">loop</span><span class="sh__token--sign" style="color: var(--sh-sign)">.</span><span class="sh__token--property" style="color: var(--sh-property)">go</span></span></code> L185</a></td></tr><tr><td>为缓存安全而稳定的截断边界</td><td><a target="_blank" rel="noopener noreferrer" href="https://github.com/Kocoro-lab/Kocoro/blob/4ec6772/internal/context/window.go#L47"><code><span class="sh__line"><span class="sh__token--identifier" style="color: var(--sh-identifier)">window</span><span class="sh__token--sign" style="color: var(--sh-sign)">.</span><span class="sh__token--property" style="color: var(--sh-property)">go</span></span></code> L47</a></td></tr></tbody></table>
+<p>以上描述的是一个有日期的实现快照，不是普遍契约。</p>
+<h2 id="358-什么时候压缩是错的工具"><a href="#358-什么时候压缩是错的工具" class="anchor"></a>35.8 什么时候压缩是错的工具</h2>
+<p>不是所有上下文问题都是压缩问题。反射性地伸手去拿它，你会白白付出本来不用付的质量代价。</p>
+<p>如果会话根本够不到窗口上限，这套机制就是纯风险——用最小消息数把它关掉。如果问题是单个超大的工具结果，那就外溢到磁盘、留个指针，别把它摘要进转录里；<a target="_blank" rel="noopener noreferrer" href="./%E7%AC%AC36%E7%AB%A0-Tool-Result%E9%A2%84%E7%AE%97%E4%B8%8E%E5%A4%96%E6%BA%A2">第 36 章</a>讲的就是这条路，而且它应该是你的第一反应，不是第二。如果内容<strong>本身就是交付物</strong>——用户要你产出的那份转录——压掉它就等于毁了产品。压缩塑造的是工作上下文，永远不是输出。</p>
+<p>如果这次运行需要审计留痕，那就压缩<strong>模型看到的那一份</strong>，完整记录另外落盘。压缩是 Prompt 整形操作，不是留存策略；把它当留存策略用，你会丢掉本来必须留住的证据。</p>
+<h2 id="359-常见的坑"><a href="#359-常见的坑" class="anchor"></a>35.9 常见的坑</h2>
+<p><strong>只有一个阈值、没有兜底。</strong> 野外最常见的设计，也是第 91 分钟的直接成因。</p>
+<p><strong>反复压缩摘要。</strong> 每多压一遍已经摘要过的区域，丢的信号更多、省的 token 更少。记录哪些压过了，别重复处理。</p>
+<p><strong>用刚刚溢出的那一档做摘要。</strong> 很省事，而且它会恰好在你最需要它的时候失败。把摘要器路由到更便宜的一档，并给它自己的输入上限。</p>
+<p><strong>接受空摘要。</strong> 摘要器返回 <code><span class="sh__line"><span class="sh__token--string" style="color: var(--sh-string)">&quot;</span><span class="sh__token--string" style="color: var(--sh-string)">&quot;</span></span></code> 却被照单全收，等于悄悄抹掉了对话中段。检查空值，保留上一份摘要。</p>
+<p><strong>让 guardrail 提示进入摘要输入。</strong> 上一轮那句「你好像在重复」不是对话内容。先把循环注入的消息剥掉，否则你的摘要会忠实地记下这个 Agent 挨过训。</p>
+<p><strong>相信估算。</strong> 基于字符启发式的 token 计数在边界上就是不准。这不是一个待修的缺陷——这恰恰是 Preflight 要复查、Reactive 要存在的全部理由。</p>
+<h2 id="kocoro-oss-lab10-分钟上手"><a href="#kocoro-oss-lab10-分钟上手" class="anchor"></a>Kocoro OSS Lab（10 分钟上手）</h2>
+<ol>
+<li>读 <a target="_blank" rel="noopener noreferrer" href="https://github.com/Kocoro-lab/Kocoro/blob/4ec6772/internal/context/window.go"><code><span class="sh__line"><span class="sh__token--identifier" style="color: var(--sh-identifier)">window</span><span class="sh__token--sign" style="color: var(--sh-sign)">.</span><span class="sh__token--property" style="color: var(--sh-property)">go</span></span></code></a>，找到那段用 180K 悬崖推出 0.90 的注释。注意：<strong>换算过程写在注释里</strong>，不只是一个数字。</li>
+<li>追 <code><span class="sh__line"><span class="sh__token--identifier" style="color: var(--sh-identifier)">loop</span><span class="sh__token--sign" style="color: var(--sh-sign)">.</span><span class="sh__token--property" style="color: var(--sh-property)">go</span></span></code> 里 <code><span class="sh__line"><span class="sh__token--identifier" style="color: var(--sh-identifier)">compressOldToolResults</span></span></code> 的四处调用点：强制停止前检查、主循环调用前检查、响应式温和压缩，以及响应式紧急回退。</li>
+<li>写下你自己的系统该发什么标签来替代 <code><span class="sh__line"><span class="sh__token--identifier" style="color: var(--sh-identifier)">compaction_failed</span></span></code>——先列出可能失败的五条路径，再检查你今天的遥测分不分得清它们。</li>
+</ol>
+<h2 id="划重点"><a href="#划重点" class="anchor"></a>划重点</h2>
+<ol>
+<li><strong>三道闸门，不是一道。</strong> 主动看估算、Preflight 看调用前、Reactive 看 Provider 的真话。每一道都在接住上一道骗你的那种具体方式。</li>
+<li><strong>阈值来自换算。</strong> 从 token 余量倒推，说出谁接住剩下那截，并把推理写进注释里——那里它烂不掉。</li>
+<li><strong>摘要器是会失败的模型调用。</strong> 给它输入上限，把重试严格限制成一次，标志永不复位。</li>
+<li><strong>压缩和缓存对着拉。</strong> 任何由当前历史长度推导的边界都会打散前缀。边界要从稳定输入来。</li>
+<li><strong>先想外溢。</strong> 单个超大结果属于磁盘和一个指针，不属于你的转录。</li>
+</ol>
+<p>下一章：<a target="_blank" rel="noopener noreferrer" href="./%E7%AC%AC36%E7%AB%A0-Tool-Result%E9%A2%84%E7%AE%97%E4%B8%8E%E5%A4%96%E6%BA%A2">第 36 章</a>讲怎么把大结果整个挪出 Prompt，<a target="_blank" rel="noopener noreferrer" href="./%E7%AC%AC37%E7%AB%A0-%E5%88%86%E5%B1%82%E5%8E%8B%E7%BC%A9">第 37 章</a>讲怎么按年龄逐级降级旧结果，而不是一次性把全部摘要掉。</p></article>
+        <div class="chapter-nav"><a href="第34章-从DAG到Agent-Loop.html"><span class="nav-label">上一章</span>第 34 章：从 DAG 到 Agent Loop</a><a href="第36章-Tool-Result预算与外溢.html" class="nav-next"><span class="nav-label">下一章</span>第 36 章：Tool Result 预算与外溢</a></div>
+      </div>
+    </main>
+  </div>
+</div>
+<script src="script.js"></script>
+</body>
+</html>

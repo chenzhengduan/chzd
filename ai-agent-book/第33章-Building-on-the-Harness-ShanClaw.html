@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>第 33 章：Building on the Harness — Kocoro | AI Agent 开发实战 | chad</title>
+<meta name="author" content="chad"/>
+<meta name="description" content="AI Agent 架构模式与实战 - chad"/>
+<script>(function(){try{var m=window.matchMedia('(prefers-color-scheme:dark)');var apply=function(){var t=localStorage.getItem('theme');document.documentElement.classList.toggle('dark',t==='dark'||(!t&&m.matches))};apply();m.addEventListener('change',apply)}catch(e){}})()</script>
+<script src="https://cdn.tailwindcss.com?plugins=typography"></script>
+<script>tailwind.config={darkMode:"class",theme:{extend:{typography:{DEFAULT:{css:{maxWidth:"none"}}}}}}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css"/>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📖</text></svg>"/>
+</head>
+<body>
+<div class="book-layout">
+  <header class="book-header">
+    <div class="header-content">
+      <div class="header-left">
+        <button class="mobile-menu-toggle" id="menuToggle" aria-label="Open menu">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20"><path stroke-linecap="round" stroke-linejoin="round" d="M3 12h18M3 6h18M3 18h18"></path></svg>
+        </button>
+        <nav class="header-nav">
+          <a class="nav-item" href="index.html">Home</a>
+          <a class="nav-item" href="#">Blog</a>
+          <span class="nav-item">Books</span>
+          <a class="nav-item active hide-mobile" href="index.html">AI Agent 架构模式与实战</a>
+        </nav>
+      </div>
+      <div class="right-controls">
+        <span><a class="lang-link active" href="#">中文</a></span>
+        <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+          <svg class="w-[18px] h-[18px] hidden dark:block" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="4"></circle><path stroke-linecap="round" d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"></path></svg>
+          <svg class="w-[18px] h-[18px] block dark:hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+  <div class="sidebar-overlay" id="sidebarOverlay"></div>
+  <div class="book-body">
+    <nav class="book-sidebar" id="bookSidebar">
+      <button class="sidebar-close" id="sidebarClose" aria-label="Close menu">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20"><path stroke-linecap="round" d="M18 6L6 18M6 6l12 12"></path></svg>
+      </button>
+      <div class="sidebar-header">
+        <a class="book-title" href="index.html">AI Agent 架构：从单体到企业级多智能体</a>
+      </div>
+      <div class="sidebar-content">
+<div class="sidebar-section"><div class="section-title">前言</div><ul class="chapter-list"><li><a class="chapter-link" href="前言.html">前言</a></li></ul></div><div class="sidebar-section"><div class="section-title">Part 1 - Agent 基础</div><ul class="chapter-list"><li><a class="chapter-link" href="Part1概述.html">Part 1 概述</a></li><li><a class="chapter-link" href="第01章-Agent的本质.html">第 1 章：Agent 的本质</a></li><li><a class="chapter-link" href="第02章-ReAct循环.html">第 2 章：ReAct 循环</a></li></ul></div><div class="sidebar-section"><div class="section-title">Part 2 - 工具与扩展</div><ul class="chapter-list"><li><a class="chapter-link" href="Part2概述.html">Part 2 概述</a></li><li><a class="chapter-link" href="第03章-工具调用基础.html">第 3 章：工具调用基础</a></li><li><a class="chapter-link" href="第04章-MCP协议详解.html">第 4 章：MCP 协议详解</a></li><li><a class="chapter-link" href="第05章-Skills技能系统.html">第 5 章：Skills 技能系统</a></li><li><a class="chapter-link" href="第06章-Hooks与事件系统.html">第 6 章：Hooks 与事件系统</a></li></ul></div><div class="sidebar-section"><div class="section-title">Part 3 - 上下文与记忆</div><ul class="chapter-list"><li><a class="chapter-link" href="Part3概述.html">Part 3 概述</a></li><li><a class="chapter-link" href="第07章-上下文工程.html">第 7 章：上下文工程</a></li><li><a class="chapter-link" href="第08章-记忆架构.html">第 8 章：记忆架构</a></li><li><a class="chapter-link" href="第09章-多轮对话设计.html">第 9 章：多轮对话设计</a></li></ul></div><div class="sidebar-section"><div class="section-title">Part 4 - 单 Agent 模式</div><ul class="chapter-list"><li><a class="chapter-link" href="Part4概述.html">Part 4 概述</a></li><li><a class="chapter-link" href="第10章-Planning模式.html">第 10 章：Planning 模式</a></li><li><a class="chapter-link" href="第11章-Reflection模式.html">第 11 章：Reflection 模式</a></li><li><a class="chapter-link" href="第12章-Chain-of-Thought.html">第 12 章：Chain-of-Thought</a></li></ul></div><div class="sidebar-section"><div class="section-title">Part 5 - 多 Agent 编排</div><ul class="chapter-list"><li><a class="chapter-link" href="Part5概述.html">Part 5 概述</a></li><li><a class="chapter-link" href="第13章-编排基础.html">第 13 章：编排基础</a></li><li><a class="chapter-link" href="第14章-DAG工作流.html">第 14 章：DAG 工作流</a></li><li><a class="chapter-link" href="第15章-Swarm模式.html">第 15 章：Swarm 模式</a></li><li><a class="chapter-link" href="第16章-Handoff机制.html">第 16 章：Handoff 机制</a></li></ul></div><div class="sidebar-section"><div class="section-title">Part 6 - 高级推理</div><ul class="chapter-list"><li><a class="chapter-link" href="Part6概述.html">Part 6 概述</a></li><li><a class="chapter-link" href="第17章-Tree-of-Thoughts.html">第 17 章：Tree-of-Thoughts</a></li><li><a class="chapter-link" href="第18章-Debate模式.html">第 18 章：Debate 模式</a></li><li><a class="chapter-link" href="第19章-Research-Synthesis.html">第 19 章：Research-Synthesis</a></li></ul></div><div class="sidebar-section"><div class="section-title">Part 7 - 生产架构</div><ul class="chapter-list"><li><a class="chapter-link" href="Part7概述.html">Part 7 概述</a></li><li><a class="chapter-link" href="第20章-三层架构设计.html">第 20 章：三层架构设计</a></li><li><a class="chapter-link" href="第21章-Temporal工作流.html">第 21 章：Temporal 工作流</a></li><li><a class="chapter-link" href="第22章-可观测性.html">第 22 章：可观测性</a></li></ul></div><div class="sidebar-section"><div class="section-title">Part 8 - 企业级特性</div><ul class="chapter-list"><li><a class="chapter-link" href="Part8概述.html">Part 8 概述</a></li><li><a class="chapter-link" href="第23章-Token预算控制.html">第 23 章：Token 预算控制</a></li><li><a class="chapter-link" href="第24章-策略治理.html">第 24 章：策略治理</a></li><li><a class="chapter-link" href="第25章-安全执行.html">第 25 章：安全执行</a></li><li><a class="chapter-link" href="第26章-多租户设计.html">第 26 章：多租户设计</a></li></ul></div><div class="sidebar-section"><div class="section-title">Part 9 - 前沿实践</div><ul class="chapter-list"><li><a class="chapter-link" href="Part9概述.html">Part 9 概述</a></li><li><a class="chapter-link" href="第27章-Deep-Research.html">第 27 章：Deep Research</a></li><li><a class="chapter-link" href="第28章-Computer-Use.html">第 28 章：Computer Use</a></li><li><a class="chapter-link" href="第29章-Agentic-Coding.html">第 29 章：Agentic Coding</a></li><li><a class="chapter-link" href="第30章-Background-Agents.html">第 30 章：Background Agents</a></li><li><a class="chapter-link" href="第31章-分层模型策略.html">第 31 章：分层模型策略</a></li><li><a class="chapter-link" href="第32章-OpenClaw时代.html">第 32 章：OpenClaw 时代</a></li><li><a class="chapter-link active" href="第33章-Building-on-the-Harness-ShanClaw.html">第 33 章：Building on the Harness - Kocoro</a></li></ul></div><div class="sidebar-section"><div class="section-title">Part 10 - Agent Loop 工程</div><ul class="chapter-list"><li><a class="chapter-link" href="Part10-Agent-Loop工程.html">Part 10 概述</a></li><li><a class="chapter-link" href="第34章-从DAG到Agent-Loop.html">第 34 章：从 DAG 到 Agent Loop</a></li><li><a class="chapter-link" href="第35章-上下文压缩.html">第 35 章：上下文压缩</a></li><li><a class="chapter-link" href="第36章-Tool-Result预算与外溢.html">第 36 章：Tool Result 预算与外溢</a></li><li><a class="chapter-link" href="第37章-分层压缩.html">第 37 章：分层压缩</a></li><li><a class="chapter-link" href="第38章-Deferred-Tool-Loading与Tool-Search.html">第 38 章：Deferred Tool Loading 与 Tool Search</a></li><li><a class="chapter-link" href="第39章-Prompt-Cache稳定性.html">第 39 章：Prompt Cache 稳定性</a></li><li><a class="chapter-link" href="第40章-持久化Agent-Loop.html">第 40 章：持久化 Agent Loop</a></li><li><a class="chapter-link" href="第41章-运行中操控Agent.html">第 41 章：运行中操控 Agent</a></li><li><a class="chapter-link" href="第42章-Agent超时与Watchdog.html">第 42 章：Agent 超时与 Watchdog</a></li><li><a class="chapter-link" href="第43章-卡循环检测.html">第 43 章：卡循环检测</a></li><li><a class="chapter-link" href="第44章-并行工具执行.html">第 44 章：并行工具执行</a></li><li><a class="chapter-link" href="第45章-Computer-Use上下文管理.html">第 45 章：Computer Use 上下文管理</a></li></ul></div><div class="sidebar-section"><div class="section-title">附录</div><ul class="chapter-list"><li><a class="chapter-link" href="Part10概述.html">附录概述</a></li><li><a class="chapter-link" href="附录A-术语表.html">附录 A：术语表</a></li><li><a class="chapter-link" href="附录B-模式选择指南.html">附录 B：模式选择指南</a></li><li><a class="chapter-link" href="附录C-常见问题FAQ.html">附录 C：常见问题 FAQ</a></li></ul></div>
+      </div>
+    </nav>
+    <main class="book-main">
+      <div class="book-content">
+<article class="prose dark:prose-invert fade-in"><h1 id="第-33-章building-on-the-harness-kocoro"><a href="#第-33-章building-on-the-harness-kocoro" class="anchor"></a>第 33 章：Building on the Harness — Kocoro</h1>
+<blockquote>
+<p><strong>只有把身份、状态、权限、集成、自动化与验证写成明确契约，模型循环才会成为产品。</strong></p>
+</blockquote>
+<blockquote>
+<p><strong>公开来源边界</strong>：本章只使用 <a target="_blank" rel="noopener noreferrer" href="https://github.com/Kocoro-lab/Kocoro">Kocoro 公开仓库</a>记录的概念与命令。该仓库包含开源引擎、CLI 与 Daemon；原生 GUI 产品 Kocoro Desktop 是独立闭源产品。本章不使用私有代码、生产配置、事故、客户数据或专有资产。</p>
+</blockquote>
+<h2 id="331-从循环到运行时"><a href="#331-从循环到运行时" class="anchor"></a>33.1 从循环到运行时</h2>
+<p>持久运行时在执行循环外增加独立契约：</p>
+<table><thead><tr><th>层</th><th>契约</th></tr></thead><tbody><tr><td>身份</td><td>哪个 Named Agent、指令、模型策略与工具生效？</td></tr><tr><td>Session 状态</td><td>哪些消息、事件和远程任务属于同一次工作？</td></tr><tr><td>Memory</td><td>哪些事实可跨 Session 保存，来源与作用域是什么？</td></tr><tr><td>权限</td><td>什么被封锁、允许或必须人工决定？</td></tr><tr><td>集成</td><td>本地工具、MCP Server 与渠道如何连接？</td></tr><tr><td>自动化</td><td>用户不在终端时，什么会触发工作？</td></tr><tr><td>验证</td><td>什么证据证明成功、安全失败或取消？</td></tr></tbody></table>
+<p>切换 Agent 或触发来源不能绕过共享权限与执行核心。</p>
+<h2 id="332-当前公开入口"><a href="#332-当前公开入口" class="anchor"></a>33.2 当前公开入口</h2>
+<pre><code class="language-bash"><span class="sh__line"><span class="sh__token--identifier" style="color: var(--sh-identifier)">shan</span><span class="sh__token--space" style="color: var(--sh-space)"> </span><span class="sh__token--space" style="color: var(--sh-space)">                             </span><span class="sh__token--sign" style="color: var(--sh-sign)">#</span><span class="sh__token--space" style="color: var(--sh-space)"> </span><span class="sh__token--class" style="color: var(--sh-class)">交互式</span><span class="sh__token--space" style="color: var(--sh-space)"> </span><span class="sh__token--class" style="color: var(--sh-class)">TUI</span><span class="sh__token--break" style="color: var(--sh-break)"></span></span>
+<span class="sh__line"><span class="sh__token--identifier" style="color: var(--sh-identifier)">shan</span><span class="sh__token--space" style="color: var(--sh-space)"> </span><span class="sh__token--string" style="color: var(--sh-string)">&quot;</span><span class="sh__token--string" style="color: var(--sh-string)">review this directory</span><span class="sh__token--string" style="color: var(--sh-string)">&quot;</span><span class="sh__token--space" style="color: var(--sh-space)">      </span><span class="sh__token--sign" style="color: var(--sh-sign)">#</span><span class="sh__token--space" style="color: var(--sh-space)"> </span><span class="sh__token--class" style="color: var(--sh-class)">一次性任务</span><span class="sh__token--break" style="color: var(--sh-break)"></span></span>
+<span class="sh__line"><span class="sh__token--identifier" style="color: var(--sh-identifier)">shan</span><span class="sh__token--space" style="color: var(--sh-space)"> </span><span class="sh__token--sign" style="color: var(--sh-sign)">-</span><span class="sh__token--sign" style="color: var(--sh-sign)">-</span><span class="sh__token--identifier" style="color: var(--sh-identifier)">agent</span><span class="sh__token--space" style="color: var(--sh-space)"> </span><span class="sh__token--identifier" style="color: var(--sh-identifier)">ops</span><span class="sh__token--sign" style="color: var(--sh-sign)">-</span><span class="sh__token--identifier" style="color: var(--sh-identifier)">bot</span><span class="sh__token--space" style="color: var(--sh-space)"> </span><span class="sh__token--string" style="color: var(--sh-string)">&quot;</span><span class="sh__token--string" style="color: var(--sh-string)">check it</span><span class="sh__token--string" style="color: var(--sh-string)">&quot;</span><span class="sh__token--space" style="color: var(--sh-space)">   </span><span class="sh__token--sign" style="color: var(--sh-sign)">#</span><span class="sh__token--space" style="color: var(--sh-space)"> </span><span class="sh__token--class" style="color: var(--sh-class)">Named</span><span class="sh__token--space" style="color: var(--sh-space)"> </span><span class="sh__token--class" style="color: var(--sh-class)">Agent</span><span class="sh__token--break" style="color: var(--sh-break)"></span></span>
+<span class="sh__line"><span class="sh__token--identifier" style="color: var(--sh-identifier)">shan</span><span class="sh__token--space" style="color: var(--sh-space)"> </span><span class="sh__token--identifier" style="color: var(--sh-identifier)">daemon</span><span class="sh__token--space" style="color: var(--sh-space)"> </span><span class="sh__token--identifier" style="color: var(--sh-identifier)">start</span><span class="sh__token--space" style="color: var(--sh-space)"> </span><span class="sh__token--space" style="color: var(--sh-space)">                </span><span class="sh__token--sign" style="color: var(--sh-sign)">#</span><span class="sh__token--space" style="color: var(--sh-space)"> </span><span class="sh__token--class" style="color: var(--sh-class)">本地</span><span class="sh__token--space" style="color: var(--sh-space)"> </span><span class="sh__token--class" style="color: var(--sh-class)">Daemon</span><span class="sh__token--break" style="color: var(--sh-break)"></span></span>
+<span class="sh__line"><span class="sh__token--identifier" style="color: var(--sh-identifier)">shan</span><span class="sh__token--space" style="color: var(--sh-space)"> </span><span class="sh__token--identifier" style="color: var(--sh-identifier)">mcp</span><span class="sh__token--space" style="color: var(--sh-space)"> </span><span class="sh__token--identifier" style="color: var(--sh-identifier)">serve</span><span class="sh__token--space" style="color: var(--sh-space)"> </span><span class="sh__token--space" style="color: var(--sh-space)">                   </span><span class="sh__token--sign" style="color: var(--sh-sign)">#</span><span class="sh__token--space" style="color: var(--sh-space)"> </span><span class="sh__token--identifier" style="color: var(--sh-identifier)">stdio</span><span class="sh__token--space" style="color: var(--sh-space)"> </span><span class="sh__token--class" style="color: var(--sh-class)">MCP</span><span class="sh__token--space" style="color: var(--sh-space)"> </span><span class="sh__token--class" style="color: var(--sh-class)">Server</span><span class="sh__token--break" style="color: var(--sh-break)"></span></span>
+<span class="sh__line"><span class="sh__token--identifier" style="color: var(--sh-identifier)">shan</span><span class="sh__token--space" style="color: var(--sh-space)"> </span><span class="sh__token--identifier" style="color: var(--sh-identifier)">schedule</span><span class="sh__token--space" style="color: var(--sh-space)"> </span><span class="sh__token--identifier" style="color: var(--sh-identifier)">list</span><span class="sh__token--space" style="color: var(--sh-space)"> </span><span class="sh__token--space" style="color: var(--sh-space)">               </span><span class="sh__token--sign" style="color: var(--sh-sign)">#</span><span class="sh__token--space" style="color: var(--sh-space)"> </span><span class="sh__token--class" style="color: var(--sh-class)">查看</span><span class="sh__token--space" style="color: var(--sh-space)"> </span><span class="sh__token--class" style="color: var(--sh-class)">Schedule</span><span class="sh__token--break" style="color: var(--sh-break)"></span></span></code></pre>
+<p>命令会演进，因此公开 README 与 CLI help 才是操作事实来源。稳定原则是 TUI、Daemon、Schedule 与 MCP 工作汇入同一个 Harness。</p>
+<h2 id="333-named-agents-与状态边界"><a href="#333-named-agents-与状态边界" class="anchor"></a>33.3 Named Agents 与状态边界</h2>
+<p>Named Agent 组合指令、模型策略、工具范围、MCP 范围、Sessions、Memory 以及可选命令或 Skills。安全配置遵循：</p>
+<ol>
+<li><strong>最小权限</strong>：只给任务所需工具和网络目标。</li>
+<li><strong>来源可见</strong>：运行时能解释每个最终配置值的来源。</li>
+<li><strong>避免意外继承</strong>：切换 Agent 时重建工具与集成范围。</li>
+</ol>
+<p>工作 Context、可恢复 Session 记录与持久 Memory 必须分离。压缩是有损的，只保留有证据、时间和作用域的持久事实。Small 模型抽取是成本选择，不是正确性保证；结果仍需去重、矛盾处理、隐私过滤与评估。</p>
+<h2 id="334-权限与不可信结果"><a href="#334-权限与不可信结果" class="anchor"></a>33.4 权限与不可信结果</h2>
+<p>授权属于运行时，不属于模型。稳健路径包括不可覆盖的破坏性操作封锁、操作者拒绝规则、复合命令分析、高风险参数特殊处理、有作用域的允许规则和其他操作的显式审批。</p>
+<p>自动审批不是全局信任开关，必须受工具、参数、路径、目标和触发来源约束。</p>
+<p>工具输出是不可信数据。限制大小，必要时把完整结果保存在 Prompt 外，标记截断，绝不能把网页或 MCP 结果里的文字重新解释为系统指令。</p>
+<h2 id="335-daemon渠道与人工介入"><a href="#335-daemon渠道与人工介入" class="anchor"></a>33.5 Daemon、渠道与人工介入</h2>
+<pre><code class="language-text"><span class="sh__line"><span class="sh__token--class" style="color: var(--sh-class)">消息到达</span><span class="sh__token--break" style="color: var(--sh-break)"></span></span>
+<span class="sh__line"><span class="sh__token--space" style="color: var(--sh-space)">  </span><span class="sh__token--class" style="color: var(--sh-class)">→</span><span class="sh__token--space" style="color: var(--sh-space)"> </span><span class="sh__token--class" style="color: var(--sh-class)">验证并识别来源</span><span class="sh__token--break" style="color: var(--sh-break)"></span></span>
+<span class="sh__line"><span class="sh__token--space" style="color: var(--sh-space)">  </span><span class="sh__token--class" style="color: var(--sh-class)">→</span><span class="sh__token--space" style="color: var(--sh-space)"> </span><span class="sh__token--class" style="color: var(--sh-class)">选择</span><span class="sh__token--space" style="color: var(--sh-space)"> </span><span class="sh__token--class" style="color: var(--sh-class)">Agent</span><span class="sh__token--space" style="color: var(--sh-space)"> </span><span class="sh__token--class" style="color: var(--sh-class)">与</span><span class="sh__token--space" style="color: var(--sh-space)"> </span><span class="sh__token--class" style="color: var(--sh-class)">Session</span><span class="sh__token--break" style="color: var(--sh-break)"></span></span>
+<span class="sh__line"><span class="sh__token--space" style="color: var(--sh-space)">  </span><span class="sh__token--class" style="color: var(--sh-class)">→</span><span class="sh__token--space" style="color: var(--sh-space)"> </span><span class="sh__token--class" style="color: var(--sh-class)">通过共享</span><span class="sh__token--space" style="color: var(--sh-space)"> </span><span class="sh__token--class" style="color: var(--sh-class)">Harness</span><span class="sh__token--space" style="color: var(--sh-space)"> </span><span class="sh__token--class" style="color: var(--sh-class)">执行</span><span class="sh__token--break" style="color: var(--sh-break)"></span></span>
+<span class="sh__line"><span class="sh__token--space" style="color: var(--sh-space)">  </span><span class="sh__token--class" style="color: var(--sh-class)">→</span><span class="sh__token--space" style="color: var(--sh-space)"> </span><span class="sh__token--class" style="color: var(--sh-class)">必要时等待审批或用户输入</span><span class="sh__token--break" style="color: var(--sh-break)"></span></span>
+<span class="sh__line"><span class="sh__token--space" style="color: var(--sh-space)">  </span><span class="sh__token--class" style="color: var(--sh-class)">→</span><span class="sh__token--space" style="color: var(--sh-space)"> </span><span class="sh__token--class" style="color: var(--sh-class)">流式输出事件</span><span class="sh__token--break" style="color: var(--sh-break)"></span></span>
+<span class="sh__line"><span class="sh__token--space" style="color: var(--sh-space)">  </span><span class="sh__token--class" style="color: var(--sh-class)">→</span><span class="sh__token--space" style="color: var(--sh-space)"> </span><span class="sh__token--class" style="color: var(--sh-class)">持久化明确终态</span><span class="sh__token--break" style="color: var(--sh-break)"></span></span></code></pre>
+<p>渠道元数据只是数据，不是权限。Slack、Webhook、浏览器页面或 Desktop 事件不能自行扩大权限。需要人工输入时，应保存可恢复的 Pending 状态。取消、超时、重启和重复投递都要有定义。</p>
+<h2 id="336-双向-mcp"><a href="#336-双向-mcp" class="anchor"></a>33.6 双向 MCP</h2>
+<p>公开 Kocoro 运行时记录了两个角色：</p>
+<ul>
+<li><strong>MCP Server</strong>：通过当前 shan mcp serve 命令暴露已批准的本地工具。</li>
+<li><strong>MCP Client</strong>：把 Agent 连接到配置好的外部 MCP Server。</li>
+</ul>
+<p>两者都保持与交互模式相同的权限、审计和不可信输出边界。遵循第 4 章的 2025-11-25 快照：能力协商、stdio 或 Streamable HTTP，以及仅在双方声明后使用的实验性 Tasks。</p>
+<h2 id="337-schedulewatcher-与-heartbeat"><a href="#337-schedulewatcher-与-heartbeat" class="anchor"></a>33.7 Schedule、Watcher 与 Heartbeat</h2>
+<table><thead><tr><th>触发器</th><th>适合</th><th>主要风险</th></tr></thead><tbody><tr><td>Schedule</td><td>固定时间工作</td><td>重复或漏执行</td></tr><tr><td>File Watcher</td><td>响应状态变化</td><td>事件风暴与半写入</td></tr><tr><td>Heartbeat</td><td>定期判断是否需关注</td><td>噪音告警与 Token 浪费</td></tr></tbody></table>
+<p>它们都需要防重叠、有限重试、幂等键、静默成功、可见失败和禁用方式。自动触发通常应比交互用户拥有更少权限。</p>
+<h2 id="338-agent-评估与发布工程"><a href="#338-agent-评估与发布工程" class="anchor"></a>33.8 Agent 评估与发布工程</h2>
+<p>Demo 问“能否成功一次”；发布关卡问“变更后能否持续、安全地成功”。</p>
+<h3 id="契约测试"><a href="#契约测试" class="anchor"></a>契约测试</h3>
+<ul>
+<li>校验工具 Schema 与代表性错误；</li>
+<li>用精确参数边界测试允许、拒绝和审批；</li>
+<li>验证 Session、Agent 与工作目录隔离；</li>
+<li>断言取消和超时终态；</li>
+<li>验证重试不会重复副作用。</li>
+</ul>
+<h3 id="golden-trace-与回放"><a href="#golden-trace-与回放" class="anchor"></a>Golden Trace 与回放</h3>
+<p>保存合成、无敏感信息的轨迹，包含意图、选中工具、归一化结果、审批和最终后置条件。Prompt、模型、工具或策略变化后回放，比较语义与安全决策，不比较逐字文案。</p>
+<h3 id="故障注入"><a href="#故障注入" class="anchor"></a>故障注入</h3>
+<p>测试模型不可用、MCP 响应畸形、结果过大、Daemon 断连、消息重复、文件半写入、Session 过期与审批期间重启。安全失败可以是正确结果；挂起或伪造成功不可以。</p>
+<h3 id="质量与发布关卡"><a href="#质量与发布关卡" class="anchor"></a>质量与发布关卡</h3>
+<p>测量任务验收、无证据论断、引用质量、权限违规、Prompt Injection 抵抗、恢复率、延迟与总成本，并区分确定性后置条件、校准后的模型评分和人工审查。</p>
+<pre><code class="language-text"><span class="sh__line"><span class="sh__token--class" style="color: var(--sh-class)">单元与契约测试</span><span class="sh__token--break" style="color: var(--sh-break)"></span></span>
+<span class="sh__line"><span class="sh__token--space" style="color: var(--sh-space)">  </span><span class="sh__token--class" style="color: var(--sh-class)">→</span><span class="sh__token--space" style="color: var(--sh-space)"> </span><span class="sh__token--class" style="color: var(--sh-class)">Golden</span><span class="sh__token--space" style="color: var(--sh-space)"> </span><span class="sh__token--class" style="color: var(--sh-class)">Trace</span><span class="sh__token--space" style="color: var(--sh-space)"> </span><span class="sh__token--class" style="color: var(--sh-class)">回放</span><span class="sh__token--break" style="color: var(--sh-break)"></span></span>
+<span class="sh__line"><span class="sh__token--space" style="color: var(--sh-space)">  </span><span class="sh__token--class" style="color: var(--sh-class)">→</span><span class="sh__token--space" style="color: var(--sh-space)"> </span><span class="sh__token--class" style="color: var(--sh-class)">对抗与故障注入</span><span class="sh__token--break" style="color: var(--sh-break)"></span></span>
+<span class="sh__line"><span class="sh__token--space" style="color: var(--sh-space)">  </span><span class="sh__token--class" style="color: var(--sh-class)">→</span><span class="sh__token--space" style="color: var(--sh-space)"> </span><span class="sh__token--class" style="color: var(--sh-class)">隔离</span><span class="sh__token--space" style="color: var(--sh-space)"> </span><span class="sh__token--class" style="color: var(--sh-class)">Canary</span><span class="sh__token--space" style="color: var(--sh-space)"> </span><span class="sh__token--class" style="color: var(--sh-class)">或</span><span class="sh__token--space" style="color: var(--sh-space)"> </span><span class="sh__token--class" style="color: var(--sh-class)">Shadow</span><span class="sh__token--space" style="color: var(--sh-space)"> </span><span class="sh__token--class" style="color: var(--sh-class)">Run</span><span class="sh__token--break" style="color: var(--sh-break)"></span></span>
+<span class="sh__line"><span class="sh__token--space" style="color: var(--sh-space)">  </span><span class="sh__token--class" style="color: var(--sh-class)">→</span><span class="sh__token--space" style="color: var(--sh-space)"> </span><span class="sh__token--class" style="color: var(--sh-class)">受监控发布</span><span class="sh__token--break" style="color: var(--sh-break)"></span></span>
+<span class="sh__line"><span class="sh__token--space" style="color: var(--sh-space)">  </span><span class="sh__token--class" style="color: var(--sh-class)">→</span><span class="sh__token--space" style="color: var(--sh-space)"> </span><span class="sh__token--class" style="color: var(--sh-class)">回滚证据</span><span class="sh__token--break" style="color: var(--sh-break)"></span></span></code></pre>
+<p>回滚、取消和审计检索也实际演练后，发布才算完成。</p>
+<h2 id="339-安全公开边界"><a href="#339-安全公开边界" class="anchor"></a>33.9 安全公开边界</h2>
+<table><thead><tr><th>可进入本书</th><th>必须私有</th></tr></thead><tbody><tr><td>公开 README 命令与架构概念</td><td>私有源码或未发布 API</td></tr><tr><td>通用状态机与权限模式</td><td>生产拓扑与凭据</td></tr><tr><td>合成轨迹与示意值</td><td>客户 Prompt、文件与消息</td></tr><tr><td>公开 OSS 链接</td><td>内部事故与识别指纹</td></tr><tr><td>通用评估方法</td><td>专有 Prompt、阈值、数据集与结果</td></tr></tbody></table>
+<p>把私有经验改写成厂商无关的不变量和合成示例。不要保留能重建原系统的标识符、精确值、时间线或拓扑。</p>
+<h2 id="kocoro-oss-lab"><a href="#kocoro-oss-lab" class="anchor"></a>Kocoro OSS Lab</h2>
+<ol>
+<li>阅读 <a target="_blank" rel="noopener noreferrer" href="https://github.com/Kocoro-lab/Kocoro">Kocoro 公开 README</a>，找出 TUI、Daemon、Schedule 与 MCP 的共享核心。</li>
+<li>为一个合成任务设计只有最小工具权限的 Named Agent。</li>
+<li>编写只读成功、破坏性操作被拒绝、外部调用期间取消三个契约测试。</li>
+<li>创建一条合成 Golden Trace 并定义后置条件。</li>
+<li>说明哪些是公开概念，哪些必须私有。</li>
+</ol>
+<h2 id="划重点"><a href="#划重点" class="anchor"></a>划重点</h2>
+<ol>
+<li>平台在循环外加入身份、状态、权限、集成、自动化和验证契约。</li>
+<li>Kocoro 引擎、CLI 与 Daemon 是公开 OSS；Kocoro Desktop 是独立闭源产品。</li>
+<li>Named Agent 缩小作用域，不能意外继承权限。</li>
+<li>交互、Daemon、Schedule 与 MCP 共享一个策略和执行核心。</li>
+<li>评估需要契约、回放、故障注入、Canary 与回滚。</li>
+<li>只发布概念经验与合成示例，绝不泄露私有实现资产。</li>
+</ol>
+<p>本章说明了为什么循环外需要一层 Agent Harness。<a target="_blank" rel="noopener noreferrer" href="./Part10-Agent-Loop%E5%B7%A5%E7%A8%8B">Part 10</a>接下来会进入这层边界内部，讨论长上下文、进程重启、运行中追问、超时与并行工具出现时，怎样让循环继续保持连贯。</p>
+<a href="https://kocoro.ai/?utm_source=waylandz&amp;utm_medium=blog&amp;utm_campaign=agent-book&amp;utm_content=%E7%AC%AC33%E7%AB%A0-Building-on-the-Harness-ShanClaw" target="_blank" rel="noopener noreferrer" data-kocoro-cta="agent" class="not-prose my-8 flex items-center gap-4 rounded-xl border border-neutral-200 bg-neutral-50 px-5 py-4 text-inherit no-underline transition hover:border-indigo-300 hover:bg-indigo-50/50 dark:border-neutral-800 dark:bg-neutral-900 dark:hover:border-indigo-800 dark:hover:bg-indigo-950/20"><span aria-hidden="true" class="inline-flex h-9 w-9 flex-none items-center justify-center rounded-lg bg-gradient-to-br from-indigo-500 to-cyan-500 text-xs font-bold text-white shadow-sm">K</span><div class="min-w-0 flex-1"><span class="text-sm font-semibold text-neutral-900 dark:text-neutral-100">Kocoro · 本地 Agent 运行时</span><p class="m-0 mt-1 text-xs leading-relaxed text-neutral-500 dark:text-neutral-400">把公开 Kocoro 引擎与 Daemon 作为 Agent Harness 参考，再用合成测试验证这些概念。</p></div><span class="flex-none text-xs font-medium text-indigo-600 dark:text-indigo-300">了解 Kocoro →</span></a></article>
+        <div class="chapter-nav"><a href="第32章-OpenClaw时代.html"><span class="nav-label">上一章</span>第 32 章：OpenClaw 时代</a><a href="Part10-Agent-Loop工程.html" class="nav-next"><span class="nav-label">下一章</span>Part 10 概述</a></div>
+      </div>
+    </main>
+  </div>
+</div>
+<script src="script.js"></script>
+</body>
+</html>

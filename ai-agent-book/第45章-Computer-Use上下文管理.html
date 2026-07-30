@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>第 45 章：Computer Use 上下文管理 | AI Agent 开发实战 | chad</title>
+<meta name="author" content="chad"/>
+<meta name="description" content="AI Agent 架构模式与实战 - chad"/>
+<script>(function(){try{var m=window.matchMedia('(prefers-color-scheme:dark)');var apply=function(){var t=localStorage.getItem('theme');document.documentElement.classList.toggle('dark',t==='dark'||(!t&&m.matches))};apply();m.addEventListener('change',apply)}catch(e){}})()</script>
+<script src="https://cdn.tailwindcss.com?plugins=typography"></script>
+<script>tailwind.config={darkMode:"class",theme:{extend:{typography:{DEFAULT:{css:{maxWidth:"none"}}}}}}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css"/>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📖</text></svg>"/>
+</head>
+<body>
+<div class="book-layout">
+  <header class="book-header">
+    <div class="header-content">
+      <div class="header-left">
+        <button class="mobile-menu-toggle" id="menuToggle" aria-label="Open menu">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20"><path stroke-linecap="round" stroke-linejoin="round" d="M3 12h18M3 6h18M3 18h18"></path></svg>
+        </button>
+        <nav class="header-nav">
+          <a class="nav-item" href="index.html">Home</a>
+          <a class="nav-item" href="#">Blog</a>
+          <span class="nav-item">Books</span>
+          <a class="nav-item active hide-mobile" href="index.html">AI Agent 架构模式与实战</a>
+        </nav>
+      </div>
+      <div class="right-controls">
+        <span><a class="lang-link active" href="#">中文</a></span>
+        <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+          <svg class="w-[18px] h-[18px] hidden dark:block" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="4"></circle><path stroke-linecap="round" d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"></path></svg>
+          <svg class="w-[18px] h-[18px] block dark:hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+  <div class="sidebar-overlay" id="sidebarOverlay"></div>
+  <div class="book-body">
+    <nav class="book-sidebar" id="bookSidebar">
+      <button class="sidebar-close" id="sidebarClose" aria-label="Close menu">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20"><path stroke-linecap="round" d="M18 6L6 18M6 6l12 12"></path></svg>
+      </button>
+      <div class="sidebar-header">
+        <a class="book-title" href="index.html">AI Agent 架构：从单体到企业级多智能体</a>
+      </div>
+      <div class="sidebar-content">
+<div class="sidebar-section"><div class="section-title">前言</div><ul class="chapter-list"><li><a class="chapter-link" href="前言.html">前言</a></li></ul></div><div class="sidebar-section"><div class="section-title">Part 1 - Agent 基础</div><ul class="chapter-list"><li><a class="chapter-link" href="Part1概述.html">Part 1 概述</a></li><li><a class="chapter-link" href="第01章-Agent的本质.html">第 1 章：Agent 的本质</a></li><li><a class="chapter-link" href="第02章-ReAct循环.html">第 2 章：ReAct 循环</a></li></ul></div><div class="sidebar-section"><div class="section-title">Part 2 - 工具与扩展</div><ul class="chapter-list"><li><a class="chapter-link" href="Part2概述.html">Part 2 概述</a></li><li><a class="chapter-link" href="第03章-工具调用基础.html">第 3 章：工具调用基础</a></li><li><a class="chapter-link" href="第04章-MCP协议详解.html">第 4 章：MCP 协议详解</a></li><li><a class="chapter-link" href="第05章-Skills技能系统.html">第 5 章：Skills 技能系统</a></li><li><a class="chapter-link" href="第06章-Hooks与事件系统.html">第 6 章：Hooks 与事件系统</a></li></ul></div><div class="sidebar-section"><div class="section-title">Part 3 - 上下文与记忆</div><ul class="chapter-list"><li><a class="chapter-link" href="Part3概述.html">Part 3 概述</a></li><li><a class="chapter-link" href="第07章-上下文工程.html">第 7 章：上下文工程</a></li><li><a class="chapter-link" href="第08章-记忆架构.html">第 8 章：记忆架构</a></li><li><a class="chapter-link" href="第09章-多轮对话设计.html">第 9 章：多轮对话设计</a></li></ul></div><div class="sidebar-section"><div class="section-title">Part 4 - 单 Agent 模式</div><ul class="chapter-list"><li><a class="chapter-link" href="Part4概述.html">Part 4 概述</a></li><li><a class="chapter-link" href="第10章-Planning模式.html">第 10 章：Planning 模式</a></li><li><a class="chapter-link" href="第11章-Reflection模式.html">第 11 章：Reflection 模式</a></li><li><a class="chapter-link" href="第12章-Chain-of-Thought.html">第 12 章：Chain-of-Thought</a></li></ul></div><div class="sidebar-section"><div class="section-title">Part 5 - 多 Agent 编排</div><ul class="chapter-list"><li><a class="chapter-link" href="Part5概述.html">Part 5 概述</a></li><li><a class="chapter-link" href="第13章-编排基础.html">第 13 章：编排基础</a></li><li><a class="chapter-link" href="第14章-DAG工作流.html">第 14 章：DAG 工作流</a></li><li><a class="chapter-link" href="第15章-Swarm模式.html">第 15 章：Swarm 模式</a></li><li><a class="chapter-link" href="第16章-Handoff机制.html">第 16 章：Handoff 机制</a></li></ul></div><div class="sidebar-section"><div class="section-title">Part 6 - 高级推理</div><ul class="chapter-list"><li><a class="chapter-link" href="Part6概述.html">Part 6 概述</a></li><li><a class="chapter-link" href="第17章-Tree-of-Thoughts.html">第 17 章：Tree-of-Thoughts</a></li><li><a class="chapter-link" href="第18章-Debate模式.html">第 18 章：Debate 模式</a></li><li><a class="chapter-link" href="第19章-Research-Synthesis.html">第 19 章：Research-Synthesis</a></li></ul></div><div class="sidebar-section"><div class="section-title">Part 7 - 生产架构</div><ul class="chapter-list"><li><a class="chapter-link" href="Part7概述.html">Part 7 概述</a></li><li><a class="chapter-link" href="第20章-三层架构设计.html">第 20 章：三层架构设计</a></li><li><a class="chapter-link" href="第21章-Temporal工作流.html">第 21 章：Temporal 工作流</a></li><li><a class="chapter-link" href="第22章-可观测性.html">第 22 章：可观测性</a></li></ul></div><div class="sidebar-section"><div class="section-title">Part 8 - 企业级特性</div><ul class="chapter-list"><li><a class="chapter-link" href="Part8概述.html">Part 8 概述</a></li><li><a class="chapter-link" href="第23章-Token预算控制.html">第 23 章：Token 预算控制</a></li><li><a class="chapter-link" href="第24章-策略治理.html">第 24 章：策略治理</a></li><li><a class="chapter-link" href="第25章-安全执行.html">第 25 章：安全执行</a></li><li><a class="chapter-link" href="第26章-多租户设计.html">第 26 章：多租户设计</a></li></ul></div><div class="sidebar-section"><div class="section-title">Part 9 - 前沿实践</div><ul class="chapter-list"><li><a class="chapter-link" href="Part9概述.html">Part 9 概述</a></li><li><a class="chapter-link" href="第27章-Deep-Research.html">第 27 章：Deep Research</a></li><li><a class="chapter-link" href="第28章-Computer-Use.html">第 28 章：Computer Use</a></li><li><a class="chapter-link" href="第29章-Agentic-Coding.html">第 29 章：Agentic Coding</a></li><li><a class="chapter-link" href="第30章-Background-Agents.html">第 30 章：Background Agents</a></li><li><a class="chapter-link" href="第31章-分层模型策略.html">第 31 章：分层模型策略</a></li><li><a class="chapter-link" href="第32章-OpenClaw时代.html">第 32 章：OpenClaw 时代</a></li><li><a class="chapter-link" href="第33章-Building-on-the-Harness-ShanClaw.html">第 33 章：Building on the Harness - Kocoro</a></li></ul></div><div class="sidebar-section"><div class="section-title">Part 10 - Agent Loop 工程</div><ul class="chapter-list"><li><a class="chapter-link" href="Part10-Agent-Loop工程.html">Part 10 概述</a></li><li><a class="chapter-link" href="第34章-从DAG到Agent-Loop.html">第 34 章：从 DAG 到 Agent Loop</a></li><li><a class="chapter-link" href="第35章-上下文压缩.html">第 35 章：上下文压缩</a></li><li><a class="chapter-link" href="第36章-Tool-Result预算与外溢.html">第 36 章：Tool Result 预算与外溢</a></li><li><a class="chapter-link" href="第37章-分层压缩.html">第 37 章：分层压缩</a></li><li><a class="chapter-link" href="第38章-Deferred-Tool-Loading与Tool-Search.html">第 38 章：Deferred Tool Loading 与 Tool Search</a></li><li><a class="chapter-link" href="第39章-Prompt-Cache稳定性.html">第 39 章：Prompt Cache 稳定性</a></li><li><a class="chapter-link" href="第40章-持久化Agent-Loop.html">第 40 章：持久化 Agent Loop</a></li><li><a class="chapter-link" href="第41章-运行中操控Agent.html">第 41 章：运行中操控 Agent</a></li><li><a class="chapter-link" href="第42章-Agent超时与Watchdog.html">第 42 章：Agent 超时与 Watchdog</a></li><li><a class="chapter-link" href="第43章-卡循环检测.html">第 43 章：卡循环检测</a></li><li><a class="chapter-link" href="第44章-并行工具执行.html">第 44 章：并行工具执行</a></li><li><a class="chapter-link active" href="第45章-Computer-Use上下文管理.html">第 45 章：Computer Use 上下文管理</a></li></ul></div><div class="sidebar-section"><div class="section-title">附录</div><ul class="chapter-list"><li><a class="chapter-link" href="Part10概述.html">附录概述</a></li><li><a class="chapter-link" href="附录A-术语表.html">附录 A：术语表</a></li><li><a class="chapter-link" href="附录B-模式选择指南.html">附录 B：模式选择指南</a></li><li><a class="chapter-link" href="附录C-常见问题FAQ.html">附录 C：常见问题 FAQ</a></li></ul></div>
+      </div>
+    </nav>
+    <main class="book-main">
+      <div class="book-content">
+<article class="prose dark:prose-invert fade-in"><h1 id="第-45-章computer-use-上下文管理"><a href="#第-45-章computer-use-上下文管理" class="anchor"></a>第 45 章：Computer Use 上下文管理</h1>
+<blockquote>
+<p><strong>当前视口是证据。十一个已经过时的视口是负担——除非用户要求你比较全部十二个。</strong></p>
+</blockquote>
+<hr/>
+<blockquote>
+<p><strong>快速通道</strong>（5 分钟掌握核心）</p>
+<ol>
+<li>Computer Use 会同时增长两类历史：文本观察与图像</li>
+<li>使用四项独立控制：单次观察上限、文本窗口、浏览器图像窗口、全局图像上限</li>
+<li>按工具身份限定浏览器裁剪，让用户上传与批量视觉任务使用更宽松的预算</li>
+<li>用明确的占位文本替换陈旧内容，同时保留 <code><span class="sh__line"><span class="sh__token--identifier" style="color: var(--sh-identifier)">tool_use_id</span></span></code> 配对</li>
+<li>让过滤器幂等且可观测；裁剪 prompt 并不等于删除底层文件</li>
+</ol>
+<p><strong>10 分钟路径</strong>：45.1-45.4 -&gt; 45.6 -&gt; Kocoro OSS Lab</p>
+</blockquote>
+<hr/>
+<blockquote>
+<p><strong>公开源码快照</strong>：实现细节取自 Kocoro 公开 <code><span class="sh__line"><span class="sh__token--identifier" style="color: var(--sh-identifier)">origin</span><span class="sh__token--sign" style="color: var(--sh-sign)">/</span><span class="sh__token--identifier" style="color: var(--sh-identifier)">main</span></span></code> 的 <code><span class="sh__line"><span class="sh__token--class" style="color: var(--sh-class)">4ec6772</span></span></code> 提交，复核日期为 2026-07-27。具体常量应以当前源码为准。</p>
+</blockquote>
+<h2 id="451-从-agent-无法操作的十一个屏幕说起"><a href="#451-从-agent-无法操作的十一个屏幕说起" class="anchor"></a>45.1 从 Agent 无法操作的十一个屏幕说起</h2>
+<p>Computer-use Agent 打开设置面板、截图、读取无障碍树、点击一个标签页，然后重复。十二次操作后，下一个模型请求包含：</p>
+<pre><code class="language-text"><span class="sh__line"><span class="sh__token--class" style="color: var(--sh-class)">12</span><span class="sh__token--space" style="color: var(--sh-space)"> </span><span class="sh__token--identifier" style="color: var(--sh-identifier)">screenshots</span><span class="sh__token--break" style="color: var(--sh-break)"></span></span>
+<span class="sh__line"><span class="sh__token--class" style="color: var(--sh-class)">12</span><span class="sh__token--space" style="color: var(--sh-space)"> </span><span class="sh__token--identifier" style="color: var(--sh-identifier)">page</span><span class="sh__token--space" style="color: var(--sh-space)"> </span><span class="sh__token--sign" style="color: var(--sh-sign)">/</span><span class="sh__token--space" style="color: var(--sh-space)"> </span><span class="sh__token--identifier" style="color: var(--sh-identifier)">accessibility</span><span class="sh__token--space" style="color: var(--sh-space)"> </span><span class="sh__token--identifier" style="color: var(--sh-identifier)">observations</span><span class="sh__token--break" style="color: var(--sh-break)"></span></span>
+<span class="sh__line"><span class="sh__token--class" style="color: var(--sh-class)">12</span><span class="sh__token--space" style="color: var(--sh-space)"> </span><span class="sh__token--identifier" style="color: var(--sh-identifier)">assistant</span><span class="sh__token--space" style="color: var(--sh-space)"> </span><span class="sh__token--identifier" style="color: var(--sh-identifier)">decisions</span><span class="sh__token--break" style="color: var(--sh-break)"></span></span>
+<span class="sh__line"><span class="sh__token--class" style="color: var(--sh-class)">11</span><span class="sh__token--space" style="color: var(--sh-space)"> </span><span class="sh__token--identifier" style="color: var(--sh-identifier)">viewports</span><span class="sh__token--space" style="color: var(--sh-space)"> </span><span class="sh__token--identifier" style="color: var(--sh-identifier)">that</span><span class="sh__token--space" style="color: var(--sh-space)"> </span><span class="sh__token--identifier" style="color: var(--sh-identifier)">no</span><span class="sh__token--space" style="color: var(--sh-space)"> </span><span class="sh__token--identifier" style="color: var(--sh-identifier)">longer</span><span class="sh__token--space" style="color: var(--sh-space)"> </span><span class="sh__token--identifier" style="color: var(--sh-identifier)">exist</span><span class="sh__token--break" style="color: var(--sh-break)"></span></span></code></pre>
+<p>除最新一张之外，那十一张旧截图都很昂贵，而且通常已经没用。模型无法再点击那些旧画面，界面也早已变化。</p>
+<p>但“通常”二字很关键。如果用户任务是“比较这十二张截图”，每张图都是任务对象。对浏览器导航非常合适的全局“只留一张图”，会毁掉批量视觉任务。</p>
+<p>文本也有同一类错配。即使是最新观察，一份 DOM 转储也可能包含 80,000 个字符。保留三个这样的观察，并不能阻止一个超大页面主宰 prompt。</p>
+<p>Computer-use 上下文不是一份预算，而是多类半衰期不同的载荷。</p>
+<h2 id="452-四种控制对应四种失败"><a href="#452-四种控制对应四种失败" class="anchor"></a>45.2 四种控制，对应四种失败</h2>
+<p>公开快照把四种控制分开：</p>
+<table><thead><tr><th>控制</th><th style="text-align:right">快照默认值</th><th>它负责的失败</th></tr></thead><tbody><tr><td>单次观察文本上限</td><td style="text-align:right">24,000 个 rune</td><td>一个巨大页面或无障碍树转储</td></tr><tr><td>文本观察窗口</td><td style="text-align:right">3</td><td>多步累积的旧页面状态</td></tr><tr><td>浏览器/GUI 截图窗口</td><td style="text-align:right">1 条含图消息</td><td>过时视口主宰导航上下文</td></tr><tr><td>全局含图消息上限</td><td style="text-align:right">50</td><td>浏览器任务之外失控的图像历史</td></tr></tbody></table>
+<p>数值属于工作负载选择，分离才是架构。</p>
+<p>单项上限无法约束条目数量；滑动窗口无法约束一个异常大的条目；浏览器专属图像窗口无法保护批量图像任务；全局上限则不知道最新视口比六轮之前的用户上传更可操作。</p>
+<p>每种控制都应有一个所有者、一项配置和一项公开边界测试。把它们合并成 <code><span class="sh__line"><span class="sh__token--identifier" style="color: var(--sh-identifier)">max_context_items</span></span></code>，只会得到一个谁来调整都会破坏其他工作负载的数字。</p>
+<h2 id="453-采集时限制大小组装时处理老化"><a href="#453-采集时限制大小组装时处理老化" class="anchor"></a>45.3 采集时限制大小，组装时处理老化</h2>
+<p>24,000 个 rune 的控制在浏览器或 GUI 工具结果第一次进入上下文时生效。它保留观察文本前部，并追加一枚能自我说明的标记：</p>
+<pre><code class="language-text"><span class="sh__line"><span class="sh__token--sign" style="color: var(--sh-sign)">[</span><span class="sh__token--identifier" style="color: var(--sh-identifier)">browser</span><span class="sh__token--space" style="color: var(--sh-space)"> </span><span class="sh__token--identifier" style="color: var(--sh-identifier)">observation</span><span class="sh__token--space" style="color: var(--sh-space)"> </span><span class="sh__token--identifier" style="color: var(--sh-identifier)">truncated</span><span class="sh__token--sign" style="color: var(--sh-sign)">:</span><span class="sh__token--space" style="color: var(--sh-space)"> </span><span class="sh__token--class" style="color: var(--sh-class)">81342</span><span class="sh__token--space" style="color: var(--sh-space)"> </span><span class="sh__token--identifier" style="color: var(--sh-identifier)">chars</span><span class="sh__token--space" style="color: var(--sh-space)"> </span><span class="sh__token--identifier" style="color: var(--sh-identifier)">total</span><span class="sh__token--sign" style="color: var(--sh-sign)">]</span><span class="sh__token--break" style="color: var(--sh-break)"></span></span></code></pre>
+<p>标记本身包含在上限内，因此返回的观察文本不会悄悄超过配置最大值。按 rune 而不是字节计数，可以避免从中文、日文或 emoji 中间切断，也让“24,000 个字符”在不同语言中含义一致。</p>
+<p>文本窗口稍后在每次组装请求时生效。它让三个最新 GUI 观察保持完整，把更早的字符串结果替换成单行存根：</p>
+<pre><code class="language-text"><span class="sh__line"><span class="sh__token--sign" style="color: var(--sh-sign)">[</span><span class="sh__token--identifier" style="color: var(--sh-identifier)">elided</span><span class="sh__token--space" style="color: var(--sh-space)"> </span><span class="sh__token--identifier" style="color: var(--sh-identifier)">browser</span><span class="sh__token--space" style="color: var(--sh-space)"> </span><span class="sh__token--identifier" style="color: var(--sh-identifier)">observation</span><span class="sh__token--sign" style="color: var(--sh-sign)">:</span><span class="sh__token--space" style="color: var(--sh-space)"> </span><span class="sh__token--identifier" style="color: var(--sh-identifier)">browser_snapshot</span><span class="sh__token--sign" style="color: var(--sh-sign)">,</span><span class="sh__token--space" style="color: var(--sh-space)"> </span><span class="sh__token--identifier" style="color: var(--sh-identifier)">was</span><span class="sh__token--space" style="color: var(--sh-space)"> </span><span class="sh__token--class" style="color: var(--sh-class)">23811</span><span class="sh__token--space" style="color: var(--sh-space)"> </span><span class="sh__token--identifier" style="color: var(--sh-identifier)">chars</span><span class="sh__token--sign" style="color: var(--sh-sign)">]</span><span class="sh__token--break" style="color: var(--sh-break)"></span></span></code></pre>
+<p>两种控制解决不同时间维度。采集时截断表示：“这个状态即使新鲜时也过大。”老化表示：“这个状态以前有用，现在已经不值得完整保留。”</p>
+<p>这套针对特定来源的老化处理，运行在通用的上下文压力压缩之前。因此，<a target="_blank" rel="noopener noreferrer" href="./%E7%AC%AC37%E7%AB%A0-%E5%88%86%E5%B1%82%E5%8E%8B%E7%BC%A9">第 37 章</a>给浏览器工具设置的 Tier 2 下限，只约束通用压缩器：它阻止那套机制把仍可操作的页面快照压成元数据；本章的观察窗口则会更早淘汰已经失效的图形界面状态。</p>
+<p>这正是<a target="_blank" rel="noopener noreferrer" href="./%E7%AC%AC36%E7%AB%A0-Tool-Result%E9%A2%84%E7%AE%97%E4%B8%8E%E5%A4%96%E6%BA%A2">第 36 章</a>对单项结果大小与整轮总量的区分，只是应用到了观察，而不是普通工具输出。</p>
+<h2 id="454-浏览器图像不是用户图像"><a href="#454-浏览器图像不是用户图像" class="anchor"></a>45.4 浏览器图像不是用户图像</h2>
+<p>截图嵌在 <code><span class="sh__line"><span class="sh__token--identifier" style="color: var(--sh-identifier)">tool_result</span></span></code> 块内，但对话里的图像并非都来自浏览器。用户可能上传参考图，<code><span class="sh__line"><span class="sh__token--identifier" style="color: var(--sh-identifier)">file_read</span></span></code> 可能返回图表，视觉任务也可能有意携带几十张图。</p>
+<p>因此，浏览器截图过滤器先识别 GUI 工具族的调用，再沿 <code><span class="sh__line"><span class="sh__token--identifier" style="color: var(--sh-identifier)">tool_use_id</span></span></code> 找到匹配结果。只有这些图像受“保留最新一张”窗口限制。用户上传与非 GUI 工具图像不受这一轮处理影响。</p>
+<p>随后，全局过滤器对顶层与嵌套图像施加更宽松的 50 条含图消息上限。先运行范围窄的过滤器很重要：全局处理看到的是已经变薄的浏览器历史，可以把宽松预算留给真正需要它的工作负载。</p>
+<p>规则也适用于图像之外：<strong>把激进预算限定给真正需要这种预算的生成方</strong>。廉价的全局分类，替代不了对数据来源的了解。</p>
+<h2 id="455-保留对话契约"><a href="#455-保留对话契约" class="anchor"></a>45.5 保留对话契约</h2>
+<p>直接删除截图块可能破坏 Provider 的消息契约。Assistant 的 <code><span class="sh__line"><span class="sh__token--identifier" style="color: var(--sh-identifier)">tool_use</span></span></code> 还在，但匹配的 <code><span class="sh__line"><span class="sh__token--identifier" style="color: var(--sh-identifier)">tool_result</span></span></code> 已经变形或消失。</p>
+<p>所以过滤器保留结果块与 <code><span class="sh__line"><span class="sh__token--identifier" style="color: var(--sh-identifier)">tool_use_id</span></span></code>，只把陈旧载荷换成明确文本：</p>
+<pre><code class="language-text"><span class="sh__line"><span class="sh__token--sign" style="color: var(--sh-sign)">[</span><span class="sh__token--identifier" style="color: var(--sh-identifier)">previous</span><span class="sh__token--space" style="color: var(--sh-space)"> </span><span class="sh__token--identifier" style="color: var(--sh-identifier)">screenshot</span><span class="sh__token--space" style="color: var(--sh-space)"> </span><span class="sh__token--identifier" style="color: var(--sh-identifier)">removed</span><span class="sh__token--space" style="color: var(--sh-space)"> </span><span class="sh__token--identifier" style="color: var(--sh-identifier)">to</span><span class="sh__token--space" style="color: var(--sh-space)"> </span><span class="sh__token--identifier" style="color: var(--sh-identifier)">save</span><span class="sh__token--space" style="color: var(--sh-space)"> </span><span class="sh__token--identifier" style="color: var(--sh-identifier)">context</span><span class="sh__token--sign" style="color: var(--sh-sign)">]</span><span class="sh__token--break" style="color: var(--sh-break)"></span></span></code></pre>
+<p>模型知道信息已被移除，Provider 仍看到合法的调用/结果配对，审计轨迹也能说明为什么后续决策没有旧像素可用。</p>
+<p>文本过滤器遵循同一规则。它只改变结果内的字符串，不碰外围的轮次结构。这是<a target="_blank" rel="noopener noreferrer" href="./%E7%AC%AC37%E7%AB%A0-%E5%88%86%E5%B1%82%E5%8E%8B%E7%BC%A9">第 37 章</a>里的配对不变量在 GUI 观察上的特化。</p>
+<p>静默删除是最糟选择。它节省 token，却让记录错误地暗示模型看过一份实际上已被移除的证据。</p>
+<h2 id="456-幂等性保护缓存"><a href="#456-幂等性保护缓存" class="anchor"></a>45.6 幂等性保护缓存</h2>
+<p>这些过滤器会在重复模型调用前运行。如果已经存根化的观察每轮都被改写成稍有不同的存根，前缀就会每轮变化，<a target="_blank" rel="noopener noreferrer" href="./%E7%AC%AC39%E7%AB%A0-Prompt-Cache%E7%A8%B3%E5%AE%9A%E6%80%A7">第 39 章</a>所述的缓存也会永远在同一条消息处未命中。</p>
+<p>文本存根有可识别前缀，所以后续处理会跳过；图像替代也是稳定的文本块。启用缓存调试遥测后，每次首次修改都会发出缓存压缩事件（<code><span class="sh__line"><span class="sh__token--identifier" style="color: var(--sh-identifier)">obs_window</span></span></code>、<code><span class="sh__line"><span class="sh__token--identifier" style="color: var(--sh-identifier)">browser_img_strip</span></span></code> 或全局 <code><span class="sh__line"><span class="sh__token--identifier" style="color: var(--sh-identifier)">img_strip</span></span></code>）及新旧哈希；没有变化的重访不发事件。</p>
+<p>预期生命周期因此是：</p>
+<pre><code class="language-text"><span class="sh__line"><span class="sh__token--identifier" style="color: var(--sh-identifier)">full</span><span class="sh__token--space" style="color: var(--sh-space)"> </span><span class="sh__token--identifier" style="color: var(--sh-identifier)">observation</span><span class="sh__token--space" style="color: var(--sh-space)"> </span><span class="sh__token--class" style="color: var(--sh-class)">→</span><span class="sh__token--space" style="color: var(--sh-space)"> </span><span class="sh__token--identifier" style="color: var(--sh-identifier)">one</span><span class="sh__token--space" style="color: var(--sh-space)"> </span><span class="sh__token--identifier" style="color: var(--sh-identifier)">deterministic</span><span class="sh__token--space" style="color: var(--sh-space)"> </span><span class="sh__token--identifier" style="color: var(--sh-identifier)">placeholder</span><span class="sh__token--space" style="color: var(--sh-space)"> </span><span class="sh__token--class" style="color: var(--sh-class)">→</span><span class="sh__token--space" style="color: var(--sh-space)"> </span><span class="sh__token--identifier" style="color: var(--sh-identifier)">byte</span><span class="sh__token--sign" style="color: var(--sh-sign)">-</span><span class="sh__token--identifier" style="color: var(--sh-identifier)">stable</span><span class="sh__token--space" style="color: var(--sh-space)"> </span><span class="sh__token--identifier" style="color: var(--sh-identifier)">thereafter</span><span class="sh__token--break" style="color: var(--sh-break)"></span></span></code></pre>
+<p>这里的幂等性不只是代码整洁，也直接影响计费。</p>
+<h2 id="457-prompt-保留不等于底层文件保留"><a href="#457-prompt-保留不等于底层文件保留" class="anchor"></a>45.7 Prompt 保留不等于底层文件保留</h2>
+<p>四种控制操作的都是请求中的消息视图。它们本身不会删除截图文件、抹去完整审计事件，也不会撤销用户上传。</p>
+<p>这些属于不同策略：</p>
+<ul>
+<li><strong>Prompt 保留：</strong> 模型下一次迭代会收到什么</li>
+<li><strong>会话/审计保留：</strong> 运维人员之后可以重建什么</li>
+<li><strong>临时文件清理：</strong> 本地截图字节何时离开磁盘</li>
+<li><strong>用户素材所有权：</strong> 用户上传文件是否仍可使用</li>
+</ul>
+<p>把它们绑在一起，“节省上下文”就可能变成“销毁证据”。保持分离，则可以从模型 prompt 中裁掉旧视口，同时保留调试错误点击所需的轨迹。</p>
+<p>模型仍需要被告知损失，占位文本应说明删除了什么、为什么；运维需要遥测；存储需要自己的生命周期。一只裁剪函数不应假装同时拥有三者。</p>
+<h2 id="458-根据任务调优而不是根据-token-焦虑"><a href="#458-根据任务调优而不是根据-token-焦虑" class="anchor"></a>45.8 根据任务调优，而不是根据 token 焦虑</h2>
+<p>当前视口通常足够完成一次点击，但并非总是如此。表单可能只在导航后显示错误，比较流程可能需要前一张屏幕，画布任务也可能需要多步视觉连续性。</p>
+<p>因此，请用真实操作序列调优：</p>
+<ol>
+<li>跨多个页面的导航；</li>
+<li>必须比较前后状态的模态框；</li>
+<li>一批用户提供的图像；</li>
+<li>巨大的多语言无障碍树；</li>
+<li>对同一份历史重复过滤；</li>
+<li>旧图已替换为存根后，从持久消息恢复。</li>
+</ol>
+<p>同时测量任务成功率、模型调用次数、输入 token、缓存漂移与重复观察率。如果 Agent 不断重新获取同一张截图，窗口可能太紧，或占位文本删除了错误信号。如果成功率稳定而上下文大幅下降，预算才真正有效。</p>
+<p>不要从一次干净的演示推导通用限制。Computer Use 里，界面变化总比直觉更快。</p>
+<h2 id="459-快照证据"><a href="#459-快照证据" class="anchor"></a>45.9 快照证据</h2>
+<table><thead><tr><th>观察</th><th><code><span class="sh__line"><span class="sh__token--class" style="color: var(--sh-class)">4ec6772</span></span></code> 源码</th></tr></thead><tbody><tr><td>四项默认值及各自背后的工作负载理由</td><td><a target="_blank" rel="noopener noreferrer" href="https://github.com/Kocoro-lab/Kocoro/blob/4ec6772/internal/agent/observation_window.go#L11"><code><span class="sh__line"><span class="sh__token--identifier" style="color: var(--sh-identifier)">observation_window</span><span class="sh__token--sign" style="color: var(--sh-sign)">.</span><span class="sh__token--property" style="color: var(--sh-property)">go</span></span></code> L11</a></td></tr><tr><td>单次观察上限按 rune 安全截断，并包含明确标记</td><td><a target="_blank" rel="noopener noreferrer" href="https://github.com/Kocoro-lab/Kocoro/blob/4ec6772/internal/agent/observation_window.go#L84"><code><span class="sh__line"><span class="sh__token--identifier" style="color: var(--sh-identifier)">observation_window</span><span class="sh__token--sign" style="color: var(--sh-sign)">.</span><span class="sh__token--property" style="color: var(--sh-property)">go</span></span></code> L84</a></td></tr><tr><td>文本窗口保留配对，并跳过已经存根化的结果</td><td><a target="_blank" rel="noopener noreferrer" href="https://github.com/Kocoro-lab/Kocoro/blob/4ec6772/internal/agent/observation_window.go#L134"><code><span class="sh__line"><span class="sh__token--identifier" style="color: var(--sh-identifier)">observation_window</span><span class="sh__token--sign" style="color: var(--sh-sign)">.</span><span class="sh__token--property" style="color: var(--sh-property)">go</span></span></code> L134</a></td></tr><tr><td>浏览器截图过滤器按 GUI 工具身份限定范围</td><td><a target="_blank" rel="noopener noreferrer" href="https://github.com/Kocoro-lab/Kocoro/blob/4ec6772/internal/agent/observation_window.go#L212"><code><span class="sh__line"><span class="sh__token--identifier" style="color: var(--sh-identifier)">observation_window</span><span class="sh__token--sign" style="color: var(--sh-sign)">.</span><span class="sh__token--property" style="color: var(--sh-property)">go</span></span></code> L212</a></td></tr><tr><td>全局图像过滤器处理顶层与嵌套图像</td><td><a target="_blank" rel="noopener noreferrer" href="https://github.com/Kocoro-lab/Kocoro/blob/4ec6772/internal/agent/loop.go#L5911"><code><span class="sh__line"><span class="sh__token--identifier" style="color: var(--sh-identifier)">loop</span><span class="sh__token--sign" style="color: var(--sh-sign)">.</span><span class="sh__token--property" style="color: var(--sh-property)">go</span></span></code> L5911</a></td></tr><tr><td>浏览器专属、全局图像、文本窗口的执行顺序</td><td><a target="_blank" rel="noopener noreferrer" href="https://github.com/Kocoro-lab/Kocoro/blob/4ec6772/internal/agent/loop.go#L3253"><code><span class="sh__line"><span class="sh__token--identifier" style="color: var(--sh-identifier)">loop</span><span class="sh__token--sign" style="color: var(--sh-sign)">.</span><span class="sh__token--property" style="color: var(--sh-property)">go</span></span></code> L3253</a></td></tr><tr><td>GUI 结果进入上下文时应用更紧的上限</td><td><a target="_blank" rel="noopener noreferrer" href="https://github.com/Kocoro-lab/Kocoro/blob/4ec6772/internal/agent/loop.go#L4742"><code><span class="sh__line"><span class="sh__token--identifier" style="color: var(--sh-identifier)">loop</span><span class="sh__token--sign" style="color: var(--sh-sign)">.</span><span class="sh__token--property" style="color: var(--sh-property)">go</span></span></code> L4742</a></td></tr><tr><td>Daemon 分别接入四项控制</td><td><a target="_blank" rel="noopener noreferrer" href="https://github.com/Kocoro-lab/Kocoro/blob/4ec6772/internal/daemon/runner.go#L2737"><code><span class="sh__line"><span class="sh__token--identifier" style="color: var(--sh-identifier)">runner</span><span class="sh__token--sign" style="color: var(--sh-sign)">.</span><span class="sh__token--property" style="color: var(--sh-property)">go</span></span></code> L2737</a></td></tr></tbody></table>
+<p>这些内容描述的是一个有日期的实现与工作负载，不是普遍适用的观察上限。</p>
+<h2 id="4510-常见陷阱"><a href="#4510-常见陷阱" class="anchor"></a>45.10 常见陷阱</h2>
+<p><strong>所有工作负载只有一个图像上限。</strong> 浏览器导航想要最新视口，批量视觉任务可能需要全部上传图像。</p>
+<p><strong>有窗口，没有单项上限。</strong> 一份巨大 DOM 转储仍会主宰 prompt。</p>
+<p><strong>有上限，没有窗口。</strong> 成千上万个分别合法的观察仍会累积。</p>
+<p><strong>把字节当字符。</strong> 多字节文本获得更少的有效上下文，还可能从一个 rune 中间被切断。</p>
+<p><strong>删除整个结果块。</strong> 破坏工具调用配对，还可能让 Provider 拒绝请求。</p>
+<p><strong>静默裁剪。</strong> 记录会暗示模型看过实际已经移除的证据。</p>
+<p><strong>占位文本非幂等。</strong> 每次组装都再次弄脏同一前缀，导致缓存反复失效。</p>
+<p><strong>裁剪 prompt 时删除底层文件。</strong> 上下文策略意外变成保留策略。</p>
+<p><strong>只根据一项任务调优。</strong> 很擅长点击表单的限制，可能彻底毁掉视觉比较。</p>
+<h2 id="kocoro-oss-lab10-分钟"><a href="#kocoro-oss-lab10-分钟" class="anchor"></a>Kocoro OSS Lab（10 分钟）</h2>
+<ol>
+<li>阅读 <a target="_blank" rel="noopener noreferrer" href="https://github.com/Kocoro-lab/Kocoro/blob/4ec6772/internal/agent/observation_window.go#L11"><code><span class="sh__line"><span class="sh__token--identifier" style="color: var(--sh-identifier)">observation_window</span><span class="sh__token--sign" style="color: var(--sh-sign)">.</span><span class="sh__token--property" style="color: var(--sh-property)">go</span></span></code></a>顶部四项默认值的注释。分别指出是哪一种已观察故障证明它值得单独控制。</li>
+<li>从 <code><span class="sh__line"><span class="sh__token--identifier" style="color: var(--sh-identifier)">tool_use</span></span></code> 开始，沿 <a target="_blank" rel="noopener noreferrer" href="https://github.com/Kocoro-lab/Kocoro/blob/4ec6772/internal/agent/observation_window.go#L223"><code><span class="sh__line"><span class="sh__token--identifier" style="color: var(--sh-identifier)">filterOldBrowserImages</span></span></code></a>追踪一张浏览器截图。验证像素消失时，结果 ID 仍然存在。</li>
+<li>让同一份历史通过过滤器两次，再比较序列化请求。第二次应与第一次逐字节一致。</li>
+</ol>
+<h2 id="本章要点"><a href="#本章要点" class="anchor"></a>本章要点</h2>
+<ol>
+<li><strong>Computer Use 有多种上下文生命周期。</strong> 文本、GUI 截图与用户图像的老化方式不同。</li>
+<li><strong>分别限制大小与数量。</strong> 一项超大观察与许多普通观察是不同故障。</li>
+<li><strong>按生成方限定激进裁剪。</strong> 浏览器历史可以很紧，而不会惩罚批量视觉任务。</li>
+<li><strong>保留配对，并披露损失。</strong> 用明确、稳定的占位文本替换载荷。</li>
+<li><strong>Prompt 裁剪是一种视图，不是删除。</strong> 审计记录、文件与用户素材各有自己的生命周期所有者。</li>
+</ol>
+<p>Part 10 至此闭环：<a target="_blank" rel="noopener noreferrer" href="./%E7%AC%AC35%E7%AB%A0-%E4%B8%8A%E4%B8%8B%E6%96%87%E5%8E%8B%E7%BC%A9">上下文压缩</a>、<a target="_blank" rel="noopener noreferrer" href="./%E7%AC%AC36%E7%AB%A0-Tool-Result%E9%A2%84%E7%AE%97%E4%B8%8E%E5%A4%96%E6%BA%A2">工具结果预算</a>、<a target="_blank" rel="noopener noreferrer" href="./%E7%AC%AC39%E7%AB%A0-Prompt-Cache%E7%A8%B3%E5%AE%9A%E6%80%A7">缓存稳定性</a>、<a target="_blank" rel="noopener noreferrer" href="./%E7%AC%AC41%E7%AB%A0-%E8%BF%90%E8%A1%8C%E4%B8%AD%E6%93%8D%E6%8E%A7Agent">运行中操控</a>与<a target="_blank" rel="noopener noreferrer" href="./%E7%AC%AC42%E7%AB%A0-Agent%E8%B6%85%E6%97%B6%E4%B8%8EWatchdog">时间纪律</a>，最终都汇入<a target="_blank" rel="noopener noreferrer" href="./%E7%AC%AC28%E7%AB%A0-Computer-Use">第 28 章</a>引入的高观察负载工作流。</p></article>
+        <div class="chapter-nav"><a href="第44章-并行工具执行.html"><span class="nav-label">上一章</span>第 44 章：并行工具执行</a><a href="Part10概述.html" class="nav-next"><span class="nav-label">下一章</span>附录概述</a></div>
+      </div>
+    </main>
+  </div>
+</div>
+<script src="script.js"></script>
+</body>
+</html>

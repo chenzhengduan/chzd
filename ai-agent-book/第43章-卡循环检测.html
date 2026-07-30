@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>第 43 章：卡循环检测 | AI Agent 开发实战 | chad</title>
+<meta name="author" content="chad"/>
+<meta name="description" content="AI Agent 架构模式与实战 - chad"/>
+<script>(function(){try{var m=window.matchMedia('(prefers-color-scheme:dark)');var apply=function(){var t=localStorage.getItem('theme');document.documentElement.classList.toggle('dark',t==='dark'||(!t&&m.matches))};apply();m.addEventListener('change',apply)}catch(e){}})()</script>
+<script src="https://cdn.tailwindcss.com?plugins=typography"></script>
+<script>tailwind.config={darkMode:"class",theme:{extend:{typography:{DEFAULT:{css:{maxWidth:"none"}}}}}}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css"/>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📖</text></svg>"/>
+</head>
+<body>
+<div class="book-layout">
+  <header class="book-header">
+    <div class="header-content">
+      <div class="header-left">
+        <button class="mobile-menu-toggle" id="menuToggle" aria-label="Open menu">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20"><path stroke-linecap="round" stroke-linejoin="round" d="M3 12h18M3 6h18M3 18h18"></path></svg>
+        </button>
+        <nav class="header-nav">
+          <a class="nav-item" href="index.html">Home</a>
+          <a class="nav-item" href="#">Blog</a>
+          <span class="nav-item">Books</span>
+          <a class="nav-item active hide-mobile" href="index.html">AI Agent 架构模式与实战</a>
+        </nav>
+      </div>
+      <div class="right-controls">
+        <span><a class="lang-link active" href="#">中文</a></span>
+        <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+          <svg class="w-[18px] h-[18px] hidden dark:block" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="4"></circle><path stroke-linecap="round" d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"></path></svg>
+          <svg class="w-[18px] h-[18px] block dark:hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+  <div class="sidebar-overlay" id="sidebarOverlay"></div>
+  <div class="book-body">
+    <nav class="book-sidebar" id="bookSidebar">
+      <button class="sidebar-close" id="sidebarClose" aria-label="Close menu">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20"><path stroke-linecap="round" d="M18 6L6 18M6 6l12 12"></path></svg>
+      </button>
+      <div class="sidebar-header">
+        <a class="book-title" href="index.html">AI Agent 架构：从单体到企业级多智能体</a>
+      </div>
+      <div class="sidebar-content">
+<div class="sidebar-section"><div class="section-title">前言</div><ul class="chapter-list"><li><a class="chapter-link" href="前言.html">前言</a></li></ul></div><div class="sidebar-section"><div class="section-title">Part 1 - Agent 基础</div><ul class="chapter-list"><li><a class="chapter-link" href="Part1概述.html">Part 1 概述</a></li><li><a class="chapter-link" href="第01章-Agent的本质.html">第 1 章：Agent 的本质</a></li><li><a class="chapter-link" href="第02章-ReAct循环.html">第 2 章：ReAct 循环</a></li></ul></div><div class="sidebar-section"><div class="section-title">Part 2 - 工具与扩展</div><ul class="chapter-list"><li><a class="chapter-link" href="Part2概述.html">Part 2 概述</a></li><li><a class="chapter-link" href="第03章-工具调用基础.html">第 3 章：工具调用基础</a></li><li><a class="chapter-link" href="第04章-MCP协议详解.html">第 4 章：MCP 协议详解</a></li><li><a class="chapter-link" href="第05章-Skills技能系统.html">第 5 章：Skills 技能系统</a></li><li><a class="chapter-link" href="第06章-Hooks与事件系统.html">第 6 章：Hooks 与事件系统</a></li></ul></div><div class="sidebar-section"><div class="section-title">Part 3 - 上下文与记忆</div><ul class="chapter-list"><li><a class="chapter-link" href="Part3概述.html">Part 3 概述</a></li><li><a class="chapter-link" href="第07章-上下文工程.html">第 7 章：上下文工程</a></li><li><a class="chapter-link" href="第08章-记忆架构.html">第 8 章：记忆架构</a></li><li><a class="chapter-link" href="第09章-多轮对话设计.html">第 9 章：多轮对话设计</a></li></ul></div><div class="sidebar-section"><div class="section-title">Part 4 - 单 Agent 模式</div><ul class="chapter-list"><li><a class="chapter-link" href="Part4概述.html">Part 4 概述</a></li><li><a class="chapter-link" href="第10章-Planning模式.html">第 10 章：Planning 模式</a></li><li><a class="chapter-link" href="第11章-Reflection模式.html">第 11 章：Reflection 模式</a></li><li><a class="chapter-link" href="第12章-Chain-of-Thought.html">第 12 章：Chain-of-Thought</a></li></ul></div><div class="sidebar-section"><div class="section-title">Part 5 - 多 Agent 编排</div><ul class="chapter-list"><li><a class="chapter-link" href="Part5概述.html">Part 5 概述</a></li><li><a class="chapter-link" href="第13章-编排基础.html">第 13 章：编排基础</a></li><li><a class="chapter-link" href="第14章-DAG工作流.html">第 14 章：DAG 工作流</a></li><li><a class="chapter-link" href="第15章-Swarm模式.html">第 15 章：Swarm 模式</a></li><li><a class="chapter-link" href="第16章-Handoff机制.html">第 16 章：Handoff 机制</a></li></ul></div><div class="sidebar-section"><div class="section-title">Part 6 - 高级推理</div><ul class="chapter-list"><li><a class="chapter-link" href="Part6概述.html">Part 6 概述</a></li><li><a class="chapter-link" href="第17章-Tree-of-Thoughts.html">第 17 章：Tree-of-Thoughts</a></li><li><a class="chapter-link" href="第18章-Debate模式.html">第 18 章：Debate 模式</a></li><li><a class="chapter-link" href="第19章-Research-Synthesis.html">第 19 章：Research-Synthesis</a></li></ul></div><div class="sidebar-section"><div class="section-title">Part 7 - 生产架构</div><ul class="chapter-list"><li><a class="chapter-link" href="Part7概述.html">Part 7 概述</a></li><li><a class="chapter-link" href="第20章-三层架构设计.html">第 20 章：三层架构设计</a></li><li><a class="chapter-link" href="第21章-Temporal工作流.html">第 21 章：Temporal 工作流</a></li><li><a class="chapter-link" href="第22章-可观测性.html">第 22 章：可观测性</a></li></ul></div><div class="sidebar-section"><div class="section-title">Part 8 - 企业级特性</div><ul class="chapter-list"><li><a class="chapter-link" href="Part8概述.html">Part 8 概述</a></li><li><a class="chapter-link" href="第23章-Token预算控制.html">第 23 章：Token 预算控制</a></li><li><a class="chapter-link" href="第24章-策略治理.html">第 24 章：策略治理</a></li><li><a class="chapter-link" href="第25章-安全执行.html">第 25 章：安全执行</a></li><li><a class="chapter-link" href="第26章-多租户设计.html">第 26 章：多租户设计</a></li></ul></div><div class="sidebar-section"><div class="section-title">Part 9 - 前沿实践</div><ul class="chapter-list"><li><a class="chapter-link" href="Part9概述.html">Part 9 概述</a></li><li><a class="chapter-link" href="第27章-Deep-Research.html">第 27 章：Deep Research</a></li><li><a class="chapter-link" href="第28章-Computer-Use.html">第 28 章：Computer Use</a></li><li><a class="chapter-link" href="第29章-Agentic-Coding.html">第 29 章：Agentic Coding</a></li><li><a class="chapter-link" href="第30章-Background-Agents.html">第 30 章：Background Agents</a></li><li><a class="chapter-link" href="第31章-分层模型策略.html">第 31 章：分层模型策略</a></li><li><a class="chapter-link" href="第32章-OpenClaw时代.html">第 32 章：OpenClaw 时代</a></li><li><a class="chapter-link" href="第33章-Building-on-the-Harness-ShanClaw.html">第 33 章：Building on the Harness - Kocoro</a></li></ul></div><div class="sidebar-section"><div class="section-title">Part 10 - Agent Loop 工程</div><ul class="chapter-list"><li><a class="chapter-link" href="Part10-Agent-Loop工程.html">Part 10 概述</a></li><li><a class="chapter-link" href="第34章-从DAG到Agent-Loop.html">第 34 章：从 DAG 到 Agent Loop</a></li><li><a class="chapter-link" href="第35章-上下文压缩.html">第 35 章：上下文压缩</a></li><li><a class="chapter-link" href="第36章-Tool-Result预算与外溢.html">第 36 章：Tool Result 预算与外溢</a></li><li><a class="chapter-link" href="第37章-分层压缩.html">第 37 章：分层压缩</a></li><li><a class="chapter-link" href="第38章-Deferred-Tool-Loading与Tool-Search.html">第 38 章：Deferred Tool Loading 与 Tool Search</a></li><li><a class="chapter-link" href="第39章-Prompt-Cache稳定性.html">第 39 章：Prompt Cache 稳定性</a></li><li><a class="chapter-link" href="第40章-持久化Agent-Loop.html">第 40 章：持久化 Agent Loop</a></li><li><a class="chapter-link" href="第41章-运行中操控Agent.html">第 41 章：运行中操控 Agent</a></li><li><a class="chapter-link" href="第42章-Agent超时与Watchdog.html">第 42 章：Agent 超时与 Watchdog</a></li><li><a class="chapter-link active" href="第43章-卡循环检测.html">第 43 章：卡循环检测</a></li><li><a class="chapter-link" href="第44章-并行工具执行.html">第 44 章：并行工具执行</a></li><li><a class="chapter-link" href="第45章-Computer-Use上下文管理.html">第 45 章：Computer Use 上下文管理</a></li></ul></div><div class="sidebar-section"><div class="section-title">附录</div><ul class="chapter-list"><li><a class="chapter-link" href="Part10概述.html">附录概述</a></li><li><a class="chapter-link" href="附录A-术语表.html">附录 A：术语表</a></li><li><a class="chapter-link" href="附录B-模式选择指南.html">附录 B：模式选择指南</a></li><li><a class="chapter-link" href="附录C-常见问题FAQ.html">附录 C：常见问题 FAQ</a></li></ul></div>
+      </div>
+    </nav>
+    <main class="book-main">
+      <div class="book-content">
+<article class="prose dark:prose-invert fade-in"><h1 id="第-43-章卡循环检测"><a href="#第-43-章卡循环检测" class="anchor"></a>第 43 章：卡循环检测</h1>
+<blockquote>
+<p><strong>&quot;加个探测器抓重复调用&quot;——可有记录以来最糟的那次卡循环，重复的那个调用每一次都报告成功。</strong></p>
+</blockquote>
+<hr/>
+<blockquote>
+<p><strong>⏱️ 快速通道</strong>（5 分钟掌握核心）</p>
+<ol>
+<li>探测器是证据聚合，不是一条规则——公开实现里有九条检测路径</li>
+<li>三种裁决：<code><span class="sh__line"><span class="sh__token--class" style="color: var(--sh-class)">Continue</span></span></code>、<code><span class="sh__line"><span class="sh__token--class" style="color: var(--sh-class)">Nudge</span></span></code>、<code><span class="sh__line"><span class="sh__token--class" style="color: var(--sh-class)">ForceStop</span></span></code>。不会升级的 Nudge 只是装饰</li>
+<li>错误的预算<strong>比</strong>成功<strong>更宽</strong>——重试一个失败是正当工作</li>
+<li>检测约束的是重复，它挡不住第一次破坏性调用</li>
+<li>那个问题的修复在工具契约里，不在探测器里</li>
+</ol>
+<p><strong>10 分钟路径</strong>：43.1-43.2 → 43.5 → Kocoro OSS Lab</p>
+</blockquote>
+<hr/>
+<blockquote>
+<p><strong>公开源码快照</strong>：实现细节取自 Kocoro 公开仓库 <code><span class="sh__line"><span class="sh__token--identifier" style="color: var(--sh-identifier)">origin</span><span class="sh__token--sign" style="color: var(--sh-sign)">/</span><span class="sh__token--identifier" style="color: var(--sh-identifier)">main</span></span></code> 的 <code><span class="sh__line"><span class="sh__token--class" style="color: var(--sh-class)">4ec6772</span></span></code> 提交，复核日期为 2026-07-27。章节讲的是不变量；具体常量应以当前源码为准。</p>
+</blockquote>
+<h2 id="431-从一次每次都报成功的写入说起"><a href="#431-从一次每次都报成功的写入说起" class="anchor"></a>43.1 从一次每次都报成功的写入说起</h2>
+<p>2026-05-13，生产环境。一个 Agent 调用 <code><span class="sh__line"><span class="sh__token--identifier" style="color: var(--sh-identifier)">file_write</span></span></code>。调用里有 <code><span class="sh__line"><span class="sh__token--identifier" style="color: var(--sh-identifier)">path</span></span></code>，没有 <code><span class="sh__line"><span class="sh__token--identifier" style="color: var(--sh-identifier)">content</span></span></code> 字段。</p>
+<p>Go 的 <code><span class="sh__line"><span class="sh__token--identifier" style="color: var(--sh-identifier)">json</span><span class="sh__token--sign" style="color: var(--sh-sign)">.</span><span class="sh__token--class" style="color: var(--sh-class)">Unmarshal</span></span></code> 在强类型结构体上分不清「字段缺失」和「字段存在但是零值」。于是 <code><span class="sh__line"><span class="sh__token--identifier" style="color: var(--sh-identifier)">content</span></span></code> 到达时是 <code><span class="sh__line"><span class="sh__token--string" style="color: var(--sh-string)">&quot;</span><span class="sh__token--string" style="color: var(--sh-string)">&quot;</span></span></code>。而 <code><span class="sh__line"><span class="sh__token--identifier" style="color: var(--sh-identifier)">os</span><span class="sh__token--sign" style="color: var(--sh-sign)">.</span><span class="sh__token--class" style="color: var(--sh-class)">WriteFile</span></span></code> 非常乐意写一个空字符串——它把用户已有的文件截断成 0 字节，然后不返回任何错误。</p>
+<p>工具返回 <code><span class="sh__line"><span class="sh__token--class" style="color: var(--sh-class)">IsError</span><span class="sh__token--sign" style="color: var(--sh-sign)">:</span><span class="sh__token--space" style="color: var(--sh-space)"> </span><span class="sh__token--keyword" style="color: var(--sh-keyword)">false</span></span></code>。</p>
+<p>模型读到这个结果，看到成功，然后——因为它刚刚毁掉的那个文件仍然不包含它想要的内容——又试了一次。再一次。</p>
+<p>现在问：循环探测器做了什么？</p>
+<p>它触发了。复现这个模式的回归测试记录着：修复前，重复检测在<strong>第四次</strong>相同调用上就跳了。探测器既没瞎，也没坏。</p>
+<p>它只是来得太晚了。<strong>文件在第一次调用时就已经没了。</strong></p>
+<p>这才是那条让人不舒服的教训，而且它比「给这个加个探测器」窄得多。循环检测约束的是<strong>重复</strong>——你把错事做了几遍。它约束不了<strong>第一次</strong>做错。一个「一边报成功一边截断文件」的工具，在任何探测器凑齐两个数据点之前，伤害就已经造成了。</p>
+<p>也留意一下当时哪些信号根本用不上。无进展检测？每一次调用都报告了进展。同工具报错检测？根本没有错误。只有重复那条路径手上有东西可用，而重复本来就被刻意留了余地——重复调用恰恰是一个 Agent 顺着列表往下推进时的正常形状。</p>
+<h2 id="432-九条路径因为一个信号不够用"><a href="#432-九条路径因为一个信号不够用" class="anchor"></a>43.2 九条路径，因为一个信号不够用</h2>
+<p>公开实现里有九条检测路径，按顺序求值，先命中者胜。它们之所以是分开的探测器，是因为它们抓的是真正不同形状的「卡住」。</p>
+<p><code><span class="sh__line"><span class="sh__token--class" style="color: var(--sh-class)">EmptyThink</span></span></code> 在两次连续的 <code><span class="sh__line"><span class="sh__token--identifier" style="color: var(--sh-identifier)">think</span><span class="sh__token--sign" style="color: var(--sh-sign)">(</span><span class="sh__token--sign" style="color: var(--sh-sign)">{</span><span class="sh__token--sign" style="color: var(--sh-sign)">}</span><span class="sh__token--sign" style="color: var(--sh-sign)">)</span></span></code> 上触发——原生交错思考之后的仪式性空思考。<code><span class="sh__line"><span class="sh__token--class" style="color: var(--sh-class)">ToolModeSwitch</span></span></code> 和 <code><span class="sh__line"><span class="sh__token--class" style="color: var(--sh-class)">SuccessAfterError</span></span></code> 抓的是「事情已经成功了却还在做冗余的视觉确认」。<code><span class="sh__line"><span class="sh__token--class" style="color: var(--sh-class)">ConsecutiveDuplicate</span></span></code> 抓背靠背的相同调用；<code><span class="sh__line"><span class="sh__token--class" style="color: var(--sh-class)">ExactDuplicate</span></span></code> 抓同一个调用在一个窗口里分散复现，也就是「读→改→读→改→读」那个形状。<code><span class="sh__line"><span class="sh__token--class" style="color: var(--sh-class)">SameToolError</span></span></code> 抓同一个工具反复以同样方式失败。<code><span class="sh__line"><span class="sh__token--class" style="color: var(--sh-class)">FamilyNoProgress</span></span></code> 抓相关工具围着一个主题打转。<code><span class="sh__line"><span class="sh__token--class" style="color: var(--sh-class)">SearchEscalation</span></span></code> 抓尾部一串什么都没捞到的搜索。<code><span class="sh__line"><span class="sh__token--class" style="color: var(--sh-class)">NoProgress</span></span></code> 是通用兜底：同一个工具，次数太多，不看参数。</p>
+<p>为什么是九个而不是一个：单一的「重复调用」规则，要么会在正当迭代上误报，要么会漏掉那些微妙的情况。用不同 query 搜四次不是循环——搜四次却一条都引不出来才是。读十个文件不是循环——每次编辑失败后都重读同一个文件才是。</p>
+<p><strong>每个探测器编码的是「无进展」的一种不同定义。</strong> 这也是为什么这份名单是从事故里长出来的，而不是从第一性原理推出来的。</p>
+<h2 id="433-三种裁决以及错误为什么有更大的余地"><a href="#433-三种裁决以及错误为什么有更大的余地" class="anchor"></a>43.3 三种裁决，以及错误为什么有更大的余地</h2>
+<p>探测器返回 <code><span class="sh__line"><span class="sh__token--class" style="color: var(--sh-class)">Continue</span></span></code>、<code><span class="sh__line"><span class="sh__token--class" style="color: var(--sh-class)">Nudge</span></span></code> 或 <code><span class="sh__line"><span class="sh__token--class" style="color: var(--sh-class)">ForceStop</span></span></code>。</p>
+<p><strong>Nudge</strong> 注入一条消息，告诉模型它似乎在重复，给它一次改换思路的机会。<strong>ForceStop</strong> 注入一条消息，然后做最后一次<strong>不带工具</strong>的模型调用，让模型总结自己走到了哪里，再退出循环。最后这个细节很重要：不带总结就停，用户手上只剩一次被砍断的运行和零解释。<strong>一次体面的停止，是会自己解释的停止。</strong></p>
+<p>现在说那个有意思的不对称。构造函数里的默认值是背靠背重复 3 次、分散重复 5 次——分别从 2 和 3 提上来的，因为更严的值在正当的重构循环和重新检索上误报太多——但当这次运行里<strong>每一个</strong>调用都是错误时，预算翻倍。</p>
+<p>为什么对失败更宽容？因为重试一个失败的操作是正当工作。一个网络调用失败两次、第三次成功，这是系统在正常工作。而同一个调用带着同样参数成功两次，要么是白干，要么是撒谎。<strong>重复的失败常常是进展；重复的成功很少是。</strong></p>
+<p>反方向还有一条配套规则：如果最近一次调用成功了，而这次运行更早的时候有过错误，重复探测器直接跳过。模型刚刚恢复过来，在它挣脱出来的那一刻惩罚它，恰恰是错的。</p>
+<p>Nudge 自己也需要边界。<strong>没有上界的 Nudge 就是装饰</strong>——模型被告知在循环，它无视，再被告知一次。只有在一个滚动窗口内升级，Nudge 才从提示变成真正的控制。</p>
+<h2 id="434-431-的修复不在探测器里"><a href="#434-431-的修复不在探测器里" class="anchor"></a>43.4 43.1 的修复不在探测器里</h2>
+<p>回到那次零字节写入。</p>
+<p>你可以试着靠调参绕过去——把重复阈值调低，或者给「参数相同的重复成功调用」开个特例。但重复探测器已经跳了，在第四次。把它收紧到 3、收紧到 2，也只是把尾巴剪短。第一次调用照样截断了文件，而在第一个数据点存在之前，任何阈值都够不着。收紧还要在别处付钱：那两个阈值之所以被提到 3 和 5，正是因为更严的值在正当的重构循环上误报。</p>
+<p>真正的修复在上游：<strong>让失败可读。</strong> <code><span class="sh__line"><span class="sh__token--identifier" style="color: var(--sh-identifier)">file_write</span></span></code> 现在会在反序列化后立即拒绝空的 <code><span class="sh__line"><span class="sh__token--identifier" style="color: var(--sh-identifier)">content</span></span></code>，并返回共享的类型化校验错误。另有一项覆盖整个注册表的契约测试，要求每个声明了必填字段的内置工具，都必须在任何系统调用、子进程、GUI 操作或外部服务之前拒绝每一个缺失字段。</p>
+<p>而且这个错误的<strong>前缀是承重的</strong>。<code><span class="sh__line"><span class="sh__token--sign" style="color: var(--sh-sign)">[</span><span class="sh__token--identifier" style="color: var(--sh-identifier)">validation</span><span class="sh__token--space" style="color: var(--sh-space)"> </span><span class="sh__token--identifier" style="color: var(--sh-identifier)">error</span><span class="sh__token--sign" style="color: var(--sh-sign)">]</span></span></code> 标记让一个专门的检查可以把「同工具 + 同参数 + 连续三次校验错误」直接短路到 <code><span class="sh__line"><span class="sh__token--class" style="color: var(--sh-class)">ForceStop</span></span></code>——远早于通用的全错误预算（那个要到第七次调用才会触发）。返回一个不带前缀的手搓 <code><span class="sh__line"><span class="sh__token--class" style="color: var(--sh-class)">IsError</span><span class="sh__token--sign" style="color: var(--sh-sign)">:</span><span class="sh__token--space" style="color: var(--sh-space)"> </span><span class="sh__token--keyword" style="color: var(--sh-keyword)">true</span></span></code>，你就丢掉了这个提前停止，退回到更慢的通用路径。</p>
+<p>这条一般原则值得单独说：<strong>探测器只能看见工具层报告出来的东西。</strong> 一个「什么都没做却返回成功」的工具最终还是会被抓到——但只在它已经动过手之后。检测是第二道防线。第一道是<strong>说真话的工具</strong>。</p>
+<h2 id="435-探测器也会被删掉"><a href="#435-探测器也会被删掉" class="anchor"></a>43.5 探测器也会被删掉</h2>
+<p>曾经有一个 <code><span class="sh__line"><span class="sh__token--class" style="color: var(--sh-class)">Sleep</span></span></code> 探测器——bash 命令里含 <code><span class="sh__line"><span class="sh__token--identifier" style="color: var(--sh-identifier)">sleep</span><span class="sh__token--space" style="color: var(--sh-space)"> </span><span class="sh__token--class" style="color: var(--sh-class)">N</span></span></code> 就被当作卡循环信号，理由是模型写出 <code><span class="sh__line"><span class="sh__token--identifier" style="color: var(--sh-identifier)">sleep</span><span class="sh__token--space" style="color: var(--sh-space)"> </span><span class="sh__token--class" style="color: var(--sh-class)">5</span><span class="sh__token--space" style="color: var(--sh-space)"> </span><span class="sh__token--sign" style="color: var(--sh-sign)">&amp;</span><span class="sh__token--sign" style="color: var(--sh-sign)">&amp;</span><span class="sh__token--space" style="color: var(--sh-space)"> </span><span class="sh__token--identifier" style="color: var(--sh-identifier)">retry</span></span></code> 通常意味着它在等一个永远不会变的外部状态。</p>
+<p>它在 2026 年 5 月被移除了。理由是：</p>
+<blockquote>
+<p>produced false positives on legitimate parallel-sleep tasks. Real polling is now covered by ExactDup (same command repeated), NoProgress (many bash calls without progress), and the idle watchdog (silent long-running commands).</p>
+</blockquote>
+<p>这里有两点值得带走。第一，这次删除的正当性来自<strong>证明那个失效模式已经被另外三个信号覆盖</strong>，而不是来自「觉得它不重要了」。第二，<strong>一个误报多于命中的探测器比没有更糟</strong>，因为它训练你去忽略这套机制。</p>
+<p>这也是为什么第 32 章的探测器表被明确标注为历史内容。它记录的是更早的一份名单，而名单会随事故累积而变化。<strong>探测器数量不是架构不变量。</strong> 如果你系统里有个探测器，没人说得出它对应哪次事故，那它就是删除的候选。</p>
+<h2 id="436-快照证据"><a href="#436-快照证据" class="anchor"></a>43.6 快照证据</h2>
+<table><thead><tr><th>观察</th><th><code><span class="sh__line"><span class="sh__token--class" style="color: var(--sh-class)">4ec6772</span></span></code> 源码位置</th></tr></thead><tbody><tr><td>九条检测路径，先命中者胜</td><td><a target="_blank" rel="noopener noreferrer" href="https://github.com/Kocoro-lab/Kocoro/blob/4ec6772/internal/agent/loopdetect.go#L39"><code><span class="sh__line"><span class="sh__token--identifier" style="color: var(--sh-identifier)">loopdetect</span><span class="sh__token--sign" style="color: var(--sh-sign)">.</span><span class="sh__token--property" style="color: var(--sh-property)">go</span></span></code> L39</a></td></tr><tr><td>背靠背重复默认 3（从 2 提高）</td><td><a target="_blank" rel="noopener noreferrer" href="https://github.com/Kocoro-lab/Kocoro/blob/4ec6772/internal/agent/loopdetect.go#L297"><code><span class="sh__line"><span class="sh__token--identifier" style="color: var(--sh-identifier)">loopdetect</span><span class="sh__token--sign" style="color: var(--sh-sign)">.</span><span class="sh__token--property" style="color: var(--sh-property)">go</span></span></code> L297</a></td></tr><tr><td>分散重复默认 5（从 3 提高）</td><td><a target="_blank" rel="noopener noreferrer" href="https://github.com/Kocoro-lab/Kocoro/blob/4ec6772/internal/agent/loopdetect.go#L298"><code><span class="sh__line"><span class="sh__token--identifier" style="color: var(--sh-identifier)">loopdetect</span><span class="sh__token--sign" style="color: var(--sh-sign)">.</span><span class="sh__token--property" style="color: var(--sh-property)">go</span></span></code> L298</a></td></tr><tr><td>全错误时预算翻倍</td><td><a target="_blank" rel="noopener noreferrer" href="https://github.com/Kocoro-lab/Kocoro/blob/4ec6772/internal/agent/loopdetect.go#L471"><code><span class="sh__line"><span class="sh__token--identifier" style="color: var(--sh-identifier)">loopdetect</span><span class="sh__token--sign" style="color: var(--sh-sign)">.</span><span class="sh__token--property" style="color: var(--sh-property)">go</span></span></code> L471</a></td></tr><tr><td>校验错误签名短路</td><td><a target="_blank" rel="noopener noreferrer" href="https://github.com/Kocoro-lab/Kocoro/blob/4ec6772/internal/agent/loopdetect.go#L455"><code><span class="sh__line"><span class="sh__token--identifier" style="color: var(--sh-identifier)">loopdetect</span><span class="sh__token--sign" style="color: var(--sh-sign)">.</span><span class="sh__token--property" style="color: var(--sh-property)">go</span></span></code> L455</a></td></tr><tr><td><code><span class="sh__line"><span class="sh__token--identifier" style="color: var(--sh-identifier)">file_write</span></span></code> 的空 <code><span class="sh__line"><span class="sh__token--identifier" style="color: var(--sh-identifier)">content</span></span></code> 防线</td><td><a target="_blank" rel="noopener noreferrer" href="https://github.com/Kocoro-lab/Kocoro/blob/4ec6772/internal/tools/file_write.go#L49"><code><span class="sh__line"><span class="sh__token--identifier" style="color: var(--sh-identifier)">file_write</span><span class="sh__token--sign" style="color: var(--sh-sign)">.</span><span class="sh__token--property" style="color: var(--sh-property)">go</span></span></code> L49</a></td></tr><tr><td>覆盖整个注册表的必填字段契约</td><td><a target="_blank" rel="noopener noreferrer" href="https://github.com/Kocoro-lab/Kocoro/blob/4ec6772/internal/tools/required_fields_contract_test.go#L15"><code><span class="sh__line"><span class="sh__token--identifier" style="color: var(--sh-identifier)">required_fields_contract_test</span><span class="sh__token--sign" style="color: var(--sh-sign)">.</span><span class="sh__token--property" style="color: var(--sh-property)">go</span></span></code> L15</a></td></tr><tr><td><code><span class="sh__line"><span class="sh__token--class" style="color: var(--sh-class)">Sleep</span></span></code> 探测器的移除及其覆盖论证</td><td><a target="_blank" rel="noopener noreferrer" href="https://github.com/Kocoro-lab/Kocoro/blob/4ec6772/internal/agent/loopdetect.go#L55"><code><span class="sh__line"><span class="sh__token--identifier" style="color: var(--sh-identifier)">loopdetect</span><span class="sh__token--sign" style="color: var(--sh-sign)">.</span><span class="sh__token--property" style="color: var(--sh-property)">go</span></span></code> L55</a></td></tr></tbody></table>
+<p>以上描述的是一个有日期的实现快照，不是普遍契约。</p>
+<h2 id="437-常见的坑"><a href="#437-常见的坑" class="anchor"></a>43.7 常见的坑</h2>
+<p><strong>把重复调用一律当可疑。</strong> 批处理会重复调用，恢复也会重复调用。只有<strong>无产出的</strong>重复才是循环。</p>
+<p><strong>Nudge 不升级。</strong> 如果一个 Nudge 可以无限次触发，它就是一行日志，不是一个控制。</p>
+<p><strong>ForceStop 不带总结。</strong> 用户拿到一次被砍断的运行和零解释。多花那一次不带工具的调用。</p>
+<p><strong>用检测代替修契约。</strong> 43.1 那个事故是工具校验的 bug。你为它造的任何探测器都是权宜之计，而且会在别处误伤。</p>
+<p><strong>留着没人说得清的探测器。</strong> 背后没有事故的探测器，是未经检验的直觉，早晚会在真实工作上误报。</p>
+<p><strong>豁免得太粗。</strong> 有些工具正当地重复，需要从重复检测里豁免——但一刀切的豁免也会把它们从<strong>真正的</strong>卡死检测里摘出去。豁免要窄。</p>
+<h2 id="kocoro-oss-lab10-分钟上手"><a href="#kocoro-oss-lab10-分钟上手" class="anchor"></a>Kocoro OSS Lab（10 分钟上手）</h2>
+<ol>
+<li>读 <a target="_blank" rel="noopener noreferrer" href="https://github.com/Kocoro-lab/Kocoro/blob/4ec6772/internal/agent/loopdetect.go#L55"><code><span class="sh__line"><span class="sh__token--class" style="color: var(--sh-class)">Sleep</span></span></code> 移除的注释</a>。注意它的结构：它抓的失效、它的误报、以及现在覆盖它的三个信号。这就是一次有正当性的删除长什么样。</li>
+<li>找到<a target="_blank" rel="noopener noreferrer" href="https://github.com/Kocoro-lab/Kocoro/blob/4ec6772/internal/agent/loopdetect.go#L471">全错误预算那一行</a>，想清楚为什么正确的方向是翻倍而不是减半。</li>
+<li>审计你自己的一个工具：对它必填列表里的每个字段，问「如果它以零值到达会怎样？」只要有一个答案是「它会成功并且什么都不做」，你就有 43.1 那个 bug。</li>
+</ol>
+<h2 id="划重点"><a href="#划重点" class="anchor"></a>划重点</h2>
+<ol>
+<li><strong>检测是证据聚合。</strong> 九条路径存在，是因为「无进展」有九种不同形状。</li>
+<li><strong>错误应该比成功有更宽的预算。</strong> 重复的失败常常是工作，重复的成功很少是。</li>
+<li><strong>停止必须自我解释。</strong> ForceStop 花一次不带工具的调用，让用户知道这次运行走到了哪。</li>
+<li><strong>检测约束重复，管不了第一次。</strong> 那次零字节写入在第四次调用时被抓到——文件早就没了。</li>
+<li><strong>名单从事故里演进。</strong> 出事了就加，误报盖过命中了就删。</li>
+</ol>
+<p>下一章：<a target="_blank" rel="noopener noreferrer" href="./%E7%AC%AC44%E7%AB%A0-%E5%B9%B6%E8%A1%8C%E5%B7%A5%E5%85%B7%E6%89%A7%E8%A1%8C">第 44 章</a>讲工具层诚实的另一半——判断哪些调用真的可以同时跑。</p></article>
+        <div class="chapter-nav"><a href="第42章-Agent超时与Watchdog.html"><span class="nav-label">上一章</span>第 42 章：Agent 超时与 Watchdog</a><a href="第44章-并行工具执行.html" class="nav-next"><span class="nav-label">下一章</span>第 44 章：并行工具执行</a></div>
+      </div>
+    </main>
+  </div>
+</div>
+<script src="script.js"></script>
+</body>
+</html>

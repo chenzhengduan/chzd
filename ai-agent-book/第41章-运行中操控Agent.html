@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>第 41 章：运行中操控 Agent | AI Agent 开发实战 | chad</title>
+<meta name="author" content="chad"/>
+<meta name="description" content="AI Agent 架构模式与实战 - chad"/>
+<script>(function(){try{var m=window.matchMedia('(prefers-color-scheme:dark)');var apply=function(){var t=localStorage.getItem('theme');document.documentElement.classList.toggle('dark',t==='dark'||(!t&&m.matches))};apply();m.addEventListener('change',apply)}catch(e){}})()</script>
+<script src="https://cdn.tailwindcss.com?plugins=typography"></script>
+<script>tailwind.config={darkMode:"class",theme:{extend:{typography:{DEFAULT:{css:{maxWidth:"none"}}}}}}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css"/>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📖</text></svg>"/>
+</head>
+<body>
+<div class="book-layout">
+  <header class="book-header">
+    <div class="header-content">
+      <div class="header-left">
+        <button class="mobile-menu-toggle" id="menuToggle" aria-label="Open menu">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20"><path stroke-linecap="round" stroke-linejoin="round" d="M3 12h18M3 6h18M3 18h18"></path></svg>
+        </button>
+        <nav class="header-nav">
+          <a class="nav-item" href="index.html">Home</a>
+          <a class="nav-item" href="#">Blog</a>
+          <span class="nav-item">Books</span>
+          <a class="nav-item active hide-mobile" href="index.html">AI Agent 架构模式与实战</a>
+        </nav>
+      </div>
+      <div class="right-controls">
+        <span><a class="lang-link active" href="#">中文</a></span>
+        <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+          <svg class="w-[18px] h-[18px] hidden dark:block" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="4"></circle><path stroke-linecap="round" d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"></path></svg>
+          <svg class="w-[18px] h-[18px] block dark:hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+  <div class="sidebar-overlay" id="sidebarOverlay"></div>
+  <div class="book-body">
+    <nav class="book-sidebar" id="bookSidebar">
+      <button class="sidebar-close" id="sidebarClose" aria-label="Close menu">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20"><path stroke-linecap="round" d="M18 6L6 18M6 6l12 12"></path></svg>
+      </button>
+      <div class="sidebar-header">
+        <a class="book-title" href="index.html">AI Agent 架构：从单体到企业级多智能体</a>
+      </div>
+      <div class="sidebar-content">
+<div class="sidebar-section"><div class="section-title">前言</div><ul class="chapter-list"><li><a class="chapter-link" href="前言.html">前言</a></li></ul></div><div class="sidebar-section"><div class="section-title">Part 1 - Agent 基础</div><ul class="chapter-list"><li><a class="chapter-link" href="Part1概述.html">Part 1 概述</a></li><li><a class="chapter-link" href="第01章-Agent的本质.html">第 1 章：Agent 的本质</a></li><li><a class="chapter-link" href="第02章-ReAct循环.html">第 2 章：ReAct 循环</a></li></ul></div><div class="sidebar-section"><div class="section-title">Part 2 - 工具与扩展</div><ul class="chapter-list"><li><a class="chapter-link" href="Part2概述.html">Part 2 概述</a></li><li><a class="chapter-link" href="第03章-工具调用基础.html">第 3 章：工具调用基础</a></li><li><a class="chapter-link" href="第04章-MCP协议详解.html">第 4 章：MCP 协议详解</a></li><li><a class="chapter-link" href="第05章-Skills技能系统.html">第 5 章：Skills 技能系统</a></li><li><a class="chapter-link" href="第06章-Hooks与事件系统.html">第 6 章：Hooks 与事件系统</a></li></ul></div><div class="sidebar-section"><div class="section-title">Part 3 - 上下文与记忆</div><ul class="chapter-list"><li><a class="chapter-link" href="Part3概述.html">Part 3 概述</a></li><li><a class="chapter-link" href="第07章-上下文工程.html">第 7 章：上下文工程</a></li><li><a class="chapter-link" href="第08章-记忆架构.html">第 8 章：记忆架构</a></li><li><a class="chapter-link" href="第09章-多轮对话设计.html">第 9 章：多轮对话设计</a></li></ul></div><div class="sidebar-section"><div class="section-title">Part 4 - 单 Agent 模式</div><ul class="chapter-list"><li><a class="chapter-link" href="Part4概述.html">Part 4 概述</a></li><li><a class="chapter-link" href="第10章-Planning模式.html">第 10 章：Planning 模式</a></li><li><a class="chapter-link" href="第11章-Reflection模式.html">第 11 章：Reflection 模式</a></li><li><a class="chapter-link" href="第12章-Chain-of-Thought.html">第 12 章：Chain-of-Thought</a></li></ul></div><div class="sidebar-section"><div class="section-title">Part 5 - 多 Agent 编排</div><ul class="chapter-list"><li><a class="chapter-link" href="Part5概述.html">Part 5 概述</a></li><li><a class="chapter-link" href="第13章-编排基础.html">第 13 章：编排基础</a></li><li><a class="chapter-link" href="第14章-DAG工作流.html">第 14 章：DAG 工作流</a></li><li><a class="chapter-link" href="第15章-Swarm模式.html">第 15 章：Swarm 模式</a></li><li><a class="chapter-link" href="第16章-Handoff机制.html">第 16 章：Handoff 机制</a></li></ul></div><div class="sidebar-section"><div class="section-title">Part 6 - 高级推理</div><ul class="chapter-list"><li><a class="chapter-link" href="Part6概述.html">Part 6 概述</a></li><li><a class="chapter-link" href="第17章-Tree-of-Thoughts.html">第 17 章：Tree-of-Thoughts</a></li><li><a class="chapter-link" href="第18章-Debate模式.html">第 18 章：Debate 模式</a></li><li><a class="chapter-link" href="第19章-Research-Synthesis.html">第 19 章：Research-Synthesis</a></li></ul></div><div class="sidebar-section"><div class="section-title">Part 7 - 生产架构</div><ul class="chapter-list"><li><a class="chapter-link" href="Part7概述.html">Part 7 概述</a></li><li><a class="chapter-link" href="第20章-三层架构设计.html">第 20 章：三层架构设计</a></li><li><a class="chapter-link" href="第21章-Temporal工作流.html">第 21 章：Temporal 工作流</a></li><li><a class="chapter-link" href="第22章-可观测性.html">第 22 章：可观测性</a></li></ul></div><div class="sidebar-section"><div class="section-title">Part 8 - 企业级特性</div><ul class="chapter-list"><li><a class="chapter-link" href="Part8概述.html">Part 8 概述</a></li><li><a class="chapter-link" href="第23章-Token预算控制.html">第 23 章：Token 预算控制</a></li><li><a class="chapter-link" href="第24章-策略治理.html">第 24 章：策略治理</a></li><li><a class="chapter-link" href="第25章-安全执行.html">第 25 章：安全执行</a></li><li><a class="chapter-link" href="第26章-多租户设计.html">第 26 章：多租户设计</a></li></ul></div><div class="sidebar-section"><div class="section-title">Part 9 - 前沿实践</div><ul class="chapter-list"><li><a class="chapter-link" href="Part9概述.html">Part 9 概述</a></li><li><a class="chapter-link" href="第27章-Deep-Research.html">第 27 章：Deep Research</a></li><li><a class="chapter-link" href="第28章-Computer-Use.html">第 28 章：Computer Use</a></li><li><a class="chapter-link" href="第29章-Agentic-Coding.html">第 29 章：Agentic Coding</a></li><li><a class="chapter-link" href="第30章-Background-Agents.html">第 30 章：Background Agents</a></li><li><a class="chapter-link" href="第31章-分层模型策略.html">第 31 章：分层模型策略</a></li><li><a class="chapter-link" href="第32章-OpenClaw时代.html">第 32 章：OpenClaw 时代</a></li><li><a class="chapter-link" href="第33章-Building-on-the-Harness-ShanClaw.html">第 33 章：Building on the Harness - Kocoro</a></li></ul></div><div class="sidebar-section"><div class="section-title">Part 10 - Agent Loop 工程</div><ul class="chapter-list"><li><a class="chapter-link" href="Part10-Agent-Loop工程.html">Part 10 概述</a></li><li><a class="chapter-link" href="第34章-从DAG到Agent-Loop.html">第 34 章：从 DAG 到 Agent Loop</a></li><li><a class="chapter-link" href="第35章-上下文压缩.html">第 35 章：上下文压缩</a></li><li><a class="chapter-link" href="第36章-Tool-Result预算与外溢.html">第 36 章：Tool Result 预算与外溢</a></li><li><a class="chapter-link" href="第37章-分层压缩.html">第 37 章：分层压缩</a></li><li><a class="chapter-link" href="第38章-Deferred-Tool-Loading与Tool-Search.html">第 38 章：Deferred Tool Loading 与 Tool Search</a></li><li><a class="chapter-link" href="第39章-Prompt-Cache稳定性.html">第 39 章：Prompt Cache 稳定性</a></li><li><a class="chapter-link" href="第40章-持久化Agent-Loop.html">第 40 章：持久化 Agent Loop</a></li><li><a class="chapter-link active" href="第41章-运行中操控Agent.html">第 41 章：运行中操控 Agent</a></li><li><a class="chapter-link" href="第42章-Agent超时与Watchdog.html">第 42 章：Agent 超时与 Watchdog</a></li><li><a class="chapter-link" href="第43章-卡循环检测.html">第 43 章：卡循环检测</a></li><li><a class="chapter-link" href="第44章-并行工具执行.html">第 44 章：并行工具执行</a></li><li><a class="chapter-link" href="第45章-Computer-Use上下文管理.html">第 45 章：Computer Use 上下文管理</a></li></ul></div><div class="sidebar-section"><div class="section-title">附录</div><ul class="chapter-list"><li><a class="chapter-link" href="Part10概述.html">附录概述</a></li><li><a class="chapter-link" href="附录A-术语表.html">附录 A：术语表</a></li><li><a class="chapter-link" href="附录B-模式选择指南.html">附录 B：模式选择指南</a></li><li><a class="chapter-link" href="附录C-常见问题FAQ.html">附录 C：常见问题 FAQ</a></li></ul></div>
+      </div>
+    </nav>
+    <main class="book-main">
+      <div class="book-content">
+<article class="prose dark:prose-invert fade-in"><h1 id="第-41-章运行中操控-agent"><a href="#第-41-章运行中操控-agent" class="anchor"></a>第 41 章：运行中操控 Agent</h1>
+<blockquote>
+<p><strong>追问不是“再来一条消息”这么简单。它跨过一条正在活动的并发边界，改变当前回答属于哪一轮，同时仍需遵守自己的交付契约。</strong></p>
+</blockquote>
+<hr/>
+<blockquote>
+<p><strong>快速通道</strong>（5 分钟掌握核心）</p>
+<ol>
+<li>分清 <strong>accepted</strong>、<strong>committed</strong> 与 <strong>completed</strong>——它们是三个不同时刻</li>
+<li>在迭代边界取出追问，让模型在继续选工具前先看到它们</li>
+<li>原子地关闭运行末尾的竞态：要么消费迟到追问，要么让它启动新运行</li>
+<li>追踪每个答案属于哪条入站消息；合并后的一次运行可能产生多次回复</li>
+<li>仅在回复成功送达后发送 <code><span class="sh__line"><span class="sh__token--identifier" style="color: var(--sh-identifier)">delivery_ack</span></span></code>，让交付失败的输入仍可重放</li>
+</ol>
+<p><strong>10 分钟路径</strong>：41.1-41.4 -&gt; 41.6 -&gt; Kocoro OSS Lab</p>
+</blockquote>
+<hr/>
+<blockquote>
+<p><strong>公开源码快照</strong>：实现细节取自 Kocoro 公开仓库 <code><span class="sh__line"><span class="sh__token--identifier" style="color: var(--sh-identifier)">origin</span><span class="sh__token--sign" style="color: var(--sh-sign)">/</span><span class="sh__token--identifier" style="color: var(--sh-identifier)">main</span></span></code> 的 <code><span class="sh__line"><span class="sh__token--class" style="color: var(--sh-class)">4ec6772</span></span></code> 提交，复核日期为 2026-07-27。章节讲的是不变量；具体常量应以当前源码为准。</p>
+</blockquote>
+<h2 id="411-从完成一刻到达的追问说起"><a href="#411-从完成一刻到达的追问说起" class="anchor"></a>41.1 从“完成”一刻到达的追问说起</h2>
+<p>一个 Agent 已经花十二分钟重构服务。就在它撰写最终答复时，用户发来：</p>
+<blockquote>
+<p>另外更新数据库迁移，并重新运行集成测试。</p>
+</blockquote>
+<p>有两个很直觉的实现，但都会输。</p>
+<p>立刻开启第二次运行，会让两个循环并发修改同一工作区。把消息排到以后并允许第一次运行返回，用户会先收到“完成”，但要求的数据库迁移还完全没动。即使在返回前看一眼内存队列，竞态仍在：追问可能恰好在检查之后、路由撤销之前到达。API 报告接收成功，却再也没有任何运行拥有这条消息。</p>
+<p>接着还有一个更隐蔽的错误。假设运行中的循环确实吸收了追问，渠道回复应该指向原始重构请求，还是“另外更新数据库迁移”？如果只追踪会话 ID，答案就会落到传输层碰巧记得的那条消息下面。</p>
+<p>所以，运行中操控同时包含三份契约：并发、对话边界与回复寻址。</p>
+<h2 id="412-accepted-不等于-committed也不等于-completed"><a href="#412-accepted-不等于-committed也不等于-completed" class="anchor"></a>41.2 Accepted 不等于 Committed，也不等于 Completed</h2>
+<p>请使用三个动词，因为只用一个词正是消息消失的原因。</p>
+<p><strong>Accepted</strong> 表示路由器找到了活动运行，并把消息放进带缓冲的注入通道。<code><span class="sh__line"><span class="sh__token--class" style="color: var(--sh-class)">InjectOK</span></span></code> 说明所有权已经转移；它不表示模型已经看到文本。</p>
+<p><strong>Committed</strong> 表示循环在迭代边界取出了消息，构建出真正的用户轮次，把它追加到当前对话，并触发生命周期钩子。只有现在，排队的草稿才能变成普通用户气泡。如果消息来自持久邮箱记录，也只能在此时移除该记录——文本已经在对话转录里有了归宿，而不是刚刚进入内存的时候。</p>
+<p><strong>Completed</strong> 表示这条入站消息对应的答案已经送达。只有完成交付后，传输层才能删除它的重放记录。</p>
+<pre><code class="language-text"><span class="sh__line"><span class="sh__token--identifier" style="color: var(--sh-identifier)">accepted</span><span class="sh__token--space" style="color: var(--sh-space)"> </span><span class="sh__token--space" style="color: var(--sh-space)">             </span><span class="sh__token--identifier" style="color: var(--sh-identifier)">committed</span><span class="sh__token--space" style="color: var(--sh-space)"> </span><span class="sh__token--space" style="color: var(--sh-space)">                   </span><span class="sh__token--identifier" style="color: var(--sh-identifier)">completed</span><span class="sh__token--break" style="color: var(--sh-break)"></span></span>
+<span class="sh__line"><span class="sh__token--identifier" style="color: var(--sh-identifier)">router</span><span class="sh__token--space" style="color: var(--sh-space)"> </span><span class="sh__token--class" style="color: var(--sh-class)">→</span><span class="sh__token--space" style="color: var(--sh-space)"> </span><span class="sh__token--identifier" style="color: var(--sh-identifier)">inject</span><span class="sh__token--space" style="color: var(--sh-space)"> </span><span class="sh__token--identifier" style="color: var(--sh-identifier)">queue</span><span class="sh__token--space" style="color: var(--sh-space)"> </span><span class="sh__token--class" style="color: var(--sh-class)">→</span><span class="sh__token--space" style="color: var(--sh-space)"> </span><span class="sh__token--identifier" style="color: var(--sh-identifier)">live</span><span class="sh__token--space" style="color: var(--sh-space)"> </span><span class="sh__token--identifier" style="color: var(--sh-identifier)">user</span><span class="sh__token--space" style="color: var(--sh-space)"> </span><span class="sh__token--identifier" style="color: var(--sh-identifier)">turn</span><span class="sh__token--space" style="color: var(--sh-space)"> </span><span class="sh__token--class" style="color: var(--sh-class)">→</span><span class="sh__token--space" style="color: var(--sh-space)"> </span><span class="sh__token--identifier" style="color: var(--sh-identifier)">model</span><span class="sh__token--space" style="color: var(--sh-space)"> </span><span class="sh__token--sign" style="color: var(--sh-sign)">.</span><span class="sh__token--sign" style="color: var(--sh-sign)">.</span><span class="sh__token--sign" style="color: var(--sh-sign)">.</span><span class="sh__token--space" style="color: var(--sh-space)"> </span><span class="sh__token--class" style="color: var(--sh-class)">→</span><span class="sh__token--space" style="color: var(--sh-space)"> </span><span class="sh__token--identifier" style="color: var(--sh-identifier)">reply</span><span class="sh__token--space" style="color: var(--sh-space)"> </span><span class="sh__token--identifier" style="color: var(--sh-identifier)">delivered</span><span class="sh__token--space" style="color: var(--sh-space)"> </span><span class="sh__token--class" style="color: var(--sh-class)">→</span><span class="sh__token--space" style="color: var(--sh-space)"> </span><span class="sh__token--identifier" style="color: var(--sh-identifier)">ack</span><span class="sh__token--break" style="color: var(--sh-break)"></span></span></code></pre>
+<p>每条箭头都可能独立失败。让每种状态各有一个所有者，恢复才有可能；全都压成“received”，每次崩溃后大家只会争论这个词到底是什么意思。</p>
+<h2 id="413-在决策边界取出追问"><a href="#413-在决策边界取出追问" class="anchor"></a>41.3 在决策边界取出追问</h2>
+<p>当前运行拥有一个邮箱。每轮迭代开头，它以非阻塞方式取出可用追问，过滤已经撤回的消息，把剩余内容合成一个用户轮次，并在下一次主模型请求前追加进去。</p>
+<p>这个边界是有意选择的。在工具执行期间取出追问，会在已经选定的动作下方修改上下文。等到下一次模型响应后才处理，Agent 又可能在看到用户纠正前执行一次昂贵或破坏性的工具。迭代边界正好位于前序效果已知、下一个动作尚未选择的时刻。</p>
+<p>提交追问时还会更新 <code><span class="sh__line"><span class="sh__token--identifier" style="color: var(--sh-identifier)">latestUserText</span></span></code>，让 Skill 发现与延迟工具续接根据新指令，而不是原始指令推理。只修改对话转录，却让旁路系统继续读取旧用户文本，只完成了一半操控。</p>
+<p>多条待处理追问可以合并成一个用户轮次。这是产品决策，不是传输层的偶然行为。如果希望每条消息各有一个答案，就不要批量合并；如果选择合并，就要定义答复归属哪个入站 ID，以及其他 ID 如何处理。</p>
+<h2 id="414-关闭最后一条消息的竞态"><a href="#414-关闭最后一条消息的竞态" class="anchor"></a>41.4 关闭最后一条消息的竞态</h2>
+<p>只在循环顶部取出追问还不够。最难处理的是 §41.1 的到达时机：模型正在组织终态答复。</p>
+<p>简单检查 <code><span class="sh__line"><span class="sh__token--identifier" style="color: var(--sh-identifier)">len</span><span class="sh__token--sign" style="color: var(--sh-sign)">(</span><span class="sh__token--identifier" style="color: var(--sh-identifier)">queue</span><span class="sh__token--sign" style="color: var(--sh-sign)">)</span><span class="sh__token--space" style="color: var(--sh-space)"> </span><span class="sh__token--sign" style="color: var(--sh-sign)">&gt;</span><span class="sh__token--space" style="color: var(--sh-space)"> </span><span class="sh__token--class" style="color: var(--sh-class)">0</span></span></code> 无法关闭竞态。检查时队列可能为空，却在路由撤销前又收到消息。公开运行时使用由路由锁拥有的最终排空操作：</p>
+<pre><code class="language-text"><span class="sh__line"><span class="sh__token--identifier" style="color: var(--sh-identifier)">under</span><span class="sh__token--space" style="color: var(--sh-space)"> </span><span class="sh__token--identifier" style="color: var(--sh-identifier)">one</span><span class="sh__token--space" style="color: var(--sh-space)"> </span><span class="sh__token--identifier" style="color: var(--sh-identifier)">lock</span><span class="sh__token--sign" style="color: var(--sh-sign)">:</span><span class="sh__token--break" style="color: var(--sh-break)"></span></span>
+<span class="sh__line"><span class="sh__token--space" style="color: var(--sh-space)">  </span><span class="sh__token--keyword" style="color: var(--sh-keyword)">if</span><span class="sh__token--space" style="color: var(--sh-space)"> </span><span class="sh__token--identifier" style="color: var(--sh-identifier)">a</span><span class="sh__token--space" style="color: var(--sh-space)"> </span><span class="sh__token--identifier" style="color: var(--sh-identifier)">surviving</span><span class="sh__token--space" style="color: var(--sh-space)"> </span><span class="sh__token--identifier" style="color: var(--sh-identifier)">follow</span><span class="sh__token--sign" style="color: var(--sh-sign)">-</span><span class="sh__token--identifier" style="color: var(--sh-identifier)">up</span><span class="sh__token--space" style="color: var(--sh-space)"> </span><span class="sh__token--identifier" style="color: var(--sh-identifier)">exists</span><span class="sh__token--sign" style="color: var(--sh-sign)">:</span><span class="sh__token--break" style="color: var(--sh-break)"></span></span>
+<span class="sh__line"><span class="sh__token--space" style="color: var(--sh-space)">      </span><span class="sh__token--identifier" style="color: var(--sh-identifier)">drain</span><span class="sh__token--space" style="color: var(--sh-space)"> </span><span class="sh__token--identifier" style="color: var(--sh-identifier)">it</span><span class="sh__token--space" style="color: var(--sh-space)"> </span><span class="sh__token--identifier" style="color: var(--sh-identifier)">and</span><span class="sh__token--space" style="color: var(--sh-space)"> </span><span class="sh__token--identifier" style="color: var(--sh-identifier)">keep</span><span class="sh__token--space" style="color: var(--sh-space)"> </span><span class="sh__token--identifier" style="color: var(--sh-identifier)">the</span><span class="sh__token--space" style="color: var(--sh-space)"> </span><span class="sh__token--identifier" style="color: var(--sh-identifier)">run</span><span class="sh__token--space" style="color: var(--sh-space)"> </span><span class="sh__token--identifier" style="color: var(--sh-identifier)">open</span><span class="sh__token--break" style="color: var(--sh-break)"></span></span>
+<span class="sh__line"><span class="sh__token--space" style="color: var(--sh-space)">  </span><span class="sh__token--keyword" style="color: var(--sh-keyword)">else</span><span class="sh__token--sign" style="color: var(--sh-sign)">:</span><span class="sh__token--break" style="color: var(--sh-break)"></span></span>
+<span class="sh__line"><span class="sh__token--space" style="color: var(--sh-space)">      </span><span class="sh__token--identifier" style="color: var(--sh-identifier)">close</span><span class="sh__token--space" style="color: var(--sh-space)"> </span><span class="sh__token--identifier" style="color: var(--sh-identifier)">the</span><span class="sh__token--space" style="color: var(--sh-space)"> </span><span class="sh__token--identifier" style="color: var(--sh-identifier)">injection</span><span class="sh__token--space" style="color: var(--sh-space)"> </span><span class="sh__token--identifier" style="color: var(--sh-identifier)">window</span><span class="sh__token--break" style="color: var(--sh-break)"></span></span></code></pre>
+<p>这样，竞态中的发送方只有两个合法结果。消息在原子排空前落地，由当前运行直接提交；或者发送方看到注入窗口已经关闭，开启一次新运行。它不可能先收到“accepted”，随后失去所有者。</p>
+<p>撤回也必须位于同一边界内。用户取消的排队草稿不能穿过最终排空操作，重新打开一个本已结束的循环。“过滤后为空”意味着返回；“至少一条消息仍有效”意味着继续。</p>
+<p>这是<a target="_blank" rel="noopener noreferrer" href="./%E7%AC%AC40%E7%AB%A0-%E6%8C%81%E4%B9%85%E5%8C%96Agent-Loop">第 40 章</a>更广泛的教训：持久性不只是写入状态，还要让所有权迁移足够原子，使恰好一个组件知道下一步该做什么。</p>
+<h2 id="415-每个答案都需要地址"><a href="#415-每个答案都需要地址" class="anchor"></a>41.5 每个答案都需要地址</h2>
+<p>一次物理 <code><span class="sh__line"><span class="sh__token--class" style="color: var(--sh-class)">Run</span></span></code> 现在可以包含多个逻辑用户轮次，所以“这次运行的消息 ID”已经不再够用。</p>
+<p>循环从主入站 ID 开始。提交一条追问时，它把 <code><span class="sh__line"><span class="sh__token--identifier" style="color: var(--sh-identifier)">replyCloudMessageID</span></span></code> 推进到新消息的 ID，并将该 ID 记入待确认集合。如果一个已经完成的答案即将被另一条注入轮次覆盖，循环会在推进之前先捕获<strong>旧</strong>回复 ID，再通过 <code><span class="sh__line"><span class="sh__token--class" style="color: var(--sh-class)">OnIntermediateAnswer</span></span></code> 发出答案。</p>
+<p>顺序是承重结构：</p>
+<pre><code class="language-text"><span class="sh__line"><span class="sh__token--identifier" style="color: var(--sh-identifier)">capture</span><span class="sh__token--space" style="color: var(--sh-space)"> </span><span class="sh__token--identifier" style="color: var(--sh-identifier)">old</span><span class="sh__token--space" style="color: var(--sh-space)"> </span><span class="sh__token--identifier" style="color: var(--sh-identifier)">reply</span><span class="sh__token--space" style="color: var(--sh-space)"> </span><span class="sh__token--identifier" style="color: var(--sh-identifier)">target</span><span class="sh__token--break" style="color: var(--sh-break)"></span></span>
+<span class="sh__line"><span class="sh__token--class" style="color: var(--sh-class)">→</span><span class="sh__token--space" style="color: var(--sh-space)"> </span><span class="sh__token--identifier" style="color: var(--sh-identifier)">commit</span><span class="sh__token--space" style="color: var(--sh-space)"> </span><span class="sh__token--identifier" style="color: var(--sh-identifier)">superseding</span><span class="sh__token--space" style="color: var(--sh-space)"> </span><span class="sh__token--identifier" style="color: var(--sh-identifier)">follow</span><span class="sh__token--sign" style="color: var(--sh-sign)">-</span><span class="sh__token--identifier" style="color: var(--sh-identifier)">up</span><span class="sh__token--break" style="color: var(--sh-break)"></span></span>
+<span class="sh__line"><span class="sh__token--class" style="color: var(--sh-class)">→</span><span class="sh__token--space" style="color: var(--sh-space)"> </span><span class="sh__token--identifier" style="color: var(--sh-identifier)">deliver</span><span class="sh__token--space" style="color: var(--sh-space)"> </span><span class="sh__token--identifier" style="color: var(--sh-identifier)">old</span><span class="sh__token--space" style="color: var(--sh-space)"> </span><span class="sh__token--identifier" style="color: var(--sh-identifier)">turn</span><span class="sh__token--string" style="color: var(--sh-string)">&#039;</span><span class="sh__token--string" style="color: var(--sh-string)">s answer to old target</span></span>
+<span class="sh__line"><span class="sh__token--string" style="color: var(--sh-string)">→ continue under new target</span></span>
+<span class="sh__line"><span class="sh__token--string" style="color: var(--sh-string)"></span></span></code></pre>
+<p>先推进，原答案就会显示在追问下面；不发送中间答案，它就会彻底消失；只按会话寻址，两个人快速发来的消息会塌成一条含糊的对话线索。</p>
+<p>当多条消息被合并成一个组合轮次时，快照把组合答案分配给最后一个非空入站 ID，同时把更早吸收的 ID 保留在确认集合里。其他产品可以做不同选择，重要的是策略必须明确，并在公开传输边界上测试。</p>
+<h2 id="416-交付确认不是邮箱接收"><a href="#416-交付确认不是邮箱接收" class="anchor"></a>41.6 交付确认不是邮箱接收</h2>
+<p>入站传输采用 at-least-once 语义。Cloud 会把未确认消息保存在重放缓冲区，并在重连后再次交付。</p>
+<p><code><span class="sh__line"><span class="sh__token--identifier" style="color: var(--sh-identifier)">delivery_ack</span></span></code> 只有一个狭义含义：<strong>终态回复已成功交付给用户</strong>。Daemon 先发送回复，再确认所有被吸收的入站 ID。如果回复交付失败，它不会发送确认；这样重连时仍能重放输入，而不是默默丢掉用户从未看到的答案。</p>
+<p>这正是前面措辞重要的原因。消息进入注入队列时不能发 <code><span class="sh__line"><span class="sh__token--identifier" style="color: var(--sh-identifier)">delivery_ack</span></span></code>，提交到上下文时也不能发；两个事件都发生在用户得到答案之前。</p>
+<p>去重仍需要持久身份。重放可能再次交给 Daemon 同一个入站 ID；系统必须识别它是已有活动所有者、已有完成回复，还是确实需要另开一次运行。At-least-once 传输加幂等处理才能得到可靠交付；假装传输层是 exactly-once，只会得到重复。</p>
+<h2 id="417-追加撤回与中断是三种操作"><a href="#417-追加撤回与中断是三种操作" class="anchor"></a>41.7 追加、撤回与中断是三种操作</h2>
+<p>普通追问表示：保留当前运行，在下一次决策前加入这条信息。</p>
+<p>撤回表示：删除一条尚未提交的排队消息。它需要客户端消息 ID，以及一枚能赢过延迟交付竞态的墓碑记录。</p>
+<p>中断表示：停止当前运行。它通过取消信号传播，而不是放进 Prompt。把“停止”追加成文本，模型可能要到又选择一个工具后才读到——对真正的取消而言太晚了。</p>
+<p>“中断并发送”又是另一种操作：取消旧运行，然后让替代请求拥有一次新运行。路由器把 <code><span class="sh__line"><span class="sh__token--identifier" style="color: var(--sh-identifier)">cancelPending</span></span></code> 状态的路由视为非活动，使替代请求不会撞上一个已经在退出过程中的循环。</p>
+<p>应保持这些路径分离。带模式字符串的统一 <code><span class="sh__line"><span class="sh__token--identifier" style="color: var(--sh-identifier)">steer</span></span></code> API，往往会让取消操作等待邮箱排空，让撤回看起来像一条新指令，还让不同分支各自定义消息到底有没有被接受。</p>
+<h2 id="418-快照证据"><a href="#418-快照证据" class="anchor"></a>41.8 快照证据</h2>
+<table><thead><tr><th>观察</th><th><code><span class="sh__line"><span class="sh__token--class" style="color: var(--sh-class)">4ec6772</span></span></code> 源码</th></tr></thead><tbody><tr><td>追问被取出时才触发注入提交，而不是刚被接受时</td><td><a target="_blank" rel="noopener noreferrer" href="https://github.com/Kocoro-lab/Kocoro/blob/4ec6772/internal/agent/loop.go#L670"><code><span class="sh__line"><span class="sh__token--identifier" style="color: var(--sh-identifier)">loop</span><span class="sh__token--sign" style="color: var(--sh-sign)">.</span><span class="sh__token--property" style="color: var(--sh-property)">go</span></span></code> L670</a></td></tr><tr><td>注入消息分别携带邮箱、Cloud 与客户端身份</td><td><a target="_blank" rel="noopener noreferrer" href="https://github.com/Kocoro-lab/Kocoro/blob/4ec6772/internal/agent/loop.go#L716"><code><span class="sh__line"><span class="sh__token--identifier" style="color: var(--sh-identifier)">loop</span><span class="sh__token--sign" style="color: var(--sh-sign)">.</span><span class="sh__token--property" style="color: var(--sh-property)">go</span></span></code> L716</a></td></tr><tr><td>一个提交路径构建并追加真正的用户轮次</td><td><a target="_blank" rel="noopener noreferrer" href="https://github.com/Kocoro-lab/Kocoro/blob/4ec6772/internal/agent/loop.go#L3106"><code><span class="sh__line"><span class="sh__token--identifier" style="color: var(--sh-identifier)">loop</span><span class="sh__token--sign" style="color: var(--sh-sign)">.</span><span class="sh__token--property" style="color: var(--sh-property)">go</span></span></code> L3106</a></td></tr><tr><td>普通排空操作发生在迭代顶部</td><td><a target="_blank" rel="noopener noreferrer" href="https://github.com/Kocoro-lab/Kocoro/blob/4ec6772/internal/agent/loop.go#L3223"><code><span class="sh__line"><span class="sh__token--identifier" style="color: var(--sh-identifier)">loop</span><span class="sh__token--sign" style="color: var(--sh-sign)">.</span><span class="sh__token--property" style="color: var(--sh-property)">go</span></span></code> L3223</a></td></tr><tr><td>原子最终排空操作关闭运行末尾竞态</td><td><a target="_blank" rel="noopener noreferrer" href="https://github.com/Kocoro-lab/Kocoro/blob/4ec6772/internal/agent/loop.go#L4213"><code><span class="sh__line"><span class="sh__token--identifier" style="color: var(--sh-identifier)">loop</span><span class="sh__token--sign" style="color: var(--sh-sign)">.</span><span class="sh__token--property" style="color: var(--sh-property)">go</span></span></code> L4213</a></td></tr><tr><td>回复目标推进到最后处理的入站消息</td><td><a target="_blank" rel="noopener noreferrer" href="https://github.com/Kocoro-lab/Kocoro/blob/4ec6772/internal/agent/loop.go#L1498"><code><span class="sh__line"><span class="sh__token--identifier" style="color: var(--sh-identifier)">loop</span><span class="sh__token--sign" style="color: var(--sh-sign)">.</span><span class="sh__token--property" style="color: var(--sh-property)">go</span></span></code> L1498</a></td></tr><tr><td>待确认 ID 只在最终交付后确认</td><td><a target="_blank" rel="noopener noreferrer" href="https://github.com/Kocoro-lab/Kocoro/blob/4ec6772/internal/agent/loop.go#L1520"><code><span class="sh__line"><span class="sh__token--identifier" style="color: var(--sh-identifier)">loop</span><span class="sh__token--sign" style="color: var(--sh-sign)">.</span><span class="sh__token--property" style="color: var(--sh-property)">go</span></span></code> L1520</a></td></tr><tr><td>仅当 <code><span class="sh__line"><span class="sh__token--class" style="color: var(--sh-class)">SendReply</span></span></code> 成功后才发送 <code><span class="sh__line"><span class="sh__token--identifier" style="color: var(--sh-identifier)">delivery_ack</span></span></code></td><td><a target="_blank" rel="noopener noreferrer" href="https://github.com/Kocoro-lab/Kocoro/blob/4ec6772/internal/daemon/client.go#L537"><code><span class="sh__line"><span class="sh__token--identifier" style="color: var(--sh-identifier)">client</span><span class="sh__token--sign" style="color: var(--sh-sign)">.</span><span class="sh__token--property" style="color: var(--sh-property)">go</span></span></code> L537</a></td></tr><tr><td>路由器入队与撤销排空共用一把所有权锁</td><td><a target="_blank" rel="noopener noreferrer" href="https://github.com/Kocoro-lab/Kocoro/blob/4ec6772/internal/daemon/router.go#L599"><code><span class="sh__line"><span class="sh__token--identifier" style="color: var(--sh-identifier)">router</span><span class="sh__token--sign" style="color: var(--sh-sign)">.</span><span class="sh__token--property" style="color: var(--sh-property)">go</span></span></code> L599</a></td></tr></tbody></table>
+<p>这些内容描述的是一个有日期的实现，不是普遍的消息传输契约。</p>
+<h2 id="419-常见陷阱"><a href="#419-常见陷阱" class="anchor"></a>41.9 常见陷阱</h2>
+<p><strong>入队时就确认。</strong> 接受后、回复前一旦崩溃，消息就永久丢失。</p>
+<p><strong>工具执行期间追加追问。</strong> 下一个动作已经根据旧上下文选定。</p>
+<p><strong>返回前检查队列长度。</strong> 查看一眼无法关闭到达与撤销之间的竞态。</p>
+<p><strong>每次运行只追踪一个 ID。</strong> 合并后的轮次会把答案发给错误消息，或丢掉中间答案。</p>
+<p><strong>提交对话转录前就标记邮箱记录已消费。</strong> 崩溃后既没有排队消息，也没有对话记录。</p>
+<p><strong>用 Prompt 文本取消。</strong> 循环读到“停止”前可能又行动一次。</p>
+<p><strong>把重放当成传输错误。</strong> 重放正是未确认回复在交付失败后如何恢复。应按持久身份去重。</p>
+<p><strong>让追问悄悄改变 CWD。</strong> 当前运行已经拥有一个项目上下文。不同目标应开启新运行，而不是在一轮中途突变。</p>
+<h2 id="kocoro-oss-lab10-分钟"><a href="#kocoro-oss-lab10-分钟" class="anchor"></a>Kocoro OSS Lab（10 分钟）</h2>
+<ol>
+<li>阅读 <a target="_blank" rel="noopener noreferrer" href="https://github.com/Kocoro-lab/Kocoro/blob/4ec6772/internal/agent/loop.go#L3106"><code><span class="sh__line"><span class="sh__token--identifier" style="color: var(--sh-identifier)">commitInjectedTurn</span></span></code></a>。列出它除了 <code><span class="sh__line"><span class="sh__token--identifier" style="color: var(--sh-identifier)">messages</span></span></code> 以外更新的所有状态；每一项都是提交过程若有两个所有者就会漂移的子系统。</li>
+<li>沿着<a target="_blank" rel="noopener noreferrer" href="https://github.com/Kocoro-lab/Kocoro/blob/4ec6772/internal/agent/loop.go#L4213">最终排空守卫</a>追到路由锁。画出一条消息与路由撤销竞速时的两个合法结果。</li>
+<li>在自己的渠道集成里写下发出交付确认的确切事件。如果答案是“请求已接受”，你就有一个 at-least-once 丢消息错误。</li>
+</ol>
+<h2 id="本章要点"><a href="#本章要点" class="anchor"></a>本章要点</h2>
+<ol>
+<li><strong>Accepted、Committed 与 Completed 是不同状态。</strong> 为三者命名，并各给一个所有者。</li>
+<li><strong>在下一次决策前取出追问。</strong> 新信息必须在另一个工具被选择前进入上下文。</li>
+<li><strong>原子地关闭路由。</strong> 迟到消息要么属于当前运行，要么属于新运行，不能两边都不属于。</li>
+<li><strong>为每个逻辑轮次寻址。</strong> 一个循环可以在多个入站 ID 下产生多个答案。</li>
+<li><strong>交付后再确认。</strong> 未确认重放是恢复机制，不是希望它消失的重复。</li>
+</ol>
+<p>下一章：<a target="_blank" rel="noopener noreferrer" href="./%E7%AC%AC42%E7%AB%A0-Agent%E8%B6%85%E6%97%B6%E4%B8%8EWatchdog">第 42 章</a>提出对应的时间问题：运行中的一轮沉默时，究竟是哪个阶段拥有这段等待？</p></article>
+        <div class="chapter-nav"><a href="第40章-持久化Agent-Loop.html"><span class="nav-label">上一章</span>第 40 章：持久化 Agent Loop</a><a href="第42章-Agent超时与Watchdog.html" class="nav-next"><span class="nav-label">下一章</span>第 42 章：Agent 超时与 Watchdog</a></div>
+      </div>
+    </main>
+  </div>
+</div>
+<script src="script.js"></script>
+</body>
+</html>

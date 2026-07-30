@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>AI Agent 开发实战：前言 | AI Agent 开发实战 | chad</title>
+<meta name="author" content="chad"/>
+<meta name="description" content="AI Agent 架构模式与实战 - chad"/>
+<script>(function(){try{var m=window.matchMedia('(prefers-color-scheme:dark)');var apply=function(){var t=localStorage.getItem('theme');document.documentElement.classList.toggle('dark',t==='dark'||(!t&&m.matches))};apply();m.addEventListener('change',apply)}catch(e){}})()</script>
+<script src="https://cdn.tailwindcss.com?plugins=typography"></script>
+<script>tailwind.config={darkMode:"class",theme:{extend:{typography:{DEFAULT:{css:{maxWidth:"none"}}}}}}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css"/>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📖</text></svg>"/>
+</head>
+<body>
+<div class="book-layout">
+  <header class="book-header">
+    <div class="header-content">
+      <div class="header-left">
+        <button class="mobile-menu-toggle" id="menuToggle" aria-label="Open menu">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20"><path stroke-linecap="round" stroke-linejoin="round" d="M3 12h18M3 6h18M3 18h18"></path></svg>
+        </button>
+        <nav class="header-nav">
+          <a class="nav-item" href="index.html">Home</a>
+          <a class="nav-item" href="#">Blog</a>
+          <span class="nav-item">Books</span>
+          <a class="nav-item active hide-mobile" href="index.html">AI Agent 架构模式与实战</a>
+        </nav>
+      </div>
+      <div class="right-controls">
+        <span><a class="lang-link active" href="#">中文</a></span>
+        <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+          <svg class="w-[18px] h-[18px] hidden dark:block" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="4"></circle><path stroke-linecap="round" d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"></path></svg>
+          <svg class="w-[18px] h-[18px] block dark:hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+  <div class="sidebar-overlay" id="sidebarOverlay"></div>
+  <div class="book-body">
+    <nav class="book-sidebar" id="bookSidebar">
+      <button class="sidebar-close" id="sidebarClose" aria-label="Close menu">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20"><path stroke-linecap="round" d="M18 6L6 18M6 6l12 12"></path></svg>
+      </button>
+      <div class="sidebar-header">
+        <a class="book-title" href="index.html">AI Agent 架构：从单体到企业级多智能体</a>
+      </div>
+      <div class="sidebar-content">
+<div class="sidebar-section"><div class="section-title">前言</div><ul class="chapter-list"><li><a class="chapter-link active" href="前言.html">前言</a></li></ul></div><div class="sidebar-section"><div class="section-title">Part 1 - Agent 基础</div><ul class="chapter-list"><li><a class="chapter-link" href="Part1概述.html">Part 1 概述</a></li><li><a class="chapter-link" href="第01章-Agent的本质.html">第 1 章：Agent 的本质</a></li><li><a class="chapter-link" href="第02章-ReAct循环.html">第 2 章：ReAct 循环</a></li></ul></div><div class="sidebar-section"><div class="section-title">Part 2 - 工具与扩展</div><ul class="chapter-list"><li><a class="chapter-link" href="Part2概述.html">Part 2 概述</a></li><li><a class="chapter-link" href="第03章-工具调用基础.html">第 3 章：工具调用基础</a></li><li><a class="chapter-link" href="第04章-MCP协议详解.html">第 4 章：MCP 协议详解</a></li><li><a class="chapter-link" href="第05章-Skills技能系统.html">第 5 章：Skills 技能系统</a></li><li><a class="chapter-link" href="第06章-Hooks与事件系统.html">第 6 章：Hooks 与事件系统</a></li></ul></div><div class="sidebar-section"><div class="section-title">Part 3 - 上下文与记忆</div><ul class="chapter-list"><li><a class="chapter-link" href="Part3概述.html">Part 3 概述</a></li><li><a class="chapter-link" href="第07章-上下文工程.html">第 7 章：上下文工程</a></li><li><a class="chapter-link" href="第08章-记忆架构.html">第 8 章：记忆架构</a></li><li><a class="chapter-link" href="第09章-多轮对话设计.html">第 9 章：多轮对话设计</a></li></ul></div><div class="sidebar-section"><div class="section-title">Part 4 - 单 Agent 模式</div><ul class="chapter-list"><li><a class="chapter-link" href="Part4概述.html">Part 4 概述</a></li><li><a class="chapter-link" href="第10章-Planning模式.html">第 10 章：Planning 模式</a></li><li><a class="chapter-link" href="第11章-Reflection模式.html">第 11 章：Reflection 模式</a></li><li><a class="chapter-link" href="第12章-Chain-of-Thought.html">第 12 章：Chain-of-Thought</a></li></ul></div><div class="sidebar-section"><div class="section-title">Part 5 - 多 Agent 编排</div><ul class="chapter-list"><li><a class="chapter-link" href="Part5概述.html">Part 5 概述</a></li><li><a class="chapter-link" href="第13章-编排基础.html">第 13 章：编排基础</a></li><li><a class="chapter-link" href="第14章-DAG工作流.html">第 14 章：DAG 工作流</a></li><li><a class="chapter-link" href="第15章-Swarm模式.html">第 15 章：Swarm 模式</a></li><li><a class="chapter-link" href="第16章-Handoff机制.html">第 16 章：Handoff 机制</a></li></ul></div><div class="sidebar-section"><div class="section-title">Part 6 - 高级推理</div><ul class="chapter-list"><li><a class="chapter-link" href="Part6概述.html">Part 6 概述</a></li><li><a class="chapter-link" href="第17章-Tree-of-Thoughts.html">第 17 章：Tree-of-Thoughts</a></li><li><a class="chapter-link" href="第18章-Debate模式.html">第 18 章：Debate 模式</a></li><li><a class="chapter-link" href="第19章-Research-Synthesis.html">第 19 章：Research-Synthesis</a></li></ul></div><div class="sidebar-section"><div class="section-title">Part 7 - 生产架构</div><ul class="chapter-list"><li><a class="chapter-link" href="Part7概述.html">Part 7 概述</a></li><li><a class="chapter-link" href="第20章-三层架构设计.html">第 20 章：三层架构设计</a></li><li><a class="chapter-link" href="第21章-Temporal工作流.html">第 21 章：Temporal 工作流</a></li><li><a class="chapter-link" href="第22章-可观测性.html">第 22 章：可观测性</a></li></ul></div><div class="sidebar-section"><div class="section-title">Part 8 - 企业级特性</div><ul class="chapter-list"><li><a class="chapter-link" href="Part8概述.html">Part 8 概述</a></li><li><a class="chapter-link" href="第23章-Token预算控制.html">第 23 章：Token 预算控制</a></li><li><a class="chapter-link" href="第24章-策略治理.html">第 24 章：策略治理</a></li><li><a class="chapter-link" href="第25章-安全执行.html">第 25 章：安全执行</a></li><li><a class="chapter-link" href="第26章-多租户设计.html">第 26 章：多租户设计</a></li></ul></div><div class="sidebar-section"><div class="section-title">Part 9 - 前沿实践</div><ul class="chapter-list"><li><a class="chapter-link" href="Part9概述.html">Part 9 概述</a></li><li><a class="chapter-link" href="第27章-Deep-Research.html">第 27 章：Deep Research</a></li><li><a class="chapter-link" href="第28章-Computer-Use.html">第 28 章：Computer Use</a></li><li><a class="chapter-link" href="第29章-Agentic-Coding.html">第 29 章：Agentic Coding</a></li><li><a class="chapter-link" href="第30章-Background-Agents.html">第 30 章：Background Agents</a></li><li><a class="chapter-link" href="第31章-分层模型策略.html">第 31 章：分层模型策略</a></li><li><a class="chapter-link" href="第32章-OpenClaw时代.html">第 32 章：OpenClaw 时代</a></li><li><a class="chapter-link" href="第33章-Building-on-the-Harness-ShanClaw.html">第 33 章：Building on the Harness - Kocoro</a></li></ul></div><div class="sidebar-section"><div class="section-title">Part 10 - Agent Loop 工程</div><ul class="chapter-list"><li><a class="chapter-link" href="Part10-Agent-Loop工程.html">Part 10 概述</a></li><li><a class="chapter-link" href="第34章-从DAG到Agent-Loop.html">第 34 章：从 DAG 到 Agent Loop</a></li><li><a class="chapter-link" href="第35章-上下文压缩.html">第 35 章：上下文压缩</a></li><li><a class="chapter-link" href="第36章-Tool-Result预算与外溢.html">第 36 章：Tool Result 预算与外溢</a></li><li><a class="chapter-link" href="第37章-分层压缩.html">第 37 章：分层压缩</a></li><li><a class="chapter-link" href="第38章-Deferred-Tool-Loading与Tool-Search.html">第 38 章：Deferred Tool Loading 与 Tool Search</a></li><li><a class="chapter-link" href="第39章-Prompt-Cache稳定性.html">第 39 章：Prompt Cache 稳定性</a></li><li><a class="chapter-link" href="第40章-持久化Agent-Loop.html">第 40 章：持久化 Agent Loop</a></li><li><a class="chapter-link" href="第41章-运行中操控Agent.html">第 41 章：运行中操控 Agent</a></li><li><a class="chapter-link" href="第42章-Agent超时与Watchdog.html">第 42 章：Agent 超时与 Watchdog</a></li><li><a class="chapter-link" href="第43章-卡循环检测.html">第 43 章：卡循环检测</a></li><li><a class="chapter-link" href="第44章-并行工具执行.html">第 44 章：并行工具执行</a></li><li><a class="chapter-link" href="第45章-Computer-Use上下文管理.html">第 45 章：Computer Use 上下文管理</a></li></ul></div><div class="sidebar-section"><div class="section-title">附录</div><ul class="chapter-list"><li><a class="chapter-link" href="Part10概述.html">附录概述</a></li><li><a class="chapter-link" href="附录A-术语表.html">附录 A：术语表</a></li><li><a class="chapter-link" href="附录B-模式选择指南.html">附录 B：模式选择指南</a></li><li><a class="chapter-link" href="附录C-常见问题FAQ.html">附录 C：常见问题 FAQ</a></li></ul></div>
+      </div>
+    </nav>
+    <main class="book-main">
+      <div class="book-content">
+<article class="prose dark:prose-invert fade-in"><h1 id="前言"><a href="#前言" class="anchor"></a>前言</h1>
+<div class="not-prose my-6 rounded-md border border-neutral-300 dark:border-neutral-700 bg-neutral-50 dark:bg-neutral-900 px-6 py-5"><p class="m-0 mb-3 text-xs font-semibold uppercase tracking-wide text-neutral-500 dark:text-neutral-400">读完这本书，你能</p><ul class="m-0 list-disc pl-5 space-y-1.5 text-sm leading-relaxed text-neutral-700 dark:text-neutral-300"><li>设计多 Agent 协作：DAG、Supervisor、Swarm、Handoff</li><li>管好 Token 预算、工具重试与状态持久化</li><li>落地企业级权限、审计与多租户</li><li>把这套系统真正跑进生产环境</li></ul></div>
+<h2 id="为什么写这本书"><a href="#为什么写这本书" class="anchor"></a>为什么写这本书</h2>
+<p>2025 年下半年，我从AI理论的讲解转向了Agent的工程落地。起初觉得拿开源库构建企业可用的Agent系统是件很简单的事。然后当真正下手去构建一个生产级 Agent 系统时遇到了一个问题：市面上的教程要么停留在&quot;调用 API 实现一个 chatbot&quot;的 Demo 阶段，要么是某个框架的文档翻译。</p>
+<p>当我需要回答这些问题时，找不到答案：</p>
+<ul>
+<li>多个 Agent 之间如何协作？用 DAG 还是 Supervisor？</li>
+<li>Token 预算如何分配？单次调用还是整个 workflow？</li>
+<li>工具执行出错了怎么重试？状态如何持久化？</li>
+<li>企业环境下如何做权限控制和审计？</li>
+</ul>
+<p>这些问题没有现成的答案，只能在踩坑中摸索。由于市面上的框架普通都有多少无法满足企业级需求的不足，所以觉得自己从零写一个。<a target="_blank" rel="noopener noreferrer" href="https://github.com/Kocoro-lab/Shannon">Shannon</a> 就是这个摸索过程的产物——一个三层架构的多 Agent 系统，用 Go/Rust/Python 实现。</p>
+<p>配套地，<a target="_blank" rel="noopener noreferrer" href="#">Kocoro</a> 是 Shannon 的<strong>本地 Agent 运行时</strong>——Shannon 面向企业级编排，Kocoro 把运行时带到本地。Shannon 与 Kocoro 的引擎/CLI/Daemon 开源；原生 Kocoro Desktop GUI 是独立闭源产品。本书只使用公开 OSS 边界。</p>
+<p>这本书是那些踩坑经验的系统整理。</p>
+<hr/>
+<h2 id="这本书的写作理念"><a href="#这本书的写作理念" class="anchor"></a>这本书的写作理念</h2>
+<p><strong>模式优先，框架其次。</strong></p>
+<p>市面上大多数 Agent 教程都绑定在某个框架上——LangChain 怎么用、CrewAI 怎么配置。框架会过时，但模式不会。</p>
+<p>这本书的每一章都遵循这样的结构：</p>
+<ol>
+<li><strong>先讲问题</strong> —— 什么场景需要这个能力？</li>
+<li><strong>再讲模式</strong> —— 通用的设计模式是什么？（框架无关）</li>
+<li><strong>然后看实现</strong> —— 以 Shannon 为例展示一种实现方式</li>
+<li><strong>最后对比</strong> —— 其他框架如何解决同样的问题</li>
+</ol>
+<p>如果你读完一章，能在任何框架中实现同样的模式——那这一章就成功了。</p>
+<hr/>
+<h2 id="谁适合读这本书"><a href="#谁适合读这本书" class="anchor"></a>谁适合读这本书</h2>
+<p><strong>这本书适合你，如果：</strong></p>
+<ul>
+<li>你想构建<strong>生产级</strong> Agent 系统，而不只是 Demo</li>
+<li>你需要处理<strong>多 Agent 协作</strong>的复杂场景</li>
+<li>你关心<strong>成本控制、安全、可观测性</strong>这些企业级问题</li>
+<li>你想理解各种 Agent 框架背后的<strong>设计模式</strong></li>
+<li>你是后端开发者、架构师、或技术负责人</li>
+</ul>
+<p><strong>这本书可能不适合你，如果：</strong></p>
+<ul>
+<li>你只想快速调用 ChatGPT API（直接看官方文档）</li>
+<li>你需要 Prompt Engineering 技巧集锦（有更专门的资料）</li>
+<li>你从未接触过 LLM 相关概念（建议先了解基础）</li>
+</ul>
+<hr/>
+<h2 id="如何阅读这本书"><a href="#如何阅读这本书" class="anchor"></a>如何阅读这本书</h2>
+<p><strong>快速入门（2-3 天）：</strong></p>
+<pre><code><span class="sh__line"><span class="sh__token--class" style="color: var(--sh-class)">Part</span><span class="sh__token--space" style="color: var(--sh-space)"> </span><span class="sh__token--class" style="color: var(--sh-class)">1</span><span class="sh__token--space" style="color: var(--sh-space)"> </span><span class="sh__token--class" style="color: var(--sh-class)">全部</span><span class="sh__token--space" style="color: var(--sh-space)"> </span><span class="sh__token--class" style="color: var(--sh-class)">→</span><span class="sh__token--space" style="color: var(--sh-space)"> </span><span class="sh__token--class" style="color: var(--sh-class)">第</span><span class="sh__token--space" style="color: var(--sh-space)"> </span><span class="sh__token--class" style="color: var(--sh-class)">3</span><span class="sh__token--space" style="color: var(--sh-space)"> </span><span class="sh__token--class" style="color: var(--sh-class)">章</span><span class="sh__token--space" style="color: var(--sh-space)"> </span><span class="sh__token--class" style="color: var(--sh-class)">→</span><span class="sh__token--space" style="color: var(--sh-space)"> </span><span class="sh__token--class" style="color: var(--sh-class)">第</span><span class="sh__token--space" style="color: var(--sh-space)"> </span><span class="sh__token--class" style="color: var(--sh-class)">13</span><span class="sh__token--space" style="color: var(--sh-space)"> </span><span class="sh__token--class" style="color: var(--sh-class)">章</span><span class="sh__token--space" style="color: var(--sh-space)"> </span><span class="sh__token--class" style="color: var(--sh-class)">→</span><span class="sh__token--space" style="color: var(--sh-space)"> </span><span class="sh__token--class" style="color: var(--sh-class)">第</span><span class="sh__token--space" style="color: var(--sh-space)"> </span><span class="sh__token--class" style="color: var(--sh-class)">20</span><span class="sh__token--space" style="color: var(--sh-space)"> </span><span class="sh__token--class" style="color: var(--sh-class)">章</span><span class="sh__token--break" style="color: var(--sh-break)"></span></span></code></pre>
+<p>目标：理解 Agent 基础、工具调用、多 Agent 编排、生产架构</p>
+<p><strong>系统学习（2-3 周）：</strong></p>
+<pre><code><span class="sh__line"><span class="sh__token--class" style="color: var(--sh-class)">Part</span><span class="sh__token--space" style="color: var(--sh-space)"> </span><span class="sh__token--class" style="color: var(--sh-class)">1</span><span class="sh__token--sign" style="color: var(--sh-sign)">-</span><span class="sh__token--class" style="color: var(--sh-class)">8</span><span class="sh__token--space" style="color: var(--sh-space)"> </span><span class="sh__token--class" style="color: var(--sh-class)">顺序阅读，配合</span><span class="sh__token--space" style="color: var(--sh-space)"> </span><span class="sh__token--class" style="color: var(--sh-class)">Shannon</span><span class="sh__token--space" style="color: var(--sh-space)"> </span><span class="sh__token--class" style="color: var(--sh-class)">代码</span><span class="sh__token--break" style="color: var(--sh-break)"></span></span></code></pre>
+<p>目标：完整掌握从单 Agent 到企业级多 Agent 的全部内容</p>
+<p><strong>前沿热点（1-2 天）：</strong></p>
+<pre><code><span class="sh__line"><span class="sh__token--class" style="color: var(--sh-class)">第</span><span class="sh__token--space" style="color: var(--sh-space)"> </span><span class="sh__token--class" style="color: var(--sh-class)">4</span><span class="sh__token--space" style="color: var(--sh-space)"> </span><span class="sh__token--class" style="color: var(--sh-class)">章</span><span class="sh__token--sign" style="color: var(--sh-sign)">(</span><span class="sh__token--class" style="color: var(--sh-class)">MCP</span><span class="sh__token--sign" style="color: var(--sh-sign)">)</span><span class="sh__token--space" style="color: var(--sh-space)"> </span><span class="sh__token--class" style="color: var(--sh-class)">→</span><span class="sh__token--space" style="color: var(--sh-space)"> </span><span class="sh__token--class" style="color: var(--sh-class)">第</span><span class="sh__token--space" style="color: var(--sh-space)"> </span><span class="sh__token--class" style="color: var(--sh-class)">27</span><span class="sh__token--space" style="color: var(--sh-space)"> </span><span class="sh__token--class" style="color: var(--sh-class)">章</span><span class="sh__token--sign" style="color: var(--sh-sign)">(</span><span class="sh__token--class" style="color: var(--sh-class)">Deep</span><span class="sh__token--space" style="color: var(--sh-space)"> </span><span class="sh__token--class" style="color: var(--sh-class)">Research</span><span class="sh__token--sign" style="color: var(--sh-sign)">)</span><span class="sh__token--space" style="color: var(--sh-space)"> </span><span class="sh__token--class" style="color: var(--sh-class)">→</span><span class="sh__token--space" style="color: var(--sh-space)"> </span><span class="sh__token--class" style="color: var(--sh-class)">第</span><span class="sh__token--space" style="color: var(--sh-space)"> </span><span class="sh__token--class" style="color: var(--sh-class)">28</span><span class="sh__token--space" style="color: var(--sh-space)"> </span><span class="sh__token--class" style="color: var(--sh-class)">章</span><span class="sh__token--sign" style="color: var(--sh-sign)">(</span><span class="sh__token--class" style="color: var(--sh-class)">Computer</span><span class="sh__token--space" style="color: var(--sh-space)"> </span><span class="sh__token--class" style="color: var(--sh-class)">Use</span><span class="sh__token--sign" style="color: var(--sh-sign)">)</span><span class="sh__token--space" style="color: var(--sh-space)"> </span><span class="sh__token--class" style="color: var(--sh-class)">→</span><span class="sh__token--space" style="color: var(--sh-space)"> </span><span class="sh__token--class" style="color: var(--sh-class)">第</span><span class="sh__token--space" style="color: var(--sh-space)"> </span><span class="sh__token--class" style="color: var(--sh-class)">29</span><span class="sh__token--space" style="color: var(--sh-space)"> </span><span class="sh__token--class" style="color: var(--sh-class)">章</span><span class="sh__token--sign" style="color: var(--sh-sign)">(</span><span class="sh__token--class" style="color: var(--sh-class)">Agentic</span><span class="sh__token--space" style="color: var(--sh-space)"> </span><span class="sh__token--class" style="color: var(--sh-class)">Coding</span><span class="sh__token--sign" style="color: var(--sh-sign)">)</span><span class="sh__token--break" style="color: var(--sh-break)"></span></span></code></pre>
+<p>目标：了解 2025-2026 年最热门的 Agent 话题</p>
+<p>每章结尾都有&quot;本章要点回顾&quot;，你可以用它检验自己是否真正理解了核心概念。</p>
+<hr/>
+<h2 id="关于代码"><a href="#关于代码" class="anchor"></a>关于代码</h2>
+<p>本书以 <a target="_blank" rel="noopener noreferrer" href="https://github.com/Kocoro-lab/Shannon">Shannon</a> 作为参考实现，但<strong>不是</strong> Shannon 的使用手册。</p>
+<p>Shannon 采用三层架构：</p>
+<pre><code><span class="sh__line"><span class="sh__token--class" style="color: var(--sh-class)">Orchestrator</span><span class="sh__token--space" style="color: var(--sh-space)"> </span><span class="sh__token--sign" style="color: var(--sh-sign)">(</span><span class="sh__token--class" style="color: var(--sh-class)">Go</span><span class="sh__token--sign" style="color: var(--sh-sign)">)</span><span class="sh__token--space" style="color: var(--sh-space)"> </span><span class="sh__token--space" style="color: var(--sh-space)">   </span><span class="sh__token--sign" style="color: var(--sh-sign)">-</span><span class="sh__token--space" style="color: var(--sh-space)"> </span><span class="sh__token--class" style="color: var(--sh-class)">编排、预算、策略</span><span class="sh__token--break" style="color: var(--sh-break)"></span></span>
+<span class="sh__line"><span class="sh__token--class" style="color: var(--sh-class)">Agent</span><span class="sh__token--space" style="color: var(--sh-space)"> </span><span class="sh__token--class" style="color: var(--sh-class)">Core</span><span class="sh__token--space" style="color: var(--sh-space)"> </span><span class="sh__token--sign" style="color: var(--sh-sign)">(</span><span class="sh__token--class" style="color: var(--sh-class)">Rust</span><span class="sh__token--sign" style="color: var(--sh-sign)">)</span><span class="sh__token--space" style="color: var(--sh-space)"> </span><span class="sh__token--space" style="color: var(--sh-space)">   </span><span class="sh__token--sign" style="color: var(--sh-sign)">-</span><span class="sh__token--space" style="color: var(--sh-space)"> </span><span class="sh__token--class" style="color: var(--sh-class)">执行、沙箱、限流</span><span class="sh__token--break" style="color: var(--sh-break)"></span></span>
+<span class="sh__line"><span class="sh__token--class" style="color: var(--sh-class)">LLM</span><span class="sh__token--space" style="color: var(--sh-space)"> </span><span class="sh__token--class" style="color: var(--sh-class)">Service</span><span class="sh__token--space" style="color: var(--sh-space)"> </span><span class="sh__token--sign" style="color: var(--sh-sign)">(</span><span class="sh__token--class" style="color: var(--sh-class)">Python</span><span class="sh__token--sign" style="color: var(--sh-sign)">)</span><span class="sh__token--space" style="color: var(--sh-space)"> </span><span class="sh__token--sign" style="color: var(--sh-sign)">-</span><span class="sh__token--space" style="color: var(--sh-space)"> </span><span class="sh__token--class" style="color: var(--sh-class)">推理、工具、向量</span><span class="sh__token--break" style="color: var(--sh-break)"></span></span></code></pre>
+<p>书中的代码示例展示的是<strong>设计模式</strong>，不是框架 API。你完全可以用 LangGraph、CrewAI 或自己的框架实现同样的模式。</p>
+<hr/>
+<h2 id="关于时效性"><a href="#关于时效性" class="anchor"></a>关于时效性</h2>
+<p>AI Agent 领域发展极快。MCP 协议在 2024 年底才发布，Computer Use 还在快速迭代中。</p>
+<p>本书对高变动性内容会明确标注：</p>
+<blockquote>
+<p><strong>时效性提示</strong> (2026-01): 本节内容基于 MCP 规范 v1.0。
+请查阅最新文档确认是否有更新。</p>
+</blockquote>
+<p>核心的架构模式相对稳定，但具体的 API 和工具可能会变化。遇到疑问时，请以官方文档为准。</p>
+<hr/>
+<h2 id="致谢"><a href="#致谢" class="anchor"></a>致谢</h2>
+<p>感谢所有在 Agent 系统构建过程中给予帮助的同事和朋友。</p>
+<p>感谢开源社区的贡献者们——LangChain、LangGraph、CrewAI、AutoGen 等项目让我们站在巨人的肩膀上。</p>
+<p>感谢 Claude Code、OpenAI Codex 的编程工具和模型推动了代码快速撰写的能力边界，让这个 Agent 编排框架和平台从概念迅速变成了现实。</p>
+<hr/>
+<p><strong><a target="_blank" rel="noopener noreferrer" href="#">chad</a></strong></p>
+<p>2026 年 1 月</p>
+<p><em>&quot;The best way to learn is to build.&quot;</em></p>
+<hr/>
+<h2 id="勘误与反馈"><a href="#勘误与反馈" class="anchor"></a>勘误与反馈</h2>
+<p>如果你发现书中的错误，或有任何建议，欢迎通过以下方式联系：</p>
+<ul>
+<li>GitHub Issues: <a target="_blank" rel="noopener noreferrer" href="#">本书仓库</a></li>
+<li>Shannon OSS: <a target="_blank" rel="noopener noreferrer" href="https://github.com/Kocoro-lab/Shannon">github.com/Kocoro-lab/Shannon</a></li>
+<li>Kocoro 运行时: <a target="_blank" rel="noopener noreferrer" href="#">kocoro.ai</a> · <a target="_blank" rel="noopener noreferrer" href="https://github.com/Kocoro-lab/Kocoro">github.com/Kocoro-lab/Kocoro</a></li>
+</ul>
+<p>技术书籍难免有疏漏，感谢你的理解和帮助。</p>
+<div class="not-prose my-10"><a href="Part1概述.html" class="block rounded-lg border border-neutral-200 dark:border-neutral-800 bg-neutral-50 dark:bg-neutral-900 hover:border-neutral-400 dark:hover:border-neutral-600 hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-all p-5 no-underline"><div class="text-xs uppercase tracking-wider text-neutral-500 dark:text-neutral-400 mb-1"><p>下一节 →</p></div><div class="text-base font-medium text-neutral-900 dark:text-neutral-100"><p>Part 1 概述：快速体验 Agent</p></div><div class="text-sm text-neutral-600 dark:text-neutral-400 mt-1"><p>从 ReAct 循环开始，搭一个能跑的 Agent，建立直觉再深入原理。</p></div></a></div></article>
+        <div class="chapter-nav"><a href="Part1概述.html" class="nav-next"><span class="nav-label">下一章</span>Part 1 概述</a></div>
+      </div>
+    </main>
+  </div>
+</div>
+<script src="script.js"></script>
+</body>
+</html>

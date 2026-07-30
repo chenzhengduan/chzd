@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>附录 A：术语表 (Terminology Glossary) | AI Agent 开发实战 | chad</title>
+<meta name="author" content="chad"/>
+<meta name="description" content="AI Agent 架构模式与实战 - chad"/>
+<script>(function(){try{var m=window.matchMedia('(prefers-color-scheme:dark)');var apply=function(){var t=localStorage.getItem('theme');document.documentElement.classList.toggle('dark',t==='dark'||(!t&&m.matches))};apply();m.addEventListener('change',apply)}catch(e){}})()</script>
+<script src="https://cdn.tailwindcss.com?plugins=typography"></script>
+<script>tailwind.config={darkMode:"class",theme:{extend:{typography:{DEFAULT:{css:{maxWidth:"none"}}}}}}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css"/>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📖</text></svg>"/>
+</head>
+<body>
+<div class="book-layout">
+  <header class="book-header">
+    <div class="header-content">
+      <div class="header-left">
+        <button class="mobile-menu-toggle" id="menuToggle" aria-label="Open menu">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20"><path stroke-linecap="round" stroke-linejoin="round" d="M3 12h18M3 6h18M3 18h18"></path></svg>
+        </button>
+        <nav class="header-nav">
+          <a class="nav-item" href="index.html">Home</a>
+          <a class="nav-item" href="#">Blog</a>
+          <span class="nav-item">Books</span>
+          <a class="nav-item active hide-mobile" href="index.html">AI Agent 架构模式与实战</a>
+        </nav>
+      </div>
+      <div class="right-controls">
+        <span><a class="lang-link active" href="#">中文</a></span>
+        <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+          <svg class="w-[18px] h-[18px] hidden dark:block" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="4"></circle><path stroke-linecap="round" d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"></path></svg>
+          <svg class="w-[18px] h-[18px] block dark:hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+  <div class="sidebar-overlay" id="sidebarOverlay"></div>
+  <div class="book-body">
+    <nav class="book-sidebar" id="bookSidebar">
+      <button class="sidebar-close" id="sidebarClose" aria-label="Close menu">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20"><path stroke-linecap="round" d="M18 6L6 18M6 6l12 12"></path></svg>
+      </button>
+      <div class="sidebar-header">
+        <a class="book-title" href="index.html">AI Agent 架构：从单体到企业级多智能体</a>
+      </div>
+      <div class="sidebar-content">
+<div class="sidebar-section"><div class="section-title">前言</div><ul class="chapter-list"><li><a class="chapter-link" href="前言.html">前言</a></li></ul></div><div class="sidebar-section"><div class="section-title">Part 1 - Agent 基础</div><ul class="chapter-list"><li><a class="chapter-link" href="Part1概述.html">Part 1 概述</a></li><li><a class="chapter-link" href="第01章-Agent的本质.html">第 1 章：Agent 的本质</a></li><li><a class="chapter-link" href="第02章-ReAct循环.html">第 2 章：ReAct 循环</a></li></ul></div><div class="sidebar-section"><div class="section-title">Part 2 - 工具与扩展</div><ul class="chapter-list"><li><a class="chapter-link" href="Part2概述.html">Part 2 概述</a></li><li><a class="chapter-link" href="第03章-工具调用基础.html">第 3 章：工具调用基础</a></li><li><a class="chapter-link" href="第04章-MCP协议详解.html">第 4 章：MCP 协议详解</a></li><li><a class="chapter-link" href="第05章-Skills技能系统.html">第 5 章：Skills 技能系统</a></li><li><a class="chapter-link" href="第06章-Hooks与事件系统.html">第 6 章：Hooks 与事件系统</a></li></ul></div><div class="sidebar-section"><div class="section-title">Part 3 - 上下文与记忆</div><ul class="chapter-list"><li><a class="chapter-link" href="Part3概述.html">Part 3 概述</a></li><li><a class="chapter-link" href="第07章-上下文工程.html">第 7 章：上下文工程</a></li><li><a class="chapter-link" href="第08章-记忆架构.html">第 8 章：记忆架构</a></li><li><a class="chapter-link" href="第09章-多轮对话设计.html">第 9 章：多轮对话设计</a></li></ul></div><div class="sidebar-section"><div class="section-title">Part 4 - 单 Agent 模式</div><ul class="chapter-list"><li><a class="chapter-link" href="Part4概述.html">Part 4 概述</a></li><li><a class="chapter-link" href="第10章-Planning模式.html">第 10 章：Planning 模式</a></li><li><a class="chapter-link" href="第11章-Reflection模式.html">第 11 章：Reflection 模式</a></li><li><a class="chapter-link" href="第12章-Chain-of-Thought.html">第 12 章：Chain-of-Thought</a></li></ul></div><div class="sidebar-section"><div class="section-title">Part 5 - 多 Agent 编排</div><ul class="chapter-list"><li><a class="chapter-link" href="Part5概述.html">Part 5 概述</a></li><li><a class="chapter-link" href="第13章-编排基础.html">第 13 章：编排基础</a></li><li><a class="chapter-link" href="第14章-DAG工作流.html">第 14 章：DAG 工作流</a></li><li><a class="chapter-link" href="第15章-Swarm模式.html">第 15 章：Swarm 模式</a></li><li><a class="chapter-link" href="第16章-Handoff机制.html">第 16 章：Handoff 机制</a></li></ul></div><div class="sidebar-section"><div class="section-title">Part 6 - 高级推理</div><ul class="chapter-list"><li><a class="chapter-link" href="Part6概述.html">Part 6 概述</a></li><li><a class="chapter-link" href="第17章-Tree-of-Thoughts.html">第 17 章：Tree-of-Thoughts</a></li><li><a class="chapter-link" href="第18章-Debate模式.html">第 18 章：Debate 模式</a></li><li><a class="chapter-link" href="第19章-Research-Synthesis.html">第 19 章：Research-Synthesis</a></li></ul></div><div class="sidebar-section"><div class="section-title">Part 7 - 生产架构</div><ul class="chapter-list"><li><a class="chapter-link" href="Part7概述.html">Part 7 概述</a></li><li><a class="chapter-link" href="第20章-三层架构设计.html">第 20 章：三层架构设计</a></li><li><a class="chapter-link" href="第21章-Temporal工作流.html">第 21 章：Temporal 工作流</a></li><li><a class="chapter-link" href="第22章-可观测性.html">第 22 章：可观测性</a></li></ul></div><div class="sidebar-section"><div class="section-title">Part 8 - 企业级特性</div><ul class="chapter-list"><li><a class="chapter-link" href="Part8概述.html">Part 8 概述</a></li><li><a class="chapter-link" href="第23章-Token预算控制.html">第 23 章：Token 预算控制</a></li><li><a class="chapter-link" href="第24章-策略治理.html">第 24 章：策略治理</a></li><li><a class="chapter-link" href="第25章-安全执行.html">第 25 章：安全执行</a></li><li><a class="chapter-link" href="第26章-多租户设计.html">第 26 章：多租户设计</a></li></ul></div><div class="sidebar-section"><div class="section-title">Part 9 - 前沿实践</div><ul class="chapter-list"><li><a class="chapter-link" href="Part9概述.html">Part 9 概述</a></li><li><a class="chapter-link" href="第27章-Deep-Research.html">第 27 章：Deep Research</a></li><li><a class="chapter-link" href="第28章-Computer-Use.html">第 28 章：Computer Use</a></li><li><a class="chapter-link" href="第29章-Agentic-Coding.html">第 29 章：Agentic Coding</a></li><li><a class="chapter-link" href="第30章-Background-Agents.html">第 30 章：Background Agents</a></li><li><a class="chapter-link" href="第31章-分层模型策略.html">第 31 章：分层模型策略</a></li><li><a class="chapter-link" href="第32章-OpenClaw时代.html">第 32 章：OpenClaw 时代</a></li><li><a class="chapter-link" href="第33章-Building-on-the-Harness-ShanClaw.html">第 33 章：Building on the Harness - Kocoro</a></li></ul></div><div class="sidebar-section"><div class="section-title">Part 10 - Agent Loop 工程</div><ul class="chapter-list"><li><a class="chapter-link" href="Part10-Agent-Loop工程.html">Part 10 概述</a></li><li><a class="chapter-link" href="第34章-从DAG到Agent-Loop.html">第 34 章：从 DAG 到 Agent Loop</a></li><li><a class="chapter-link" href="第35章-上下文压缩.html">第 35 章：上下文压缩</a></li><li><a class="chapter-link" href="第36章-Tool-Result预算与外溢.html">第 36 章：Tool Result 预算与外溢</a></li><li><a class="chapter-link" href="第37章-分层压缩.html">第 37 章：分层压缩</a></li><li><a class="chapter-link" href="第38章-Deferred-Tool-Loading与Tool-Search.html">第 38 章：Deferred Tool Loading 与 Tool Search</a></li><li><a class="chapter-link" href="第39章-Prompt-Cache稳定性.html">第 39 章：Prompt Cache 稳定性</a></li><li><a class="chapter-link" href="第40章-持久化Agent-Loop.html">第 40 章：持久化 Agent Loop</a></li><li><a class="chapter-link" href="第41章-运行中操控Agent.html">第 41 章：运行中操控 Agent</a></li><li><a class="chapter-link" href="第42章-Agent超时与Watchdog.html">第 42 章：Agent 超时与 Watchdog</a></li><li><a class="chapter-link" href="第43章-卡循环检测.html">第 43 章：卡循环检测</a></li><li><a class="chapter-link" href="第44章-并行工具执行.html">第 44 章：并行工具执行</a></li><li><a class="chapter-link" href="第45章-Computer-Use上下文管理.html">第 45 章：Computer Use 上下文管理</a></li></ul></div><div class="sidebar-section"><div class="section-title">附录</div><ul class="chapter-list"><li><a class="chapter-link" href="Part10概述.html">附录概述</a></li><li><a class="chapter-link active" href="附录A-术语表.html">附录 A：术语表</a></li><li><a class="chapter-link" href="附录B-模式选择指南.html">附录 B：模式选择指南</a></li><li><a class="chapter-link" href="附录C-常见问题FAQ.html">附录 C：常见问题 FAQ</a></li></ul></div>
+      </div>
+    </nav>
+    <main class="book-main">
+      <div class="book-content">
+<article class="prose dark:prose-invert fade-in"><h1 id="附录-a术语表-terminology-glossary"><a href="#附录-a术语表-terminology-glossary" class="anchor"></a>附录 A：术语表 (Terminology Glossary)</h1>
+<blockquote>
+<p><strong>本附录帮助你快速查找关键术语，理解中英对照和技术概念。按字母顺序组织，包含定义、相关章节和实际示例。</strong></p>
+</blockquote>
+<hr/>
+<h2 id="a-agent-核心概念"><a href="#a-agent-核心概念" class="anchor"></a>A - Agent 核心概念</h2>
+<h3 id="agent智能体"><a href="#agent智能体" class="anchor"></a>Agent（智能体）</h3>
+<p><strong>定义</strong>：能够感知环境、自主决策并采取行动以实现目标的软件实体。在 LLM 时代，Agent 通过大语言模型进行推理，使用工具与环境交互。
+<strong>英文</strong>：Agent
+<strong>相关章节</strong>：第 1 章、第 2 章、第 14 章
+<strong>示例</strong>：客服 Agent 接收用户问题，查询知识库，调用订单系统 API，最终生成回复
+<strong>相关术语</strong>：<a href="#react%E6%8E%A8%E7%90%86-%E8%A1%8C%E5%8A%A8%E5%BE%AA%E7%8E%AF">ReAct</a>、<a href="#tool-use%E5%B7%A5%E5%85%B7%E8%B0%83%E7%94%A8">Tool Use</a>、<a href="#multi-agent%E5%A4%9A%E6%99%BA%E8%83%BD%E4%BD%93%E7%B3%BB%E7%BB%9F">Multi-Agent</a></p>
+<h3 id="agentic-codingagent-编程"><a href="#agentic-codingagent-编程" class="anchor"></a>Agentic Coding（Agent 编程）</h3>
+<p><strong>定义</strong>：由 AI Agent 自主完成代码生成、调试、测试和部署的编程范式。Agent 理解需求、规划实现、编写代码并迭代优化。
+<strong>英文</strong>：Agentic Coding
+<strong>相关章节</strong>：第 27 章
+<strong>示例</strong>：开发者描述需求&quot;添加用户认证&quot;，Agent 自动生成代码、编写测试、提交 PR
+<strong>相关术语</strong>：<a href="#computer-use%E8%AE%A1%E7%AE%97%E6%9C%BA%E4%BD%BF%E7%94%A8">Computer Use</a>、<a href="#reflection%E5%8F%8D%E6%80%9D">Reflection</a></p>
+<h3 id="api-gatewayapi-网关"><a href="#api-gatewayapi-网关" class="anchor"></a>API Gateway（API 网关）</h3>
+<p><strong>定义</strong>：统一的入口点，处理所有外部请求的路由、认证、限流和协议转换。在 Agent 系统中负责暴露 Agent 能力为标准 API。
+<strong>英文</strong>：API Gateway
+<strong>相关章节</strong>：第 21 章、第 22 章
+<strong>示例</strong>：Kong 网关处理所有 HTTP 请求，将 <code><span class="sh__line"><span class="sh__token--string" style="color: var(--sh-string)">/v1/chat</span></span></code> 路由到 Orchestrator，应用 Token 限额
+<strong>相关术语</strong>：<a href="#orchestrator%E7%BC%96%E6%8E%92%E5%99%A8">Orchestrator</a>、<a href="#guardrails%E6%8A%A4%E6%A0%8F">Guardrails</a></p>
+<h3 id="asynchronous-workflow异步工作流"><a href="#asynchronous-workflow异步工作流" class="anchor"></a>Asynchronous Workflow（异步工作流）</h3>
+<p><strong>定义</strong>：任务执行不阻塞调用方，通过回调、消息队列或轮询获取结果的工作流模式。适合长时间运行的 Agent 任务。
+<strong>英文</strong>：Asynchronous Workflow
+<strong>相关章节</strong>：第 21 章、第 22 章
+<strong>示例</strong>：用户提交研究任务，返回 task_id，Agent 在后台执行，客户端定期查询进度
+<strong>相关术语</strong>：<a href="#temporal%E5%B7%A5%E4%BD%9C%E6%B5%81%E5%BC%95%E6%93%8E">Temporal</a>、<a href="#background-agent%E5%90%8E%E5%8F%B0-agent">Background Agent</a></p>
+<hr/>
+<h2 id="b-背压与预算"><a href="#b-背压与预算" class="anchor"></a>B - 背压与预算</h2>
+<h3 id="background-agent后台-agent"><a href="#background-agent后台-agent" class="anchor"></a>Background Agent（后台 Agent）</h3>
+<p><strong>定义</strong>：在后台持续运行的 Agent，执行定时任务、监控事件或处理异步请求。不需要实时用户交互。
+<strong>英文</strong>：Background Agent
+<strong>相关章节</strong>：第 28 章
+<strong>示例</strong>：每小时自动抓取竞品信息，分析趋势，生成周报并发送邮件
+<strong>相关术语</strong>：<a href="#asynchronous-workflow%E5%BC%82%E6%AD%A5%E5%B7%A5%E4%BD%9C%E6%B5%81">Asynchronous Workflow</a>、<a href="#temporal%E5%B7%A5%E4%BD%9C%E6%B5%81%E5%BC%95%E6%93%8E">Temporal</a></p>
+<h3 id="backpressure背压"><a href="#backpressure背压" class="anchor"></a>Backpressure（背压）</h3>
+<p><strong>定义</strong>：下游系统向上游发送&quot;慢下来&quot;信号的流控机制。防止生产者速度超过消费者处理能力导致系统崩溃。
+<strong>英文</strong>：Backpressure
+<strong>相关章节</strong>：第 22 章、第 23 章
+<strong>示例</strong>：LLM Service 处理不过来时，返回 429 错误，Orchestrator 暂停发送新请求
+<strong>相关术语</strong>：<a href="#circuit-breaker%E7%86%94%E6%96%AD%E5%99%A8">Circuit Breaker</a>、<a href="#rate-limiting%E9%80%9F%E7%8E%87%E9%99%90%E5%88%B6">Rate Limiting</a></p>
+<h3 id="batch-processing批处理"><a href="#batch-processing批处理" class="anchor"></a>Batch Processing（批处理）</h3>
+<p><strong>定义</strong>：将多个请求聚合后统一处理，提高吞吐量和资源利用率。常用于 Embedding 生成、批量推理等场景。
+<strong>英文</strong>：Batch Processing
+<strong>相关章节</strong>：第 23 章
+<strong>示例</strong>：积累 10 个文档后一次性调用 Embedding API，而非每个文档单独调用
+<strong>相关术语</strong>：<a href="#token-budget-token-%E9%A2%84%E7%AE%97">Token Budget</a>、<a href="#cost-optimization%E6%88%90%E6%9C%AC%E4%BC%98%E5%8C%96">Cost Optimization</a></p>
+<hr/>
+<h2 id="c-思维链与成本"><a href="#c-思维链与成本" class="anchor"></a>C - 思维链与成本</h2>
+<h3 id="caching缓存"><a href="#caching缓存" class="anchor"></a>Caching（缓存）</h3>
+<p><strong>定义</strong>：存储计算结果以避免重复计算，加速响应并降低成本。在 Agent 系统中可缓存 LLM 响应、工具调用结果或向量检索。
+<strong>英文</strong>：Caching
+<strong>相关章节</strong>：第 11 章、第 23 章
+<strong>示例</strong>：相同问题&quot;公司地址是什么&quot;缓存答案 24 小时，避免重复调用 LLM
+<strong>相关术语</strong>：<a href="#memory%E8%AE%B0%E5%BF%86%E7%B3%BB%E7%BB%9F">Memory</a>、<a href="#session%E4%BC%9A%E8%AF%9D">Session</a></p>
+<h3 id="chain-of-thought思维链cot"><a href="#chain-of-thought思维链cot" class="anchor"></a>Chain-of-Thought（思维链，CoT）</h3>
+<p><strong>定义</strong>：让 LLM 生成中间推理步骤，逐步解决复杂问题的 Prompt 技术。提高推理准确性和可解释性。
+<strong>英文</strong>：Chain-of-Thought (CoT)
+<strong>相关章节</strong>：第 12 章、第 13 章、第 17 章
+<strong>示例</strong>：计算&quot;23 × 47&quot;时，LLM 输出 &quot;20×47=940, 3×47=141, 940+141=1081&quot;
+<strong>相关术语</strong>：<a href="#tree-of-thoughtstot%E6%80%9D%E7%BB%B4%E6%A0%91">Tree-of-Thoughts</a>、<a href="#reflection%E5%8F%8D%E6%80%9D">Reflection</a></p>
+<h3 id="circuit-breaker熔断器"><a href="#circuit-breaker熔断器" class="anchor"></a>Circuit Breaker（熔断器）</h3>
+<p><strong>定义</strong>：当下游服务故障率超过阈值时，自动切断请求，避免雪崩效应。一段时间后尝试恢复。
+<strong>英文</strong>：Circuit Breaker
+<strong>相关章节</strong>：第 22 章、第 23 章
+<strong>示例</strong>：向量数据库连续 10 次超时后，熔断器打开，所有查询快速失败，30 秒后半开尝试恢复
+<strong>相关术语</strong>：<a href="#backpressure%E8%83%8C%E5%8E%8B">Backpressure</a>、<a href="#guardrails%E6%8A%A4%E6%A0%8F">Guardrails</a></p>
+<h3 id="computer-use计算机使用"><a href="#computer-use计算机使用" class="anchor"></a>Computer Use（计算机使用）</h3>
+<p><strong>定义</strong>：Agent 通过操作浏览器、桌面应用或命令行工具与计算机环境交互的能力。实现自动化 RPA 和复杂任务执行。
+<strong>英文</strong>：Computer Use
+<strong>相关章节</strong>：第 26 章
+<strong>示例</strong>：Agent 打开浏览器，登录系统，填写表单，上传文件，截图确认结果
+<strong>相关术语</strong>：<a href="#tool-use%E5%B7%A5%E5%85%B7%E8%B0%83%E7%94%A8">Tool Use</a>、<a href="#agentic-coding-agent-%E7%BC%96%E7%A8%8B">Agentic Coding</a></p>
+<h3 id="context-window上下文窗口"><a href="#context-window上下文窗口" class="anchor"></a>Context Window（上下文窗口）</h3>
+<p><strong>定义</strong>：LLM 一次能够处理的最大 Token 数量。包括输入提示词、历史对话和输出内容。
+<strong>英文</strong>：Context Window
+<strong>相关章节</strong>：第 9 章、第 10 章
+<strong>示例</strong>：GPT-4 的上下文窗口为 128K Token，约 96,000 个英文单词
+<strong>相关术语</strong>：<a href="#tokentoken%E4%BB%A4%E7%89%8C">Token</a>、<a href="#summarization%E6%91%98%E8%A6%81%E5%8E%8B%E7%BC%A9">Summarization</a></p>
+<h3 id="cost-optimization成本优化"><a href="#cost-optimization成本优化" class="anchor"></a>Cost Optimization（成本优化）</h3>
+<p><strong>定义</strong>：通过模型选择、缓存、批处理、Prompt 压缩等手段降低 LLM 使用成本的策略。
+<strong>英文</strong>：Cost Optimization
+<strong>相关章节</strong>：第 23 章
+<strong>示例</strong>：简单问答用 Claude Haiku（$0.25/M tokens），复杂推理用 Opus（$15/M tokens）
+<strong>相关术语</strong>：<a href="#token-budget-token-%E9%A2%84%E7%AE%97">Token Budget</a>、<a href="#caching%E7%BC%93%E5%AD%98">Caching</a></p>
+<hr/>
+<h2 id="d-dag-与辩论"><a href="#d-dag-与辩论" class="anchor"></a>D - DAG 与辩论</h2>
+<h3 id="dag有向无环图"><a href="#dag有向无环图" class="anchor"></a>DAG（有向无环图）</h3>
+<p><strong>定义</strong>：Directed Acyclic Graph，节点代表任务，边代表依赖关系的图结构。用于定义多 Agent 工作流的执行顺序。
+<strong>英文</strong>：DAG (Directed Acyclic Graph)
+<strong>相关章节</strong>：第 15 章、第 21 章
+<strong>示例</strong>：研究任务：搜索（节点 A）→ 分析（节点 B、C 并行）→ 综合（节点 D 依赖 B、C）
+<strong>相关术语</strong>：<a href="#orchestrator%E7%BC%96%E6%8E%92%E5%99%A8">Orchestrator</a>、<a href="#temporal%E5%B7%A5%E4%BD%9C%E6%B5%81%E5%BC%95%E6%93%8E">Temporal</a></p>
+<h3 id="debate辩论模式"><a href="#debate辩论模式" class="anchor"></a>Debate（辩论模式）</h3>
+<p><strong>定义</strong>：多个 Agent 持不同观点进行多轮辩论，通过对抗性讨论提高决策质量的推理模式。
+<strong>英文</strong>：Debate Pattern
+<strong>相关章节</strong>：第 18 章
+<strong>示例</strong>：法律 Agent 分别担任原告、被告和法官，辩论合同条款合理性，最终达成共识
+<strong>相关术语</strong>：<a href="#multi-agent%E5%A4%9A%E6%99%BA%E8%83%BD%E4%BD%93%E7%B3%BB%E7%BB%9F">Multi-Agent</a>、<a href="#reflection%E5%8F%8D%E6%80%9D">Reflection</a></p>
+<h3 id="deterministic-replay确定性重放"><a href="#deterministic-replay确定性重放" class="anchor"></a>Deterministic Replay（确定性重放）</h3>
+<p><strong>定义</strong>：工作流引擎在失败后能够从检查点重新执行，保证相同输入产生相同结果的机制。Temporal 的核心特性。
+<strong>英文</strong>：Deterministic Replay
+<strong>相关章节</strong>：第 21 章
+<strong>示例</strong>：Agent 任务执行到第 5 步崩溃，Temporal 从检查点重放，跳过已完成的 1-4 步
+<strong>相关术语</strong>：<a href="#temporal%E5%B7%A5%E4%BD%9C%E6%B5%81%E5%BC%95%E6%93%8E">Temporal</a>、<a href="#asynchronous-workflow%E5%BC%82%E6%AD%A5%E5%B7%A5%E4%BD%9C%E6%B5%81">Asynchronous Workflow</a></p>
+<hr/>
+<h2 id="e-embedding-与错误处理"><a href="#e-embedding-与错误处理" class="anchor"></a>E - Embedding 与错误处理</h2>
+<h3 id="embedding向量嵌入"><a href="#embedding向量嵌入" class="anchor"></a>Embedding（向量嵌入）</h3>
+<p><strong>定义</strong>：将文本转换为高维向量的数值表示，捕获语义信息。用于相似度搜索、聚类和 RAG。
+<strong>英文</strong>：Embedding
+<strong>相关章节</strong>：第 11 章、第 19 章
+<strong>示例</strong>：文本&quot;机器学习&quot;转换为 1536 维向量 [0.23, -0.45, ...]
+<strong>相关术语</strong>：<a href="#ragretrieval-augmented-generation%E6%A3%80%E7%B4%A2%E5%A2%9E%E5%BC%BA%E7%94%9F%E6%88%90">RAG</a>、<a href="#vector-database%E5%90%91%E9%87%8F%E6%95%B0%E6%8D%AE%E5%BA%93">Vector Database</a></p>
+<h3 id="error-handling错误处理"><a href="#error-handling错误处理" class="anchor"></a>Error Handling（错误处理）</h3>
+<p><strong>定义</strong>：识别、捕获和恢复系统异常的机制。在 Agent 系统中包括重试、降级、熔断和用户友好的错误提示。
+<strong>英文</strong>：Error Handling
+<strong>相关章节</strong>：第 22 章、第 23 章
+<strong>示例</strong>：LLM 调用超时后自动重试 3 次，仍失败则降级返回&quot;当前服务繁忙，请稍后重试&quot;
+<strong>相关术语</strong>：<a href="#circuit-breaker%E7%86%94%E6%96%AD%E5%99%A8">Circuit Breaker</a>、<a href="#guardrails%E6%8A%A4%E6%A0%8F">Guardrails</a></p>
+<hr/>
+<h2 id="f-函数调用与失败恢复"><a href="#f-函数调用与失败恢复" class="anchor"></a>F - 函数调用与失败恢复</h2>
+<h3 id="fallback-strategy降级策略"><a href="#fallback-strategy降级策略" class="anchor"></a>Fallback Strategy（降级策略）</h3>
+<p><strong>定义</strong>：主服务不可用时，自动切换到备选方案的容错机制。保证系统在部分故障时仍能提供基础功能。
+<strong>英文</strong>：Fallback Strategy
+<strong>相关章节</strong>：第 22 章、第 23 章
+<strong>示例</strong>：向量搜索失败时，降级为关键词搜索；LLM 不可用时，返回预定义模板
+<strong>相关术语</strong>：<a href="#circuit-breaker%E7%86%94%E6%96%AD%E5%99%A8">Circuit Breaker</a>、<a href="#error-handling%E9%94%99%E8%AF%AF%E5%A4%84%E7%90%86">Error Handling</a></p>
+<h3 id="function-calling函数调用"><a href="#function-calling函数调用" class="anchor"></a>Function Calling（函数调用）</h3>
+<p><strong>定义</strong>：LLM 根据对话生成结构化的函数调用请求，由系统执行并返回结果。是 Tool Use 的标准化实现方式。
+<strong>英文</strong>：Function Calling
+<strong>相关章节</strong>：第 4 章、第 5 章
+<strong>示例</strong>：用户问&quot;北京天气&quot;，LLM 返回 <code><span class="sh__line"><span class="sh__token--identifier" style="color: var(--sh-identifier)">get_weather</span><span class="sh__token--sign" style="color: var(--sh-sign)">(</span><span class="sh__token--identifier" style="color: var(--sh-identifier)">city</span><span class="sh__token--sign" style="color: var(--sh-sign)">=</span><span class="sh__token--string" style="color: var(--sh-string)">&quot;</span><span class="sh__token--string" style="color: var(--sh-string)">北京</span><span class="sh__token--string" style="color: var(--sh-string)">&quot;</span><span class="sh__token--sign" style="color: var(--sh-sign)">)</span></span></code>，系统调用天气 API
+<strong>相关术语</strong>：<a href="#tool-use%E5%B7%A5%E5%85%B7%E8%B0%83%E7%94%A8">Tool Use</a>、<a href="#react%E6%8E%A8%E7%90%86-%E8%A1%8C%E5%8A%A8%E5%BE%AA%E7%8E%AF">ReAct</a></p>
+<hr/>
+<h2 id="g-护栏与治理"><a href="#g-护栏与治理" class="anchor"></a>G - 护栏与治理</h2>
+<h3 id="guardrails护栏"><a href="#guardrails护栏" class="anchor"></a>Guardrails（护栏）</h3>
+<p><strong>定义</strong>：对 Agent 行为进行约束和验证的安全机制。包括输入验证、输出过滤、权限检查和策略执行。
+<strong>英文</strong>：Guardrails
+<strong>相关章节</strong>：第 24 章、第 25 章
+<strong>示例</strong>：拦截包含敏感词的输出，阻止 Agent 访问未授权的数据库，限制 Token 使用
+<strong>相关术语</strong>：<a href="#opaopen-policy-agent%E7%AD%96%E7%95%A5%E5%BC%95%E6%93%8E">OPA</a>、<a href="#wasiwasm-sandbox-wasm-%E6%B2%99%E7%AE%B1">WASI</a></p>
+<hr/>
+<h2 id="h-handoff-与钩子"><a href="#h-handoff-与钩子" class="anchor"></a>H - Handoff 与钩子</h2>
+<h3 id="handoff任务交接"><a href="#handoff任务交接" class="anchor"></a>Handoff（任务交接）</h3>
+<p><strong>定义</strong>：一个 Agent 将任务转交给另一个更专业的 Agent 的协作模式。常见于多 Agent 系统的责任分工。
+<strong>英文</strong>：Handoff
+<strong>相关章节</strong>：第 15 章、第 16 章
+<strong>示例</strong>：通用 Agent 识别用户需要退款，将对话交接给退款专员 Agent
+<strong>相关术语</strong>：<a href="#multi-agent%E5%A4%9A%E6%99%BA%E8%83%BD%E4%BD%93%E7%B3%BB%E7%BB%9F">Multi-Agent</a>、<a href="#orchestrator%E7%BC%96%E6%8E%92%E5%99%A8">Orchestrator</a></p>
+<h3 id="hooks钩子"><a href="#hooks钩子" class="anchor"></a>Hooks（钩子）</h3>
+<p><strong>定义</strong>：在 Agent 执行流程的特定时刻触发的事件回调机制。用于日志记录、监控、审计或自定义逻辑注入。
+<strong>英文</strong>：Hooks
+<strong>相关章节</strong>：第 8 章、第 29 章
+<strong>示例</strong>：<code><span class="sh__line"><span class="sh__token--identifier" style="color: var(--sh-identifier)">before_tool_call</span></span></code> 钩子记录工具名称和参数，<code><span class="sh__line"><span class="sh__token--identifier" style="color: var(--sh-identifier)">after_llm_response</span></span></code> 钩子过滤敏感信息
+<strong>相关术语</strong>：<a href="#plugins%E6%8F%92%E4%BB%B6">Plugins</a>、<a href="#observability%E5%8F%AF%E8%A7%82%E6%B5%8B%E6%80%A7">Observability</a></p>
+<hr/>
+<h2 id="i-集成与幂等性"><a href="#i-集成与幂等性" class="anchor"></a>I - 集成与幂等性</h2>
+<h3 id="idempotency幂等性"><a href="#idempotency幂等性" class="anchor"></a>Idempotency（幂等性）</h3>
+<p><strong>定义</strong>：相同的操作执行多次产生相同结果的性质。在分布式系统中用于安全重试和去重。
+<strong>英文</strong>：Idempotency
+<strong>相关章节</strong>：第 21 章、第 22 章
+<strong>示例</strong>：使用 request_id 确保支付请求重试时不会重复扣款
+<strong>相关术语</strong>：<a href="#deterministic-replay%E7%A1%AE%E5%AE%9A%E6%80%A7%E9%87%8D%E6%94%BE">Deterministic Replay</a>、<a href="#temporal%E5%B7%A5%E4%BD%9C%E6%B5%81%E5%BC%95%E6%93%8E">Temporal</a></p>
+<hr/>
+<h2 id="l-llm-与日志"><a href="#l-llm-与日志" class="anchor"></a>L - LLM 与日志</h2>
+<h3 id="llm-servicellm-服务层"><a href="#llm-servicellm-服务层" class="anchor"></a>LLM Service（LLM 服务层）</h3>
+<p><strong>定义</strong>：封装多个 LLM Provider 调用、工具选择和执行的服务层。统一 API，处理认证、重试、缓存等通用逻辑。
+<strong>英文</strong>：LLM Service
+<strong>相关章节</strong>：第 3 章、第 21 章
+<strong>示例</strong>：Shannon 的 Python 服务层，支持 OpenAI、Anthropic、Azure，统一返回格式
+<strong>相关术语</strong>：<a href="#agent%E6%99%BA%E8%83%BD%E4%BD%93">Agent</a>、<a href="#function-calling%E5%87%BD%E6%95%B0%E8%B0%83%E7%94%A8">Function Calling</a></p>
+<h3 id="logging日志"><a href="#logging日志" class="anchor"></a>Logging（日志）</h3>
+<p><strong>定义</strong>：记录系统运行时事件、错误和状态变化的机制。在 Agent 系统中用于调试、审计和性能分析。
+<strong>英文</strong>：Logging
+<strong>相关章节</strong>：第 22 章
+<strong>示例</strong>：结构化日志记录每次 LLM 调用的 model、tokens、latency 和 cost
+<strong>相关术语</strong>：<a href="#observability%E5%8F%AF%E8%A7%82%E6%B5%8B%E6%80%A7">Observability</a>、<a href="#tracing%E5%88%86%E5%B8%83%E5%BC%8F%E8%BF%BD%E8%B8%AA">Tracing</a></p>
+<hr/>
+<h2 id="m-mcp-与记忆"><a href="#m-mcp-与记忆" class="anchor"></a>M - MCP 与记忆</h2>
+<h3 id="mcp模型上下文协议"><a href="#mcp模型上下文协议" class="anchor"></a>MCP（模型上下文协议）</h3>
+<p><strong>定义</strong>：Model Context Protocol，标准化 LLM 与外部数据源、工具连接的开放协议。定义资源、工具和提示词的发现与调用规范。
+<strong>英文</strong>：MCP (Model Context Protocol)
+<strong>相关章节</strong>：第 6 章、第 7 章
+<strong>示例</strong>：通过 MCP Server 暴露 Google Drive 文件，Agent 可以列出、读取和搜索文档
+<strong>相关术语</strong>：<a href="#tool-use%E5%B7%A5%E5%85%B7%E8%B0%83%E7%94%A8">Tool Use</a>、<a href="#skills%E6%8A%80%E8%83%BD">Skills</a></p>
+<blockquote>
+<p>⚠️ <strong>时效性提示</strong> (2026-01): MCP 规范仍在快速演进中。
+请查阅 <a target="_blank" rel="noopener noreferrer" href="https://spec.modelcontextprotocol.io/">最新文档</a> 确认传输层和能力更新。</p>
+</blockquote>
+<h3 id="memory记忆系统"><a href="#memory记忆系统" class="anchor"></a>Memory（记忆系统）</h3>
+<p><strong>定义</strong>：Agent 存储和检索历史信息的机制。包括短期记忆（当前会话）、长期记忆（持久化存储）和语义记忆（知识图谱）。
+<strong>英文</strong>：Memory
+<strong>相关章节</strong>：第 9 章、第 10 章、第 11 章
+<strong>示例</strong>：用户说&quot;我上次提到的项目&quot;，Agent 从 Session 中检索上下文，理解指代
+<strong>相关术语</strong>：<a href="#session%E4%BC%9A%E8%AF%9D">Session</a>、<a href="#ragretrieval-augmented-generation%E6%A3%80%E7%B4%A2%E5%A2%9E%E5%BC%BA%E7%94%9F%E6%88%90">RAG</a></p>
+<h3 id="metrics指标监控"><a href="#metrics指标监控" class="anchor"></a>Metrics（指标监控）</h3>
+<p><strong>定义</strong>：收集、聚合和可视化系统性能数据的机制。在 Agent 系统中监控 Token 使用、延迟、成功率等关键指标。
+<strong>英文</strong>：Metrics
+<strong>相关章节</strong>：第 22 章
+<strong>示例</strong>：Prometheus 收集每个 Agent 的平均响应时间、Token 消耗和工具调用次数
+<strong>相关术语</strong>：<a href="#observability%E5%8F%AF%E8%A7%82%E6%B5%8B%E6%80%A7">Observability</a>、<a href="#logging%E6%97%A5%E5%BF%97">Logging</a></p>
+<h3 id="multi-agent多智能体系统"><a href="#multi-agent多智能体系统" class="anchor"></a>Multi-Agent（多智能体系统）</h3>
+<p><strong>定义</strong>：多个 Agent 协作完成复杂任务的系统架构。Agent 之间可以并行、串行或动态交互。
+<strong>英文</strong>：Multi-Agent System
+<strong>相关章节</strong>：第 15 章、第 16 章、第 18 章
+<strong>示例</strong>：电商系统中，搜索 Agent、推荐 Agent 和客服 Agent 协同处理用户购物流程
+<strong>相关术语</strong>：<a href="#orchestrator%E7%BC%96%E6%8E%92%E5%99%A8">Orchestrator</a>、<a href="#dag%E6%9C%89%E5%90%91%E6%97%A0%E7%8E%AF%E5%9B%BE">DAG</a></p>
+<hr/>
+<h2 id="o-编排与可观测性"><a href="#o-编排与可观测性" class="anchor"></a>O - 编排与可观测性</h2>
+<h3 id="observability可观测性"><a href="#observability可观测性" class="anchor"></a>Observability（可观测性）</h3>
+<p><strong>定义</strong>：通过日志、指标、追踪理解系统内部状态的能力。在 Agent 系统中用于调试复杂的推理链和工具调用。
+<strong>英文</strong>：Observability
+<strong>相关章节</strong>：第 22 章
+<strong>示例</strong>：通过 Trace ID 追踪一个请求经过 Orchestrator → Agent → LLM → Tool 的完整路径
+<strong>相关术语</strong>：<a href="#logging%E6%97%A5%E5%BF%97">Logging</a>、<a href="#tracing%E5%88%86%E5%B8%83%E5%BC%8F%E8%BF%BD%E8%B8%AA">Tracing</a>、<a href="#metrics%E6%8C%87%E6%A0%87%E7%9B%91%E6%8E%A7">Metrics</a></p>
+<h3 id="opa策略引擎"><a href="#opa策略引擎" class="anchor"></a>OPA（策略引擎）</h3>
+<p><strong>定义</strong>：Open Policy Agent，通用的策略引擎，使用 Rego 语言定义和执行授权、验证和合规规则。
+<strong>英文</strong>：OPA (Open Policy Agent)
+<strong>相关章节</strong>：第 24 章
+<strong>示例</strong>：定义策略&quot;财务数据只能由财务部门访问&quot;，拦截未授权的 Agent 查询
+<strong>相关术语</strong>：<a href="#guardrails%E6%8A%A4%E6%A0%8F">Guardrails</a>、<a href="#wasiwasm-sandbox-wasm-%E6%B2%99%E7%AE%B1">WASI</a></p>
+<h3 id="orchestrator编排器"><a href="#orchestrator编排器" class="anchor"></a>Orchestrator（编排器）</h3>
+<p><strong>定义</strong>：协调多个 Agent 执行复杂工作流的控制层。负责路由、调度、结果聚合和错误处理。
+<strong>英文</strong>：Orchestrator
+<strong>相关章节</strong>：第 15 章、第 21 章
+<strong>示例</strong>：Shannon 的 Go Orchestrator 根据 DAG 定义，并行调用 3 个 Agent，汇总结果
+<strong>相关术语</strong>：<a href="#dag%E6%9C%89%E5%90%91%E6%97%A0%E7%8E%AF%E5%9B%BE">DAG</a>、<a href="#multi-agent%E5%A4%9A%E6%99%BA%E8%83%BD%E4%BD%93%E7%B3%BB%E7%BB%9F">Multi-Agent</a></p>
+<hr/>
+<h2 id="p-规划与插件"><a href="#p-规划与插件" class="anchor"></a>P - 规划与插件</h2>
+<h3 id="p2p点对点通信"><a href="#p2p点对点通信" class="anchor"></a>P2P（点对点通信）</h3>
+<p><strong>定义</strong>：Peer-to-Peer，Agent 之间直接通信，无需中心化编排器的协作模式。适合动态、自组织的多 Agent 场景。
+<strong>英文</strong>：P2P (Peer-to-Peer)
+<strong>相关章节</strong>：第 16 章
+<strong>示例</strong>：研究 Agent 自主发现并请求分析 Agent 提供数据，无需 Orchestrator 介入
+<strong>相关术语</strong>：<a href="#multi-agent%E5%A4%9A%E6%99%BA%E8%83%BD%E4%BD%93%E7%B3%BB%E7%BB%9F">Multi-Agent</a>、<a href="#handoff%E4%BB%BB%E5%8A%A1%E4%BA%A4%E6%8E%A5">Handoff</a></p>
+<h3 id="planning规划"><a href="#planning规划" class="anchor"></a>Planning（规划）</h3>
+<p><strong>定义</strong>：Agent 在执行前制定分步计划的推理模式。将复杂目标分解为可执行的子任务序列。
+<strong>英文</strong>：Planning
+<strong>相关章节</strong>：第 12 章
+<strong>示例</strong>：用户要求&quot;组织团建&quot;，Agent 生成计划：1. 确定日期 2. 预订场地 3. 发送邀请
+<strong>相关术语</strong>：<a href="#react%E6%8E%A8%E7%90%86-%E8%A1%8C%E5%8A%A8%E5%BE%AA%E7%8E%AF">ReAct</a>、<a href="#tree-of-thoughtstot%E6%80%9D%E7%BB%B4%E6%A0%91">Tree-of-Thoughts</a></p>
+<h3 id="plugins插件"><a href="#plugins插件" class="anchor"></a>Plugins（插件）</h3>
+<p><strong>定义</strong>：封装特定能力的可插拔模块，通过标准接口扩展 Agent 功能。支持热加载和版本管理。
+<strong>英文</strong>：Plugins
+<strong>相关章节</strong>：第 29 章
+<strong>示例</strong>：安装 Slack 插件后，Agent 可以发送消息、创建频道、获取历史记录
+<strong>相关术语</strong>：<a href="#skills%E6%8A%80%E8%83%BD">Skills</a>、<a href="#hooks%E9%92%A9%E5%AD%90">Hooks</a>、<a href="#mcp%E6%A8%A1%E5%9E%8B%E4%B8%8A%E4%B8%8B%E6%96%87%E5%8D%8F%E8%AE%AE">MCP</a></p>
+<h3 id="prompt提示词"><a href="#prompt提示词" class="anchor"></a>Prompt（提示词）</h3>
+<p><strong>定义</strong>：发送给 LLM 的输入文本，包括指令、示例、上下文和问题。是控制 Agent 行为的核心界面。
+<strong>英文</strong>：Prompt
+<strong>相关章节</strong>：第 2 章、第 12 章
+<strong>示例</strong>：<code><span class="sh__line"><span class="sh__token--string" style="color: var(--sh-string)">&quot;</span><span class="sh__token--string" style="color: var(--sh-string)">你是一个专业的客服 Agent。用户问题：{question}。请参考知识库：{context}</span><span class="sh__token--string" style="color: var(--sh-string)">&quot;</span></span></code>
+<strong>相关术语</strong>：<a href="#chain-of-thoughtcot%E6%80%9D%E7%BB%B4%E9%93%BE">Chain-of-Thought</a>、<a href="#react%E6%8E%A8%E7%90%86-%E8%A1%8C%E5%8A%A8%E5%BE%AA%E7%8E%AF">ReAct</a></p>
+<hr/>
+<h2 id="r-rag-与反思"><a href="#r-rag-与反思" class="anchor"></a>R - RAG 与反思</h2>
+<h3 id="rag检索增强生成"><a href="#rag检索增强生成" class="anchor"></a>RAG（检索增强生成）</h3>
+<p><strong>定义</strong>：Retrieval-Augmented Generation，在生成回复前先检索相关文档，将检索结果作为上下文提供给 LLM 的技术。
+<strong>英文</strong>：RAG (Retrieval-Augmented Generation)
+<strong>相关章节</strong>：第 11 章、第 19 章
+<strong>示例</strong>：用户问&quot;退货政策&quot;，向量搜索找到相关文档，LLM 基于文档生成答案
+<strong>相关术语</strong>：<a href="#embedding%E5%90%91%E9%87%8F%E5%B5%8C%E5%85%A5">Embedding</a>、<a href="#vector-database%E5%90%91%E9%87%8F%E6%95%B0%E6%8D%AE%E5%BA%93">Vector Database</a></p>
+<h3 id="rate-limiting速率限制"><a href="#rate-limiting速率限制" class="anchor"></a>Rate Limiting（速率限制）</h3>
+<p><strong>定义</strong>：限制单位时间内请求数量的流控机制。防止滥用、保护下游服务和控制成本。
+<strong>英文</strong>：Rate Limiting
+<strong>相关章节</strong>：第 23 章、第 24 章
+<strong>示例</strong>：每个用户每分钟最多 10 次 LLM 调用，超过返回 429 Too Many Requests
+<strong>相关术语</strong>：<a href="#token-budget-token-%E9%A2%84%E7%AE%97">Token Budget</a>、<a href="#backpressure%E8%83%8C%E5%8E%8B">Backpressure</a></p>
+<h3 id="react推理-行动循环"><a href="#react推理-行动循环" class="anchor"></a>ReAct（推理-行动循环）</h3>
+<p><strong>定义</strong>：Reason-Act Loop，Agent 循环执行&quot;推理 → 行动 → 观察&quot;的决策模式。LLM 生成推理过程和下一步行动，执行后观察结果。
+<strong>英文</strong>：ReAct (Reason-Act Loop)
+<strong>相关章节</strong>：第 2 章、第 3 章
+<strong>示例</strong>：思考：需要查天气 → 行动：调用 weather_api → 观察：北京 15°C → 思考：回答用户
+<strong>相关术语</strong>：<a href="#agent%E6%99%BA%E8%83%BD%E4%BD%93">Agent</a>、<a href="#tool-use%E5%B7%A5%E5%85%B7%E8%B0%83%E7%94%A8">Tool Use</a></p>
+<h3 id="reflection反思"><a href="#reflection反思" class="anchor"></a>Reflection（反思）</h3>
+<p><strong>定义</strong>：Agent 评估自身输出质量、识别错误并改进的自我优化模式。通过多轮迭代提高结果准确性。
+<strong>英文</strong>：Reflection
+<strong>相关章节</strong>：第 13 章
+<strong>示例</strong>：Agent 生成代码后，自我检查&quot;是否有语法错误？测试覆盖率如何？&quot;，修复问题
+<strong>相关术语</strong>：<a href="#chain-of-thoughtcot%E6%80%9D%E7%BB%B4%E9%93%BE">Chain-of-Thought</a>、<a href="#debate%E8%BE%A9%E8%AE%BA%E6%A8%A1%E5%BC%8F">Debate</a></p>
+<hr/>
+<h2 id="s-会话与技能"><a href="#s-会话与技能" class="anchor"></a>S - 会话与技能</h2>
+<h3 id="sandbox沙箱"><a href="#sandbox沙箱" class="anchor"></a>Sandbox（沙箱）</h3>
+<p><strong>定义</strong>：隔离执行环境，限制代码访问系统资源的安全机制。在 Agent 系统中用于安全地运行不受信任的工具代码。
+<strong>英文</strong>：Sandbox
+<strong>相关章节</strong>：第 25 章
+<strong>示例</strong>：WASI 沙箱中运行用户自定义 Python 工具，无法访问文件系统或网络
+<strong>相关术语</strong>：<a href="#wasiwasm-sandbox-wasm-%E6%B2%99%E7%AE%B1">WASI</a>、<a href="#guardrails%E6%8A%A4%E6%A0%8F">Guardrails</a></p>
+<h3 id="session会话"><a href="#session会话" class="anchor"></a>Session（会话）</h3>
+<p><strong>定义</strong>：用户与 Agent 的一次完整交互过程，包含多轮对话和相关上下文。会话可持久化以支持跨次对话。
+<strong>英文</strong>：Session
+<strong>相关章节</strong>：第 9 章、第 10 章
+<strong>示例</strong>：用户登录后的对话历史、偏好设置、未完成任务都绑定到同一个 session_id
+<strong>相关术语</strong>：<a href="#memory%E8%AE%B0%E5%BF%86%E7%B3%BB%E7%BB%9F">Memory</a>、<a href="#context-window%E4%B8%8A%E4%B8%8B%E6%96%87%E7%AA%97%E5%8F%A3">Context Window</a></p>
+<h3 id="skills技能"><a href="#skills技能" class="anchor"></a>Skills（技能）</h3>
+<p><strong>定义</strong>：可复用的 Agent 能力模块，封装特定领域的提示词、工具和工作流。可跨 Agent 共享和组合。
+<strong>英文</strong>：Skills
+<strong>相关章节</strong>：第 8 章
+<strong>示例</strong>：<code><span class="sh__line"><span class="sh__token--identifier" style="color: var(--sh-identifier)">code_review</span></span></code> 技能包含代码分析提示词、静态检查工具和格式化工具
+<strong>相关术语</strong>：<a href="#plugins%E6%8F%92%E4%BB%B6">Plugins</a>、<a href="#mcp%E6%A8%A1%E5%9E%8B%E4%B8%8A%E4%B8%8B%E6%96%87%E5%8D%8F%E8%AE%AE">MCP</a></p>
+<h3 id="streaming流式响应"><a href="#streaming流式响应" class="anchor"></a>Streaming（流式响应）</h3>
+<p><strong>定义</strong>：LLM 逐步生成内容，客户端实时接收部分结果的模式。改善用户体验，减少首字延迟。
+<strong>英文</strong>：Streaming
+<strong>相关章节</strong>：第 3 章、第 22 章
+<strong>示例</strong>：ChatGPT 式的逐字输出，用户无需等待完整响应即可看到进展
+<strong>相关术语</strong>：<a href="#asynchronous-workflow%E5%BC%82%E6%AD%A5%E5%B7%A5%E4%BD%9C%E6%B5%81">Asynchronous Workflow</a></p>
+<h3 id="summarization摘要压缩"><a href="#summarization摘要压缩" class="anchor"></a>Summarization（摘要压缩）</h3>
+<p><strong>定义</strong>：将长文本压缩为简短摘要的技术。在 Agent 系统中用于应对上下文窗口限制和降低 Token 成本。
+<strong>英文</strong>：Summarization
+<strong>相关章节</strong>：第 10 章
+<strong>示例</strong>：将 1000 轮历史对话压缩为 &quot;用户咨询退款流程，已解决&quot; 的摘要
+<strong>相关术语</strong>：<a href="#context-window%E4%B8%8A%E4%B8%8B%E6%96%87%E7%AA%97%E5%8F%A3">Context Window</a>、<a href="#memory%E8%AE%B0%E5%BF%86%E7%B3%BB%E7%BB%9F">Memory</a></p>
+<h3 id="supervisor监督者模式"><a href="#supervisor监督者模式" class="anchor"></a>Supervisor（监督者模式）</h3>
+<p><strong>定义</strong>：一个 Agent 作为协调者，分配任务给专业 Agent 并汇总结果的多 Agent 架构模式。
+<strong>英文</strong>：Supervisor Pattern
+<strong>相关章节</strong>：第 15 章
+<strong>示例</strong>：Supervisor Agent 将&quot;写文章&quot;分解为研究、写作、校对任务，分配给三个专员
+<strong>相关术语</strong>：<a href="#orchestrator%E7%BC%96%E6%8E%92%E5%99%A8">Orchestrator</a>、<a href="#handoff%E4%BB%BB%E5%8A%A1%E4%BA%A4%E6%8E%A5">Handoff</a></p>
+<hr/>
+<h2 id="t-token-与工具"><a href="#t-token-与工具" class="anchor"></a>T - Token 与工具</h2>
+<h3 id="temporal工作流引擎"><a href="#temporal工作流引擎" class="anchor"></a>Temporal（工作流引擎）</h3>
+<p><strong>定义</strong>：分布式、持久化的工作流引擎，支持长时间运行任务、确定性重放和自动重试。适合复杂 Agent 编排。
+<strong>英文</strong>：Temporal (Workflow Engine)
+<strong>相关章节</strong>：第 21 章
+<strong>示例</strong>：定义&quot;每日报告&quot;工作流，即使服务重启也能从断点继续执行
+<strong>相关术语</strong>：<a href="#dag%E6%9C%89%E5%90%91%E6%97%A0%E7%8E%AF%E5%9B%BE">DAG</a>、<a href="#orchestrator%E7%BC%96%E6%8E%92%E5%99%A8">Orchestrator</a></p>
+<h3 id="token令牌"><a href="#token令牌" class="anchor"></a>Token（令牌）</h3>
+<p><strong>定义</strong>：LLM 处理的文本最小单位，约 0.75 个英文单词或 0.5 个中文字符。LLM 计费和上下文窗口都以 Token 计量。
+<strong>英文</strong>：Token
+<strong>相关章节</strong>：第 2 章、第 23 章
+<strong>示例</strong>：文本 &quot;Hello World&quot; 约等于 2 个 Token
+<strong>相关术语</strong>：<a href="#context-window%E4%B8%8A%E4%B8%8B%E6%96%87%E7%AA%97%E5%8F%A3">Context Window</a>、<a href="#token-budget-token-%E9%A2%84%E7%AE%97">Token Budget</a></p>
+<h3 id="token-budgettoken-预算"><a href="#token-budgettoken-预算" class="anchor"></a>Token Budget（Token 预算）</h3>
+<p><strong>定义</strong>：对单次请求、会话或用户的 Token 使用上限进行管理和分配的机制。控制成本和防止滥用。
+<strong>英文</strong>：Token Budget
+<strong>相关章节</strong>：第 23 章、第 24 章
+<strong>示例</strong>：免费用户每天 10K Token，付费用户 1M Token，超限后降级或拒绝服务
+<strong>相关术语</strong>：<a href="#rate-limiting%E9%80%9F%E7%8E%87%E9%99%90%E5%88%B6">Rate Limiting</a>、<a href="#cost-optimization%E6%88%90%E6%9C%AC%E4%BC%98%E5%8C%96">Cost Optimization</a></p>
+<h3 id="tool-use工具调用"><a href="#tool-use工具调用" class="anchor"></a>Tool Use（工具调用）</h3>
+<p><strong>定义</strong>：Agent 通过调用外部工具（API、数据库、计算器等）扩展能力的机制。是 Agent 与环境交互的核心方式。
+<strong>英文</strong>：Tool Use
+<strong>相关章节</strong>：第 4 章、第 5 章
+<strong>示例</strong>：调用 <code><span class="sh__line"><span class="sh__token--identifier" style="color: var(--sh-identifier)">search_api</span><span class="sh__token--sign" style="color: var(--sh-sign)">(</span><span class="sh__token--string" style="color: var(--sh-string)">&quot;</span><span class="sh__token--string" style="color: var(--sh-string)">Claude 3.5</span><span class="sh__token--string" style="color: var(--sh-string)">&quot;</span><span class="sh__token--sign" style="color: var(--sh-sign)">)</span></span></code> 获取最新信息，调用 <code><span class="sh__line"><span class="sh__token--identifier" style="color: var(--sh-identifier)">calculator</span><span class="sh__token--sign" style="color: var(--sh-sign)">(</span><span class="sh__token--class" style="color: var(--sh-class)">23</span><span class="sh__token--sign" style="color: var(--sh-sign)">*</span><span class="sh__token--class" style="color: var(--sh-class)">47</span><span class="sh__token--sign" style="color: var(--sh-sign)">)</span></span></code> 计算结果
+<strong>相关术语</strong>：<a href="#function-calling%E5%87%BD%E6%95%B0%E8%B0%83%E7%94%A8">Function Calling</a>、<a href="#mcp%E6%A8%A1%E5%9E%8B%E4%B8%8A%E4%B8%8B%E6%96%87%E5%8D%8F%E8%AE%AE">MCP</a></p>
+<h3 id="tracing分布式追踪"><a href="#tracing分布式追踪" class="anchor"></a>Tracing（分布式追踪）</h3>
+<p><strong>定义</strong>：跟踪请求在分布式系统中的完整路径，记录每个服务的耗时和状态。在 Agent 系统中用于调试复杂调用链。
+<strong>英文</strong>：Tracing (Distributed Tracing)
+<strong>相关章节</strong>：第 22 章
+<strong>示例</strong>：Jaeger 显示请求经过 Gateway(20ms) → Orchestrator(50ms) → Agent(300ms) → LLM(2s)
+<strong>相关术语</strong>：<a href="#observability%E5%8F%AF%E8%A7%82%E6%B5%8B%E6%80%A7">Observability</a>、<a href="#logging%E6%97%A5%E5%BF%97">Logging</a></p>
+<h3 id="tree-of-thoughtstot思维树"><a href="#tree-of-thoughtstot思维树" class="anchor"></a>Tree-of-Thoughts（ToT，思维树）</h3>
+<p><strong>定义</strong>：将问题解空间建模为树，探索多条推理路径，通过回溯和剪枝找到最优解的高级推理模式。
+<strong>英文</strong>：Tree-of-Thoughts (ToT)
+<strong>相关章节</strong>：第 17 章
+<strong>示例</strong>：解数学题时，尝试 3 种方法，每种方法展开 2 步，评估选择最佳路径继续
+<strong>相关术语</strong>：<a href="#chain-of-thoughtcot%E6%80%9D%E7%BB%B4%E9%93%BE">Chain-of-Thought</a>、<a href="#planning%E8%A7%84%E5%88%92">Planning</a></p>
+<hr/>
+<h2 id="v-向量数据库"><a href="#v-向量数据库" class="anchor"></a>V - 向量数据库</h2>
+<h3 id="vector-database向量数据库"><a href="#vector-database向量数据库" class="anchor"></a>Vector Database（向量数据库）</h3>
+<p><strong>定义</strong>：专门存储和检索高维向量的数据库。支持相似度搜索，常用于 RAG 和语义检索。
+<strong>英文</strong>：Vector Database
+<strong>相关章节</strong>：第 11 章、第 19 章
+<strong>示例</strong>：Pinecone、Qdrant 存储文档 Embedding，毫秒级返回最相似的 Top-K 结果
+<strong>相关术语</strong>：<a href="#embedding%E5%90%91%E9%87%8F%E5%B5%8C%E5%85%A5">Embedding</a>、<a href="#ragretrieval-augmented-generation%E6%A3%80%E7%B4%A2%E5%A2%9E%E5%BC%BA%E7%94%9F%E6%88%90">RAG</a></p>
+<hr/>
+<h2 id="w-wasi-与工作流"><a href="#w-wasi-与工作流" class="anchor"></a>W - WASI 与工作流</h2>
+<h3 id="wasiwasm-沙箱"><a href="#wasiwasm-沙箱" class="anchor"></a>WASI（WASM 沙箱）</h3>
+<p><strong>定义</strong>：WebAssembly System Interface，允许 WASM 模块安全访问文件、网络等系统资源的标准接口。用于隔离执行不受信任代码。
+<strong>英文</strong>：WASI (WebAssembly System Interface)
+<strong>相关章节</strong>：第 25 章
+<strong>示例</strong>：Shannon 使用 WASI 运行用户自定义工具，限制只能访问指定目录和 API
+<strong>相关术语</strong>：<a href="#sandbox%E6%B2%99%E7%AE%B1">Sandbox</a>、<a href="#guardrails%E6%8A%A4%E6%A0%8F">Guardrails</a></p>
+<h3 id="workflow工作流"><a href="#workflow工作流" class="anchor"></a>Workflow（工作流）</h3>
+<p><strong>定义</strong>：定义任务执行顺序、依赖关系和错误处理的流程编排。在 Agent 系统中用于组织多步骤任务。
+<strong>英文</strong>：Workflow
+<strong>相关章节</strong>：第 15 章、第 21 章
+<strong>示例</strong>：电商订单工作流：验证库存 → 扣款 → 发货 → 发送通知
+<strong>相关术语</strong>：<a href="#dag%E6%9C%89%E5%90%91%E6%97%A0%E7%8E%AF%E5%9B%BE">DAG</a>、<a href="#temporal%E5%B7%A5%E4%BD%9C%E6%B5%81%E5%BC%95%E6%93%8E">Temporal</a></p>
+<hr/>
+<h2 id="附录使用说明"><a href="#附录使用说明" class="anchor"></a>附录使用说明</h2>
+<h3 id="如何使用本术语表"><a href="#如何使用本术语表" class="anchor"></a>如何使用本术语表</h3>
+<ol>
+<li><strong>快速查找</strong>：按字母顺序组织，方便定位术语</li>
+<li><strong>理解概念</strong>：每个术语包含简洁定义和实际示例</li>
+<li><strong>深入学习</strong>：通过&quot;相关章节&quot;链接跳转到详细内容</li>
+<li><strong>扩展阅读</strong>：通过&quot;相关术语&quot;链接理解术语之间的关系</li>
+</ol>
+<h3 id="术语更新说明"><a href="#术语更新说明" class="anchor"></a>术语更新说明</h3>
+<p>AI Agent 领域快速发展，部分术语的定义和最佳实践可能随时间变化。本术语表基于 2026 年初的行业共识编写。建议结合各章节的&quot;时效性提示&quot;和外部参考资料使用。</p>
+<h3 id="反馈与贡献"><a href="#反馈与贡献" class="anchor"></a>反馈与贡献</h3>
+<p>如发现术语定义不准确或需要补充新术语，欢迎通过 GitHub Issues 反馈。</p>
+<hr/>
+<h2 id="索引参考"><a href="#索引参考" class="anchor"></a>索引参考</h2>
+<p><strong>按主题分类</strong>：</p>
+<ul>
+<li><strong>Agent 基础</strong>：Agent、ReAct、Tool Use、Function Calling、Prompt</li>
+<li><strong>推理模式</strong>：CoT、ToT、Planning、Reflection、Debate</li>
+<li><strong>多 Agent</strong>：Multi-Agent、Orchestrator、DAG、Supervisor、Handoff、P2P</li>
+<li><strong>扩展机制</strong>：MCP、Skills、Hooks、Plugins</li>
+<li><strong>上下文记忆</strong>：Context Window、Memory、Session、Summarization、RAG</li>
+<li><strong>生产架构</strong>：Temporal、Observability、Logging、Tracing、Metrics</li>
+<li><strong>安全合规</strong>：OPA、WASI、Guardrails、Sandbox</li>
+<li><strong>成本优化</strong>：Token Budget、Rate Limiting、Caching、Batch Processing</li>
+<li><strong>容错机制</strong>：Circuit Breaker、Backpressure、Fallback Strategy、Error Handling</li>
+<li><strong>前沿实践</strong>：Computer Use、Agentic Coding、Background Agent</li>
+</ul>
+<p><strong>按技术栈分类</strong>：</p>
+<ul>
+<li><strong>LLM 相关</strong>：Token、Context Window、Prompt、Streaming、Function Calling</li>
+<li><strong>数据存储</strong>：Vector Database、Embedding、Caching</li>
+<li><strong>工作流引擎</strong>：Temporal、DAG、Workflow、Deterministic Replay</li>
+<li><strong>可观测性</strong>：Logging、Tracing、Metrics、Observability</li>
+<li><strong>安全隔离</strong>：WASI、Sandbox、OPA、Guardrails</li>
+</ul>
+<hr/>
+<p><strong>本术语表涵盖全书 30 章核心概念，共 60+ 关键术语。建议配合各章节内容和代码示例深入理解。</strong></p></article>
+        <div class="chapter-nav"><a href="Part10概述.html"><span class="nav-label">上一章</span>附录概述</a><a href="附录B-模式选择指南.html" class="nav-next"><span class="nav-label">下一章</span>附录 B：模式选择指南</a></div>
+      </div>
+    </main>
+  </div>
+</div>
+<script src="script.js"></script>
+</body>
+</html>
